@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="message-schema.xsd"/>
+    <xs:include schemaLocation="common-schema.xsd"/>
+
+    <xs:complexType name="moduleResponseType">
+        <xs:sequence>
+            <xs:choice minOccurs="0">
+                <xs:element name="authenticationData" type="authenticationResponseType"/>
+                <xs:element name="countryData" type="countryType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="statusData" type="statusType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="adminUsers" type="adminUserType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="plans" type="planType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="countries" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="states" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="cities" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="locations" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="userType" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="bedrooms" type="bedroomType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="budgets" type="budgetType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="mainPropertyTypes" type="mainPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+
+                <xs:element name="bathrooms" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="furnishedStatus" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="propertyForTypes" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="balconies" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="totalFloors" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="units" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="transactionTypes" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="possessionStatus" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="terms" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="authenticationResponseType">
+        <xs:sequence>
+            <xs:element name="sessionID" type="xs:string"/>
+            <xs:element name="username" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="countryType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>property-portal</artifactId>
+        <groupId>com.ats.property</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <name>Property Portal DTO</name>
+    <artifactId>property-portal-dto</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>1.3.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-annotations</artifactId>
+                        <version>2.1.2</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-basics</artifactId>
+                        <version>0.6.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-basics-annotate</artifactId>
+                        <version>0.6.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-basics-runtime</artifactId>
+                        <version>0.6.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.siriusxm.mountain</groupId>
+                        <artifactId>mountain-common</artifactId>
+                        <version>1.0.1-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+
+                <configuration>
+                    <verbose>false</verbose>
+                    <clearOutputDir>false</clearOutputDir>
+                    <readOnly>true</readOnly>
+                    <arguments>-mark-generated</arguments>
+                    <outputDirectory>src/main/java</outputDirectory>
+                    <schemaDirectory>src/main/resources</schemaDirectory>
+                    <bindingDirectory>src/main/resources</bindingDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>schemaExperience</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <schemaFiles>property-portal-schema.xsd</schemaFiles>
+                            <!--<bindingFiles>experience-schema.xjb</bindingFiles>-->
+<!--
+                            <arguments>-mark-generated -Xannotate -Xsetters -Xsetters-mode=direct -Xinheritance</arguments>
+-->
+                            <extension>true</extension>
+                            <clearOutputDir>false</clearOutputDir>
+                            <packageName>com.ats.property.dto</packageName>
+                            <staleFile>src/main/property-portal-staleFlag</staleFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="module-request-schema.xsd"/>
+    <xs:include schemaLocation="module-response-schema.xsd"/>
+    <xs:element name="moduleList" type="moduleList"/>
+
+    <xs:complexType name="moduleList">
+        <xs:sequence>
+            <xs:element name="module" type="moduleType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="messages" minOccurs="0" maxOccurs="unbounded" type="messageType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="moduleType">
+        <xs:sequence>
+            <xs:choice minOccurs="0">
+                <xs:element name="moduleRequest" type="moduleRequestType"/>
+                <xs:element name="moduleResponse" type="moduleResponseType"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

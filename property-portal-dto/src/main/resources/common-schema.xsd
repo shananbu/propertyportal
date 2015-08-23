@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="statusType">
+        <xs:sequence>
+            <xs:element name="statusId" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="adminUserType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs = "0"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="designation" type="xs:string"/>
+            <xs:element name="mailId" type="xs:string"/>
+            <xs:element name="phoneNumber" type="xs:string"/>
+            <xs:element name="status" type="xs:long"/>
+            <xs:element name="doj" type="xs:string"/>
+            <xs:element name="dor" type="xs:string"/>
+            <xs:element name="userName" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="statusType" type="statusType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="planType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs = "0"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="cost" type="xs:float" minOccurs = "0"/>
+            <xs:element name="numberOfImages" type="xs:int" minOccurs = "0"/>
+            <xs:element name="userTypeId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="userTypeName" type="xs:string" minOccurs = "0"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="lineByeLineDescription" type="xs:string" maxOccurs="unbounded"/>
+            <xs:element name="validDays" type="xs:int" minOccurs = "0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="propertyUserType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs = "0"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="emailId" type="xs:string" minOccurs = "0"/>
+            <xs:element name="mobileNo" type="xs:string" minOccurs = "0"/>
+            <xs:element name="isMailVerified" type="xs:string" minOccurs = "0"/>
+            <xs:element name="passwrd" type="xs:string"/>
+            <xs:element name="status" type="xs:string" minOccurs = "0"/>
+            <xs:element name="userTypeId" type="xs:long" minOccurs = "0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="nameDataType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs = "0"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="parentId" type="xs:long"  minOccurs = "0"/>
+            <xs:element name="isPopular" type="xs:byte" minOccurs = "0"/>
+            <xs:element name="bedrooms" type="xs:long" minOccurs = "0"/>
+            <xs:element name="bathrooms" type="xs:long" minOccurs = "0"/>
+            <xs:element name="floors" type="xs:long" minOccurs = "0"/>
+            <xs:element name="nameForPoster" type="xs:string"/>
+            <xs:element name="nameForFinder" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="bedroomType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs = "0"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="bedrooms" type="xs:long" minOccurs = "0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="budgetType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs = "0"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="fromlevel" type="xs:long" minOccurs = "0"/>
+            <xs:element name="tolevel" type="xs:long" minOccurs = "0"/>
+            <xs:element name="currencyVal" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="mainPropertyType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs = "0"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="propertyTypesById" type="nameDataType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
+
