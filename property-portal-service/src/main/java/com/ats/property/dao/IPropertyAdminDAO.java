@@ -22,6 +22,8 @@ public interface IPropertyAdminDAO {
     List<State> findState(String searchKey);
     List<City> findCity(String searchKey);
     List<Locations> findLocation(String searchKey);
+    List<City> findCityByStateId(String stateId);
+    List<Locations> findLocationByCityId(String cityId);
     List<PlanMast> findAdvertisePlan(String searchKey);
     City saveOrUpdateCity(City city);
     City updateCity(City city);

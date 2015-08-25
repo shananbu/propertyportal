@@ -7,12 +7,17 @@ import com.ats.property.dto.*;
 import com.ats.property.model.*;
 import com.ats.property.service.IPropertyAdminService;
 import com.google.common.base.Optional;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.Lists;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import java.sql.Timestamp;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * The PropertyAdminHelper.
@@ -90,6 +95,11 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean getCityByStateId(String stateId, ModuleList response) {
+        return adminService.getCityByStateId(stateId, response);
+    }
+
+    @Override
     public boolean getLocationList(String searchKey, ModuleList response) {
         return adminService.getLocationList(searchKey, response);
     }
@@ -97,6 +107,25 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     @Override
     public boolean getAdvertisePlanList(String searchKey, ModuleList response, boolean lineByLineBreak) {
         return adminService.getAdvertisePlanList(searchKey, response, lineByLineBreak);
+    }
+
+    @Override
+    public boolean getAdvertisePlanListByUserType(final String userType, ModuleList response, boolean lineByLineBreak) {
+        boolean status = adminService.getAdvertisePlanList(null, response, lineByLineBreak);
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        if(userType != null) {
+            List<PlanType> filteredPlans = Lists.newArrayList(Collections2.filter(moduleResponseType.getPlans(), new Predicate<PlanType>() {
+                        @Override
+                        public boolean apply(PlanType input) {
+                            return input.getUserTypeName().toLowerCase().contains(userType.toLowerCase());
+                        }
+                    }
+            ));
+            moduleResponseType.getPlans().clear();
+            moduleResponseType.getPlans().addAll(filteredPlans);
+        }
+        return status;
     }
 
     @Override

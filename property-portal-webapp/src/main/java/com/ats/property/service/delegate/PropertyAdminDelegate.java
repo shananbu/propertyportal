@@ -70,6 +70,11 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean getCityByStateId(String stateId, ModuleList response) {
+        return adminHelper.getCityByStateId(stateId, response);
+    }
+
+    @Override
     public boolean getLocationList(String searchKey, ModuleList response) {
         return adminHelper.getLocationList(searchKey, response);
     }
@@ -77,6 +82,11 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     @Override
     public boolean getAdvertisePlanList(String searchKey, ModuleList response,  boolean lineByLineBreak) {
         return adminHelper.getAdvertisePlanList(searchKey, response, lineByLineBreak);
+    }
+
+    @Override
+    public boolean getAdvertisePlanListByUserType(String userType, ModuleList response, boolean lineByLineBreak) {
+        return adminHelper.getAdvertisePlanListByUserType(userType, response, lineByLineBreak);
     }
 
 
@@ -124,7 +134,7 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
 
     @Override
     public boolean activateAccount(String userMail, String userId) {
-        if(!fromNullable(userMail).isPresent() && fromNullable(userId).isPresent()) {
+        if(fromNullable(userMail).isPresent() && fromNullable(userId).isPresent()) {
             adminHelper.activateAccount(userMail, userId);
         }
         return true;

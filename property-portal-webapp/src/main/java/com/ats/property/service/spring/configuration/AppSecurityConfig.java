@@ -42,7 +42,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admindashboard").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/", "/userRegistration", "/registerUser", "/userLogin", "/postProperty", "/advertiseWithUs",
                         "/searchViewPage", "/propertyAlertRegisteration", "/projectOverview", "/emiCalculator",
-                        "/admin", "/authenticateAdmin", "/login").permitAll()
+                        "/admin", "/authenticateAdmin", "/login", "/activateAccount", "/rest/v1/admin/modules/get/stateByCityId").permitAll()
 
                 .anyRequest().authenticated()
             .and()

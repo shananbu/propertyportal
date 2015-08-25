@@ -22,6 +22,7 @@
             window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true });
         });
     </script>
+    <script src="js/site/postProperty.js"></script>
 </head>
 <body>
 <main class="main_wrapper clr_fix">
@@ -87,7 +88,22 @@
     <h1>Location</h1>
     <ul>
         <li>
+            <label>State</label>
+            <select class="dropdown" id="drpDwnState"  name="drpDwnState">
+                <option value="-1">--Select--</option>
+                <c:forEach var="data" items="${response.module[0].moduleResponse.states}">
+                    <option value="${data.id}">${data.name}</option>
+                </c:forEach>
+            </select>
+        </li>
+        <li>
             <label>City</label>
+            <select class="dropdown" id="drpDwnCity"  name="drpDwnCity">
+                <option value="-1">--Select--</option>
+            </select>
+        </li>
+        <li>
+            <label>Location</label>
             <select class="dropdown">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.cities}">
@@ -148,13 +164,13 @@
         <li class="ad_col_1">
             <label>Expected Rent </label>
                 <span>
-                <label> Lac </label>
+                <label> Lakhs </label>
                 Rs.<select class="dropdown">
                     <option>Chenani</option>
                     <option>Madurai</option>
                 </select>
                 </span> <span>
-                <label> Thousand </label>
+                <label> Thousands </label>
                 <select class="dropdown">
                     <option>Chenani</option>
                     <option>Madurai</option>
@@ -188,6 +204,15 @@
                 <input type="checkbox" id="new_1">
                 <label for="new_1"></label>
                 </span> I am not interested in getting response from brokers </li>
+    </ul>
+</div>
+<div class="ad_3">
+    <h1>Property Description</h1>
+    <ul>
+        <li>
+            <label>Description</label>
+            <textarea name="" cols="80" rows="6"></textarea>
+        </li>
     </ul>
 </div>
 <div class="ad_3">

@@ -134,6 +134,22 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    public boolean getCityByStateId(String stateId, ModuleList response) {
+        List<City> cities = adminDAO.findCityByStateId(stateId);
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        if(fromNullable(cities).isPresent()) {
+            for(City city : cities) {
+                NameDataType nameDataType = new NameDataType();
+                PropertyUtils.copyFields(city, nameDataType);
+                nameDataType.setParentId(city.getStateByStateId().getId());
+                moduleResponseType.getCities().add(nameDataType);
+            }
+        }
+        return true;
+    }
+
+    @Override
     public boolean getLocationList(String searchKey, ModuleList response) {
         List<Locations> locations = adminDAO.findLocation(searchKey);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -282,11 +298,12 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         String message="Hi<br><br> " +
                 "We thank you to register with us which is a great opportunity to get more business through our site. <br> " +
                 "We request you to confirm your registration by clicking on the URL :  " +
-                "<a href='www.1acreindia.com/property-portal/activateAccount?RequestData=userName%3D" + user.getEmailId() + "%26userIdentification%3D" + user.getId()  + "' target='_blank'> Approve Me.</a> <br>" +
+                "<a href='www.1acreindia.com/property-portal/activateAccount?userName=" + user.getEmailId() + "&userIdentification=" + user.getId()  + "' target='_blank'> Approve Me.</a> <br>" +
                 "This confirmation is to allow you to post your advertisement in the site.<br><br><br>" +
                 "Thanking you. <br><br><br>" +
                 "Regards, <br>" +
                 "Administrator <br> wwww.1acreindia.com " ;
+        System.out.println(message);
         return message;
     }
 

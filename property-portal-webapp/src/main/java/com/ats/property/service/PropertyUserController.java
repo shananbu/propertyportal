@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.QueryParam;
 
 /**
  * The PropertyUserController.
@@ -96,6 +98,7 @@ public class PropertyUserController {
     public ModelAndView postProperty(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
         ModelAndView modelAndView = new ModelAndView("postProperty");
         ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getStateList(null, response);
         adminDelegate.getCityList(null, response);
         adminDelegate.getBedroomsList(response);
         adminDelegate.getAdvertisePlanList(null, response, false);
@@ -117,15 +120,16 @@ public class PropertyUserController {
     }
 
     @RequestMapping(value = { "/advertiseWithUs" }, method = RequestMethod.GET)
-    public ModelAndView showAdvertiseWithUs() {
+    public ModelAndView showAdvertiseWithUs(@ModelAttribute("name") final String userType) {
         ModelAndView modelAndView = new ModelAndView("advertiseWithUs");
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.getCityList(null, response);
         adminDelegate.getBedroomsList(response);
         adminDelegate.getBudgetList(response);
         adminDelegate.getPropertyTypeList(response);
-        adminDelegate.getAdvertisePlanList(null,response, true);
+        adminDelegate.getAdvertisePlanListByUserType(userType, response, true);
         modelAndView.addObject("response", response);
+        modelAndView.addObject("userType", userType);
         return modelAndView;
     }
 
@@ -175,11 +179,9 @@ public class PropertyUserController {
     }
 
     @RequestMapping(value = { "/activateAccount" }, method = RequestMethod.GET)
-    public ModelAndView activateAccount(HttpServletRequest request) {
-        String userId = request.getParameter("userIdentification");
-        String userMail = request.getParameter("userName");
+    public ModelAndView activateAccount(@ModelAttribute("userIdentification") final String userId, @ModelAttribute("userName") final String userMail) {
         ModelAndView modelAndView = new ModelAndView("activateAccountResponse");
-        adminDelegate.activateAccount(userId, userMail);
+        adminDelegate.activateAccount(userMail, userId);
         ModuleList response = CommonHelper.getSuccessModuleList();
         modelAndView.addObject("response", response);
         return modelAndView;

@@ -35,9 +35,9 @@
             <section class="full_width prop_page box_shadow">
                 <h1 class="h_2">Advertise Your Properties With Us </h1>
                 <ul class="prop_box">
-                    <li class="prop_active"><i class="fa fa-home"></i> <span> Individuals Property Owners </span></li>
-                    <li><i class="fa fa-users"></i> <span> Brokers, Agents and Consultants </span></li>
-                    <li><i class="fa fa-building-o"></i> <span> Builders </span></li>
+                    <li id="Owner" <c:if test="${userType == 'Owner'}"> class="prop_active" </c:if>><i class="fa fa-home"></i> <span>  Property Owners </span></li>
+                    <li id="Agent" <c:if test="${userType == 'Agent'}"> class="prop_active" </c:if>><i class="fa fa-users"></i> <span> Brokers, Agents and Consultants </span></li>
+                    <li id="Builder" <c:if test="${userType == 'Builder'}"> class="prop_active" </c:if>><i class="fa fa-building-o"></i> <span> Builders </span></li>
                 </ul>
                 <ul id="prop_list">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.plans}">

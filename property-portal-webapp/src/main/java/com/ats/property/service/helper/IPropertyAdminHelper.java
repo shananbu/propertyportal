@@ -16,8 +16,10 @@ public interface IPropertyAdminHelper {
     boolean getUserList(String searchKey, ModuleList response);
     boolean getStateList(String searchKey, ModuleList response);
     boolean getCityList(String searchKey, ModuleList response);
+    public boolean getCityByStateId(String stateId, ModuleList response);
     boolean getLocationList(String searchKey, ModuleList response);
     boolean getAdvertisePlanList(String searchKey, ModuleList response,  boolean lineByLineBreak);
+    boolean getAdvertisePlanListByUserType(String userType, ModuleList response, boolean lineByLineBreak);
 
     boolean saveOrUpdateCity(NameDataType cityData, ModuleList response);
     boolean saveOrUpdateLocation(NameDataType locationData, ModuleList response);

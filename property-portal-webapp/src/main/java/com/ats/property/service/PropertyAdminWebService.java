@@ -125,6 +125,14 @@ public class PropertyAdminWebService {
         adminDelegate.getUserList(key, response);
         return response;
     }
+
+    @GET
+    @Path("/modules/get/stateByCityId")
+    public ModuleList getStateByCityId(@QueryParam("stateId") String stateId) {
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getCityByStateId(stateId, response);
+        return response;
+    }
     //Sample starts here.............................
 
     private static DummyDB dummyDB = new DummyDB();

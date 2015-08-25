@@ -15,8 +15,10 @@ public interface IPropertyAdminDelegate {
     boolean getUserList(String searchKey, ModuleList response);
     boolean getStateList(String searchKey, ModuleList response);
     boolean getCityList(String searchKey, ModuleList response);
+    boolean getCityByStateId(String stateId, ModuleList response);
     boolean getLocationList(String searchKey, ModuleList response);
     boolean getAdvertisePlanList(String searchKey, ModuleList response,  boolean lineByLineBreak);
+    boolean getAdvertisePlanListByUserType(String userType, ModuleList response,  boolean lineByLineBreak);
     boolean saveOrUpdateCity(ModuleRequestType moduleRequest, ModuleList response);
     boolean saveOrUpdateLocation(ModuleRequestType moduleRequest, ModuleList response);
     boolean getUserType(ModuleList response);
