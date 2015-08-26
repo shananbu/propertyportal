@@ -186,4 +186,28 @@ public class PropertyUserController {
         modelAndView.addObject("response", response);
         return modelAndView;
     }
+
+    @RequestMapping(value = { "/contactUs" }, method = RequestMethod.GET)
+    public ModelAndView contactUs() {
+        ModelAndView modelAndView = new ModelAndView("contactUs");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = { "/feedback" }, method = RequestMethod.GET)
+    public ModelAndView feedback() {
+        ModelAndView modelAndView = new ModelAndView("feedback");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = { "/privacyPolicy" }, method = RequestMethod.GET)
+    public ModelAndView privacyPolicy() {
+        ModelAndView modelAndView = new ModelAndView("privacyPolicy");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = { "/termsAndConditions" }, method = RequestMethod.GET)
+    public ModelAndView termsAndConditions() {
+        ModelAndView modelAndView = new ModelAndView("termsAndConditions");
+        return modelAndView;
+    }
 }

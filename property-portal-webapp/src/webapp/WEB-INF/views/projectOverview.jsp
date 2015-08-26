@@ -9,7 +9,6 @@
 <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
 <!-- common css end-->
 <!-- overview slider css start -->
-<link href="css/overview_style.css" rel="stylesheet" type="text/css" media="all">
 <!-- overview slider css end -->
 <!-- image lightbox css end -->
 <link href="css/lightbox.css" rel="stylesheet" type="text/css" media="all">

@@ -6,20 +6,22 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
     <title>Real Estate</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/overview_style.css" rel="stylesheet" type="text/css" media="all">
+
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
-    <link href="css/sumoselect.css" rel="stylesheet" type="text/css">
-
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/modernizr-2.6.2.min.js" type="text/javascript"></script>
     <script src="js/jquery.sumoselect.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3, selectAll: true });
-            window.test = $('.testsel').SumoSelect({okCancelInMulti: true });
-            window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti: true, selectAll: true });
-            window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll: true });
+
+    <link href="css/banner_slider.css" rel="stylesheet" type="text/css" media="all">
+    <script src="js/banner_slider.js"></script>
+    <script class="secret-source">
+        $(document).ready(function($) {
+            $('#banner-fade').bjqs({
+                height      : 300,
+                width       : '100%',
+                responsive  : true
+            });
         });
     </script>
 </head>
@@ -30,12 +32,11 @@
 </header>
 <div class="banner_main clr_fix">
 <div class="banner_bg clr_fix">
-    <ul class="rslides" id="slider1">
+<%--    <ul class="rslides" id="slider1">
         <li><img src="images/index_slider_1.jpg" title="sample title here"></li>
         <li><img src="images/index_slider_2.jpg" title="sample title here"></li>
-    </ul>
-</div>
-<div class="row_main">
+    </ul>--%>
+<div class="row_main banner_panel">
 <section class="clr_fix search_panel">
 <nav class="tab_menu clr_fix">
     <ul>
@@ -56,14 +57,14 @@
                 <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
                     <h1> ${data.name}</h1>
                     <ul>
-                    <c:forEach var="innerData" items="${data.propertyTypesById}">
-                        <li>
+                        <c:forEach var="innerData" items="${data.propertyTypesById}">
+                            <li>
                             <span class="jq_chk">
                                 <input type="checkbox" id="${innerData.id}">
                                  <label for="${innerData.id}"></label>
                             </span>  ${innerData.name}
-                        </li>
-                    </c:forEach>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </c:forEach>
             </div>
@@ -257,6 +258,15 @@
 </div>
 </section>
 </div>
+<div id="banner-fade">
+    <ul class="bjqs">
+        <li><img src="images/index_slider_1.jpg"></li>
+        <li><img src="images/index_slider_2.jpg"></li>
+    </ul>
+</div>
+</div>
+
+
 </div>
 <section class="clr_fix sec_main">
 <div class="row_main">

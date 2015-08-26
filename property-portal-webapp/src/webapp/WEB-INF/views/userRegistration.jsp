@@ -9,7 +9,6 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
-<link href="css/sumoselect.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/modernizr-2.6.2.min.js" type="text/javascript"></script>
 <script src="js/jquery.sumoselect.js"></script>

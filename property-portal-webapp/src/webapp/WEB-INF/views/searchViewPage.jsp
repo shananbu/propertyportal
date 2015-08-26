@@ -9,7 +9,6 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
-    <link href="css/sumoselect.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/modernizr-2.6.2.min.js" type="text/javascript"></script>
     <script src="js/jquery.sumoselect.js"></script>
@@ -45,190 +44,77 @@
             </div>
             <div class="sear_list">
                 <ul>
-                    <li> <span class="gal_pop_open"> <img src="images/image_1.jpg"> <span>5 photos</span> </span>
+                    <li>
+                        <figure class="gal_pop_open"> <img src="images/image_1.jpg">
+                            <figcaption>5 photos</figcaption>
+                        </figure>
                         <div>
                             <div class="search_head">
                                 <div class="left_head">
                                     <h1>BBCL Ananya</h1>
-                                    <span>by Jaag Homes </span> </div>
-                                <div class="right_head">
-                                    <h1> 18.4 Lac - 74.3 Lac </h1>
-                                    <span>3% since Jan '15 </span> </div>
+                                </div>
                             </div>
                             <div class="clr_fix sear_block_2">
                                 <ul>
                                     <li>
-                                        <label>Location</label>
-                                        <span>Pallavaram</span> </li>
+                                        <label>Property Type :</label>
+                                        <span>Residential Appartments</span> </li>
                                     <li>
-                                        <label>Status</label>
-                                        <span>Possession in 2015 </span> </li>
+                                        <label>Location :</label>
+                                        <span>Porur, Chennai </span> </li>
+                                    <li>
+                                        <label>Bed Rooms :</label>
+                                        <span>1,2,3BHK Penthouses </span> </li>
+                                    <li>
+                                        <label>Starting Prie :</label>
+                                        <span>On Request </span> </li>
+                                    <li>
+                                        <label>Possession :</label>
+                                        <span>August 2015 </span> </li>
                                     <li class="unit_block">
-                                        <label>Units</label>
-                                        <div>
-                                            <article> <span> <i class="fa fa-bed"></i> 2 BHK Flat </span> <span> <i class="fa fa-arrows-alt"></i> 852 - 1028 sq-ft </span> <span><i class="fa fa-phone"></i> Call for Price </span> </article>
-                                            <article> <span> <i class="fa fa-bed"></i> 2 BHK Flat </span> <span> <i class="fa fa-arrows-alt"></i> 852 - 1028 sq-ft </span> <span><i class="fa fa-phone"></i> Call for Price </span> </article>
-                                        </div>
+                                        <label>Decritpion : </label>
+                                        <p class="more"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
                                     </li>
+                                    <li> <a href="#">Read More</a> </li>
                                 </ul>
-                                <div class="cont_adver">
-                                    <input type="button" id="contact_adver" class="btn_5" value="Contact Advertiser">
-                                    <a href="#"> <i class="fa fa-phone-square"></i> view phone no</a> </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li> <span> <img src="images/image_1.jpg"> </span>
-                        <div>
-                            <div class="search_head">
-                                <div class="left_head">
-                                    <h1>BBCL Ananya</h1>
-                                    <span>by Jaag Homes </span> </div>
-                                <div class="right_head">
-                                    <h1> 18.4 Lac - 74.3 Lac </h1>
-                                    <span>3% since Jan '15 </span> </div>
-                            </div>
-                            <div class="clr_fix sear_block_2">
-                                <ul>
-                                    <li>
-                                        <label>Location</label>
-                                        <span>Pallavaram</span> </li>
-                                    <li>
-                                        <label>Status</label>
-                                        <span>Possession in 2015 </span> </li>
-                                    <li class="unit_block">
-                                        <label>Units</label>
-                                        <div>
-                                            <article> <span> <i class="fa fa-bed"></i> 2 BHK Flat </span> <span> <i class="fa fa-arrows-alt"></i> 852 - 1028 sq-ft </span> <span><i class="fa fa-phone"></i> Call for Price </span> </article>
-                                            <article> <span> <i class="fa fa-bed"></i> 2 BHK Flat </span> <span> <i class="fa fa-arrows-alt"></i> 852 - 1028 sq-ft </span> <span><i class="fa fa-phone"></i> Call for Price </span> </article>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="cont_adver">
-                                    <input type="button" class="btn_5" value="Contact Advertiser">
-                                    <a href="#"> <i class="fa fa-phone-square"></i> view phone no</a> </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li> <span> <img src="images/image_1.jpg"> </span>
-                        <div>
-                            <div class="search_head">
-                                <div class="left_head">
-                                    <h1>BBCL Ananya</h1>
-                                    <span>by Jaag Homes </span> </div>
-                                <div class="right_head">
-                                    <h1> 18.4 Lac - 74.3 Lac </h1>
-                                    <span>3% since Jan '15 </span> </div>
-                            </div>
-                            <div class="clr_fix sear_block_2">
-                                <ul>
-                                    <li>
-                                        <label>Location</label>
-                                        <span>Pallavaram</span> </li>
-                                    <li>
-                                        <label>Status</label>
-                                        <span>Possession in 2015 </span> </li>
-                                    <li class="unit_block">
-                                        <label>Units</label>
-                                        <div>
-                                            <article> <span> <i class="fa fa-bed"></i> 2 BHK Flat </span> <span> <i class="fa fa-arrows-alt"></i> 852 - 1028 sq-ft </span> <span><i class="fa fa-phone"></i> Call for Price </span> </article>
-                                            <article> <span> <i class="fa fa-bed"></i> 2 BHK Flat </span> <span> <i class="fa fa-arrows-alt"></i> 852 - 1028 sq-ft </span> <span><i class="fa fa-phone"></i> Call for Price </span> </article>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="cont_adver">
-                                    <input type="button" class="btn_5" value="Contact Advertiser">
-                                    <a href="#"> <i class="fa fa-phone-square"></i> view phone no</a> </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li> <span> <img src="images/image_1.jpg"> </span>
-                        <div>
-                            <div class="search_head">
-                                <div class="left_head">
-                                    <h1>BBCL Ananya</h1>
-                                    <span>by Jaag Homes </span> </div>
-                                <div class="right_head">
-                                    <h1> 18.4 Lac - 74.3 Lac </h1>
-                                    <span>3% since Jan '15 </span> </div>
-                            </div>
-                            <div class="clr_fix sear_block_2">
-                                <ul>
-                                    <li>
-                                        <label>Location</label>
-                                        <span>Pallavaram</span> </li>
-                                    <li>
-                                        <label>Status</label>
-                                        <span>Possession in 2015 </span> </li>
-                                    <li class="unit_block">
-                                        <label>Units</label>
-                                        <div>
-                                            <article> <span> <i class="fa fa-bed"></i> 2 BHK Flat </span> <span> <i class="fa fa-arrows-alt"></i> 852 - 1028 sq-ft </span> <span><i class="fa fa-phone"></i> Call for Price </span> </article>
-                                            <article> <span> <i class="fa fa-bed"></i> 2 BHK Flat </span> <span> <i class="fa fa-arrows-alt"></i> 852 - 1028 sq-ft </span> <span><i class="fa fa-phone"></i> Call for Price </span> </article>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="cont_adver">
-                                    <input type="button" class="btn_5" value="Contact Advertiser">
-                                    <a href="#"> <i class="fa fa-phone-square"></i> view phone no</a> </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li> <span> <img src="images/image_1.jpg"> </span>
-                        <div>
-                            <div class="search_head">
-                                <div class="left_head">
-                                    <h1>BBCL Ananya</h1>
-                                    <span>by Jaag Homes </span> </div>
-                                <div class="right_head">
-                                    <h1> 18.4 Lac - 74.3 Lac </h1>
-                                    <span>3% since Jan '15 </span> </div>
-                            </div>
-                            <div class="clr_fix sear_block_2">
-                                <ul>
-                                    <li>
-                                        <label>Location</label>
-                                        <span>Pallavaram</span> </li>
-                                    <li>
-                                        <label>Status</label>
-                                        <span>Possession in 2015 </span> </li>
-                                    <li class="unit_block">
-                                        <label>Units</label>
-                                        <div>
-                                            <article> <span> <i class="fa fa-bed"></i> 2 BHK Flat </span> <span> <i class="fa fa-arrows-alt"></i> 852 - 1028 sq-ft </span> <span><i class="fa fa-phone"></i> Call for Price </span> </article>
-                                            <article> <span> <i class="fa fa-bed"></i> 2 BHK Flat </span> <span> <i class="fa fa-arrows-alt"></i> 852 - 1028 sq-ft </span> <span><i class="fa fa-phone"></i> Call for Price </span> </article>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="cont_adver">
-                                    <input type="button" class="btn_5" value="Contact Advertiser">
-                                    <a href="#"> <i class="fa fa-phone-square"></i> view phone no</a> </div>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
         </section>
-        <aside class="ad_1_left sear_view_aside clr_fix">
+        <aside class="ad_1_left re_m clr_fix">
             <h1 class="h_1">New projects</h1>
             <ul class="box_shadow clr_fix">
-                <li> <span> <img src="images/image_1.jpg"> </span>
-                    <figcaption>
+                <li> <a href="#"> <img src="images/image_1.jpg">
+                    <figcaption class="pro_info_1">
                         <h1>Silver Ripples </h1>
                         <p> Sumadhura Infracon Pvt. Ltd. </p>
                         <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                        <div class="img_desc"> <span> <i class="fa fa-bed"></i> 2, 3  BHK </span> <span> <i class="fa fa-arrows-alt"></i> 9000.64 ft </span> </div>
-                        <a class="btn_3" href="#"> More </a> </figcaption>
-                </li>
-                <li> <img src="images/image_2.jpg">
-                    <figcaption>
+                        <ul>
+                            <li> Beds : <span> 2, 3  BHK </span> </li>
+                            <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
+                            <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
+                            <li> <span> <small>Read More</small> </span> </li>
+                        </ul>
+                    </figcaption>
+                </a> </li>
+                <li> <a href="#"> <img src="images/image_1.jpg">
+                    <figcaption class="pro_info_1">
                         <h1>Silver Ripples </h1>
                         <p> Sumadhura Infracon Pvt. Ltd. </p>
                         <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                        <div class="img_desc"> <span> <i class="fa fa-bed"></i> 2, 3  BHK </span> <span> <i class="fa fa-arrows-alt"></i> 9000.64 ft </span> </div>
-                        <a class="btn_3" href="#"> More </a> </figcaption>
-                </li>
+                        <ul>
+                            <li> Beds : <span> 2, 3  BHK </span> </li>
+                            <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
+                            <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
+                            <li> <span> <small>Read More</small> </span> </li>
+                        </ul>
+                    </figcaption>
+                </a> </li>
             </ul>
         </aside>
+
     </section>
 </div>
 </section>

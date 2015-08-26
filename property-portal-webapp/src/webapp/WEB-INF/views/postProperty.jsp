@@ -9,7 +9,6 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
-    <link href="css/sumoselect.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/img_upload.css" type="text/css">
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/modernizr-2.6.2.min.js" type="text/javascript"></script>
@@ -205,6 +204,58 @@
                 <label for="new_1"></label>
                 </span> I am not interested in getting response from brokers </li>
     </ul>
+</div>
+<div class="unit_left clr_fix">
+    <div class="box_shadow">
+        <table width="100%" cellspacing="0" cellpadding="0">
+            <thead>
+            <tr>
+                <td> Type </td>
+                <td> Area (SQ.FT) </td>
+                <td> Rate (Per sq.ft) </td>
+                <td> Total Cost </td>
+                <td> Floor Plan </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td> 1bhk </td>
+                <td> 65 </td>
+                <td> Rs.6250 </td>
+                <td> Rs.458.20 </td>
+                <td><a href="#">click to view</a></td>
+            </tr>
+            <tr>
+                <td> 1bhk </td>
+                <td> 65 </td>
+                <td> Rs.6250 </td>
+                <td> Rs.458.20 </td>
+                <td><a href="#">click to view</a></td>
+            </tr>
+            <tr>
+                <td> 1bhk </td>
+                <td> 65 </td>
+                <td> Rs.6250 </td>
+                <td> Rs.458.20 </td>
+                <td><a href="#">click to view</a></td>
+            </tr>
+            <tr>
+                <td> 1bhk </td>
+                <td> 65 </td>
+                <td> Rs.6250 </td>
+                <td> Rs.458.20 </td>
+                <td><a href="#">click to view</a></td>
+            </tr>
+            <tr>
+                <td> 1bhk </td>
+                <td> 65 </td>
+                <td> Rs.6250 </td>
+                <td> Rs.458.20 </td>
+                <td><a href="#">click to view</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="ad_3">
     <h1>Property Description</h1>
