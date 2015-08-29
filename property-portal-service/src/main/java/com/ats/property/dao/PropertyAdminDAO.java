@@ -155,7 +155,12 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
 
     @Override
     public List<Locations> findLocationByCityId(String cityId) {
-        return null;
+        Session session = getSession();
+        Query query = session.createQuery("from Locations l where l.cityByCityId.id = :cityId");
+        query.setParameter("cityId", Long.parseLong(cityId));
+        List<Locations> responseList = query.list();
+        session.close();
+        return responseList;
     }
 
     @Override

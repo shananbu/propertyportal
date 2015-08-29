@@ -100,6 +100,11 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean getLocationByCityId(String cityId, ModuleList response) {
+        return adminService.getLocationByCityId(cityId, response);
+    }
+
+    @Override
     public boolean getLocationList(String searchKey, ModuleList response) {
         return adminService.getLocationList(searchKey, response);
     }

@@ -12,7 +12,13 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/modernizr-2.6.2.min.js" type="text/javascript"></script>
     <script src="js/jquery.sumoselect.js"></script>
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3,selectAll:true });
+            window.test = $('.testsel').SumoSelect({okCancelInMulti:true });
+            window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
+            window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true }); });
+    </script>
     <link href="css/banner_slider.css" rel="stylesheet" type="text/css" media="all">
     <script src="js/banner_slider.js"></script>
     <script class="secret-source">
@@ -24,6 +30,7 @@
             });
         });
     </script>
+    <script src="js/site/index.js"></script>
 </head>
 <body>
 <main class="main_wrapper clr_fix">
@@ -72,7 +79,7 @@
         </div>
         <div class="text_panel">
             <input type="text" placeholder="Type Location or Project">
-            <input type="button" value="Search">
+            <input type="button" value="Search" id="searchBtn">
         </div>
     </div>
     <div class="clr_fix loc_list">

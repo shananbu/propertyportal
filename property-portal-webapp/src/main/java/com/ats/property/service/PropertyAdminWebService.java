@@ -133,6 +133,15 @@ public class PropertyAdminWebService {
         adminDelegate.getCityByStateId(stateId, response);
         return response;
     }
+
+    @GET
+    @Path("/modules/get/locationByCityId")
+    public ModuleList getLocationByCityId(@QueryParam("locationId") String locationId) {
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getLocationByCityId(locationId, response);
+        return response;
+    }
+
     //Sample starts here.............................
 
     private static DummyDB dummyDB = new DummyDB();

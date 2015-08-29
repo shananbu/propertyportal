@@ -75,6 +75,11 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean getLocationByCityId(String cityId, ModuleList response) {
+        return adminHelper.getLocationByCityId(cityId, response);
+    }
+
+    @Override
     public boolean getLocationList(String searchKey, ModuleList response) {
         return adminHelper.getLocationList(searchKey, response);
     }

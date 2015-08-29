@@ -17,6 +17,8 @@ public interface IPropertyAdminService {
     boolean getStateList(String searchKey, ModuleList response);
     boolean getCityList(String searchKey, ModuleList response);
     boolean getCityByStateId(String stateId, ModuleList response);
+    boolean getLocationByCityId(String cityId, ModuleList response);
+
     boolean getLocationList(String searchKey, ModuleList response);
     boolean getAdvertisePlanList(String searchKey, ModuleList response,  boolean lineByLineDesc);
 

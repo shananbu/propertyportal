@@ -43,6 +43,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/userRegistration", "/registerUser", "/userLogin", "/postProperty", "/advertiseWithUs",
                         "/searchViewPage", "/propertyAlertRegisteration", "/projectOverview", "/emiCalculator",
                         "/admin", "/authenticateAdmin", "/login", "/activateAccount", "/rest/v1/admin/modules/get/stateByCityId",
+                        "/rest/v1/admin/modules/get/locationByCityId",
                         "/contactUs", "/feedback", "/privacyPolicy", "/termsAndConditions").permitAll()
 
                 .anyRequest().authenticated()
@@ -57,9 +58,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity builder) throws Exception {
         builder
                 .ignoring()
+                .antMatchers("/appendGrid/**")
                 .antMatchers("/css/**")
                 .antMatchers("/js/**")
                 .antMatchers("/images/**");
+
     }
 
 

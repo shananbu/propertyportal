@@ -6,15 +6,16 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
     <title>Post Property</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/img_upload.css" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/img_upload.css" type="text/css"/>
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/modernizr-2.6.2.min.js" type="text/javascript"></script>
+
     <script src="js/jquery.sumoselect.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function(){
             window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3,selectAll:true });
             window.test = $('.testsel').SumoSelect({okCancelInMulti:true });
             window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
@@ -57,27 +58,36 @@
     <h1>Property Info</h1>
     <ul>
         <li>
-            <label>Property For<small>*</small></label>
-                <span>
-                <input type="radio" id="radio_1" name="1">
+            <label>Property For
+                <small>*</small>
+            </label>
+            <span>
+                <input type="radio" id="radio_1" name="1" checked>
                 <label for="radio_1"></label>
-                Sale </span> <span>
+                Sale
+            </span>
+            <span>
                 <input type="radio" id="radio_2" name="1">
                 <label for="radio_2"></label>
-                Rent </span> <span>
+                Rent
+            </span>
+            <span>
                 <input type="radio" id="radio_3" name="1">
                 <label for="radio_3"></label>
-                PG Accommodation </span> </li>
+                PG Accommodation
+            </span>
+        </li>
+
         <li>
             <label>Property Type</label>
             <select class="dropdown">
                 <option>Select Property Type</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
-                    <%--  <optGroup label="${data.name}">--%>
-                    <c:forEach var="innerData" items="${data.propertyTypesById}">
-                        <option value="${innerData.id}">${innerData.name}</option>
-                    </c:forEach>
-                    <%--  </optGroup>--%>
+                      <optGroup label="${data.name}">
+                        <c:forEach var="innerData" items="${data.propertyTypesById}">
+                            <option value="${innerData.id}">${innerData.name}</option>
+                        </c:forEach>
+                      </optGroup>
                 </c:forEach>
             </select>
         </li>
@@ -97,21 +107,18 @@
         </li>
         <li>
             <label>City</label>
-            <select class="dropdown" id="drpDwnCity"  name="drpDwnCity">
+            <select id="drpDwnCity" name="drpDwnCity">
                 <option value="-1">--Select--</option>
             </select>
         </li>
         <li>
             <label>Location</label>
-            <select class="dropdown">
+            <select id="drpDwnLocation" name="drpDwnLocation">
                 <option value="-1">--Select--</option>
-                <c:forEach var="data" items="${response.module[0].moduleResponse.cities}">
-                    <option value="${data.id}">${data.name}</option>
-                </c:forEach>
             </select>
         </li>
         <li>
-            <label>Locality</label>
+            <label>Address</label>
             <input type="text" placeholder="Locality">
         </li>
     </ul>
@@ -165,20 +172,23 @@
                 <span>
                 <label> Lakhs </label>
                 Rs.<select class="dropdown">
-                    <option>Chenani</option>
-                    <option>Madurai</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                 </select>
                 </span> <span>
                 <label> Thousands </label>
                 <select class="dropdown">
-                    <option>Chenani</option>
-                    <option>Madurai</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                 </select>
                 </span> <span>
                 <label> Hundreds </label>
                 <select class="dropdown">
-                    <option>Chenani</option>
-                    <option>Madurai</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                 </select>
                 </span> <span> Or
                 <input type="text" placeholder="Enter Toal Rent">
@@ -204,58 +214,6 @@
                 <label for="new_1"></label>
                 </span> I am not interested in getting response from brokers </li>
     </ul>
-</div>
-<div class="unit_left clr_fix">
-    <div class="box_shadow">
-        <table width="100%" cellspacing="0" cellpadding="0">
-            <thead>
-            <tr>
-                <td> Type </td>
-                <td> Area (SQ.FT) </td>
-                <td> Rate (Per sq.ft) </td>
-                <td> Total Cost </td>
-                <td> Floor Plan </td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td> 1bhk </td>
-                <td> 65 </td>
-                <td> Rs.6250 </td>
-                <td> Rs.458.20 </td>
-                <td><a href="#">click to view</a></td>
-            </tr>
-            <tr>
-                <td> 1bhk </td>
-                <td> 65 </td>
-                <td> Rs.6250 </td>
-                <td> Rs.458.20 </td>
-                <td><a href="#">click to view</a></td>
-            </tr>
-            <tr>
-                <td> 1bhk </td>
-                <td> 65 </td>
-                <td> Rs.6250 </td>
-                <td> Rs.458.20 </td>
-                <td><a href="#">click to view</a></td>
-            </tr>
-            <tr>
-                <td> 1bhk </td>
-                <td> 65 </td>
-                <td> Rs.6250 </td>
-                <td> Rs.458.20 </td>
-                <td><a href="#">click to view</a></td>
-            </tr>
-            <tr>
-                <td> 1bhk </td>
-                <td> 65 </td>
-                <td> Rs.6250 </td>
-                <td> Rs.458.20 </td>
-                <td><a href="#">click to view</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
 <div class="ad_3">
     <h1>Property Description</h1>

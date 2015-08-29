@@ -210,4 +210,30 @@ public class PropertyUserController {
         ModelAndView modelAndView = new ModelAndView("termsAndConditions");
         return modelAndView;
     }
+
+    @RequestMapping(value = { "/postPropertyInMicrosite" }, method = RequestMethod.GET)
+    public ModelAndView postPropertyInMicrosite(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
+        ModelAndView modelAndView = new ModelAndView("postProperty");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getStateList(null, response);
+        adminDelegate.getCityList(null, response);
+        adminDelegate.getBedroomsList(response);
+        adminDelegate.getAdvertisePlanList(null, response, false);
+        adminDelegate.getBudgetList(response);
+        adminDelegate.getPropertyTypeList(response);
+
+        adminDelegate.getPropertyForTypeList(response);
+        adminDelegate.getFurnishedStatusList(response);
+        adminDelegate.getBathroomsList(response);
+        adminDelegate.getBalconiesList(response);
+        adminDelegate.getTotalFloorsList(response);
+        adminDelegate.getUnitsList(response);
+        adminDelegate.getTransactionTypesList(response);
+        adminDelegate.getPossessionStatusList(response);
+        adminDelegate.getTermsList(response);
+
+        modelAndView.addObject("response", response);
+        return modelAndView;
+    }
+
 }

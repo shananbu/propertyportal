@@ -150,6 +150,22 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    public boolean getLocationByCityId(String cityId, ModuleList response) {
+        List<Locations> locations = adminDAO.findLocationByCityId(cityId);
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        if(fromNullable(locations).isPresent()) {
+            for(Locations location : locations) {
+                NameDataType nameDataType = new NameDataType();
+                PropertyUtils.copyFields(location, nameDataType);
+                nameDataType.setParentId(location.getCityByCityId().getId());
+                moduleResponseType.getCities().add(nameDataType);
+            }
+        }
+        return true;
+    }
+
+    @Override
     public boolean getLocationList(String searchKey, ModuleList response) {
         List<Locations> locations = adminDAO.findLocation(searchKey);
         ModuleType moduleType = CommonHelper.getFirstModule(response);

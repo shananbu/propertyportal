@@ -82,6 +82,46 @@
                     </li>
                 </ul>
             </div>
+            <div class="sear_list">
+                <ul>
+                    <li>
+                        <figure class="gal_pop_open"> <img src="images/image_1.jpg">
+                            <figcaption>5 photos</figcaption>
+                        </figure>
+                        <div>
+                            <div class="search_head">
+                                <div class="left_head">
+                                    <h1>BBCL Ananya</h1>
+                                </div>
+                            </div>
+                            <div class="clr_fix sear_block_2">
+                                <ul>
+                                    <li>
+                                        <label>Property Type :</label>
+                                        <span>Residential Appartments</span> </li>
+                                    <li>
+                                        <label>Location :</label>
+                                        <span>Porur, Chennai </span> </li>
+                                    <li>
+                                        <label>Bed Rooms :</label>
+                                        <span>1,2,3BHK Penthouses </span> </li>
+                                    <li>
+                                        <label>Starting Prie :</label>
+                                        <span>On Request </span> </li>
+                                    <li>
+                                        <label>Possession :</label>
+                                        <span>August 2015 </span> </li>
+                                    <li class="unit_block">
+                                        <label>Decritpion : </label>
+                                        <p class="more"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                                    </li>
+                                    <li> <a href="#">Read More</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </section>
         <aside class="ad_1_left re_m clr_fix">
             <h1 class="h_1">New projects</h1>
