@@ -213,7 +213,7 @@ public class PropertyUserController {
 
     @RequestMapping(value = { "/postPropertyInMicrosite" }, method = RequestMethod.GET)
     public ModelAndView postPropertyInMicrosite(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
-        ModelAndView modelAndView = new ModelAndView("postProperty");
+        ModelAndView modelAndView = new ModelAndView("postPropertyInMicrosite");
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.getStateList(null, response);
         adminDelegate.getCityList(null, response);

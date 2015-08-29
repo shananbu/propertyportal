@@ -127,19 +127,23 @@
     <h1>Property Features</h1>
     <ul>
         <li>
-            <label>Balconies</label>
-            <select class="dropdown">
-                <option value="-1">--Select--</option>
-                <c:forEach var="data" items="${response.module[0].moduleResponse.balconies}">
-                    <option value="${data.id}">${data.name}</option>
-                </c:forEach>
-            </select>
+            <label>Buildup Area</label>
+            <input type="text" placeholder="Buildup Area">
         </li>
         <li>
             <label>Furnished Status</label>
             <select class="dropdown">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.furnishedStatus}">
+                    <option value="${data.id}">${data.name}</option>
+                </c:forEach>
+            </select>
+        </li>
+        <li>
+            <label>Balconies</label>
+            <select class="dropdown">
+                <option value="-1">--Select--</option>
+                <c:forEach var="data" items="${response.module[0].moduleResponse.balconies}">
                     <option value="${data.id}">${data.name}</option>
                 </c:forEach>
             </select>
@@ -219,7 +223,15 @@
     <h1>Property Description</h1>
     <ul>
         <li>
+            <label>Name of Project</label>
+            <input type="text">
+        </li>
+        <li>
             <label>Description</label>
+            <textarea name="" cols="80" rows="6"></textarea>
+        </li>
+        <li>
+            <label>Specification/<br>Features and <br>Amenities</label>
             <textarea name="" cols="80" rows="6"></textarea>
         </li>
     </ul>
