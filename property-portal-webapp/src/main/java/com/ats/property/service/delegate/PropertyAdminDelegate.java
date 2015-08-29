@@ -162,7 +162,7 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
 
     @Override
     public boolean getPropertyForTypeList(ModuleList response) {
-        return adminHelper.getPropertyTypeList(response);
+        return adminHelper.getPropertyForTypeList(response);
     }
 
     @Override

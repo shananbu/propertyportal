@@ -75,7 +75,6 @@
                     </ul>
                 </c:forEach>
             </div>
-
         </div>
         <div class="text_panel">
             <input type="text" placeholder="Type Location or Project">

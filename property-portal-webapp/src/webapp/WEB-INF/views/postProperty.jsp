@@ -80,16 +80,28 @@
 
         <li>
             <label>Property Type</label>
-            <select class="dropdown">
-                <option>Select Property Type</option>
-                <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
-                      <optGroup label="${data.name}">
-                        <c:forEach var="innerData" items="${data.propertyTypesById}">
-                            <option value="${innerData.id}">${innerData.name}</option>
-                        </c:forEach>
-                      </optGroup>
-                </c:forEach>
-            </select>
+            <div class="search_loc">
+                <div class="pro_type">
+                    Property Type <i class="fa fa-caret-down"></i>
+                </div>
+
+                <div class="pro_list">
+                    <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
+                        <h1> ${data.name}</h1>
+                        <ul>
+                            <c:forEach var="innerData" items="${data.propertyTypesById}">
+                                <li>
+                            <span class="jq_chk">
+                                <input type="radio" name="propType" id="${innerData.id}">
+                                 <label for="${innerData.id}"></label>
+                            </span>  ${innerData.name}
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </c:forEach>
+                </div>
+            </div>
+
         </li>
     </ul>
 </div>

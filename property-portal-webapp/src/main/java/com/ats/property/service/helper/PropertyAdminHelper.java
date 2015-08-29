@@ -205,7 +205,7 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
 
     @Override
     public boolean getPropertyForTypeList(ModuleList response) {
-        return adminService.getPropertyTypeList(response);
+        return adminService.getPropertyForTypeList(response);
     }
 
     @Override
