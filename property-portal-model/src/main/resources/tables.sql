@@ -256,8 +256,8 @@ create table PropertyForType (
 
 insert into PropertyForType (nameForPoster, nameForFinder) values('Sell', 'Buy');
 insert into PropertyForType (nameForPoster, nameForFinder) values('Rent', 'Rent');
-insert into PropertyForType (nameForPoster, nameForFinder) values('New Project', 'New Project');
-
+insert into PropertyForType (nameForPoster, nameForFinder) values('PG Accommodation', 'PG Accommodation');
+--update PropertyForType set nameForPoster = 'PG Accommodation' , nameForFinder='PG Accommodation'  where id = 3;
 
 create table Bathroom (
   id bigint auto_increment,
@@ -353,36 +353,163 @@ insert into Terms (name) values('Yearly');
 insert into Terms (name) values('One-Time');
 insert into Terms (name) values('Per sq. Unit Monthly');
 
+---------------------------------------------created on 29 AUG 2015-----------------------------------------------------
 
 
--- ---------------------------------------------------------------------------------------------------------------------
+create table PropertyOwnershipType (
+	id bigint auto_increment,
+	name varchar(50),
+	constraint pk21 primary key(id)
+);
+
+insert into PropertyOwnershipType (name) values('Freehold');
+insert into PropertyOwnershipType (name) values('Leasehold');
+insert into PropertyOwnershipType (name) values('Co-operative Society');
+insert into PropertyOwnershipType (name) values('Power of Attorney');
+
+
+create table PossessionOrAge (
+	id bigint auto_increment,
+	name varchar(50),
+	type varchar(20),
+  constraint pk22 primary key(id)
+);
+insert into PossessionOrAge (name, type) values('Within 3 Months','POSSESSION');
+insert into PossessionOrAge (name, type) values('Within 6 Months','POSSESSION');
+insert into PossessionOrAge (name, type) values('By 2016','POSSESSION');
+insert into PossessionOrAge (name, type) values('By 2017','POSSESSION');
+insert into PossessionOrAge (name, type) values('By 2018','POSSESSION');
+insert into PossessionOrAge (name, type) values('By 2019','POSSESSION');
+insert into PossessionOrAge (name, type) values('By 2020','POSSESSION');
+
+insert into PossessionOrAge (name, type) values('0-1 Year Old Property','AGE');
+insert into PossessionOrAge (name, type) values('1-5 Year Old Property','AGE');
+insert into PossessionOrAge (name, type) values('5-10 Year Old Property','AGE');
+insert into PossessionOrAge (name, type) values('10+ Year Old Property','AGE');
+
+ create table ImageType (
+	id bigint auto_increment,
+  name varchar(25),
+  constraint pk23 primary key(id)
+);
+
+insert into ImageType (name) values('EXTERIOR_VIEW');
+insert into ImageType (name) values('BEDROOMS');
+insert into ImageType (name) values('BATHROOMS');
+insert into ImageType (name) values('KITCHEN');
+insert into ImageType (name) values('FLOOR_PLAN');
+insert into ImageType (name) values('MASTER_PLAN');
+insert into ImageType (name) values('LOCATION_MAP');
+insert into ImageType (name) values('OTHERS');
+
+create table FacingMast (
+	id bigint auto_increment,
+	name varchar(25),
+	constraint pk24 primary key(id)
+);
+
+insert into FacingMast (name)  values ('East');
+insert into FacingMast (name)  values ('West');
+insert into FacingMast (name)  values ('North');
+insert into FacingMast (name)  values ('South');
 
 create table Advertisement (
-  id bigint auto_increment,
-  UserTypeId bigint(25),
-  sell/rent bigint,
-  locationid,
-  projectname,
-    address,
-  bedroom
-    bathroom,
-    balcony,
-poojaroom,studyroom,
-  serventroom,
-  washroom,
-  others,
-  builduparea,
-  superbuilduparea,
-  carpetarea,
-  expectedprice,
-  propertyonfloor,
-  tootalfloors,
-  trantype (new/resale)
-  propertyowerdhip,
-    availablity,
-propertydesc,
-  constraint pk11 primary key(id)
+	id bigint auto_increment,
+ 	propertyForTypeId bigint,
+	propertyTypeId bigint,
+	locationId bigint,
+	address varchar(100),
+	projectName varchar(100),
+	transactionTypeId bigint,
+	propertyOwnershipId bigint,
+	possessionStatusId bigint,
+	possessionOrAgeId bigint,
+	description varchar(1000),
+	propertyFeatures varchar(1000),
+	isTermsAgreed varchar(1),
+	constraint pk25 primary key(id),
+	constraint fk9 foreign key (propertyForTypeId) references PropertyForType(id),
+	constraint fk10 foreign key (propertyTypeId) references PropertyType(id),
+	constraint fk11 foreign key (locationId) references Locations(id),
+	constraint fk12 foreign key (transactionTypeId) references TransactionType(id),
+	constraint fk13 foreign key (propertyOwnershipId) references PropertyOwnershipType(id),
+	constraint fk14 foreign key (possessionStatusId) references PossessionStatus(id),
+	constraint fk15 foreign key (possessionOrAgeId) references PossessionOrAge(id)
 );
 
 
-featureamnities
+ create table AdvertisementDetails (
+ 	id bigint auto_increment,
+ 	advertisementId bigint,
+ 	buildupArea bigint,
+	buildupAreaUnitId bigint,
+	carpetArea bigint,
+	carpetAreaUnitId bigint,
+	plotArea bigint,
+	plotAreaUnitId bigint,
+	balconyId bigint,
+	propertyOnFloorId bigint,
+	totalFloor bigint,
+	facingId bigint,
+	rooms bigint,
+	washroom bigint,
+	expectedPrice bigint,
+	constraint pk26 primary key(id),
+	constraint fk16 foreign key (advertisementId) references Advertisement(id),
+	constraint fk17 foreign key (buildupAreaUnitId) references UnitMaster(id),
+  constraint fk18 foreign key (carpetAreaUnitId) references UnitMaster(id),
+  constraint fk19 foreign key (plotAreaUnitId) references UnitMaster(id),
+  constraint fk20 foreign key (propertyOnFloorId) references TotalFloors(id),
+  constraint fk21 foreign key (totalFloor) references TotalFloors(id),
+  constraint fk22 foreign key (facingId) references FacingMast(id),
+  constraint fk23 foreign key (balconyId) references Balconies(id)
+ );
+
+create table Residential (
+ 	id bigint auto_increment,
+ 	advertisementId bigint,
+	furnishedStatusId bigint,
+	maintenanceCharges bigint,
+	maintenancePeriodId bigint,
+	securityDeposit bigint,
+	availableFrom date,
+	isFromBrokers varchar(1),
+	poojaRoom varchar(1),
+	studyRoom varchar(1),
+	servantRoom varchar(1),
+	bedRoomId bigint,
+	bathRoomId bigint,
+	constraint pk27 primary key(id),
+  constraint fk24 foreign key (advertisementId) references Advertisement(id),
+  constraint fk25 foreign key (furnishedStatusId) references FurnishedStatus(id),
+  constraint fk26 foreign key (maintenancePeriodId) references Terms(id),
+  constraint fk27 foreign key (bedRoomId) references Bedroom(id),
+  constraint fk28 foreign key (bathRoomId) references Bathroom(id)
+);
+
+create table MorePropertyDetails (
+ 	id bigint auto_increment,
+ 	advertisementId bigint,
+	bedRoomId bigint,
+	area bigint,
+	areaAreaUnitId bigint,
+	pricePerUnitArea bigint,
+	totalCost bigint,
+ 	floorPlanFileName varchar(200),
+	constraint pk28 primary key(id),
+  constraint fk29 foreign key (advertisementId) references Advertisement(id),
+  constraint fk30 foreign key (bedRoomId) references Bedroom(id),
+  constraint fk31 foreign key (areaAreaUnitId) references UnitMaster(id)
+);
+
+create table GalleryImages (
+	id bigint auto_increment,
+	advertisementId bigint,
+	imageTypeId bigint,
+	imageName varchar(50),
+	constraint pk29 primary key(id),
+	constraint fk32 foreign key (advertisementId) references Advertisement(id),
+	constraint fk33 foreign key (imageTypeId) references ImageType(id)
+);
+
+-- ---------------------------------------------------------------------------------------------------------------------

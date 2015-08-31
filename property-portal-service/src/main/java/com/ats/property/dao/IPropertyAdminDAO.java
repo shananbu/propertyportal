@@ -34,6 +34,8 @@ public interface IPropertyAdminDAO {
     List<UserType> getUserType();
     UserType findUserTypeById(Long id);
     PlanMast saveOrUpdatePlan(PlanMast planMast);
+    Advertisement saveAdvertisement(Advertisement advertisement);
+    Advertisement updateAdvertisement(Advertisement advertisement);
 
     PropertyUser saveOrUpdateUser(PropertyUser user);
     PropertyUser updateUserByIdAndMail(Long id, String mailId);

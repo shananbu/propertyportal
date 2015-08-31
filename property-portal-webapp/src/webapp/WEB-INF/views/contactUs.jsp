@@ -17,8 +17,7 @@
     </header>
     <!-- contact page start -->
     <section class="clr_fix">
-
-        <div class="row_main cont_info">
+        <div class="row_main cont_info box_shadow">
             <div class="cont_left">
                 <h1 class="h_2">contact Address</h1>
                 <h2>1AcreIndia </h2>
@@ -32,14 +31,11 @@
                     <p>support@1acreindia.com</p>
                 </div>
             </div>
-            <br>
-            <div class="row_main cont_info">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60409.713620763425!2d80.25567601081691!3d13.083917518335932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C+Tamil+Nadu!5e0!3m2!1sen!2sin!4v1440562128275"
-                        width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <div class="clr_fix contact_map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60409.713620763425!2d80.25567601081691!3d13.083917518335932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C+Tamil+Nadu!5e0!3m2!1sen!2sin!4v1440562128275" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
         </div>
     </section>
-
     <!-- contact page end -->
 
     <!-- footer start -->

@@ -25,6 +25,8 @@ public interface IPropertyAdminDelegate {
     boolean saveOrUpdateLocation(ModuleRequestType moduleRequest, ModuleList response);
     boolean getUserType(ModuleList response);
     boolean saveOrUpdatePlan(ModuleRequestType moduleRequest, ModuleList response);
+    boolean saveOrUpdateAdvertisement(ModuleRequestType moduleRequest, ModuleList response);
+
 
     boolean saveOrUpdateUser(ModuleRequestType moduleRequest, ModuleList response);
     boolean activateAccount(String userMail, String userId);

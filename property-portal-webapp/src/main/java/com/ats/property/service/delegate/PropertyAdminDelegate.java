@@ -128,6 +128,15 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean saveOrUpdateAdvertisement(ModuleRequestType moduleRequest, ModuleList response) {
+        AdvertisementType advertisement = null;
+        if(fromNullable(moduleRequest).isPresent()) {
+            advertisement = moduleRequest.getAdvertisement();
+        }
+        return adminHelper.saveOrUpdateAdvertisement(advertisement, response);
+    }
+
+    @Override
     public boolean saveOrUpdateUser(ModuleRequestType moduleRequest, ModuleList response) {
         PropertyUserType user = null;
         if(fromNullable(moduleRequest).isPresent()) {

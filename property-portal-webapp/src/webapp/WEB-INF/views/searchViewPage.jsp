@@ -220,11 +220,6 @@
     });
 </script>
 <!--image gallery end-->
-
-
-
-
-<script src="js/jquery.easydropdown.js"></script>
 <!-- tab script start-->
 <script type="text/javascript">
     $(document).ready(function (){

@@ -214,7 +214,6 @@
     <!-- forget password end -->
 </main>
 <!--script start-->
-<script src="js/jquery.easydropdown.js"></script>
 <!-- tab script start-->
 <script type="text/javascript">
     $(document).ready(function () {

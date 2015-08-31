@@ -26,6 +26,8 @@ public interface IPropertyAdminHelper {
     boolean saveOrUpdateCity(NameDataType cityData, ModuleList response);
     boolean saveOrUpdateLocation(NameDataType locationData, ModuleList response);
     boolean saveOrUpdatePlan(PlanType planType, ModuleList response);
+    boolean saveOrUpdateAdvertisement(AdvertisementType advertisement, ModuleList response);
+
     boolean getUserType(ModuleList response);
 
     boolean saveOrUpdateUser(PropertyUserType userType, ModuleList response);

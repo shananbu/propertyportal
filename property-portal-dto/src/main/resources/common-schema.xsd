@@ -91,5 +91,33 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="advertisementType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs = "0"/>
+            <xs:element name="packageId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="propertyFor" type="xs:long" minOccurs = "0"/>
+            <xs:element name="propertyType" type="xs:long" minOccurs = "0"/>
+            <xs:element name="locationId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="buildupArea" type="xs:double" minOccurs = "0"/>
+            <xs:element name="buildupAreaUnit" type="xs:long" minOccurs = "0"/>
+            <xs:element name="bedRoom" type="xs:long" minOccurs = "0"/>
+            <xs:element name="bathRoom" type="xs:long" minOccurs = "0"/>
+            <xs:element name="furnishedStatus" type="xs:long" minOccurs = "0"/>
+            <xs:element name="balconies" type="xs:long" minOccurs = "0"/>
+            <xs:element name="floorNo" type="xs:long" minOccurs = "0"/>
+            <xs:element name="totalFloors" type="xs:long" minOccurs = "0"/>
+            <xs:element name="expectedPrice" type="xs:long" minOccurs = "0"/>
+            <xs:element name="maintenanceCharges" type="xs:string"/>
+            <xs:element name="maintenanceTerm" type="xs:string"/>
+            <xs:element name="securityDeposit" type="xs:string"/>
+            <xs:element name="responseFromBrokers" type="xs:string"/>
+            <xs:element name="projectName" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="propertyFeatures" type="xs:string"/>
+            <xs:element name="isTermsAgreed" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
 </xs:schema>
 

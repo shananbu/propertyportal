@@ -16,7 +16,7 @@
     <script src="js/jquery.sumoselect.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3,selectAll:true });
+            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3, selectAll:false });
             window.test = $('.testsel').SumoSelect({okCancelInMulti:true });
             window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
             window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true });
@@ -25,6 +25,7 @@
     <script src="js/site/postProperty.js"></script>
 </head>
 <body>
+<form method="post" id="frmPost" commandName="moduleRequest" action="saveOrUpdateAdvertisement">
 <main class="main_wrapper clr_fix">
 <header class="clr_fix top_head">
     <%@ include file="userHeader.jsp" %>
@@ -32,20 +33,20 @@
 <section class="clr_fix sec_main">
 <div class="row_main">
 <section class="clr_fix">
-<nav class="clr_fix step_process">
+<%--<nav class="clr_fix step_process">
     <ul>
         <li class="process_1 process_on process_end_1"> <span>1</span> </li>
         <li class="process_2"> <span>2</span> </li>
         <li class="process_3"> <span>3</span> </li>
     </ul>
-</nav>
+</nav>--%>
 <div class="clr_fix box-shadow ad_post jq_chk">
 <div class="ad_1">
     <ul>
         <li>
             <label>Select Listing Package <small>*</small></label>
 
-            <select class="dropdown">
+            <select class="dropdown" name="advertisement.packageId">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.plans}">
                     <option value="${data.id}">${data.name}</option>
@@ -61,7 +62,16 @@
             <label>Property For
                 <small>*</small>
             </label>
-            <span>
+
+            <c:forEach var="data" items="${response.module[0].moduleResponse.propertyForTypes}">
+                <span>
+                    <input type="radio" id="100${data.id}" value="100${data.id}" name="advertisement.propertyFor">
+                    <label for="100${data.id}"></label>
+                    ${data.nameForPoster}
+                </span>
+
+            </c:forEach>
+  <%--          <span>
                 <input type="radio" id="radio_1" name="1" checked>
                 <label for="radio_1"></label>
                 Sale
@@ -75,7 +85,7 @@
                 <input type="radio" id="radio_3" name="1">
                 <label for="radio_3"></label>
                 PG Accommodation
-            </span>
+            </span>--%>
         </li>
 
         <li>
@@ -84,17 +94,16 @@
                 <div class="pro_type">
                     Property Type <i class="fa fa-caret-down"></i>
                 </div>
-
                 <div class="pro_list">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
                         <h1> ${data.name}</h1>
                         <ul>
                             <c:forEach var="innerData" items="${data.propertyTypesById}">
                                 <li>
-                            <span class="jq_chk">
-                                <input type="radio" name="propType" id="${innerData.id}">
-                                 <label for="${innerData.id}"></label>
-                            </span>  ${innerData.name}
+                                    <span class="jq_chk">
+                                        <input type="radio" name="advertisement.propertyType" id="${innerData.id}" value="${innerData.id}">
+                                         <label for="${innerData.id}"></label>
+                                    </span>  ${innerData.name}
                                 </li>
                             </c:forEach>
                         </ul>
@@ -125,13 +134,13 @@
         </li>
         <li>
             <label>Location</label>
-            <select id="drpDwnLocation" name="drpDwnLocation">
+            <select id="drpDwnLocation" name="advertisement.locationId">
                 <option value="-1">--Select--</option>
             </select>
         </li>
         <li>
             <label>Address</label>
-            <input type="text" placeholder="Locality">
+            <input type="text" placeholder="Locality" name="advertisement.address">
         </li>
     </ul>
 </div>
@@ -140,11 +149,32 @@
     <ul>
         <li>
             <label>Buildup Area</label>
-            <input type="text" placeholder="Buildup Area">
+            <input type="text" placeholder="Buildup Area" name="advertisement.buildupArea">
+            <select class="dropdown" name="advertisement.buildupAreaUnit">
+                <c:forEach var="data" items="${response.module[0].moduleResponse.units}">
+                    <option value="${data.id}">${data.name}</option>
+                </c:forEach>
+            </select>
+        </li>
+        <li class="list_3">
+            <label> Bed Rooms</label>
+            <select placeholder="Select Bed Rooms" class="dropdown" name="advertisement.bedRoom">
+                <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
+                    <option value="${data.id}">${data.name}</option>
+                </c:forEach>
+            </select>
+        </li>
+        <li class="list_3">
+            <label> Bath Rooms</label>
+            <select  placeholder="Select Bath Rooms" class="dropdown" name="advertisement.bathRoom">
+                <c:forEach var="data" items="${response.module[0].moduleResponse.bathrooms}">
+                    <option value="${data.id}">${data.name}</option>
+                </c:forEach>
+            </select>
         </li>
         <li>
             <label>Furnished Status</label>
-            <select class="dropdown">
+            <select class="dropdown" name="advertisement.furnishedStatus">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.furnishedStatus}">
                     <option value="${data.id}">${data.name}</option>
@@ -153,7 +183,7 @@
         </li>
         <li>
             <label>Balconies</label>
-            <select class="dropdown">
+            <select class="dropdown" name="advertisement.balconies">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.balconies}">
                     <option value="${data.id}">${data.name}</option>
@@ -162,7 +192,7 @@
         </li>
         <li>
             <label>Floor No</label>
-            <select class="dropdown">
+            <select class="dropdown" name="advertisement.floorNo">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.totalFloors}">
                     <option value="${data.id}">${data.name}</option>
@@ -171,7 +201,7 @@
         </li>
         <li>
             <label>Total Floors</label>
-            <select class="dropdown">
+            <select class="dropdown" name="advertisement.totalFloors">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.totalFloors}">
                     <option value="${data.id}">${data.name}</option>
@@ -188,45 +218,48 @@
                 <span>
                 <label> Lakhs </label>
                 Rs.<select class="dropdown">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option value="-1">Select</option>
+                    <c:forEach begin="1" end="99" var="val">
+                        <option value="${val}">${val}</option>
+                    </c:forEach>
                 </select>
                 </span> <span>
                 <label> Thousands </label>
                 <select class="dropdown">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option value="-1">Select</option>
+                    <c:forEach begin="1" end="99" var="val">
+                        <option value="${val}">${val}</option>
+                    </c:forEach>
                 </select>
                 </span> <span>
                 <label> Hundreds </label>
                 <select class="dropdown">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option value="-1">Select</option>
+                    <c:forEach begin="1" end="9" var="val">
+                        <option value="${val}">${val}</option>
+                    </c:forEach>
                 </select>
                 </span> <span> Or
-                <input type="text" placeholder="Enter Toal Rent">
+                <input type="text" placeholder="Enter price" name="advertisement.expectedPrice">
                 </span> </li>
         <li class="col_2_text">
             <label>Maintanance Charges</label>
-            Rs.<span><input type="text" placeholder="Maintanance Charges">
+            Rs.<span><input type="text" placeholder="Maintanance Charges" name="advertisement.maintenanceCharges">
                 </span> <span>
-                <select class="dropdown">
-                    <option>Monthly</option>
-                    <option>Quarterly</option>
-                    <option>Yearly</option>
+                <select class="dropdown" name="advertisement.maintenanceTerm">
+                    <c:forEach var="data" items="${response.module[0].moduleResponse.terms}">
+                        <option value="${data.id}">${data.name}</option>
+                    </c:forEach>
                 </select>
                 </span> </li>
         <li>
             <label>Security Deposit</label>
-            Rs.<input type="text" placeholder="Security Deposit">
+            Rs.<input type="text" placeholder="Security Deposit" name="advertisement.securityDeposit">
         </li>
         <li class="check_brok">
             <label>Response from brokers</label>
                 <span>
-                <input type="checkbox" id="new_1">
+                <input type="checkbox" id="new_1" name="advertisement.responseFromBrokers" value="1">
                 <label for="new_1"></label>
                 </span> I am not interested in getting response from brokers </li>
     </ul>
@@ -236,15 +269,15 @@
     <ul>
         <li>
             <label>Name of Project</label>
-            <input type="text">
+            <input type="text" name="advertisement.projectName">
         </li>
         <li>
             <label>Description</label>
-            <textarea name="" cols="80" rows="6"></textarea>
+            <textarea name="advertisement.description" cols="80" rows="6"></textarea>
         </li>
         <li>
             <label>Specification/<br>Features and <br>Amenities</label>
-            <textarea name="" cols="80" rows="6"></textarea>
+            <textarea name="advertisement.propertyFeatures" cols="80" rows="6"></textarea>
         </li>
     </ul>
 </div>
@@ -401,17 +434,13 @@
     </ul>
 </div>
 <div class="ad_3">
-    <h1>Spam Check </h1>
+    <h1> Terms & Conditions </h1>
     <ul>
         <li>
             <div class="add_block">
-                <h2> Just solve this simple question </h2>
                 <ul>
-                    <li>10 - 8 =
-                        <input type="text">
-                    </li>
                     <li class="agree_form">
-                        <input type="checkbox" id="check_45">
+                        <input type="checkbox" id="check_45" name="advertisement.isTermsAgreed" value="1">
                         <label for="check_45"></label>
                         <p> I am the owner/I have the authority to post this property.
                             I agree not to provide incorrect property information or state a discriminatory preference.
@@ -421,7 +450,7 @@
             </div>
         </li>
         <li class="text_center">
-            <input type="button" class="btn_5" value="Post Property">
+            <input type="submit" class="btn_5" value="Post Property">
         </li>
     </ul>
 </div>
@@ -436,8 +465,8 @@
 </footer>
 <!-- footer end -->
 </main>
+</form>
 <!--script start-->
-<script src="js/jquery.easydropdown.js"></script>
 <!-- tab script start-->
 <script type="text/javascript">
     $(document).ready(function (){

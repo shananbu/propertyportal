@@ -12,6 +12,7 @@
                 <xs:element name="state" type="nameDataType" minOccurs="0"/>
                 <xs:element name="city" type="nameDataType" minOccurs="0"/>
                 <xs:element name="location" type="nameDataType" minOccurs="0"/>
+                <xs:element name="advertisement" type="advertisementType" minOccurs="0"/>
             </xs:choice>
         </xs:sequence>
     </xs:complexType>

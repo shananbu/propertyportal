@@ -236,4 +236,14 @@ public class PropertyUserController {
         return modelAndView;
     }
 
+    @RequestMapping(value = {"/saveOrUpdateAdvertisement" }, method = RequestMethod.POST)
+    public ModelAndView saveOrUpdateAdvertisement(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
+        System.out.println("PlanId : " + moduleRequest.getAdvertisement().getPackageId());
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.saveOrUpdateAdvertisement(moduleRequest, response);
+        ModelAndView modelAndView = null;
+        return modelAndView;
+    }
+
+
 }

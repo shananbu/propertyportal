@@ -8,6 +8,7 @@ import com.ats.property.dto.*;
 import com.ats.property.mail.MailBean;
 import com.ats.property.mail.MailService;
 import com.ats.property.model.*;
+import com.ats.property.model.Advertisement;
 import com.ats.property.model.TotalFloors;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -275,6 +276,14 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         } else {
             return null;
         }
+    }
+
+    @Override
+    @Transactional
+    public AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement) {
+        adminDAO.saveAdvertisement(advertisement);
+        return new AdvertisementType();
+
     }
 
     @Override

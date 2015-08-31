@@ -2,6 +2,7 @@ package com.ats.property.service;
 
 import com.ats.property.dto.*;
 import com.ats.property.model.*;
+import com.ats.property.model.Advertisement;
 
 /**
  * The PropertyAdminService.
@@ -28,6 +29,7 @@ public interface IPropertyAdminService {
     boolean getUserType(ModuleList response);
 
     PlanType saveOrUpdatePlan(PlanMast planMast);
+    AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement);
     PropertyUserType saveOrUpdateUser(PropertyUser user);
     PropertyUserType activateAccount(PropertyUser user);
 

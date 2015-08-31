@@ -245,6 +245,21 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
+    public Advertisement saveAdvertisement(Advertisement advertisement) {
+        return (Advertisement)persist(advertisement);
+    }
+
+    @Override
+    public Advertisement updateAdvertisement(Advertisement advertisement) {
+        Session session = getSession();
+        Advertisement advtForUpdate =  (Advertisement)session.get(Advertisement.class, advertisement.getId());
+        advtForUpdate.setProjectName(advertisement.getProjectName());
+        session.update(advtForUpdate);
+        session.flush();
+        return advtForUpdate;
+    }
+
+    @Override
     public PropertyUser saveOrUpdateUser(PropertyUser user) {
         return (PropertyUser)persist(user);
     }
