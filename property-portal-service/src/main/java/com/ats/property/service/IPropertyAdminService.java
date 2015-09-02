@@ -29,7 +29,7 @@ public interface IPropertyAdminService {
     boolean getUserType(ModuleList response);
 
     PlanType saveOrUpdatePlan(PlanMast planMast);
-    AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement);
+    AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement, AdvertisementDetails advertisementDetails, Residential residential);
     PropertyUserType saveOrUpdateUser(PropertyUser user);
     PropertyUserType activateAccount(PropertyUser user);
 

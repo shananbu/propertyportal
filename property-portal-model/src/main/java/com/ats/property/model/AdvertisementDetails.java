@@ -10,9 +10,9 @@ import javax.persistence.*;
 @Entity
 public class AdvertisementDetails {
     private Long id;
-    private Long buildupArea;
-    private Long carpetArea;
-    private Long plotArea;
+    private Double buildupArea;
+    private Double carpetArea;
+    private Double plotArea;
     private Long rooms;
     private Long washroom;
     private Long expectedPrice;
@@ -34,6 +34,7 @@ public class AdvertisementDetails {
     private Balconies balconiesByBalconyId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public Long getId() {
         return id;
@@ -45,31 +46,31 @@ public class AdvertisementDetails {
 
     @Basic
     @Column(name = "buildupArea", nullable = true, insertable = true, updatable = true)
-    public Long getBuildupArea() {
+    public Double getBuildupArea() {
         return buildupArea;
     }
 
-    public void setBuildupArea(Long buildupArea) {
+    public void setBuildupArea(Double buildupArea) {
         this.buildupArea = buildupArea;
     }
 
     @Basic
     @Column(name = "carpetArea", nullable = true, insertable = true, updatable = true)
-    public Long getCarpetArea() {
+    public Double getCarpetArea() {
         return carpetArea;
     }
 
-    public void setCarpetArea(Long carpetArea) {
+    public void setCarpetArea(Double carpetArea) {
         this.carpetArea = carpetArea;
     }
 
     @Basic
     @Column(name = "plotArea", nullable = true, insertable = true, updatable = true)
-    public Long getPlotArea() {
+    public Double getPlotArea() {
         return plotArea;
     }
 
-    public void setPlotArea(Long plotArea) {
+    public void setPlotArea(Double plotArea) {
         this.plotArea = plotArea;
     }
 

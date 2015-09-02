@@ -280,11 +280,29 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
     @Override
     @Transactional
-    public AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement) {
-        adminDAO.saveAdvertisement(advertisement);
-        return new AdvertisementType();
+    public AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement, AdvertisementDetails advertisementDetails, Residential residential) {
+        advertisement.setPropertyForTypeByPropertyForTypeId(adminDAO.findObjectById(advertisement.getPropertyForTypeId() , PropertyForType.class));
+        advertisement.setPropertyTypeByPropertyTypeId(adminDAO.findObjectById(advertisement.getPropertyTypeId(), PropertyType.class));
+        advertisement.setLocationsByLocationId(adminDAO.findObjectById(advertisement.getLocationId(), Locations.class));
+        advertisement.setPlanMastByPlanId(adminDAO.findObjectById(advertisement.getPlanId(), PlanMast.class));
+        advertisementDetails.setUnitMasterByBuildupAreaUnitId(adminDAO.findObjectById(advertisementDetails.getBuildupAreaUnitId(), UnitMaster.class));
+        advertisementDetails.setBalconiesByBalconyId(adminDAO.findObjectById(advertisementDetails.getBalconyId(), Balconies.class));
+        advertisementDetails.setTotalFloorsByPropertyOnFloorId(adminDAO.findObjectById(advertisementDetails.getPropertyOnFloorId(), TotalFloors.class));
+        advertisementDetails.setTotalFloorsByTotalFloor(adminDAO.findObjectById(advertisementDetails.getTotalFloor(), TotalFloors.class));
 
+        residential.setFurnishedStatusByFurnishedStatusId(adminDAO.findObjectById(residential.getFurnishedStatusId(), FurnishedStatus.class));
+        residential.setTermsByMaintenancePeriodId(adminDAO.findObjectById(residential.getMaintenancePeriodId(), Terms.class));
+        residential.setBedroomByBedRoomId(adminDAO.findObjectById(residential.getBedRoomId(), Bedroom.class));
+        residential.setBathroomByBathRoomId(adminDAO.findObjectById(residential.getBathRoomId(), Bathroom.class));
+
+        Advertisement advertisementFromDb = adminDAO.saveAdvertisement(advertisement);
+        if(fromNullable(advertisementFromDb).isPresent() && advertisementFromDb.getId() != 0) {
+            AdvertisementDetails detailsFromDB = adminDAO.saveAdvertisementDetails(advertisementDetails);
+            Residential residentialFromDB = adminDAO.saveResidential(residential);
+        }
+        return new AdvertisementType();
     }
+
 
     @Override
     public PropertyUserType saveOrUpdateUser(PropertyUser user) {

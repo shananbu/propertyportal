@@ -250,6 +250,17 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
+    public AdvertisementDetails saveAdvertisementDetails(AdvertisementDetails advertisementDetails) {
+        return (AdvertisementDetails)persist(advertisementDetails);
+    }
+
+    @Override
+    public Residential saveResidential(Residential residential) {
+        return (Residential)persist(residential);
+
+    }
+
+    @Override
     public Advertisement updateAdvertisement(Advertisement advertisement) {
         Session session = getSession();
         Advertisement advtForUpdate =  (Advertisement)session.get(Advertisement.class, advertisement.getId());
@@ -387,6 +398,15 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         Session session = getSession();
         Query query = session.createQuery("from Terms");
         List<Terms> response = query.list();
+        return response;
+    }
+
+    @Override
+    public <T> T findObjectById(Long id, Class<T> clazz) {
+        Session session = getSession();
+        Query query = session.createQuery("from " + clazz.getName() + " t where t.id = :id");
+        query.setParameter("id", id);
+        T response = (T)query.uniqueResult();
         return response;
     }
 }

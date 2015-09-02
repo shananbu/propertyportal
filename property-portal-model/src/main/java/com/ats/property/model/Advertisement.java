@@ -34,6 +34,8 @@ public class Advertisement {
     private Collection<GalleryImages> galleryImagesesById;
     private Collection<MorePropertyDetails> morePropertyDetailsesById;
     private Collection<Residential> residentialsById;
+    private Long planId;
+    private PlanMast planMastByPlanId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -300,5 +302,25 @@ public class Advertisement {
 
     public void setResidentialsById(Collection<Residential> residentialsById) {
         this.residentialsById = residentialsById;
+    }
+
+    @Basic
+    @Column(name = "planId", nullable = true, insertable = false, updatable = false)
+    public Long getPlanId() {
+        return planId;
+    }
+
+    public void setPlanId(Long planId) {
+        this.planId = planId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "planId", referencedColumnName = "id")
+    public PlanMast getPlanMastByPlanId() {
+        return planMastByPlanId;
+    }
+
+    public void setPlanMastByPlanId(PlanMast planMastByPlanId) {
+        this.planMastByPlanId = planMastByPlanId;
     }
 }

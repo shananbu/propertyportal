@@ -94,23 +94,23 @@
     <xs:complexType name="advertisementType">
         <xs:sequence>
             <xs:element name="id" type="xs:long" minOccurs = "0"/>
-            <xs:element name="packageId" type="xs:long" minOccurs = "0"/>
-            <xs:element name="propertyFor" type="xs:long" minOccurs = "0"/>
-            <xs:element name="propertyType" type="xs:long" minOccurs = "0"/>
+            <xs:element name="planId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="propertyForTypeId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="propertyTypeId" type="xs:long" minOccurs = "0"/>
             <xs:element name="locationId" type="xs:long" minOccurs = "0"/>
             <xs:element name="address" type="xs:string"/>
             <xs:element name="buildupArea" type="xs:double" minOccurs = "0"/>
-            <xs:element name="buildupAreaUnit" type="xs:long" minOccurs = "0"/>
-            <xs:element name="bedRoom" type="xs:long" minOccurs = "0"/>
-            <xs:element name="bathRoom" type="xs:long" minOccurs = "0"/>
-            <xs:element name="furnishedStatus" type="xs:long" minOccurs = "0"/>
-            <xs:element name="balconies" type="xs:long" minOccurs = "0"/>
-            <xs:element name="floorNo" type="xs:long" minOccurs = "0"/>
-            <xs:element name="totalFloors" type="xs:long" minOccurs = "0"/>
+            <xs:element name="buildupAreaUnitId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="bedRoomId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="bathRoomId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="furnishedStatusId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="balconyId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="propertyOnFloorId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="totalFloor" type="xs:long" minOccurs = "0"/>
             <xs:element name="expectedPrice" type="xs:long" minOccurs = "0"/>
-            <xs:element name="maintenanceCharges" type="xs:string"/>
-            <xs:element name="maintenanceTerm" type="xs:string"/>
-            <xs:element name="securityDeposit" type="xs:string"/>
+            <xs:element name="maintenanceCharges" type="xs:long" minOccurs = "0"/>
+            <xs:element name="maintenancePeriodId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="securityDeposit" type="xs:long" minOccurs = "0"/>
             <xs:element name="responseFromBrokers" type="xs:string"/>
             <xs:element name="projectName" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>

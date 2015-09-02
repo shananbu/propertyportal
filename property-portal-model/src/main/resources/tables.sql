@@ -415,6 +415,7 @@ insert into FacingMast (name)  values ('South');
 
 create table Advertisement (
 	id bigint auto_increment,
+	planId bigint,
  	propertyForTypeId bigint,
 	propertyTypeId bigint,
 	locationId bigint,
@@ -428,6 +429,7 @@ create table Advertisement (
 	propertyFeatures varchar(1000),
 	isTermsAgreed varchar(1),
 	constraint pk25 primary key(id),
+  constraint fk334 foreign key (planId) references PlanMast(id),
 	constraint fk9 foreign key (propertyForTypeId) references PropertyForType(id),
 	constraint fk10 foreign key (propertyTypeId) references PropertyType(id),
 	constraint fk11 foreign key (locationId) references Locations(id),
@@ -441,11 +443,11 @@ create table Advertisement (
  create table AdvertisementDetails (
  	id bigint auto_increment,
  	advertisementId bigint,
- 	buildupArea bigint,
+ 	buildupArea double,
 	buildupAreaUnitId bigint,
-	carpetArea bigint,
+	carpetArea double,
 	carpetAreaUnitId bigint,
-	plotArea bigint,
+	plotArea double,
 	plotAreaUnitId bigint,
 	balconyId bigint,
 	propertyOnFloorId bigint,
@@ -512,4 +514,15 @@ create table GalleryImages (
 	constraint fk33 foreign key (imageTypeId) references ImageType(id)
 );
 
+-- drop table GalleryImages;
+-- drop table MorePropertyDetails;
+-- drop table Residential;
+-- drop table AdvertisementDetails;
+-- drop table Advertisement;
+
+-- delete from GalleryImages;
+-- delete from  MorePropertyDetails;
+-- delete from  Residential;
+-- delete from  AdvertisementDetails;
+-- delete from  Advertisement;
 -- ---------------------------------------------------------------------------------------------------------------------

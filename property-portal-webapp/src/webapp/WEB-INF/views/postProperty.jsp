@@ -46,7 +46,7 @@
         <li>
             <label>Select Listing Package <small>*</small></label>
 
-            <select class="dropdown" name="advertisement.packageId">
+            <select class="dropdown" name="advertisement.planId">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.plans}">
                     <option value="${data.id}">${data.name}</option>
@@ -65,8 +65,8 @@
 
             <c:forEach var="data" items="${response.module[0].moduleResponse.propertyForTypes}">
                 <span>
-                    <input type="radio" id="100${data.id}" value="100${data.id}" name="advertisement.propertyFor">
-                    <label for="100${data.id}"></label>
+                    <input type="radio" id="0${data.id}" value="0${data.id}" name="advertisement.propertyForTypeId">
+                    <label for="0${data.id}"></label>
                     ${data.nameForPoster}
                 </span>
 
@@ -101,7 +101,7 @@
                             <c:forEach var="innerData" items="${data.propertyTypesById}">
                                 <li>
                                     <span class="jq_chk">
-                                        <input type="radio" name="advertisement.propertyType" id="${innerData.id}" value="${innerData.id}">
+                                        <input type="radio" name="advertisement.propertyTypeId" id="${innerData.id}" value="${innerData.id}">
                                          <label for="${innerData.id}"></label>
                                     </span>  ${innerData.name}
                                 </li>
@@ -150,7 +150,7 @@
         <li>
             <label>Buildup Area</label>
             <input type="text" placeholder="Buildup Area" name="advertisement.buildupArea">
-            <select class="dropdown" name="advertisement.buildupAreaUnit">
+            <select class="dropdown" name="advertisement.buildupAreaUnitId">
                 <c:forEach var="data" items="${response.module[0].moduleResponse.units}">
                     <option value="${data.id}">${data.name}</option>
                 </c:forEach>
@@ -158,7 +158,7 @@
         </li>
         <li class="list_3">
             <label> Bed Rooms</label>
-            <select placeholder="Select Bed Rooms" class="dropdown" name="advertisement.bedRoom">
+            <select placeholder="Select Bed Rooms" class="dropdown" name="advertisement.bedRoomId">
                 <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
                     <option value="${data.id}">${data.name}</option>
                 </c:forEach>
@@ -166,7 +166,7 @@
         </li>
         <li class="list_3">
             <label> Bath Rooms</label>
-            <select  placeholder="Select Bath Rooms" class="dropdown" name="advertisement.bathRoom">
+            <select  placeholder="Select Bath Rooms" class="dropdown" name="advertisement.bathRoomId">
                 <c:forEach var="data" items="${response.module[0].moduleResponse.bathrooms}">
                     <option value="${data.id}">${data.name}</option>
                 </c:forEach>
@@ -174,7 +174,7 @@
         </li>
         <li>
             <label>Furnished Status</label>
-            <select class="dropdown" name="advertisement.furnishedStatus">
+            <select class="dropdown" name="advertisement.furnishedStatusId">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.furnishedStatus}">
                     <option value="${data.id}">${data.name}</option>
@@ -183,7 +183,7 @@
         </li>
         <li>
             <label>Balconies</label>
-            <select class="dropdown" name="advertisement.balconies">
+            <select class="dropdown" name="advertisement.balconyId">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.balconies}">
                     <option value="${data.id}">${data.name}</option>
@@ -192,7 +192,7 @@
         </li>
         <li>
             <label>Floor No</label>
-            <select class="dropdown" name="advertisement.floorNo">
+            <select class="dropdown" name="advertisement.propertyOnFloorId">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.totalFloors}">
                     <option value="${data.id}">${data.name}</option>
@@ -201,7 +201,7 @@
         </li>
         <li>
             <label>Total Floors</label>
-            <select class="dropdown" name="advertisement.totalFloors">
+            <select class="dropdown" name="advertisement.totalFloor">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.totalFloors}">
                     <option value="${data.id}">${data.name}</option>
@@ -244,9 +244,9 @@
                 </span> </li>
         <li class="col_2_text">
             <label>Maintanance Charges</label>
-            Rs.<span><input type="text" placeholder="Maintanance Charges" name="advertisement.maintenanceCharges">
+            Rs.<span><input type="text" placeholder="Maintenance Charges" name="advertisement.maintenanceCharges">
                 </span> <span>
-                <select class="dropdown" name="advertisement.maintenanceTerm">
+                <select class="dropdown" name="advertisement.maintenancePeriodId">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.terms}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>

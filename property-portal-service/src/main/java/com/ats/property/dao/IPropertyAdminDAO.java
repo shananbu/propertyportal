@@ -35,6 +35,9 @@ public interface IPropertyAdminDAO {
     UserType findUserTypeById(Long id);
     PlanMast saveOrUpdatePlan(PlanMast planMast);
     Advertisement saveAdvertisement(Advertisement advertisement);
+    AdvertisementDetails saveAdvertisementDetails(AdvertisementDetails advertisementDetails);
+    Residential saveResidential(Residential residential);
+
     Advertisement updateAdvertisement(Advertisement advertisement);
 
     PropertyUser saveOrUpdateUser(PropertyUser user);
@@ -55,5 +58,7 @@ public interface IPropertyAdminDAO {
 
     List<PossessionStatus> getPossessionStatus();
     List<Terms> getUTerms();
+
+    <T> T findObjectById(Long id, Class<T> clazz);
 
 }

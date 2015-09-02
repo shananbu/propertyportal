@@ -169,8 +169,14 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     @Override
     public boolean saveOrUpdateAdvertisement(AdvertisementType advertisementType, ModuleList response) {
         Advertisement advertisement = new Advertisement();
+        Residential residential = new Residential();
+        AdvertisementDetails advertisementDetails = new AdvertisementDetails();
         PropertyUtils.copyFields(advertisementType, advertisement);
-        adminService.saveOrUpdateAdvertisement(advertisement);
+        PropertyUtils.copyFields(advertisementType, residential);
+        PropertyUtils.copyFields(advertisementType, advertisementDetails);
+        residential.setAdvertisementByAdvertisementId(advertisement);
+        advertisementDetails.setAdvertisementByAdvertisementId(advertisement);
+        adminService.saveOrUpdateAdvertisement(advertisement, advertisementDetails, residential);
         return true;
     }
 
