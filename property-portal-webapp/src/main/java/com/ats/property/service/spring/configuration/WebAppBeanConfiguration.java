@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 import org.springframework.web.context.ServletContextAware;
 
 import javax.servlet.ServletContext;
@@ -129,5 +131,20 @@ public class WebAppBeanConfiguration {
     public MailService mailService() {
         return new MailService();
     }
+
+    @Bean(name = "customAuthenticationHandler")
+    @Scope(value = "singleton")
+    @Lazy(value = false)
+    public SimpleUrlAuthenticationSuccessHandler customAuthenticationHandler() {
+        return new CustomAuthenticationHandler();
+    }
+
+    @Bean(name = "customLogoutHandler")
+    @Scope(value = "singleton")
+    @Lazy(value = false)
+    public SimpleUrlLogoutSuccessHandler CustomLogoutHandler() {
+        return new CustomLogoutHandler();
+    }
+
 
 }

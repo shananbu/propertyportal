@@ -61,7 +61,7 @@
               </li>
                 <li>
                     <label>Confirm Password<small>*</small></label>
-                    <input id="cpasswrd" name="propertyUser.passwrd" class="txt" type="text" value="" maxlength="30" placeholder="Confirm Password">
+                    <input id="cpasswrd" name="cpasswrd" class="txt" type="text" value="" maxlength="30" placeholder="Confirm Password">
                 </li>
 
               <li class="mobile_drop">

@@ -281,7 +281,7 @@
         <h1 class="h_1">New projects</h1>
         <ul class="box_shadow clr_fix">
             <li> <img src="images/image_1.jpg">
-                <div class="adver_here"><a href="userLogin" class="adver_here_txt"> ADvertise here</a> <a href="projectOverview" class="cli_add">click here for sample add</a> </div>
+                <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a> <a href="projectOverview" class="cli_add">click here for sample add</a> </div>
                 <figcaption class="pro_info_1">
                     <h1>Project Name </h1>
                     <p> Company Name </p>
@@ -313,7 +313,7 @@
         <h1 class="h_2">Project Gallery</h1>
         <ul class="block_1">
             <li>
-                <div class="adver_here"><a href="userLogin" class="adver_here_txt"> ADvertise here</a> <a href="projectOverview" class="cli_add">click here for sample add</a> </div>
+                <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a> <a href="projectOverview" class="cli_add">click here for sample add</a> </div>
                 <a href="#"> <img src="images/image_3.jpg">
                     <figcaption class="pro_info_1"> <img src="images/no_image.jpg">
                         <summary>
@@ -345,7 +345,7 @@
         </ul>
         <ul class="img_panel_2">
             <li>
-                <div class="adver_here"><a href="userLogin" class="adver_here_txt"> ADvertise here</a> <a href="projectOverview" class="cli_add">click here for sample add</a> </div>
+                <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a> <a href="projectOverview" class="cli_add">click here for sample add</a> </div>
                 <img src="images/image_6.jpg">
                 <figcaption class="pro_info_1">
                     <h1>Project Name </h1>

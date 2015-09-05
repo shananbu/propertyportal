@@ -5,6 +5,7 @@ import com.ats.property.dto.ModuleList;
 import com.ats.property.dto.ModuleRequestType;
 import com.ats.property.service.delegate.IPropertyAdminDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +16,7 @@ import javax.ws.rs.QueryParam;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.security.Principal;
 
 /**
  * The PropertyUserController.
@@ -95,6 +97,7 @@ public class PropertyUserController {
         return modelAndView;
     }
 
+/*
     @RequestMapping(value = {"/authenticateUser" }, method = RequestMethod.POST)
     public ModelAndView authenticateUser(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
         System.out.println("UserName : " + moduleRequest.getStandardAuth().getUsername());
@@ -110,29 +113,36 @@ public class PropertyUserController {
             return modelAndView;
         }
     }
+*/
 
     @RequestMapping(value = { "/postProperty" }, method = RequestMethod.GET)
-    public ModelAndView postProperty(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
-        ModelAndView modelAndView = new ModelAndView("postProperty");
-        ModuleList response = CommonHelper.getSuccessModuleList();
-        adminDelegate.getStateList(null, response);
-        adminDelegate.getCityList(null, response);
-        adminDelegate.getBedroomsList(response);
-        adminDelegate.getAdvertisePlanList(null, response, false);
-        adminDelegate.getBudgetList(response);
-        adminDelegate.getPropertyTypeList(response);
+    public ModelAndView postProperty(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest, HttpServletRequest request) {
+        ModelAndView modelAndView = null;
+        if (request.isUserInRole("ROLE_USER")) {
+            modelAndView = new ModelAndView("postProperty");
+            ModuleList response = CommonHelper.getSuccessModuleList();
+            adminDelegate.getStateList(null, response);
+            adminDelegate.getCityList(null, response);
+            adminDelegate.getBedroomsList(response);
+            adminDelegate.getAdvertisePlanList(null, response, false);
+            adminDelegate.getBudgetList(response);
+            adminDelegate.getPropertyTypeList(response);
 
-        adminDelegate.getPropertyForTypeList(response);
-        adminDelegate.getFurnishedStatusList(response);
-        adminDelegate.getBathroomsList(response);
-        adminDelegate.getBalconiesList(response);
-        adminDelegate.getTotalFloorsList(response);
-        adminDelegate.getUnitsList(response);
-        adminDelegate.getTransactionTypesList(response);
-        adminDelegate.getPossessionStatusList(response);
-        adminDelegate.getTermsList(response);
+            adminDelegate.getPropertyForTypeList(response);
+            adminDelegate.getFurnishedStatusList(response);
+            adminDelegate.getBathroomsList(response);
+            adminDelegate.getBalconiesList(response);
+            adminDelegate.getTotalFloorsList(response);
+            adminDelegate.getUnitsList(response);
+            adminDelegate.getTransactionTypesList(response);
+            adminDelegate.getPossessionStatusList(response);
+            adminDelegate.getTermsList(response);
 
-        modelAndView.addObject("response", response);
+            modelAndView.addObject("response", response);
+        } else {
+            modelAndView = new ModelAndView("userLogin");
+        }
+
         return modelAndView;
     }
 
@@ -229,27 +239,32 @@ public class PropertyUserController {
     }
 
     @RequestMapping(value = { "/postPropertyInMicrosite" }, method = RequestMethod.GET)
-    public ModelAndView postPropertyInMicrosite(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
-        ModelAndView modelAndView = new ModelAndView("postPropertyInMicrosite");
-        ModuleList response = CommonHelper.getSuccessModuleList();
-        adminDelegate.getStateList(null, response);
-        adminDelegate.getCityList(null, response);
-        adminDelegate.getBedroomsList(response);
-        adminDelegate.getAdvertisePlanList(null, response, false);
-        adminDelegate.getBudgetList(response);
-        adminDelegate.getPropertyTypeList(response);
+    public ModelAndView postPropertyInMicrosite(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest, HttpServletRequest request) {
+        ModelAndView modelAndView = null;
+        if (request.isUserInRole("ROLE_USER")) {
+            modelAndView = new ModelAndView("postPropertyInMicrosite");
+            ModuleList response = CommonHelper.getSuccessModuleList();
+            adminDelegate.getStateList(null, response);
+            adminDelegate.getCityList(null, response);
+            adminDelegate.getBedroomsList(response);
+            adminDelegate.getAdvertisePlanList(null, response, false);
+            adminDelegate.getBudgetList(response);
+            adminDelegate.getPropertyTypeList(response);
 
-        adminDelegate.getPropertyForTypeList(response);
-        adminDelegate.getFurnishedStatusList(response);
-        adminDelegate.getBathroomsList(response);
-        adminDelegate.getBalconiesList(response);
-        adminDelegate.getTotalFloorsList(response);
-        adminDelegate.getUnitsList(response);
-        adminDelegate.getTransactionTypesList(response);
-        adminDelegate.getPossessionStatusList(response);
-        adminDelegate.getTermsList(response);
+            adminDelegate.getPropertyForTypeList(response);
+            adminDelegate.getFurnishedStatusList(response);
+            adminDelegate.getBathroomsList(response);
+            adminDelegate.getBalconiesList(response);
+            adminDelegate.getTotalFloorsList(response);
+            adminDelegate.getUnitsList(response);
+            adminDelegate.getTransactionTypesList(response);
+            adminDelegate.getPossessionStatusList(response);
+            adminDelegate.getTermsList(response);
 
-        modelAndView.addObject("response", response);
+            modelAndView.addObject("response", response);
+        } else {
+            modelAndView = new ModelAndView("userLogin");
+        }
         return modelAndView;
     }
 

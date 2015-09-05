@@ -42,11 +42,11 @@
                             <ul>
                                 <li>
                                     <label>Username / Email Id</label>
-                                    <input type="email" placeholder="Username" name="standardAuth.username">
+                                    <input type="email" placeholder="Username" name="username">
                                 </li>
                                 <li>
                                     <label>Password</label>
-                                    <input type="password" placeholder="Password" name="standardAuth.password">
+                                    <input type="password" placeholder="Password" name="password">
                                 </li>
                                 <li class="log_for"><span> <a href="#">Forgot Password ? </a> </span>
                                     <input type="submit" value="Login" class="sub_btn_3">

@@ -2,6 +2,8 @@ package com.ats.property.service;
 
 import com.ats.property.dao.IPropertyAdminDAO;
 import com.ats.property.model.AdminLogin;
+import com.ats.property.model.PropertyUser;
+import com.ats.property.spring.UserInformation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.core.AuthenticationException;
@@ -33,15 +35,28 @@ public class AdminUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         AdminLogin adminlogin = adminDAO.getAdminUser(userName);
 
-        if (adminlogin == null) {
+        PropertyUser propertyUser = adminDAO.getPropertyUser(userName);
+        List<GrantedAuthority> authorityList = null;
+        UserInformation user = null;
+
+        if (adminlogin == null && propertyUser == null) {
             throw new UsernameNotFoundException("Username Not Found!");
         }
-        List<GrantedAuthority> authorityList = new ArrayList<GrantedAuthority>() {{
-            String role = "ROLE_ADMIN";
-            add(new SimpleGrantedAuthority(role));
-        }};
-        UserDetails user = new User(adminlogin.getUserName(), adminlogin.getPassword(), true, true, true, true, authorityList);
-
+        if(propertyUser != null) {
+                authorityList = new ArrayList<GrantedAuthority>() {{
+                String role = "ROLE_USER";
+                add(new SimpleGrantedAuthority(role));
+            }};
+            user = new UserInformation(propertyUser.getEmailId(), propertyUser.getPasswrd(), true, true, true, true, authorityList);
+            user.setFirstName(propertyUser.getFirstName());
+        } else if(adminlogin != null) {
+                authorityList = new ArrayList<GrantedAuthority>() {{
+                String role = "ROLE_ADMIN";
+                add(new SimpleGrantedAuthority(role));
+            }};
+            user = new UserInformation(adminlogin.getUserName(), adminlogin.getPassword(), true, true, true, true, authorityList);
+            user.setFirstName(adminlogin.getFirstName());
+        }
         return user;
     }
 }

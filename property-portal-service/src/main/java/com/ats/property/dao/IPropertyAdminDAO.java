@@ -15,6 +15,7 @@ import java.util.List;
 public interface IPropertyAdminDAO {
     void getCountry();
     AdminLogin getAdminUser(String userName);
+    PropertyUser getPropertyUser(String emailId);
     AdminLogin saveOrUpdateAdminUser(AdminLogin adminLogin);
     List<StatusType> getStatusFieldData(String targetForm);
     StatusMast getStatusById(Long id);

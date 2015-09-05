@@ -1232,7 +1232,7 @@ footer li a:hover {
 	box-shadow: 0 9px 13px -4px rgba(0, 0, 0, 0.75);
 	position: absolute;
 	right: 0;
-	width: 525px;
+	width: 250px;
 	z-index: 1;
 	padding: 10px;
 }
@@ -3849,4 +3849,18 @@ select {
 }
 .cont_info .contact_map{
 	overflow:hidden;
+}
+
+.open_marker {
+    border-color: transparent;
+    border-bottom-color: #fff;
+    border-style: dashed dashed solid;
+    border-width: 0 8.5px 8.5px;
+    display: none;
+    position: absolute;
+    left: 6.5px;
+    top: 37px;
+    z-index: 1;
+    height: 0;
+    width: 0;
 }

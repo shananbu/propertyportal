@@ -69,6 +69,20 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
+    public PropertyUser getPropertyUser(String emailId) {
+        Session session = getSession();
+        Query query = session.createQuery("from PropertyUser a where a.emailId = :emailId" );
+        query.setParameter("emailId", emailId);
+
+        PropertyUser propertyUser = null;
+        List<PropertyUser> responseList = query.list();
+        if(responseList.size() > 0) {
+            propertyUser = responseList.get(0);        }
+
+        return propertyUser;
+    }
+
+    @Override
     public AdminLogin saveOrUpdateAdminUser(AdminLogin adminLogin) {
         return (AdminLogin)persist(adminLogin);
     }
