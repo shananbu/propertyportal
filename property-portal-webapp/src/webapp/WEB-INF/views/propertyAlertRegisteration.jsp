@@ -26,7 +26,7 @@
         <%@ include file="userHeader.jsp" %>
     </header>
     <section class="clr_fix sec_main">
-        <div class="row_main">
+        <div class="row_main box_shadow">
             <section class="col_4 clr_fix">
 
                 <section class="inner_wrapper">

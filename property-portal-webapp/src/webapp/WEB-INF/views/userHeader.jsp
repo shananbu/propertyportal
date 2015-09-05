@@ -32,7 +32,7 @@
             <ul>
                 <li><a href="postProperty"> Post Property </a><span class="new_pop">Free</span></li>
                 <li class="menu_active"><a href="propertyAlertRegisteration">Property Alerts </a></li>
-                <li><a href="advertiseWithUs?name=planOwner"> Advertise with us </a></li>
+                <li><a href="advertiseWithUs?name=Owner"> Advertise with us </a></li>
             </ul>
         </nav>
     </div>

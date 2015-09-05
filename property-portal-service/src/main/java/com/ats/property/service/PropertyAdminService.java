@@ -300,7 +300,9 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             AdvertisementDetails detailsFromDB = adminDAO.saveAdvertisementDetails(advertisementDetails);
             Residential residentialFromDB = adminDAO.saveResidential(residential);
         }
-        return new AdvertisementType();
+        AdvertisementType advertisementType = new AdvertisementType();
+        advertisementType.setId(advertisement.getId());
+        return advertisementType;
     }
 
 

@@ -33,13 +33,13 @@
 <section class="clr_fix sec_main">
 <div class="row_main">
 <section class="clr_fix">
-<%--<nav class="clr_fix step_process">
+<nav class="clr_fix step_process">
     <ul>
-        <li class="process_1 process_on process_end_1"> <span>1</span> </li>
+        <li class="process_1 process_on"> <span>1</span> </li>
         <li class="process_2"> <span>2</span> </li>
         <li class="process_3"> <span>3</span> </li>
     </ul>
-</nav>--%>
+</nav>
 <div class="clr_fix box-shadow ad_post jq_chk">
 <div class="ad_1">
     <ul>
@@ -147,14 +147,17 @@
 <div class="ad_3">
     <h1>Property Features</h1>
     <ul>
-        <li>
+
+        <li class="col_2_text">
             <label>Buildup Area</label>
-            <input type="text" placeholder="Buildup Area" name="advertisement.buildupArea">
+            <span><input type="text" placeholder="Buildup Area" name="advertisement.buildupArea"></span>
+            <span>
             <select class="dropdown" name="advertisement.buildupAreaUnitId">
                 <c:forEach var="data" items="${response.module[0].moduleResponse.units}">
                     <option value="${data.id}">${data.name}</option>
                 </c:forEach>
             </select>
+           </span>
         </li>
         <li class="list_3">
             <label> Bed Rooms</label>
@@ -242,16 +245,17 @@
                 </span> <span> Or
                 <input type="text" placeholder="Enter price" name="advertisement.expectedPrice">
                 </span> </li>
-        <li class="col_2_text">
-            <label>Maintanance Charges</label>
-            Rs.<span><input type="text" placeholder="Maintenance Charges" name="advertisement.maintenanceCharges">
-                </span> <span>
-                <select class="dropdown" name="advertisement.maintenancePeriodId">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.terms}">
-                        <option value="${data.id}">${data.name}</option>
-                    </c:forEach>
-                </select>
-                </span> </li>
+                <li class="col_2_text">
+                    <label>Maintanance Charges</label>
+                    Rs.<span><input type="text" placeholder="Maintenance Charges" name="advertisement.maintenanceCharges">
+                        </span> <span>
+                        <select class="dropdown" name="advertisement.maintenancePeriodId">
+                            <c:forEach var="data" items="${response.module[0].moduleResponse.terms}">
+                                <option value="${data.id}">${data.name}</option>
+                            </c:forEach>
+                        </select>
+                        </span>
+                </li>
         <li>
             <label>Security Deposit</label>
             Rs.<input type="text" placeholder="Security Deposit" name="advertisement.securityDeposit">
@@ -281,158 +285,7 @@
         </li>
     </ul>
 </div>
-<div class="ad_3">
-    <h1>Add Photos </h1>
-    <ul>
-        <li>
-            <div class="browse_block">
-                <h2> Just click, Upload & Get upto 5 times higher response </h2>
-                <ul class="browse_tab tabs">
-                    <li class="upload_active" rel="tab1"> Exterior View </li>
-                    <li rel="tab2"> Bedrooms </li>
-                    <li rel="tab3"> Bathrooms </li>
-                    <li rel="tab4"> Kitchen </li>
-                    <li rel="tab5"> Floor Plan </li>
-                    <li rel="tab6"> Master Plan </li>
-                </ul>
-                <div class="image_view">
-                    <div id="tab1" class="tab_content">
-                        <div flow-init
-                             flow-files-submitted="$flow.upload()"
-                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
-                            <div class="drop" flow-drop ng-class="dropClass"> <span class="btn btn-default" flow-btn>Upload Image</span> <b>OR</b> Drag And Drop your images here </div>
-                            <br/>
-                            <div>
-                                <div ng-repeat="file in $flow.files" class="gallery-box"> <span class="title">{{file.name}}</span>
-                                    <div class="thumbnail" ng-show="$flow.files.length"> <img flow-img="file" /> </div>
-                                    <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-                                        <div class="progress-bar" role="progressbar"
-                                             aria-valuenow="{{file.progress() * 100}}"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"
-                                             ng-style="{width: (file.progress() * 100) + '%'}"> <span class="sr-only">{{file.progress()}}% Complete</span> </div>
-                                    </div>
-                                    <div class="btn-group"> <a class="remove_btn" ng-click="file.cancel()"> <i class="fa fa-trash-o"></i> </a> </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab2" class="tab_content">
-                        <div flow-init
-                             flow-files-submitted="$flow.upload()"
-                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
-                            <div class="drop" flow-drop ng-class="dropClass"> <span class="btn btn-default" flow-btn>Upload Image</span> <b>OR</b> Drag And Drop your images here </div>
-                            <br/>
-                            <div>
-                                <div ng-repeat="file in $flow.files" class="gallery-box"> <span class="title">{{file.name}}</span>
-                                    <div class="thumbnail" ng-show="$flow.files.length"> <img flow-img="file" /> </div>
-                                    <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-                                        <div class="progress-bar" role="progressbar"
-                                             aria-valuenow="{{file.progress() * 100}}"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"
-                                             ng-style="{width: (file.progress() * 100) + '%'}"> <span class="sr-only">{{file.progress()}}% Complete</span> </div>
-                                    </div>
-                                    <div class="btn-group"> <a class="remove_btn" ng-click="file.cancel()"> <i class="fa fa-trash-o"></i> </a> </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab3" class="tab_content">
-                        <div flow-init
-                             flow-files-submitted="$flow.upload()"
-                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
-                            <div class="drop" flow-drop ng-class="dropClass"> <span class="btn btn-default" flow-btn>Upload Image</span> <b>OR</b> Drag And Drop your images here </div>
-                            <br/>
-                            <div>
-                                <div ng-repeat="file in $flow.files" class="gallery-box"> <span class="title">{{file.name}}</span>
-                                    <div class="thumbnail" ng-show="$flow.files.length"> <img flow-img="file" /> </div>
-                                    <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-                                        <div class="progress-bar" role="progressbar"
-                                             aria-valuenow="{{file.progress() * 100}}"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"
-                                             ng-style="{width: (file.progress() * 100) + '%'}"> <span class="sr-only">{{file.progress()}}% Complete</span> </div>
-                                    </div>
-                                    <div class="btn-group"> <a class="remove_btn" ng-click="file.cancel()"> <i class="fa fa-trash-o"></i> </a> </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab4" class="tab_content">
-                        <div flow-init
-                             flow-files-submitted="$flow.upload()"
-                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
-                            <div class="drop" flow-drop ng-class="dropClass"> <span class="btn btn-default" flow-btn>Upload Image</span> <b>OR</b> Drag And Drop your images here </div>
-                            <br/>
-                            <div>
-                                <div ng-repeat="file in $flow.files" class="gallery-box"> <span class="title">{{file.name}}</span>
-                                    <div class="thumbnail" ng-show="$flow.files.length"> <img flow-img="file" /> </div>
-                                    <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-                                        <div class="progress-bar" role="progressbar"
-                                             aria-valuenow="{{file.progress() * 100}}"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"
-                                             ng-style="{width: (file.progress() * 100) + '%'}"> <span class="sr-only">{{file.progress()}}% Complete</span> </div>
-                                    </div>
-                                    <div class="btn-group"> <a class="remove_btn" ng-click="file.cancel()"> <i class="fa fa-trash-o"></i> </a> </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab5" class="tab_content">
-                        <div flow-init
-                             flow-files-submitted="$flow.upload()"
-                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
-                            <div class="drop" flow-drop ng-class="dropClass"> <span class="btn btn-default" flow-btn>Upload Image</span> <b>OR</b> Drag And Drop your images here </div>
-                            <br/>
-                            <div>
-                                <div ng-repeat="file in $flow.files" class="gallery-box"> <span class="title">{{file.name}}</span>
-                                    <div class="thumbnail" ng-show="$flow.files.length"> <img flow-img="file" /> </div>
-                                    <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-                                        <div class="progress-bar" role="progressbar"
-                                             aria-valuenow="{{file.progress() * 100}}"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"
-                                             ng-style="{width: (file.progress() * 100) + '%'}"> <span class="sr-only">{{file.progress()}}% Complete</span> </div>
-                                    </div>
-                                    <div class="btn-group"> <a class="remove_btn" ng-click="file.cancel()"> <i class="fa fa-trash-o"></i> </a> </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab6" class="tab_content">
-                        <div flow-init
-                             flow-files-submitted="$flow.upload()"
-                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
-                            <div class="drop" flow-drop ng-class="dropClass"> <span class="btn btn-default" flow-btn>Upload Image</span> <b>OR</b> Drag And Drop your images here </div>
-                            <br/>
-                            <div>
-                                <div ng-repeat="file in $flow.files" class="gallery-box"> <span class="title">{{file.name}}</span>
-                                    <div class="thumbnail" ng-show="$flow.files.length"> <img flow-img="file" /> </div>
-                                    <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-                                        <div class="progress-bar" role="progressbar"
-                                             aria-valuenow="{{file.progress() * 100}}"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"
-                                             ng-style="{width: (file.progress() * 100) + '%'}"> <span class="sr-only">{{file.progress()}}% Complete</span> </div>
-                                    </div>
-                                    <div class="btn-group"> <a class="remove_btn" ng-click="file.cancel()"> <i class="fa fa-trash-o"></i> </a> </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
+
 <div class="ad_3">
     <h1> Terms & Conditions </h1>
     <ul>

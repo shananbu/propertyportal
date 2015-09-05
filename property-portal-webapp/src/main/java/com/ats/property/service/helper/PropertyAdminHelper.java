@@ -176,7 +176,10 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
         PropertyUtils.copyFields(advertisementType, advertisementDetails);
         residential.setAdvertisementByAdvertisementId(advertisement);
         advertisementDetails.setAdvertisementByAdvertisementId(advertisement);
-        adminService.saveOrUpdateAdvertisement(advertisement, advertisementDetails, residential);
+        AdvertisementType resAdvertisementType = adminService.saveOrUpdateAdvertisement(advertisement, advertisementDetails, residential);
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        moduleResponseType.setAdvertisement(resAdvertisementType);
         return true;
     }
 

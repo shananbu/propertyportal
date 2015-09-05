@@ -21,15 +21,18 @@
         <%@ include file="userHeader.jsp" %>
     </header>
     <section class="clr_fix">
-        <div class="row_main terms_cond">
+        <div class="row_main terms_cond box_shadow">
             <h1 class="h_2">Privacy Policy</h1>
             This Privacy policy is subject to the terms of the Site Policy (User agreement) of 1acreindia. This policy is effective from the date and time a user registers with 1acreindia by filling up the Registration form and accepting the terms and conditions laid out in the Site Policy.<br><br>
 
-            In order to provide a personalised browsing experience, 1acreindia may collect personal information from you. Additionally some of our websites may require you to complete a registration form or seek some information from you. When you let us have your preferences, we will be able to deliver or allow you to access the most relevant information that meets your end.<br><br>
+            In order to provide a personalised browsing experience, 1acreindia may collect personal information from you. Additionally some of our websites may require you to complete a registration form or seek some information from you. When you let us have your preferences,
+            we will be able to deliver or allow you to access the most relevant information that meets your end.<br><br>
 
-            To extend this personalized experience 1acreindia may track the IP address of a user's computer and save certain information on your system in the form of cookies. A user has the option of accepting or declining the cookies of this website by changing the settings of your browser.<br><br>
+            To extend this personalized experience 1acreindia may track the IP address of a user's computer and save certain information on your system in the form of cookies.
+            A user has the option of accepting or declining the cookies of this website by changing the settings of your browser.<br><br>
 
-            The personal information provided by the users to 1acreindia will not be provided to third parties without previous consent of the user concerned. Information of a general nature may however be revealed to external parties<br><br>
+            The personal information provided by the users to 1acreindia will not be provided to third parties without previous consent of the user concerned.
+            Information of a general nature may however be revealed to external parties<br><br>
 
             Every effort will be made to keep the information provided by users in a safe manner, the information will be displayed on the website will be done so only after obtaining consent from the users. Any user browsing the site generally is not required to disclose his identity or provide any information about him/her, it is only at the time of registration you will be required to furnish the details in the registration form.<br><br>
 

@@ -838,7 +838,23 @@
      * @function
      */
     cancel: function () {
-      this.flowObj.removeFile(this);
+        this.flowObj.removeFile(this);
+        var obj = this.flowObj;
+        var thisObj = this;
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function()
+        {
+            if (xhr.readyState == XMLHttpRequest.DONE ) {
+                if(xhr.status == 200) {
+                    obj.removeFile(thisObj);
+                } else {
+                    alert("Error while deleting file...");
+                }
+            }
+        };
+        xhr.open('GET', "deleteUploadFile?flowFilename=bb&advertisementId=12");
+        var data = "delete"
+        xhr.send(data);
     },
 
     /**

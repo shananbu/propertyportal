@@ -17,7 +17,7 @@
         <%@ include file="userHeader.jsp" %>
     </header>
     <section class="clr_fix">
-        <div class="row_main terms_cond">
+        <div class="row_main terms_cond box_shadow">
             <h1 class="h_2">Terms & Conditions</h1>
             This website, www.1acreindia.com, (hereinafter referred to as "1acreindia") is owned, hosted and operated by 1acreindia Ltd , a company incorporated in India under the Companies Act, 1956 and having its registered office at No. 3A Railway Station Road, Kilambakkam, Chennai-603210, India.<br><br>
 

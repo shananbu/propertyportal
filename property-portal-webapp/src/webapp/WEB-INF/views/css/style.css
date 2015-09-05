@@ -66,10 +66,10 @@ body {
 	font-weight: normal;
 	font-style: normal;
 }
-input[type="text"]:focus, textarea:focus, input[type="password"]:focus {
+input[type="text"]:focus, textarea:focus, input[type="password"]:focus, input[type="email"]:focus {
 	border-color: #5daf33;
 }
-input[type="text"], textarea, input[type="password"] {
+input[type="text"], textarea, input[type="password"], input[type="email"] {
 	border: 1px solid #b1b3b6;
 	border-radius: 5px;
 	padding: 5px;
@@ -1532,7 +1532,7 @@ footer li a:hover {
 	font-size: 14px;
 	color: #58595b;
 }
-.left_login li input[type="text"], .left_login li input[type="password"] {
+.left_login li input[type="text"], .left_login li input[type="password"], .left_login li input[type="email"] {
 	width: 100%;
 }
 .login_block {

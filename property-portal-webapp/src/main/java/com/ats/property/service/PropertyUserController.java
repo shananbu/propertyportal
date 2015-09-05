@@ -6,14 +6,15 @@ import com.ats.property.dto.ModuleRequestType;
 import com.ats.property.service.delegate.IPropertyAdminDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.QueryParam;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 /**
  * The PropertyUserController.
@@ -92,6 +93,22 @@ public class PropertyUserController {
         adminDelegate.getPropertyTypeList(response);
         modelAndView.addObject("response", response);
         return modelAndView;
+    }
+
+    @RequestMapping(value = {"/authenticateUser" }, method = RequestMethod.POST)
+    public ModelAndView authenticateUser(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
+        System.out.println("UserName : " + moduleRequest.getStandardAuth().getUsername());
+        System.out.println("Password : " + moduleRequest.getStandardAuth().getPassword());
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        ModelAndView modelAndView = null;
+        if(adminDelegate.authenticate(moduleRequest, response)) {
+            modelAndView = new ModelAndView("postProperty");
+            return  modelAndView;
+        } else {
+            modelAndView = new ModelAndView("adminlogin");
+            modelAndView.addObject("response", response);
+            return modelAndView;
+        }
     }
 
     @RequestMapping(value = { "/postProperty" }, method = RequestMethod.GET)
@@ -241,9 +258,46 @@ public class PropertyUserController {
         System.out.println("PlanId : " + moduleRequest.getAdvertisement().getPlanId());
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.saveOrUpdateAdvertisement(moduleRequest, response);
-        ModelAndView modelAndView = null;
+        ModelAndView modelAndView = new ModelAndView("uploadFile?advertisementId=" + response.getModule().get(0).getModuleResponse().getAdvertisement().getId());
         return modelAndView;
     }
 
+    @RequestMapping(value = {"/uploadFile" }, method = RequestMethod.GET)
+    public ModelAndView uploadFileForAdvertisement(@ModelAttribute("uploadFile") ModuleRequestType moduleRequest) {
+        ModelAndView modelAndView = new ModelAndView("uploadFile");
+        return modelAndView;
+    }
 
+    @RequestMapping(value = "/uploadFileAndUpdate", method = RequestMethod.POST)
+    public String uploadFileAndUpdateAdvertisement(@RequestParam("file") MultipartFile file, @RequestParam("flowFilename") String fileName) {
+
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(new File("D:\\tmp\\" + fileName)));
+                stream.write(bytes);
+                stream.close();
+                return "You successfully uploaded " + fileName + "!";
+            } catch (Exception e) {
+                return "You failed to upload " + fileName + " => " + e.getMessage();
+            }
+        } else {
+            return "You failed to upload " + fileName
+                    + " because the file was empty.";
+        }
+    }
+
+    @RequestMapping(value = {"/deleteUploadFile" }, method = RequestMethod.GET)
+    public ModelAndView deleteUploadFile(@RequestParam("flowFilename") String fileName, @RequestParam("advertisementId") String advertisementId) {
+        System.out.print("fileName>>" + fileName);
+        ModelAndView modelAndView = new ModelAndView("uploadFile");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = {"/advtPostingComplete" }, method = RequestMethod.GET)
+    public ModelAndView advtPostingComplete() {
+        ModelAndView modelAndView = new ModelAndView("advtPostingComplete");
+        return modelAndView;
+    }
 }
