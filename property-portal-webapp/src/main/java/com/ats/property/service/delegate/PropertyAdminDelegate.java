@@ -137,6 +137,15 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean updateAdvertisement(ModuleRequestType moduleRequest, ModuleList response) {
+        AdvertisementType advertisement = null;
+        if(fromNullable(moduleRequest).isPresent()) {
+            advertisement = moduleRequest.getAdvertisement();
+        }
+        return adminHelper.updateAdvertisement(advertisement, response);
+    }
+
+    @Override
     public boolean saveOrUpdateUser(ModuleRequestType moduleRequest, ModuleList response) {
         PropertyUserType user = null;
         if(fromNullable(moduleRequest).isPresent()) {
@@ -212,5 +221,15 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     @Override
     public boolean getTermsList(ModuleList response) {
         return adminHelper.getTermsList(response);
+    }
+
+    @Override
+    public boolean searchProperty(ModuleRequestType moduleRequest, ModuleList response) {
+
+        SearchType searchType = null;
+        if(fromNullable(moduleRequest).isPresent()) {
+            searchType = moduleRequest.getSearch();
+        }
+        return adminHelper.searchProperty(searchType, response);
     }
 }

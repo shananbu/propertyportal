@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $("#searchBtn").click(function(){
-        window.location.href = "searchViewPage";
+        $( "#tab_info_1" ).submit();
+       // window.location.href = "searchViewPage";
     });
 });
 

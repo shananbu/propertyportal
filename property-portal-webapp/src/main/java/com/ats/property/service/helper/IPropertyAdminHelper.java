@@ -27,6 +27,7 @@ public interface IPropertyAdminHelper {
     boolean saveOrUpdateLocation(NameDataType locationData, ModuleList response);
     boolean saveOrUpdatePlan(PlanType planType, ModuleList response);
     boolean saveOrUpdateAdvertisement(AdvertisementType advertisement, ModuleList response);
+    boolean updateAdvertisement(AdvertisementType advertisementType,  ModuleList response);
 
     boolean getUserType(ModuleList response);
 
@@ -46,6 +47,8 @@ public interface IPropertyAdminHelper {
     boolean getTransactionTypesList(ModuleList response);
     boolean getPossessionStatusList(ModuleList response);
     boolean getTermsList(ModuleList response);
+
+    boolean searchProperty(SearchType searchType, ModuleList response);
 
 
 }

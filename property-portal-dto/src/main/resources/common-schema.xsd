@@ -116,6 +116,15 @@
             <xs:element name="description" type="xs:string"/>
             <xs:element name="propertyFeatures" type="xs:string"/>
             <xs:element name="isTermsAgreed" type="xs:string"/>
+            <xs:element name="galleryImage" type="galleryImageType" maxOccurs = "unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="galleryImageType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0"/>
+            <xs:element name="imageName" type="xs:string"/>
+            <xs:element name="imageTypeId" type="xs:long" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -129,6 +138,20 @@
             <xs:element name="userTypeId" type="xs:long" minOccurs = "0"/>
             <xs:element name="pageNumber" type="xs:int" minOccurs = "0"/>
             <xs:element name="searchString" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="searchResultType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0"/>
+            <xs:element name="projectName" type="xs:string"/>
+            <xs:element name="galleryImage" type="galleryImageType" maxOccurs = "unbounded"/>
+            <xs:element name="propertyType" type="xs:string" minOccurs = "0"/>
+            <xs:element name="location" type="xs:string"/>
+            <xs:element name="bedRooms" type="xs:string"/>
+            <xs:element name="startingPrice" type="xs:string"/>
+            <xs:element name="possession" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 

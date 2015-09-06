@@ -308,6 +308,7 @@
       params['flowFilename'] = this.name;
       params['flowRelativePath'] = this.relativePath;
       params['flowIdentifier'] = this.uniqueIdentifier;
+      params['advertisementId'] = document.getElementById("advertisementId").value;
 
       this.addFormParams(form, params);
       addEvent(this.iFrame, 'load', this.iFrameLoaded);

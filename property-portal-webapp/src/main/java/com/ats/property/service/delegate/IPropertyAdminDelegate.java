@@ -26,7 +26,7 @@ public interface IPropertyAdminDelegate {
     boolean getUserType(ModuleList response);
     boolean saveOrUpdatePlan(ModuleRequestType moduleRequest, ModuleList response);
     boolean saveOrUpdateAdvertisement(ModuleRequestType moduleRequest, ModuleList response);
-
+    boolean updateAdvertisement(ModuleRequestType moduleRequest, ModuleList response);
 
     boolean saveOrUpdateUser(ModuleRequestType moduleRequest, ModuleList response);
     boolean activateAccount(String userMail, String userId);
@@ -44,5 +44,9 @@ public interface IPropertyAdminDelegate {
     boolean getTransactionTypesList(ModuleList response);
     boolean getPossessionStatusList(ModuleList response);
     boolean getTermsList(ModuleList response);
+
+    boolean searchProperty(ModuleRequestType moduleRequest, ModuleList response);
+
+
 
 }

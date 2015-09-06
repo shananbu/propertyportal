@@ -82,6 +82,7 @@
                     </li>
                 </ul>
             </div>
+            <c:forEach var="data" items="${response.module[0].moduleResponse.searchResult}">
             <div class="sear_list">
                 <ul>
                     <li>
@@ -91,29 +92,29 @@
                         <div>
                             <div class="search_head">
                                 <div class="left_head">
-                                    <h1>BBCL Ananya</h1>
+                                    <h1>${data.projectName}</h1>
                                 </div>
                             </div>
                             <div class="clr_fix sear_block_2">
                                 <ul>
                                     <li>
                                         <label>Property Type :</label>
-                                        <span>Residential Appartments</span> </li>
+                                        <span>${data.propertyType}</span> </li>
                                     <li>
                                         <label>Location :</label>
-                                        <span>Porur, Chennai </span> </li>
+                                        <span>${data.location}</span> </li>
                                     <li>
                                         <label>Bed Rooms :</label>
-                                        <span>1,2,3BHK Penthouses </span> </li>
+                                        <span>${data.bedRooms}</span> </li>
                                     <li>
                                         <label>Starting Prie :</label>
-                                        <span>On Request </span> </li>
+                                        <span>${data.startingPrice}</span> </li>
                                     <li>
                                         <label>Possession :</label>
                                         <span>August 2015 </span> </li>
                                     <li class="unit_block">
                                         <label>Decritpion : </label>
-                                        <p class="more"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                                        <p class="more">${data.description} </p>
                                     </li>
                                     <li> <a href="#">Read More</a> </li>
                                 </ul>
@@ -122,6 +123,7 @@
                     </li>
                 </ul>
             </div>
+            </c:forEach>
         </section>
         <aside class="ad_1_left re_m clr_fix">
             <h1 class="h_1">New projects</h1>

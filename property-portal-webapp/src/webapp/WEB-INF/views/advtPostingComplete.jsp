@@ -43,7 +43,8 @@
                     <div class="clr_fix box-shadow ad_post jq_chk">
                         <div class="ad_3">
                             <li class="text_center">
-                                Successfully updated the advertisement.
+                                Successfully updated the advertisement. <br>
+                                Yor advertisement will be displayed after the admin review and approval.
                             </li>
                             </ul>
                         </div>

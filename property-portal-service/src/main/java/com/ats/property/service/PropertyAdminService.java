@@ -305,6 +305,25 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         return advertisementType;
     }
 
+    @Override
+    @Transactional
+    public AdvertisementType updateAdvertisement(AdvertisementType advertisementType) {
+        Advertisement advtForUpdate =  adminDAO.findObjectById(advertisementType.getId(), Advertisement.class);
+        GalleryImages images = null;
+        for(GalleryImageType imageType : advertisementType.getGalleryImage()) {
+            GalleryImages image = new GalleryImages();
+            image.setImageName(imageType.getImageName());
+            image.setAdvertisementByAdvertisementId(advtForUpdate);
+            images = adminDAO.saveImage(image);
+
+          //  advtForUpdate.getGalleryImagesesById().add(image);
+        }
+       // Advertisement advertisementFromDb = adminDAO.updateAdvertisement(advtForUpdate);
+        AdvertisementType advertisement = new AdvertisementType();
+        advertisement.setId(images.getId());
+        return advertisement;
+    }
+
 
     @Override
     public PropertyUserType saveOrUpdateUser(PropertyUser user) {
@@ -533,6 +552,21 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 PropertyUtils.copyFields(type, nameDataType);
                 moduleResponseType.getTerms().add(nameDataType);
             }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean searchProperty(SearchType searchType, ModuleList response) {
+        List<Advertisement> result = adminDAO.searchProperty(searchType);
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        for(Advertisement advt : result) {
+            SearchResultType searchResult = new SearchResultType();
+            searchResult.setProjectName(advt.getProjectName());
+            searchResult.setDescription(advt.getDescription());
+            searchResult.setPropertyType(advt.getPropertyTypeByPropertyTypeId().getName());
+            moduleResponseType.getSearchResult().add(searchResult);
         }
         return true;
     }

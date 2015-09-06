@@ -184,6 +184,12 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean updateAdvertisement(AdvertisementType advertisementType, ModuleList response) {
+       adminService.updateAdvertisement(advertisementType);
+        return true;
+    }
+
+    @Override
     public boolean getUserType(ModuleList response) {
         return adminService.getUserType(response);
     }
@@ -263,5 +269,10 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     @Override
     public boolean getTermsList(ModuleList response) {
         return adminService.getTermsList(response);
+    }
+
+    @Override
+    public boolean searchProperty(SearchType searchType, ModuleList response) {
+        return adminService.searchProperty(searchType, response);
     }
 }

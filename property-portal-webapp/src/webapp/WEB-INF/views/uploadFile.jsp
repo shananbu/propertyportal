@@ -25,7 +25,8 @@
     <script src="js/site/postProperty.js"></script>
 </head>
 <body>
-<form method="post" id="frmPost" commandName="moduleRequest" action="saveOrUpdateAdvertisement">
+<form method="post" id="frmPost" commandName="moduleRequest" action="advtPostingComplete">
+<input type="hidden" name="advertisementId" id="advertisementId" value='<c:out value = "${param.advertisementId}" />'>
 <main class="main_wrapper clr_fix">
 <header class="clr_fix top_head">
     <%@ include file="userHeader.jsp" %>

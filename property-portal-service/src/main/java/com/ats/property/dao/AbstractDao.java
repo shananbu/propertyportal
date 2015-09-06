@@ -34,6 +34,9 @@ public class AbstractDao {
         return sessionFactory.openSession();
     }
 
+    protected Session getCurrentSession(){
+        return sessionFactory.getCurrentSession();
+    }
     public Object persist(Object entity) {
         getSession().saveOrUpdate(entity);
        // getSession().flush();

@@ -1,6 +1,8 @@
 package com.ats.property.service;
 
 import com.ats.property.common.constants.CommonHelper;
+import com.ats.property.dto.AdvertisementType;
+import com.ats.property.dto.GalleryImageType;
 import com.ats.property.dto.ModuleList;
 import com.ats.property.dto.ModuleRequestType;
 import com.ats.property.service.delegate.IPropertyAdminDelegate;
@@ -142,7 +144,6 @@ public class PropertyUserController {
         } else {
             modelAndView = new ModelAndView("userLogin");
         }
-
         return modelAndView;
     }
 
@@ -160,10 +161,12 @@ public class PropertyUserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = { "/searchViewPage" }, method = RequestMethod.GET)
-    public ModelAndView showSearchViewPage() {
+    @RequestMapping(value = { "/searchViewPage" }, method = RequestMethod.POST)
+    public ModelAndView showSearchViewPage(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
+
         ModelAndView modelAndView = new ModelAndView("searchViewPage");
         ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.searchProperty(moduleRequest, response);
         adminDelegate.getCityList(null, response);
         adminDelegate.getBedroomsList(response);
         adminDelegate.getBudgetList(response);
@@ -273,18 +276,21 @@ public class PropertyUserController {
         System.out.println("PlanId : " + moduleRequest.getAdvertisement().getPlanId());
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.saveOrUpdateAdvertisement(moduleRequest, response);
-        ModelAndView modelAndView = new ModelAndView("uploadFile?advertisementId=" + response.getModule().get(0).getModuleResponse().getAdvertisement().getId());
+        ModelAndView modelAndView = new ModelAndView("redirect:uploadFile?advertisementId=" + response.getModule().get(0).getModuleResponse().getAdvertisement().getId());
         return modelAndView;
     }
 
     @RequestMapping(value = {"/uploadFile" }, method = RequestMethod.GET)
-    public ModelAndView uploadFileForAdvertisement(@ModelAttribute("uploadFile") ModuleRequestType moduleRequest) {
-        ModelAndView modelAndView = new ModelAndView("uploadFile");
+    public ModelAndView uploadFileForAdvertisement(@ModelAttribute("uploadFile") ModuleRequestType moduleRequest, HttpServletRequest request) {
+        ModelAndView modelAndView= new ModelAndView("userLogin");
+        if (request.isUserInRole("ROLE_USER")) {
+            modelAndView = new ModelAndView("uploadFile");
+        }
         return modelAndView;
     }
 
     @RequestMapping(value = "/uploadFileAndUpdate", method = RequestMethod.POST)
-    public String uploadFileAndUpdateAdvertisement(@RequestParam("file") MultipartFile file, @RequestParam("flowFilename") String fileName) {
+    public String uploadFileAndUpdateAdvertisement(@RequestParam("file") MultipartFile file, @RequestParam("flowFilename") String fileName, @RequestParam("advertisementId") Long advertisementId) {
 
         if (!file.isEmpty()) {
             try {
@@ -293,13 +299,21 @@ public class PropertyUserController {
                         new FileOutputStream(new File("D:\\tmp\\" + fileName)));
                 stream.write(bytes);
                 stream.close();
-                return "You successfully uploaded " + fileName + "!";
+                ModuleList response = CommonHelper.getSuccessModuleList();
+                ModuleRequestType moduleRequest = new ModuleRequestType();
+                AdvertisementType advertisementType = new AdvertisementType();
+                advertisementType.setId(advertisementId);
+                GalleryImageType imageType = new GalleryImageType();
+                imageType.setImageName(fileName);
+                advertisementType.getGalleryImage().add(imageType);
+                moduleRequest.setAdvertisement(advertisementType);
+                adminDelegate.updateAdvertisement(moduleRequest, response);
+                return "uploadSuccess";
             } catch (Exception e) {
-                return "You failed to upload " + fileName + " => " + e.getMessage();
+                 return "uploadSuccess";
             }
         } else {
-            return "You failed to upload " + fileName
-                    + " because the file was empty.";
+            return "uploadSuccess";
         }
     }
 
@@ -310,7 +324,7 @@ public class PropertyUserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/advtPostingComplete" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/advtPostingComplete" }, method = RequestMethod.POST)
     public ModelAndView advtPostingComplete() {
         ModelAndView modelAndView = new ModelAndView("advtPostingComplete");
         return modelAndView;

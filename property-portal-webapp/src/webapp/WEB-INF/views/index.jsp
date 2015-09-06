@@ -54,6 +54,7 @@
 </nav>
 <div class="tab_info clr_fix box_shadow">
 <div class="tab_info_1 tab_view clr_fix" style="display:block;">
+    <form method="post" id="tab_info_1" action="searchViewPage">
     <div class="clr_fix">
         <div class="search_loc">
             <div class="pro_type">
@@ -67,7 +68,7 @@
                         <c:forEach var="innerData" items="${data.propertyTypesById}">
                             <li>
                             <span class="jq_chk">
-                                <input type="checkbox" id="${innerData.id}">
+                                <input type="checkbox" id="${innerData.id}" value="${innerData.id}" name="search.propertyTypeId">
                                  <label for="${innerData.id}"></label>
                             </span>  ${innerData.name}
                             </li>
@@ -77,23 +78,16 @@
             </div>
         </div>
         <div class="text_panel">
-            <input type="text" placeholder="Type Location or Project">
+            <input type="text" placeholder="Type Location or Project"  name="search.searchString">
             <input type="button" value="Search" id="searchBtn">
         </div>
     </div>
+
     <div class="clr_fix loc_list">
         <ul>
             <li class="list_3">
                 <label> Price</label>
-                <!--<select multiple="multiple" placeholder="Select Price" class="SlectBox">
-<option selected value="saab"> Less than  5 Lac</option>
-<option value="opel">5 - 10 Lac</option>
-<option value="mercedez">5 - 10 Lac</option>
-<option value="aston-martin">5 - 10 Lac</option>
-<option value="hyundai">5 - 10 Lac</option>
-<option value="mitsubishi">5 - 10 Lac</option>
-</select>-->
-                <select multiple="multiple" placeholder="Select Price" class="SlectBox">
+                <select multiple="multiple" placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -101,12 +95,11 @@
             </li>
             <li class="list_3">
                 <label> Bed Rooms</label>
-                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox">
+                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="search.bedRoomId">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
                 </select>
-
             </li>
             <li class="list_3">
                 <label> Posted By </label>
@@ -120,8 +113,10 @@
             <li class="list_4"><span> Clear All </span></li>
         </ul>
     </div>
+    </form>
 </div>
 <div class="tab_info_2 tab_view clr_fix">
+    <form method="post" id="tab_info_2" action="searchViewPage">
     <div class="clr_fix">
         <div class="search_loc">
             <div class="pro_type">
@@ -155,14 +150,6 @@
         <ul>
             <li class="list_3">
                 <label> Price</label>
-                <!--<select multiple="multiple" placeholder="Select Price" class="SlectBox">
-<option selected value="saab"> Less than  5 Lac</option>
-<option value="opel">5 - 10 Lac</option>
-<option value="mercedez">5 - 10 Lac</option>
-<option value="aston-martin">5 - 10 Lac</option>
-<option value="hyundai">5 - 10 Lac</option>
-<option value="mitsubishi">5 - 10 Lac</option>
-</select>-->
                 <select multiple="multiple" placeholder="Select Price" class="SlectBox">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <option value="${data.id}">${data.name}</option>
@@ -190,8 +177,10 @@
             <li class="list_4"><span> Clear All </span></li>
         </ul>
     </div>
+    </form>
 </div>
 <div class="tab_info_3 tab_view clr_fix">
+    <form method="post" id="tab_info_3" action="searchViewPage">
     <div class="clr_fix">
         <div class="search_loc">
             <div class="pro_type">
@@ -225,14 +214,6 @@
         <ul>
             <li class="list_3">
                 <label> Price</label>
-                <!--<select multiple="multiple" placeholder="Select Price" class="SlectBox">
-<option selected value="saab"> Less than  5 Lac</option>
-<option value="opel">5 - 10 Lac</option>
-<option value="mercedez">5 - 10 Lac</option>
-<option value="aston-martin">5 - 10 Lac</option>
-<option value="hyundai">5 - 10 Lac</option>
-<option value="mitsubishi">5 - 10 Lac</option>
-</select>-->
                 <select multiple="multiple" placeholder="Select Price" class="SlectBox">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <option value="${data.id}">${data.name}</option>
@@ -260,6 +241,7 @@
             <li class="list_4"><span> Clear All </span></li>
         </ul>
     </div>
+    </form>
 </div>
 </div>
 </section>

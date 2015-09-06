@@ -2,6 +2,7 @@ package com.ats.property.dao;
 
 import com.ats.property.dto.LocalityType;
 import com.ats.property.dto.PlanType;
+import com.ats.property.dto.SearchType;
 import com.ats.property.dto.StatusType;
 import com.ats.property.model.*;
 
@@ -40,6 +41,7 @@ public interface IPropertyAdminDAO {
     Residential saveResidential(Residential residential);
 
     Advertisement updateAdvertisement(Advertisement advertisement);
+    GalleryImages saveImage(GalleryImages galleryImage);
 
     PropertyUser saveOrUpdateUser(PropertyUser user);
     PropertyUser updateUserByIdAndMail(Long id, String mailId);
@@ -61,5 +63,7 @@ public interface IPropertyAdminDAO {
     List<Terms> getUTerms();
 
     <T> T findObjectById(Long id, Class<T> clazz);
+
+    List<Advertisement> searchProperty(SearchType searchType);
 
 }

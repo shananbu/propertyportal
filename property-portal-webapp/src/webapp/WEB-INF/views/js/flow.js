@@ -1174,7 +1174,8 @@
         flowIdentifier: this.fileObj.uniqueIdentifier,
         flowFilename: this.fileObj.name,
         flowRelativePath: this.fileObj.relativePath,
-        flowTotalChunks: this.fileObj.chunks.length
+        flowTotalChunks: this.fileObj.chunks.length,
+        advertisementId: document.getElementById("advertisementId").value
       };
     },
 

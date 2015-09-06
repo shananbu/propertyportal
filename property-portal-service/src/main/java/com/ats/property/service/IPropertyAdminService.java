@@ -30,6 +30,7 @@ public interface IPropertyAdminService {
 
     PlanType saveOrUpdatePlan(PlanMast planMast);
     AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement, AdvertisementDetails advertisementDetails, Residential residential);
+    AdvertisementType updateAdvertisement(AdvertisementType advertisementType);
     PropertyUserType saveOrUpdateUser(PropertyUser user);
     PropertyUserType activateAccount(PropertyUser user);
 
@@ -46,5 +47,7 @@ public interface IPropertyAdminService {
     boolean getTransactionTypesList(ModuleList response);
     boolean getPossessionStatusList(ModuleList response);
     boolean getTermsList(ModuleList response);
+
+    boolean searchProperty(SearchType searchType, ModuleList response);
 
 }

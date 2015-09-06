@@ -1,10 +1,12 @@
 package com.ats.property.dao;
 
+import com.ats.property.dto.SearchType;
 import com.ats.property.dto.StatusType;
 import com.ats.property.model.*;
 import com.google.common.base.Optional;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
@@ -276,12 +278,17 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
 
     @Override
     public Advertisement updateAdvertisement(Advertisement advertisement) {
-        Session session = getSession();
+        Session session = getCurrentSession();
         Advertisement advtForUpdate =  (Advertisement)session.get(Advertisement.class, advertisement.getId());
         advtForUpdate.setProjectName(advertisement.getProjectName());
-        session.update(advtForUpdate);
+        session.saveOrUpdate(advertisement);
         session.flush();
         return advtForUpdate;
+    }
+
+    @Override
+    public GalleryImages saveImage(GalleryImages galleryImage) {
+        return (GalleryImages)persist(galleryImage);
     }
 
     @Override
@@ -422,5 +429,32 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         query.setParameter("id", id);
         T response = (T)query.uniqueResult();
         return response;
+    }
+
+    @Override
+    public List<Advertisement> searchProperty(SearchType searchType) {
+        Session session = getSession();
+        Criteria searchCriteria = session.createCriteria(Advertisement.class);
+        if (searchType.getSearchString() != null) {
+          //  searchCriteria.add(Restrictions.ilike("projectName", "%" + searchType.getSearchString() + "%"));
+        }
+
+        if (searchType.getLocationId() != null) {
+
+        }
+
+        if (searchType.getExpectedPrice() != null) {
+
+        }
+
+        if (searchType.getLocationId() != null) {
+
+        }
+
+        if (searchType.getLocationId() != null) {
+
+        }
+
+        return searchCriteria.list();
     }
 }
