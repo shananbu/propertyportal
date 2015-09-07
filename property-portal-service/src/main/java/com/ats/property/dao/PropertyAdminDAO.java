@@ -7,6 +7,7 @@ import com.google.common.base.Optional;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
@@ -436,22 +437,25 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         Session session = getSession();
         Criteria searchCriteria = session.createCriteria(Advertisement.class);
         if (searchType.getSearchString() != null) {
-          //  searchCriteria.add(Restrictions.ilike("projectName", "%" + searchType.getSearchString() + "%"));
+            searchCriteria.add(Restrictions.like("projectName", searchType.getSearchString(), MatchMode.ANYWHERE));
         }
 
-        if (searchType.getLocationId() != null) {
-
+/*        if (searchType.getLocationId() != null) {
+            searchCriteria.add(Restrictions.eq("locationId", searchType.getLocationId()));
         }
 
         if (searchType.getExpectedPrice() != null) {
-
+            Budget budget = findObjectById(searchType.getExpectedPrice(), Budget.class);
+            searchCriteria.createAlias("advertisementDetailsesById", "advertisementDetails");
+            searchCriteria.add(Restrictions.between("advertisementDetails.expectedPrice", budget.getFromlevel(), budget.getTolevel()));
         }
 
-        if (searchType.getLocationId() != null) {
+        if (searchType.getBedRoomId() != null) {
+            searchCriteria.createAlias("residentialsById", "residential");
+            searchCriteria.add(Restrictions.eq("residential.bedRoomId", searchType.getBedRoomId()));
+        }*/
 
-        }
-
-        if (searchType.getLocationId() != null) {
+        if (searchType.getUserTypeId() != null) {
 
         }
 

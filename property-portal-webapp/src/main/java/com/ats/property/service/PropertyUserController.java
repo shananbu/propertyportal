@@ -291,12 +291,13 @@ public class PropertyUserController {
 
     @RequestMapping(value = "/uploadFileAndUpdate", method = RequestMethod.POST)
     public String uploadFileAndUpdateAdvertisement(@RequestParam("file") MultipartFile file, @RequestParam("flowFilename") String fileName, @RequestParam("advertisementId") Long advertisementId) {
-
+       // String fileRootDir = "D:\\tmp\\";
+        String fileRootDir = "/home/acreindia/uploadedResources/";
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream = new BufferedOutputStream(
-                        new FileOutputStream(new File("D:\\tmp\\" + fileName)));
+                        new FileOutputStream(new File(fileRootDir+ fileName)));
                 stream.write(bytes);
                 stream.close();
                 ModuleList response = CommonHelper.getSuccessModuleList();
