@@ -4,7 +4,7 @@ $(document).ready(function(){
     $( "#cityNameForUpdate" ).autocomplete({
         minLength: 1,
         source: function (request, response) {
-            $.getJSON("/rest/v1/admin/modules/get/cityList",{ searchKey: request.term }, function(data) {
+            $.getJSON("rest/v1/admin/modules/get/cityList",{ searchKey: request.term }, function(data) {
                 response(data.module[0].moduleResponse.cities);
             });
         },
