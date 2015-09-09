@@ -3851,16 +3851,14 @@ select {
 	overflow:hidden;
 }
 
-.open_marker {
-    border-color: transparent;
-    border-bottom-color: #fff;
-    border-style: dashed dashed solid;
-    border-width: 0 8.5px 8.5px;
-    display: none;
-    position: absolute;
-    left: 6.5px;
-    top: 37px;
-    z-index: 1;
-    height: 0;
-    width: 0;
+.truncate {
+    overflow: hidden;
+    height: 54px;
+}
+
+.full_text {
+    height: auto;
+}
+.projectname {
+    width: 54%;
 }
