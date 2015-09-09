@@ -18,7 +18,24 @@
             window.test = $('.testsel').SumoSelect({okCancelInMulti:true });
             window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
             window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true });
+
+            $('.more-link').click(function () {
+                if ($(this).prev().hasClass('truncate')) {
+                    $(this).prev().removeClass('truncate');
+                    $(this).text("Read More");
+
+                } else {
+                    $(this).prev().addClass('truncate');
+                    $(this).prev().addClass('full_text');
+                    $(this).text("Less");
+                }
+                $(this).toggle();
+                //$(this).prev().toggle();
+                return false;
+            });
         });
+
+
     </script>
 </head>
 <body>
@@ -73,9 +90,9 @@
                                         <span>August 2015 </span> </li>
                                     <li class="unit_block">
                                         <label>Decritpion : </label>
-                                        <p class="more"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                                        <p class="content more truncate" will-truncate-max-height="0" data-text-truncate-lines="5"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                                        <a class="more-link" href="#">Read More</a>
                                     </li>
-                                    <li> <a href="#">Read More</a> </li>
                                 </ul>
                             </div>
                         </div>
@@ -114,9 +131,9 @@
                                         <span>August 2015 </span> </li>
                                     <li class="unit_block">
                                         <label>Decritpion : </label>
-                                        <p class="more">${data.description} </p>
+                                        <p class="content more truncate" will-truncate-max-height="0" data-text-truncate-lines="5"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                                        <a class="more-link" href="#">Read More</a>
                                     </li>
-                                    <li> <a href="#">Read More</a> </li>
                                 </ul>
                             </div>
                         </div>

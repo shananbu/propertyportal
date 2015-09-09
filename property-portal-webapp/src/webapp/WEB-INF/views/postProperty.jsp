@@ -140,7 +140,7 @@
         </li>
         <li>
             <label>Address</label>
-            <input type="text" placeholder="Locality" name="advertisement.address">
+            <input type="text" placeholder="Locality" name="advertisement.address" class="projectname">
         </li>
     </ul>
 </div>
@@ -273,7 +273,7 @@
     <ul>
         <li>
             <label>Name of Project</label>
-            <input type="text" name="advertisement.projectName">
+            <input type="text" name="advertisement.projectName" class="projectname">
         </li>
         <li>
             <label>Description</label>
