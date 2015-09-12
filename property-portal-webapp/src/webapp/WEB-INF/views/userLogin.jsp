@@ -37,11 +37,11 @@
                     <div class="log_left"><img src="images/login_page.png"></div>
                     <div class="log_right">
                         <div class="left_login clr_fix box_shadow">
-                            <div class="log_head clr_fix"><b class="title_login">Login Now</b> <span> New User <a
-                                    href="userRegistration">Register Now</a> </span></div>
+                            <div class="log_head clr_fix"><b class="title_login">Login</b> <span> For new user <a
+                                    href="userRegistration">Register </a> here</span></div>
                             <ul>
                                 <li>
-                                    <label>Username / Email Id</label>
+                                    <label>Email Id</label>
                                     <input type="email" placeholder="Username" name="username">
                                 </li>
                                 <li>

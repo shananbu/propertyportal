@@ -19,6 +19,7 @@
             window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll: true });
         });
     </script>
+    <script src="js/propertyAlertRegisteration.js"></script>
 </head>
 <body>
 <main class="main_wrapper clr_fix">
@@ -30,47 +31,44 @@
             <section class="col_4 clr_fix">
 
                 <section class="inner_wrapper">
-                    <h1 class="h_2">Post Requirement for Buying Property</h1>
-
+                    <h1 class="h_2">Post Requirement for Property</h1>
                     <div class="user_register post_buy_pro jq_chk">
                         <ul>
                             <li>
                                 <label>I want to
                                     <small>*</small>
                                 </label>
-                <span>
-                <input type="radio" id="radio_1" name="1">
-                <label for="radio_1"></label>
-                Buy </span> <span>
-                <input type="radio" id="radio_2" name="1">
-                <label for="radio_2"></label>
-                Rent </span></li>
-
+                                    <c:forEach var="data" items="${response.module[0].moduleResponse.propertyForTypes}">
+                                        <span>
+                                            <input type="radio" id="0${data.id}" value="0${data.id}" name="advertisement.propertyForTypeId" checked>
+                                            <label for="0${data.id}"></label>
+                                            ${data.nameForPoster}
+                                        </span>
+                                    </c:forEach>
+                            </li>
                             <li>
                                 <label>State
                                     <small>*</small>
                                 </label>
-                                <select class="dropdown">
-                                    <option>-- select your State --</option>
-                                    <option>chennai</option>
+                                <select class="dropdown" id="drpDwnState">
+                                    <option value="-1">--Select--</option>
+                                    <c:forEach var="data" items="${response.module[0].moduleResponse.states}">
+                                        <option value="${data.id}">${data.name}</option>
+                                    </c:forEach>
                                 </select>
                             </li>
                             <li>
                                 <label>City
                                     <small>*</small>
                                 </label>
-                                <select class="dropdown">
-                                    <option>-- select your City --</option>
-                                    <option>chennai</option>
+                                <select class="dropdown" id="drpDwnCity">
                                 </select>
                             </li>
                             <li>
                                 <label>Location
                                     <small>*</small>
                                 </label>
-                                <select class="dropdown">
-                                    <option>-- select your Location --</option>
-                                    <option>chennai</option>
+                                <select class="dropdown" id="drpDwnLocation">
                                 </select>
                             </li>
                             <li>
@@ -106,11 +104,6 @@
                                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                                         <option value="${data.id}">${data.name}</option>
                                     </c:forEach>
-                                </select> To
-                                <select class="dropdown">
-                                    <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
-                                        <option value="${data.id}">${data.name}</option>
-                                    </c:forEach>
                                 </select>
                             </li>
                             <li>
@@ -118,31 +111,32 @@
                                     <small>*</small>
                                 </label>
                                 <span>
-                                      <input type="radio" id="radio_1" name="1">
-                                      <label for="radio_1"></label> Daily
+                                      <input type="radio" id="radio_3" name="r">
+                                      <label for="radio_3"></label> Daily
                                 </span>
                                 <span>
-                                    <input type="radio" id="radio_2" name="1">
-                                    <label for="radio_2"></label> Weekly
+                                    <input type="radio" id="radio_4" name="r">
+                                    <label for="radio_4"></label> Weekly
                                 </span>
                             </li>
-                            <li class="spam_input">
+                          <%--  <li class="spam_input">
                                 <label> Spam Check
                                     <small>*</small>
                                 </label>
                                 6 - 2 =
                                 <input type="text">
-                                <span>Please answer this simple math question</span></li>
+                                <span>Please answer this simple math question</span>
+                            </li>--%>
                             <li class="log_face">
                                 <label>I am
                                     <small>*</small>
                                 </label>
                 <span>
-                <input type="radio" id="radio_3" name="1">
-                <label for="radio_3"></label>
+                <input type="radio" id="radio_5" name="1">
+                <label for="radio_5"></label>
                 Existing User </span> <span>
-                <input type="radio" id="radio_4" name="1">
-                <label for="radio_4"></label>
+                <input type="radio" id="radio_6" name="1">
+                <label for="radio_6"></label>
                 New User </span></li>
                             <li>
                                 <label>Username / Email id

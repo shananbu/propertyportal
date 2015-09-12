@@ -61,7 +61,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/admin", "/authenticateAdmin", "/login", "/activateAccount", "/rest/v1/admin/modules/get/stateByCityId",
                         "/rest/v1/admin/modules/get/locationByCityId",
                         "/contactUs", "/feedback", "/privacyPolicy", "/termsAndConditions", "/postPropertyInMicrosite",
-                        "/uploadFile", "/uploadFileAndUpdate", "/deleteUploadFile","/advtPostingComplete","/saveOrUpdateAdvertisement").permitAll()
+                        "/uploadFile", "/uploadFileAndUpdate", "/deleteUploadFile","/advtPostingComplete","/saveOrUpdateAdvertisement", "/genericErrorpage").permitAll()
+
 
                 .anyRequest().authenticated()
             .and()

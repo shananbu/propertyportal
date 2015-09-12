@@ -180,8 +180,10 @@ public class PropertyUserController {
     public ModelAndView showPropertyAlertRegisteration() {
         ModelAndView modelAndView = new ModelAndView("propertyAlertRegisteration");
         ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getStateList(null, response);
         adminDelegate.getCityList(null, response);
         adminDelegate.getBedroomsList(response);
+        adminDelegate.getPropertyForTypeList(response);
         adminDelegate.getBudgetList(response);
         adminDelegate.getPropertyTypeList(response);
         modelAndView.addObject("response", response);
@@ -330,4 +332,11 @@ public class PropertyUserController {
         ModelAndView modelAndView = new ModelAndView("advtPostingComplete");
         return modelAndView;
     }
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleAllException() {
+        ModelAndView modelAndView = new ModelAndView("genericErrorpage");
+        return modelAndView;
+    }
+
 }

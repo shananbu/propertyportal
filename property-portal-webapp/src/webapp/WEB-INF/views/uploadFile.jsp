@@ -55,6 +55,7 @@
                     <li rel="tab4"> Kitchen </li>
                     <li rel="tab5"> Floor Plan </li>
                     <li rel="tab6"> Master Plan </li>
+                    <li rel="tab7"> Logo </li>
                 </ul>
                 <div class="image_view">
                     <div id="tab1" class="tab_content">

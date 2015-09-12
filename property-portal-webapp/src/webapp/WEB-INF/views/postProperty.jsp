@@ -62,14 +62,12 @@
             <label>Property For
                 <small>*</small>
             </label>
-
             <c:forEach var="data" items="${response.module[0].moduleResponse.propertyForTypes}">
                 <span>
                     <input type="radio" id="0${data.id}" value="0${data.id}" name="advertisement.propertyForTypeId" checked>
                     <label for="0${data.id}"></label>
                     ${data.nameForPoster}
                 </span>
-
             </c:forEach>
   <%--          <span>
                 <input type="radio" id="radio_1" name="1" checked>
@@ -149,7 +147,7 @@
     <ul>
 
         <li class="col_2_text">
-            <label>Buildup Area</label>
+            <label>Builtup Area</label>
             <span><input type="text" placeholder="Buildup Area" name="advertisement.buildupArea"></span>
             <span>
             <select class="dropdown" name="advertisement.buildupAreaUnitId">
@@ -280,8 +278,9 @@
             <textarea name="advertisement.description" cols="80" rows="6"></textarea>
         </li>
         <li>
-            <label>Specification/<br>Features and <br>Amenities</label>
-            <textarea name="advertisement.propertyFeatures" cols="80" rows="6"></textarea>
+            <label>Specification</label>
+            <textarea name="advertisement.propertyFeatures" cols="80" rows="6"></textarea><br>
+            OR Upload PDF file<input type="file">
         </li>
     </ul>
 </div>

@@ -46,10 +46,19 @@
                 <input id="usertype3" name="propertyUser.userTypeId" type="radio" value="3">
                 <label for="usertype3"></label>
                 Builder </span> </li>
+                <li>
+                    <label>Builder/Company Name<small>*</small></label>
+                    <input id="builderName" name="propertyUser.builderName" type="text" value="" maxlength="30" placeholder="Company Name">
+                </li>
               <li>
                 <label>First Name<small>*</small></label>
                   <input id="firstName" name="propertyUser.firstName" type="text" value="" maxlength="30" placeholder="First Name">
               </li>
+                <li>
+                    <label>Last Name<small>*</small></label>
+                    <input id="lastName" name="propertyUser.lastName" type="text" value="" maxlength="30" placeholder="Last Name">
+                </li>
+
               <li>
                 <label>Email<small>*</small></label>
                   <input id="emailId" name="propertyUser.emailId" class="txt" type="text" value="" maxlength="30" placeholder="Email">

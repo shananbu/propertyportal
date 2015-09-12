@@ -28,7 +28,6 @@
           <ul>
             <li class="menu_active"><a href="#unit">Unit Details </a></li>
             <li><a href="#gallery"> gallery </a></li>
-          <%--  <li><a href="#trends"> trends </a></li>--%>
             <li><a href="#map_view"> map view </a></li>
           </ul>
           <span class="over_contact"> <i class="fa fa-phone"></i> click here to contact </span> </nav>
@@ -37,7 +36,7 @@
   </header>
   <section class="clr_fix">
       <div class="clr_fix prod_img_banner">
-        <span>INFINITY PROJECT</span>
+        <span>Sumadhura Infracon Pvt. Ltd.</span>
       <ul class="rslides" id="slider1">
         <li><img src="images/slider_1.jpg"></li>
         <li><img src="images/slider_2.jpg"></li>
@@ -73,57 +72,95 @@
         <br>
         Each luxury flat for sale at Urban Tree Infinity in Porur is fully Vastu compliant and is well connected to the heart of the city through a bustling transport hub. Buy a home at Urban Tree Infinity and you'll discover every convenience of modern living right beside your contemporary home in Porur. Be it world-class education avenues, financial centers, shopping districts, global work districts, healthcare facilities, it's all a hop away if you buy a fabulous flat in Urban Tree Infinity in Porur. What's more, Infinity is blessed with abundant clean air, potable drinking water & 24-hour security, ensuring it is a dream come true. </p>
     </div>
+    <div class="row_main">
+      <h1><span>PROJECT SPECIFICATION</span></h1>
+      <p> Presenting a new destination of unlimited happiness, amazing comfort and magnificence. Welcome to splendid apartments for sale at Urban Tree Infinity in Porur. 198 spectacular 1, 2 and 3 BHK flats in Porur created from the finest materials and world-class construction standards. Ranging between 667 and 1518 Sq. Ft. Urban Tree Infinity features delightful and affordable homes in Porur, spread across 2.45 acres, featuring 42% open area and 3 sided ventilation which means your home is nestled amidst the amazing goodness of nature.<br>
+          <br>
+          Each luxury flat for sale at Urban Tree Infinity in Porur is fully Vastu compliant and is well connected to the heart of the city through a bustling transport hub. Buy a home at Urban Tree Infinity and you'll discover every convenience of modern living right beside your contemporary home in Porur. Be it world-class education avenues, financial centers, shopping districts, global work districts, healthcare facilities, it's all a hop away if you buy a fabulous flat in Urban Tree Infinity in Porur. What's more, Infinity is blessed with abundant clean air, potable drinking water & 24-hour security, ensuring it is a dream come true. </p>
+    </div>
+      <div class="row_main">
+          <h1><span>Property Features and Amenities</span></h1>
+          <nav class="foot_1 soc_link clr_fix">
+              <ul>
+                  <li><a><i class="fa fa-check-square-o"></i> Power Back-up</a></li>
+                  <li><a><i class="fa fa-check-square-o"></i> Security / Fire Alarm</a></li>
+                  <li><a><i class="fa fa-check-square-o"></i> Centrally Air Conditioned</a></li>
+                  <li><a><i class="fa fa-check-square-o"></i> Private Garden</a></li>
+              </ul>
+          </nav>
+          <nav class="foot_1 soc_link clr_fix">
+              <ul>
+                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
+                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
+                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
+                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
+              </ul>
+          </nav>
+          <nav class="foot_1 soc_link clr_fix">
+               <ul>
+                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
+                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
+                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
+                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
+              </ul>
+          </nav>
+      </div>
   </section>
   <section class="sec_view_2 sec_view_block" id="unit">
     <div class="row_main">
       <h1><span>Unit Details</span></h1>
-      <div class="clr_fix unit_details">
         <div class="unit_left clr_fix">
-          <article>
-            <div class="view_title_1">
-              <h2>2 BHK + 2 T Residential Apartments ( 929 Sqft)</h2>
-              <span> 52.53 Lac </span> </div>
-            <div class="pro_view_img"> <img src="images/image_1.jpg"> <span class="view_link_2"> I'm Interested </span> </div>
-            <div class="pro_info_view">
-              <div class="clr_fix">
-                <ul class="view_list">
-                  <li>
-                    <label> <i class="fa fa-arrows-alt"></i> Area Covered </label>
-                    929 Sqft </li>
-                  <li>
-                    <label> <i class="fa fa-bed"></i> No. of Bedrooms </label>
-                    2 </li>
-                  <li>
-                    <label> <i class="fa fa-key"></i> Possession: </label>
-                    Ready to Move </li>
-                </ul>
-              <%--  <div class="link_view_page"> <span class="view_link_1"> View all Specification </span> </div>--%>
-              </div>
-              <div class="clr_fix extra_info">
-                <h4>Amenities</h4>
-                <ul>
-                  <li> Medicinal garden </li>
-                  <li> Herbal garden </li>
-                  <li> Medicinal garden </li>
-                </ul>
-                <span class="view_link_3"> view all project amenities </span> </div>
+            <div class="box_shadow">
+                <table width="100%" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <td> Type </td>
+                        <td> Area (SQ.FT) </td>
+                        <td> Rate (Per sq.ft) </td>
+                        <td> Total Cost </td>
+                        <td> Floor Plan </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td> 1bhk </td>
+                        <td> 65 </td>
+                        <td> Rs.6250 </td>
+                        <td> Rs.458.20 </td>
+                        <td><a href="#">click to view</a></td>
+                    </tr>
+                    <tr>
+                        <td> 1bhk </td>
+                        <td> 65 </td>
+                        <td> Rs.6250 </td>
+                        <td> Rs.458.20 </td>
+                        <td><a href="#">click to view</a></td>
+                    </tr>
+                    <tr>
+                        <td> 1bhk </td>
+                        <td> 65 </td>
+                        <td> Rs.6250 </td>
+                        <td> Rs.458.20 </td>
+                        <td><a href="#">click to view</a></td>
+                    </tr>
+                    <tr>
+                        <td> 1bhk </td>
+                        <td> 65 </td>
+                        <td> Rs.6250 </td>
+                        <td> Rs.458.20 </td>
+                        <td><a href="#">click to view</a></td>
+                    </tr>
+                    <tr>
+                        <td> 1bhk </td>
+                        <td> 65 </td>
+                        <td> Rs.6250 </td>
+                        <td> Rs.458.20 </td>
+                        <td><a href="#">click to view</a></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-          </article>
         </div>
-        <aside class="unit_right">
-          <h3 class="h_1">New projects</h3>
-          <div class="box_shadow clr_fix form_fil_1">
-            <p> Please fill your details below to get more information about floor plan </p>
-            <form>
-              <input type="text" placeholder="your name">
-              <input type="text" placeholder="Email ID">
-              <input type="text" placeholder="City">
-              <input type="text" placeholder="Mobile No">
-              <input type="button" value="I want more details on floor plan">
-            </form>
-          </div>
-        </aside>
-      </div>
     </div>
   </section>
   <section class="sec_view_3 sec_view_block" id="gallery">
@@ -132,8 +169,12 @@
       <div class="clr_fix unit_details">
         <div class="gallery_left clr_fix">
           <ul class="gal_tab">
-            <li class="gal_tab_active" rel="gal_tab_view_1"> All </li>
-            <li rel="gal_tab_view_2"> Elevation </li>
+              <li class="gal_tab_active" rel="gal_tab_view_1"> Exterior View </li>
+              <li rel="gal_tab_view_2"> Bedrooms </li>
+              <li rel="gal_tab_view_3"> Bathrooms </li>
+              <li rel="gal_tab_view_4"> Kitchen </li>
+              <li rel="gal_tab_view_5"> Floor Plan </li>
+              <li rel="gal_tab_view_6"> Master Plan </li>
           </ul>
           <div id="gal_tab_view_1" class="gal_tab_view_main" style="display:block;">
             <ul class="gal_pop">
@@ -141,20 +182,39 @@
               <li> <a href="images/large_img_2.jpg" data-lightbox="img_1"> <img src="images/image_2.jpg" alt="" /> </a> </li>
               <li> <a href="images/large_img_3.jpg" data-lightbox="img_1"> <img src="images/image_3.jpg" alt="" /> </a> </li>
               <li> <a href="images/large_img_4.jpg" data-lightbox="img_1"> <img src="images/image_5.jpg" alt="" /> </a> </li>
-              <li> <a href="images/large_img_1.jpg" data-lightbox="img_1"> <img src="images/image_1.jpg" alt=""/> </a> </li>
-              <li> <a href="images/large_img_2.jpg" data-lightbox="img_1"> <img src="images/image_2.jpg" alt="" /> </a> </li>
-              <li> <a href="images/large_img_3.jpg" data-lightbox="img_1"> <img src="images/image_3.jpg" alt="" /> </a> </li>
-              <li> <a href="images/large_img_4.jpg" data-lightbox="img_1"> <img src="images/image_5.jpg" alt="" /> </a> </li>
             </ul>
           </div>
-          <div id="gal_tab_view_2" class"gal_tab_view_main">
+          <div id="gal_tab_view_2" class="gal_tab_view_main">
             <ul class="gal_pop">
               <li> <a href="images/large_img_1.jpg" data-lightbox="img_1"> <img src="images/image_1.jpg" alt=""/> </a> </li>
-              <li> <a href="images/large_img_2.jpg" data-lightbox="img_1"> <img src="images/image_2.jpg" alt="" /> </a> </li>
-              <li> <a href="images/large_img_3.jpg" data-lightbox="img_1"> <img src="images/image_3.jpg" alt="" /> </a> </li>
-              <li> <a href="images/large_img_4.jpg" data-lightbox="img_1"> <img src="images/image_5.jpg" alt="" /> </a> </li>
             </ul>
           </div>
+            <div id="gal_tab_view_3" class="gal_tab_view_main">
+                <ul class="gal_pop">
+                    <li> <a href="images/large_img_1.jpg" data-lightbox="img_1"> <img src="images/image_1.jpg" alt=""/> </a> </li>
+                    <li> <a href="images/large_img_2.jpg" data-lightbox="img_1"> <img src="images/image_2.jpg" alt="" /> </a> </li>
+                </ul>
+            </div>
+            <div id="gal_tab_view_4" class="gal_tab_view_main">
+                <ul class="gal_pop">
+                       <li> <a href="images/large_img_2.jpg" data-lightbox="img_1"> <img src="images/image_2.jpg" alt="" /> </a> </li>
+                    <li> <a href="images/large_img_3.jpg" data-lightbox="img_1"> <img src="images/image_3.jpg" alt="" /> </a> </li>
+                    <li> <a href="images/large_img_4.jpg" data-lightbox="img_1"> <img src="images/image_5.jpg" alt="" /> </a> </li>
+                </ul>
+            </div>
+            <div id="gal_tab_view_5" class="gal_tab_view_main">
+                <ul class="gal_pop">
+
+                    <li> <a href="images/large_img_3.jpg" data-lightbox="img_1"> <img src="images/image_3.jpg" alt="" /> </a> </li>
+                    <li> <a href="images/large_img_4.jpg" data-lightbox="img_1"> <img src="images/image_5.jpg" alt="" /> </a> </li>
+                </ul>
+            </div>
+            <div id="gal_tab_view_6" class="gal_tab_view_main">
+                <ul class="gal_pop">
+                    <li> <a href="images/large_img_3.jpg" data-lightbox="img_1"> <img src="images/image_3.jpg" alt="" /> </a> </li>
+                    <li> <a href="images/large_img_4.jpg" data-lightbox="img_1"> <img src="images/image_5.jpg" alt="" /> </a> </li>
+                </ul>
+            </div>
         </div>
     <%--    <aside class="unit_right">
           <h3 class="h_1">New projects</h3>
@@ -203,17 +263,9 @@
         <div class="map_left clr_fix">
           <ul class="map_tab">
             <li class="map_tab_active" rel="map_tab_view_1"> Google Map </li>
-            <li rel="map_tab_view_2"> Location Map </li>
           </ul>
           <div id="map_tab_view_1" class="map_tab_view_main" style="display:block;">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31090.344122589235!2d80.24697649499511!3d13.080606938195228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C+Tamil+Nadu!5e0!3m2!1sen!2sin!4v1433845173540" frameborder="0" style="border:0"></iframe>
-          </div>
-          <div id="map_tab_view_2" class="map_tab_view_main">
-            <ul class="gal_pop">
-              <li> <a href="images/large_img_1.jpg" data-lightbox="img_1"> <img src="images/image_1.jpg" alt=""/> </a> </li>
-              <li> <a href="images/large_img_2.jpg" data-lightbox="img_1"> <img src="images/image_2.jpg" alt="" /> </a> </li>
-              <li> <a href="images/large_img_3.jpg" data-lightbox="img_1"> <img src="images/image_3.jpg" alt="" /> </a> </li>
-            </ul>
           </div>
         </div>
  <%--       <aside class="unit_right">
@@ -248,7 +300,7 @@
   </section>
   <section class="sec_view_8 sec_view_block">
     <div class="row_main">
-      <h1><span>Contact with us</span></h1>
+      <h1><span>Contact us</span></h1>
       <div class="clr_fix box_shadow contact_pro">
         <form>
           <p>

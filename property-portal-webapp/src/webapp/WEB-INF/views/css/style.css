@@ -2800,7 +2800,7 @@ opacity: 1.0;
 	padding: 6px 8px;
 	text-transform: capitalize;
 	border-radius: 5px;
-	background: #D1443C;
+	background: #5daf33;
 	font-weight: 600;
 	color: #ffffff;
 	font-size: 12px;
@@ -2813,9 +2813,9 @@ opacity: 1.0;
 	-webkit-transition: all 0.2s linear;
 }
 .over_contact:hover {
-	border: 1px solid #D1443C;
-	background: #fff;
-	color: #D1443C;
+	border: 1px solid #5daf33;
+	background: #468a23;
+	color: #ffffff;
 	transition: all 0.2s linear;
 	-moz-transition: all 0.2s linear;
 	-o-transition: all 0.2s linear;
@@ -3402,8 +3402,8 @@ opacity: 1.0;
 	display: block;
 }
 .unit_left table thead tr {
-	background: #252525 none repeat scroll 0 0;
-	color: #626262;
+	background: #5daf33 none repeat scroll 0 0;
+	color: #5daf33;
 	font-weight: 600;
 	font-size: 1.2em;
 }
