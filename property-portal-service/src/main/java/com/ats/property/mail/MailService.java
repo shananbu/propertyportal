@@ -77,7 +77,7 @@ public class MailService implements IMailService {
 
     private MimeBodyPart getMimeBodyPart(final MailBean data) throws MessagingException {
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
-        mimeBodyPart.setContent(data.getMailBody(), MimeTypeUtils.TEXT_XML.toString());
+        mimeBodyPart.setContent(data.getMailBody(), MimeTypeUtils.TEXT_HTML.toString());
         return mimeBodyPart;
     }
 
