@@ -68,20 +68,17 @@
                                 <label>Location
                                     <small>*</small>
                                 </label>
-                                <select class="dropdown" id="drpDwnLocation">
+                                <select class="SlectBox" id="drpDwnLocation"  multiple="multiple">
                                 </select>
                             </li>
                             <li>
                                 <label>Bedrooms
                                     <small>*</small>
                                 </label>
-                                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox">
-                                    <option selected value="saab">1 BHK</option>
-                                    <option value="opel">2 BHK</option>
-                                    <option value="mercedez">3 BHK</option>
-                                    <option value="aston-martin">4 BHK</option>
-                                    <option value="hyundai">5 BHK</option>
-                                    <option value="mitsubishi">6 BHK</option>
+                                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="advertisement.bedRoomId">
+                                    <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
+                                        <option value="${data.id}">${data.name}</option>
+                                    </c:forEach>
                                 </select>
                             </li>
                             <li class="area_input">
@@ -91,9 +88,10 @@
                                 <input type="text">
                                 To
                                 <input type="text">
-                                <select class="dropdown">
-                                    <option>Sq. Ft</option>
-                                    <option>Sq. Mtr</option>
+                                <select class="dropdown" name="advertisement.buildupAreaUnitId">
+                                    <c:forEach var="data" items="${response.module[0].moduleResponse.units}">
+                                        <option value="${data.id}">${data.name}</option>
+                                    </c:forEach>
                                 </select>
                             </li>
                             <li class="buget_input">

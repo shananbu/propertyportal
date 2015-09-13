@@ -19,11 +19,10 @@ $(document).ready(function(){
         }).done(function(data) {
             $('#drpDwnLocation').empty();
             $.each(data.module[0].moduleResponse.cities, function() {
-                $('#drpDwnLocation')
-                    .append($("<option></option>")
-                        .attr("value", this.id)
-                        .text(this.name));
+                $('#drpDwnLocation')[0].sumo.add(this.id, this.name);
             });
+
+
         });
     });
 });

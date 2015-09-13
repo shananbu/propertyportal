@@ -186,6 +186,7 @@ public class PropertyUserController {
         adminDelegate.getPropertyForTypeList(response);
         adminDelegate.getBudgetList(response);
         adminDelegate.getPropertyTypeList(response);
+        adminDelegate.getUnitsList(response);
         modelAndView.addObject("response", response);
         return modelAndView;
     }
