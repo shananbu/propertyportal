@@ -10,15 +10,17 @@ import javax.persistence.*;
 @Entity
 public class PropertyUser {
     private Long id;
+    private Long userTypeId;
     private String firstName;
+    private String lastName;
+    private String builderName;
     private String emailId;
+    private Long cityId;
     private String phone;
     private String mobileNo;
     private String isMailVerified;
     private String passwrd;
     private String status;
-    private Long userTypeId;
-    private Long cityId;
     private UserType userTypeByUserTypeId;
     private City cityByCityId;
 
@@ -34,6 +36,16 @@ public class PropertyUser {
     }
 
     @Basic
+    @Column(name = "userTypeId", nullable = true, insertable = false, updatable = false)
+    public Long getUserTypeId() {
+        return userTypeId;
+    }
+
+    public void setUserTypeId(Long userTypeId) {
+        this.userTypeId = userTypeId;
+    }
+
+    @Basic
     @Column(name = "firstName", nullable = true, insertable = true, updatable = true, length = 50)
     public String getFirstName() {
         return firstName;
@@ -44,6 +56,26 @@ public class PropertyUser {
     }
 
     @Basic
+    @Column(name = "lastName", nullable = true, insertable = true, updatable = true, length = 50)
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Basic
+    @Column(name = "builderName", nullable = true, insertable = true, updatable = true, length = 100)
+    public String getBuilderName() {
+        return builderName;
+    }
+
+    public void setBuilderName(String builderName) {
+        this.builderName = builderName;
+    }
+
+    @Basic
     @Column(name = "emailId", nullable = true, insertable = true, updatable = true, length = 25)
     public String getEmailId() {
         return emailId;
@@ -51,6 +83,16 @@ public class PropertyUser {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
+    }
+
+    @Basic
+    @Column(name = "cityId", nullable = true, insertable = false, updatable = false)
+    public Long getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 
     @Basic
@@ -110,15 +152,19 @@ public class PropertyUser {
 
         PropertyUser that = (PropertyUser) o;
 
+        if (builderName != null ? !builderName.equals(that.builderName) : that.builderName != null) return false;
+        if (cityId != null ? !cityId.equals(that.cityId) : that.cityId != null) return false;
         if (emailId != null ? !emailId.equals(that.emailId) : that.emailId != null) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (isMailVerified != null ? !isMailVerified.equals(that.isMailVerified) : that.isMailVerified != null)
             return false;
+        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
         if (mobileNo != null ? !mobileNo.equals(that.mobileNo) : that.mobileNo != null) return false;
         if (passwrd != null ? !passwrd.equals(that.passwrd) : that.passwrd != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (status != null ? !status.equals(that.status) : that.status != null) return false;
+        if (userTypeId != null ? !userTypeId.equals(that.userTypeId) : that.userTypeId != null) return false;
 
         return true;
     }
@@ -126,34 +172,18 @@ public class PropertyUser {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (userTypeId != null ? userTypeId.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (builderName != null ? builderName.hashCode() : 0);
         result = 31 * result + (emailId != null ? emailId.hashCode() : 0);
+        result = 31 * result + (cityId != null ? cityId.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (mobileNo != null ? mobileNo.hashCode() : 0);
         result = 31 * result + (isMailVerified != null ? isMailVerified.hashCode() : 0);
         result = 31 * result + (passwrd != null ? passwrd.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "userTypeId", nullable = true, insertable = false, updatable = false)
-    public Long getUserTypeId() {
-        return userTypeId;
-    }
-
-    public void setUserTypeId(Long userTypeId) {
-        this.userTypeId = userTypeId;
-    }
-
-    @Basic
-    @Column(name = "cityId", nullable = true, insertable = false, updatable = false)
-    public Long getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
     }
 
     @ManyToOne

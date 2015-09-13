@@ -280,7 +280,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
     @Override
     @Transactional
-    public AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement, AdvertisementDetails advertisementDetails, Residential residential) {
+    public AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement, AdvertisementDetails advertisementDetails, Residential residential, List<PropertyAmenities> amenitieses) {
         advertisement.setPropertyForTypeByPropertyForTypeId(adminDAO.findObjectById(advertisement.getPropertyForTypeId() , PropertyForType.class));
         advertisement.setPropertyTypeByPropertyTypeId(adminDAO.findObjectById(advertisement.getPropertyTypeId(), PropertyType.class));
         advertisement.setLocationsByLocationId(adminDAO.findObjectById(advertisement.getLocationId(), Locations.class));
@@ -299,7 +299,15 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         if(fromNullable(advertisementFromDb).isPresent() && advertisementFromDb.getId() != 0) {
             AdvertisementDetails detailsFromDB = adminDAO.saveAdvertisementDetails(advertisementDetails);
             Residential residentialFromDB = adminDAO.saveResidential(residential);
+            if(amenitieses.size() > 0 ) {
+                for(PropertyAmenities am : amenitieses) {
+                    am.setAdvertisementByAdvertisementId(advertisementFromDb);
+                    am.setAmenitiesByAmenitiesId(adminDAO.findObjectById(am.getAmenitiesId(), Amenities.class));
+                     PropertyAmenities amenitiesFromDB = adminDAO.savePropertyAmenities(am);
+                }
+            }
         }
+
         AdvertisementType advertisementType = new AdvertisementType();
         advertisementType.setId(advertisement.getId());
         return advertisementType;
@@ -567,6 +575,26 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             searchResult.setDescription(advt.getDescription());
             searchResult.setPropertyType(advt.getPropertyTypeByPropertyTypeId().getName());
             moduleResponseType.getSearchResult().add(searchResult);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean getAmenitiesCategory(ModuleList response) {
+        List<AmenitiesCategory> result = adminDAO.getAmenitiesCategory();
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        for(AmenitiesCategory cat : result) {
+            AmenitiesCategoryType categoryType = new AmenitiesCategoryType();
+            categoryType.setId(cat.getId());
+            categoryType.setName(cat.getName());
+            for(Amenities amenities : cat.getAmenitiesesById()) {
+                NameDataType amenity = new NameDataType();
+                amenity.setId(amenities.getId());
+                amenity.setName(amenities.getName());
+                categoryType.getAmenitiesesById().add(amenity);
+            }
+            moduleResponseType.getAmenitiesCategory().add(categoryType);
         }
         return true;
     }

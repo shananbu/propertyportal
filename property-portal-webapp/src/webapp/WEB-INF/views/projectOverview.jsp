@@ -56,7 +56,7 @@
             <p> Possession <span> Ready to Move </span> </p>
           </li>
           <li> <i class="fa fa-inr"></i>
-            <p> Price <span> $53.25 Lac - $53.25 Lac </span> All Inclusive </p>
+            <p> Price <span> 53.25 - 53.25 Lakhs </span> All Inclusive </p>
           </li>
           <li> <i class="fa fa-bed"></i>
             <p> Bed Room <span>2 & 3 BHK </span> Appartments</p>
@@ -69,42 +69,40 @@
     <div class="row_main">
       <h1><span>Infinity PROJECT</span></h1>
       <p> Presenting a new destination of unlimited happiness, amazing comfort and magnificence. Welcome to splendid apartments for sale at Urban Tree Infinity in Porur. 198 spectacular 1, 2 and 3 BHK flats in Porur created from the finest materials and world-class construction standards. Ranging between 667 and 1518 Sq. Ft. Urban Tree Infinity features delightful and affordable homes in Porur, spread across 2.45 acres, featuring 42% open area and 3 sided ventilation which means your home is nestled amidst the amazing goodness of nature.<br>
-        <br>
-        Each luxury flat for sale at Urban Tree Infinity in Porur is fully Vastu compliant and is well connected to the heart of the city through a bustling transport hub. Buy a home at Urban Tree Infinity and you'll discover every convenience of modern living right beside your contemporary home in Porur. Be it world-class education avenues, financial centers, shopping districts, global work districts, healthcare facilities, it's all a hop away if you buy a fabulous flat in Urban Tree Infinity in Porur. What's more, Infinity is blessed with abundant clean air, potable drinking water & 24-hour security, ensuring it is a dream come true. </p>
+      </p>
     </div>
     <div class="row_main">
       <h1><span>PROJECT SPECIFICATION</span></h1>
-      <p> Presenting a new destination of unlimited happiness, amazing comfort and magnificence. Welcome to splendid apartments for sale at Urban Tree Infinity in Porur. 198 spectacular 1, 2 and 3 BHK flats in Porur created from the finest materials and world-class construction standards. Ranging between 667 and 1518 Sq. Ft. Urban Tree Infinity features delightful and affordable homes in Porur, spread across 2.45 acres, featuring 42% open area and 3 sided ventilation which means your home is nestled amidst the amazing goodness of nature.<br>
-          <br>
+      <p>
           Each luxury flat for sale at Urban Tree Infinity in Porur is fully Vastu compliant and is well connected to the heart of the city through a bustling transport hub. Buy a home at Urban Tree Infinity and you'll discover every convenience of modern living right beside your contemporary home in Porur. Be it world-class education avenues, financial centers, shopping districts, global work districts, healthcare facilities, it's all a hop away if you buy a fabulous flat in Urban Tree Infinity in Porur. What's more, Infinity is blessed with abundant clean air, potable drinking water & 24-hour security, ensuring it is a dream come true. </p>
     </div>
-      <div class="row_main">
-          <h1><span>Property Features and Amenities</span></h1>
-          <nav class="foot_1 soc_link clr_fix">
-              <ul>
-                  <li><a><i class="fa fa-check-square-o"></i> Power Back-up</a></li>
-                  <li><a><i class="fa fa-check-square-o"></i> Security / Fire Alarm</a></li>
-                  <li><a><i class="fa fa-check-square-o"></i> Centrally Air Conditioned</a></li>
-                  <li><a><i class="fa fa-check-square-o"></i> Private Garden</a></li>
-              </ul>
-          </nav>
-          <nav class="foot_1 soc_link clr_fix">
-              <ul>
-                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
-                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
-                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
-                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
-              </ul>
-          </nav>
-          <nav class="foot_1 soc_link clr_fix">
-               <ul>
-                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
-                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
-                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
-                  <li><a><i class="fa fa-check-square-o"></i> Facebook</a></li>
-              </ul>
-          </nav>
-      </div>
+    <div class="row_main">
+      <h1><span>Property Features and Amenities</span></h1>
+      <nav class="foot_1 soc_link clr_fix">
+          <ul>
+              <li><a><i class="fa fa-check-square-o"></i> Power Back-up</a></li>
+              <li><a><i class="fa fa-check-square-o"></i> Security / Fire Alarm</a></li>
+              <li><a><i class="fa fa-check-square-o"></i> Centrally Air Conditioned</a></li>
+              <li><a><i class="fa fa-check-square-o"></i> Private Garden</a></li>
+          </ul>
+      </nav>
+      <nav class="foot_1 soc_link clr_fix">
+          <ul>
+              <li><a><i class="fa fa-check-square-o"></i>  Water Storage</a></li>
+              <li><a><i class="fa fa-check-square-o"></i> Internet/Wi-Fi connectivity</a></li>
+              <li><a><i class="fa fa-check-square-o"></i> Water purifier</a></li>
+              <li><a><i class="fa fa-check-square-o"></i> Park</a></li>
+          </ul>
+      </nav>
+      <nav class="foot_1 soc_link clr_fix">
+           <ul>
+              <li><a><i class="fa fa-check-square-o"></i> Waste Disposal</a></li>
+              <li><a><i class="fa fa-check-square-o"></i> Rain Water Harvesting</a></li>
+              <li><a><i class="fa fa-check-square-o"></i> Bank Attached Property</a></li>
+              <li><a><i class="fa fa-check-square-o"></i> Maintenance Staff</a></li>
+          </ul>
+      </nav>
+    </div>
   </section>
   <section class="sec_view_2 sec_view_block" id="unit">
     <div class="row_main">

@@ -4,6 +4,8 @@ import com.ats.property.dto.*;
 import com.ats.property.model.*;
 import com.ats.property.model.Advertisement;
 
+import java.util.List;
+
 /**
  * The PropertyAdminService.
  *
@@ -29,7 +31,7 @@ public interface IPropertyAdminService {
     boolean getUserType(ModuleList response);
 
     PlanType saveOrUpdatePlan(PlanMast planMast);
-    AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement, AdvertisementDetails advertisementDetails, Residential residential);
+    AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement, AdvertisementDetails advertisementDetails, Residential residential, List<PropertyAmenities> amenitieses);
     AdvertisementType updateAdvertisement(AdvertisementType advertisementType);
     PropertyUserType saveOrUpdateUser(PropertyUser user);
     PropertyUserType activateAccount(PropertyUser user);
@@ -49,5 +51,7 @@ public interface IPropertyAdminService {
     boolean getTermsList(ModuleList response);
 
     boolean searchProperty(SearchType searchType, ModuleList response);
+    boolean getAmenitiesCategory(ModuleList response);
+
 
 }

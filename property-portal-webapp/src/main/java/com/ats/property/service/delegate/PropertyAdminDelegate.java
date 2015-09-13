@@ -232,4 +232,9 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
         }
         return adminHelper.searchProperty(searchType, response);
     }
+
+    @Override
+    public boolean getAmenitiesCategory(ModuleList response) {
+        return adminHelper.getAmenitiesCategory(response);
+    }
 }

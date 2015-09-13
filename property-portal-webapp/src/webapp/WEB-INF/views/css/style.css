@@ -3862,3 +3862,7 @@ select {
 .projectname {
     width: 54%;
 }
+
+.aminities_list {
+    padding: 40px;
+}

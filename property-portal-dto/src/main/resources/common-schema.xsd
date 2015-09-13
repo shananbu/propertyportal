@@ -42,6 +42,8 @@
         <xs:sequence>
             <xs:element name="id" type="xs:long" minOccurs = "0"/>
             <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="builderName" type="xs:string"/>
             <xs:element name="emailId" type="xs:string" minOccurs = "0"/>
             <xs:element name="mobileNo" type="xs:string" minOccurs = "0"/>
             <xs:element name="isMailVerified" type="xs:string" minOccurs = "0"/>
@@ -99,6 +101,7 @@
             <xs:element name="propertyTypeId" type="xs:long" minOccurs = "0"/>
             <xs:element name="locationId" type="xs:long" minOccurs = "0"/>
             <xs:element name="address" type="xs:string"/>
+            <xs:element name="builderName" type="xs:string"/>
             <xs:element name="buildupArea" type="xs:double" minOccurs = "0"/>
             <xs:element name="buildupAreaUnitId" type="xs:long" minOccurs = "0"/>
             <xs:element name="bedRoomId" type="xs:long" minOccurs = "0"/>
@@ -117,6 +120,7 @@
             <xs:element name="propertyFeatures" type="xs:string"/>
             <xs:element name="isTermsAgreed" type="xs:string"/>
             <xs:element name="galleryImage" type="galleryImageType" maxOccurs = "unbounded"/>
+            <xs:element name="propertyAmenities" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -142,6 +146,28 @@
     </xs:complexType>
 
     <xs:complexType name="searchResultType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0"/>
+            <xs:element name="projectName" type="xs:string"/>
+            <xs:element name="galleryImage" type="galleryImageType" maxOccurs = "unbounded"/>
+            <xs:element name="propertyType" type="xs:string" minOccurs = "0"/>
+            <xs:element name="location" type="xs:string"/>
+            <xs:element name="bedRooms" type="xs:string"/>
+            <xs:element name="startingPrice" type="xs:string"/>
+            <xs:element name="possession" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="amenitiesCategoryType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs = "0"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="amenitiesesById" type="nameDataType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="alertRegistration">
         <xs:sequence>
             <xs:element name="id" type="xs:long" minOccurs="0"/>
             <xs:element name="projectName" type="xs:string"/>

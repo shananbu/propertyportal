@@ -11,31 +11,33 @@ import java.util.Collection;
 @Entity
 public class Advertisement {
     private Long id;
-    private String address;
-    private String projectName;
-    private String description;
-    private String propertyFeatures;
-    private String isTermsAgreed;
-    private PropertyOwnershipType propertyOwnershipTypeByPropertyOwnershipId;
-    private PossessionOrAge possessionOrAgeByPossessionOrAgeId;
+    private Long planId;
     private Long propertyForTypeId;
     private Long propertyTypeId;
     private Long locationId;
+    private String address;
+    private String builderName;
+    private String projectName;
     private Long transactionTypeId;
     private Long propertyOwnershipId;
     private Long possessionStatusId;
     private Long possessionOrAgeId;
+    private String description;
+    private String propertyFeatures;
+    private String isTermsAgreed;
     private PropertyType propertyTypeByPropertyTypeId;
     private Locations locationsByLocationId;
     private TransactionType transactionTypeByTransactionTypeId;
+    private PropertyOwnershipType propertyOwnershipTypeByPropertyOwnershipId;
     private PossessionStatus possessionStatusByPossessionStatusId;
+    private PossessionOrAge possessionOrAgeByPossessionOrAgeId;
+    private PlanMast planMastByPlanId;
     private PropertyForType propertyForTypeByPropertyForTypeId;
     private Collection<AdvertisementDetails> advertisementDetailsesById;
     private Collection<GalleryImages> galleryImagesesById;
     private Collection<MorePropertyDetails> morePropertyDetailsesById;
+    private Collection<PropertyAmenities> propertyAmenitiesesById;
     private Collection<Residential> residentialsById;
-    private Long planId;
-    private PlanMast planMastByPlanId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,103 +51,13 @@ public class Advertisement {
     }
 
     @Basic
-    @Column(name = "address", nullable = true, insertable = true, updatable = true, length = 100)
-    public String getAddress() {
-        return address;
+    @Column(name = "planId", nullable = true, insertable = false, updatable = false)
+    public Long getPlanId() {
+        return planId;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Basic
-    @Column(name = "projectName", nullable = true, insertable = true, updatable = true, length = 100)
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
-
-    @Basic
-    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 1000)
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Basic
-    @Column(name = "propertyFeatures", nullable = true, insertable = true, updatable = true, length = 1000)
-    public String getPropertyFeatures() {
-        return propertyFeatures;
-    }
-
-    public void setPropertyFeatures(String propertyFeatures) {
-        this.propertyFeatures = propertyFeatures;
-    }
-
-    @Basic
-    @Column(name = "isTermsAgreed", nullable = true, insertable = true, updatable = true, length = 1)
-    public String getIsTermsAgreed() {
-        return isTermsAgreed;
-    }
-
-    public void setIsTermsAgreed(String isTermsAgreed) {
-        this.isTermsAgreed = isTermsAgreed;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Advertisement that = (Advertisement) o;
-
-        if (address != null ? !address.equals(that.address) : that.address != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (isTermsAgreed != null ? !isTermsAgreed.equals(that.isTermsAgreed) : that.isTermsAgreed != null)
-            return false;
-        if (projectName != null ? !projectName.equals(that.projectName) : that.projectName != null) return false;
-        if (propertyFeatures != null ? !propertyFeatures.equals(that.propertyFeatures) : that.propertyFeatures != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (projectName != null ? projectName.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (propertyFeatures != null ? propertyFeatures.hashCode() : 0);
-        result = 31 * result + (isTermsAgreed != null ? isTermsAgreed.hashCode() : 0);
-        return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "propertyOwnershipId", referencedColumnName = "id")
-    public PropertyOwnershipType getPropertyOwnershipTypeByPropertyOwnershipId() {
-        return propertyOwnershipTypeByPropertyOwnershipId;
-    }
-
-    public void setPropertyOwnershipTypeByPropertyOwnershipId(PropertyOwnershipType propertyOwnershipTypeByPropertyOwnershipId) {
-        this.propertyOwnershipTypeByPropertyOwnershipId = propertyOwnershipTypeByPropertyOwnershipId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "possessionOrAgeId", referencedColumnName = "id")
-    public PossessionOrAge getPossessionOrAgeByPossessionOrAgeId() {
-        return possessionOrAgeByPossessionOrAgeId;
-    }
-
-    public void setPossessionOrAgeByPossessionOrAgeId(PossessionOrAge possessionOrAgeByPossessionOrAgeId) {
-        this.possessionOrAgeByPossessionOrAgeId = possessionOrAgeByPossessionOrAgeId;
+    public void setPlanId(Long planId) {
+        this.planId = planId;
     }
 
     @Basic
@@ -176,6 +88,36 @@ public class Advertisement {
 
     public void setLocationId(Long locationId) {
         this.locationId = locationId;
+    }
+
+    @Basic
+    @Column(name = "address", nullable = true, insertable = true, updatable = true, length = 100)
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Basic
+    @Column(name = "builderName", nullable = true, insertable = true, updatable = true, length = 100)
+    public String getBuilderName() {
+        return builderName;
+    }
+
+    public void setBuilderName(String builderName) {
+        this.builderName = builderName;
+    }
+
+    @Basic
+    @Column(name = "projectName", nullable = true, insertable = true, updatable = true, length = 100)
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     @Basic
@@ -218,6 +160,90 @@ public class Advertisement {
         this.possessionOrAgeId = possessionOrAgeId;
     }
 
+    @Basic
+    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 1000)
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Basic
+    @Column(name = "propertyFeatures", nullable = true, insertable = true, updatable = true, length = 1000)
+    public String getPropertyFeatures() {
+        return propertyFeatures;
+    }
+
+    public void setPropertyFeatures(String propertyFeatures) {
+        this.propertyFeatures = propertyFeatures;
+    }
+
+    @Basic
+    @Column(name = "isTermsAgreed", nullable = true, insertable = true, updatable = true, length = 1)
+    public String getIsTermsAgreed() {
+        return isTermsAgreed;
+    }
+
+    public void setIsTermsAgreed(String isTermsAgreed) {
+        this.isTermsAgreed = isTermsAgreed;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Advertisement that = (Advertisement) o;
+
+        if (address != null ? !address.equals(that.address) : that.address != null) return false;
+        if (builderName != null ? !builderName.equals(that.builderName) : that.builderName != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (isTermsAgreed != null ? !isTermsAgreed.equals(that.isTermsAgreed) : that.isTermsAgreed != null)
+            return false;
+        if (locationId != null ? !locationId.equals(that.locationId) : that.locationId != null) return false;
+        if (planId != null ? !planId.equals(that.planId) : that.planId != null) return false;
+        if (possessionOrAgeId != null ? !possessionOrAgeId.equals(that.possessionOrAgeId) : that.possessionOrAgeId != null)
+            return false;
+        if (possessionStatusId != null ? !possessionStatusId.equals(that.possessionStatusId) : that.possessionStatusId != null)
+            return false;
+        if (projectName != null ? !projectName.equals(that.projectName) : that.projectName != null) return false;
+        if (propertyFeatures != null ? !propertyFeatures.equals(that.propertyFeatures) : that.propertyFeatures != null)
+            return false;
+        if (propertyForTypeId != null ? !propertyForTypeId.equals(that.propertyForTypeId) : that.propertyForTypeId != null)
+            return false;
+        if (propertyOwnershipId != null ? !propertyOwnershipId.equals(that.propertyOwnershipId) : that.propertyOwnershipId != null)
+            return false;
+        if (propertyTypeId != null ? !propertyTypeId.equals(that.propertyTypeId) : that.propertyTypeId != null)
+            return false;
+        if (transactionTypeId != null ? !transactionTypeId.equals(that.transactionTypeId) : that.transactionTypeId != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (planId != null ? planId.hashCode() : 0);
+        result = 31 * result + (propertyForTypeId != null ? propertyForTypeId.hashCode() : 0);
+        result = 31 * result + (propertyTypeId != null ? propertyTypeId.hashCode() : 0);
+        result = 31 * result + (locationId != null ? locationId.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (builderName != null ? builderName.hashCode() : 0);
+        result = 31 * result + (projectName != null ? projectName.hashCode() : 0);
+        result = 31 * result + (transactionTypeId != null ? transactionTypeId.hashCode() : 0);
+        result = 31 * result + (propertyOwnershipId != null ? propertyOwnershipId.hashCode() : 0);
+        result = 31 * result + (possessionStatusId != null ? possessionStatusId.hashCode() : 0);
+        result = 31 * result + (possessionOrAgeId != null ? possessionOrAgeId.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (propertyFeatures != null ? propertyFeatures.hashCode() : 0);
+        result = 31 * result + (isTermsAgreed != null ? isTermsAgreed.hashCode() : 0);
+        return result;
+    }
+
     @ManyToOne
     @JoinColumn(name = "propertyTypeId", referencedColumnName = "id")
     public PropertyType getPropertyTypeByPropertyTypeId() {
@@ -249,6 +275,16 @@ public class Advertisement {
     }
 
     @ManyToOne
+    @JoinColumn(name = "propertyOwnershipId", referencedColumnName = "id")
+    public PropertyOwnershipType getPropertyOwnershipTypeByPropertyOwnershipId() {
+        return propertyOwnershipTypeByPropertyOwnershipId;
+    }
+
+    public void setPropertyOwnershipTypeByPropertyOwnershipId(PropertyOwnershipType propertyOwnershipTypeByPropertyOwnershipId) {
+        this.propertyOwnershipTypeByPropertyOwnershipId = propertyOwnershipTypeByPropertyOwnershipId;
+    }
+
+    @ManyToOne
     @JoinColumn(name = "possessionStatusId", referencedColumnName = "id")
     public PossessionStatus getPossessionStatusByPossessionStatusId() {
         return possessionStatusByPossessionStatusId;
@@ -256,6 +292,26 @@ public class Advertisement {
 
     public void setPossessionStatusByPossessionStatusId(PossessionStatus possessionStatusByPossessionStatusId) {
         this.possessionStatusByPossessionStatusId = possessionStatusByPossessionStatusId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "possessionOrAgeId", referencedColumnName = "id")
+    public PossessionOrAge getPossessionOrAgeByPossessionOrAgeId() {
+        return possessionOrAgeByPossessionOrAgeId;
+    }
+
+    public void setPossessionOrAgeByPossessionOrAgeId(PossessionOrAge possessionOrAgeByPossessionOrAgeId) {
+        this.possessionOrAgeByPossessionOrAgeId = possessionOrAgeByPossessionOrAgeId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "planId", referencedColumnName = "id")
+    public PlanMast getPlanMastByPlanId() {
+        return planMastByPlanId;
+    }
+
+    public void setPlanMastByPlanId(PlanMast planMastByPlanId) {
+        this.planMastByPlanId = planMastByPlanId;
     }
 
     @ManyToOne
@@ -296,31 +352,20 @@ public class Advertisement {
     }
 
     @OneToMany(mappedBy = "advertisementByAdvertisementId")
+    public Collection<PropertyAmenities> getPropertyAmenitiesesById() {
+        return propertyAmenitiesesById;
+    }
+
+    public void setPropertyAmenitiesesById(Collection<PropertyAmenities> propertyAmenitiesesById) {
+        this.propertyAmenitiesesById = propertyAmenitiesesById;
+    }
+
+    @OneToMany(mappedBy = "advertisementByAdvertisementId")
     public Collection<Residential> getResidentialsById() {
         return residentialsById;
     }
 
     public void setResidentialsById(Collection<Residential> residentialsById) {
         this.residentialsById = residentialsById;
-    }
-
-    @Basic
-    @Column(name = "planId", nullable = true, insertable = false, updatable = false)
-    public Long getPlanId() {
-        return planId;
-    }
-
-    public void setPlanId(Long planId) {
-        this.planId = planId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "planId", referencedColumnName = "id")
-    public PlanMast getPlanMastByPlanId() {
-        return planMastByPlanId;
-    }
-
-    public void setPlanMastByPlanId(PlanMast planMastByPlanId) {
-        this.planMastByPlanId = planMastByPlanId;
     }
 }

@@ -39,6 +39,7 @@ public interface IPropertyAdminDAO {
     Advertisement saveAdvertisement(Advertisement advertisement);
     AdvertisementDetails saveAdvertisementDetails(AdvertisementDetails advertisementDetails);
     Residential saveResidential(Residential residential);
+    PropertyAmenities savePropertyAmenities(PropertyAmenities amenities);
 
     Advertisement updateAdvertisement(Advertisement advertisement);
     GalleryImages saveImage(GalleryImages galleryImage);
@@ -61,6 +62,8 @@ public interface IPropertyAdminDAO {
 
     List<PossessionStatus> getPossessionStatus();
     List<Terms> getUTerms();
+    List<AmenitiesCategory> getAmenitiesCategory();
+
 
     <T> T findObjectById(Long id, Class<T> clazz);
 

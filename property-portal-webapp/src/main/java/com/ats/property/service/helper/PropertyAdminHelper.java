@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -176,7 +177,19 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
         PropertyUtils.copyFields(advertisementType, advertisementDetails);
         residential.setAdvertisementByAdvertisementId(advertisement);
         advertisementDetails.setAdvertisementByAdvertisementId(advertisement);
-        AdvertisementType resAdvertisementType = adminService.saveOrUpdateAdvertisement(advertisement, advertisementDetails, residential);
+
+        List<PropertyAmenities> amenitieses = new ArrayList<PropertyAmenities>();
+        if(advertisementType.getPropertyAmenities() != null) {
+            String[] amenities = advertisementType.getPropertyAmenities().split(",");
+            for(String amenity: amenities) {
+                if(amenity != null) {
+                    PropertyAmenities amenityDB = new PropertyAmenities();
+                    amenityDB.setAmenitiesId(Long.parseLong(amenity));
+                    amenitieses.add(amenityDB);
+                }
+            }
+        }
+        AdvertisementType resAdvertisementType = adminService.saveOrUpdateAdvertisement(advertisement, advertisementDetails, residential, amenitieses);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
         ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
         moduleResponseType.setAdvertisement(resAdvertisementType);
@@ -274,5 +287,10 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     @Override
     public boolean searchProperty(SearchType searchType, ModuleList response) {
         return adminService.searchProperty(searchType, response);
+    }
+
+    @Override
+    public boolean getAmenitiesCategory(ModuleList response) {
+        return adminService.getAmenitiesCategory(response);
     }
 }

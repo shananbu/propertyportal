@@ -49,6 +49,7 @@ public interface IPropertyAdminHelper {
     boolean getTermsList(ModuleList response);
 
     boolean searchProperty(SearchType searchType, ModuleList response);
+    boolean getAmenitiesCategory(ModuleList response);
 
 
 }

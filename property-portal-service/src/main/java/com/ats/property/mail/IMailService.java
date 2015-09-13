@@ -8,7 +8,7 @@ package com.ats.property.mail;
 public interface IMailService {
     String FROM_MAIL_ID = "info@1acreindia.com";
     String FROM_MAIL_PASSWORD = "1acreindiainfo@";
-    String MAIL_SERVER = "mail.1acreindia.com";
+    String MAIL_SERVER = "1acreindia.com";
     String SMPTP = "smtp";
 
     String PROP_MAIL_SERVER = "mail.smtp.host";

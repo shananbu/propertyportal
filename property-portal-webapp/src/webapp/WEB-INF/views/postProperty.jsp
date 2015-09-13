@@ -108,7 +108,6 @@
                     </c:forEach>
                 </div>
             </div>
-
         </li>
     </ul>
 </div>
@@ -138,7 +137,11 @@
         </li>
         <li>
             <label>Address</label>
-            <input type="text" placeholder="Locality" name="advertisement.address" class="projectname">
+            <input type="text" placeholder="Address" name="advertisement.address" class="projectname">
+        </li>
+        <li>
+            <label>Company/Builder Name</label>
+            <input type="text" placeholder="Builder Name" name="advertisement.builderName" class="projectname">
         </li>
     </ul>
 </div>
@@ -210,6 +213,24 @@
             </select>
         </li>
     </ul>
+</div>
+<div class="ad_3">
+    <h1>Property Features and Amenities</h1>
+    <c:forEach var="data" items="${response.module[0].moduleResponse.amenitiesCategory}">
+        <nav class="foot_1 soc_link clr_fix">
+            <h3> ${data.name}</h3>
+            <ul>
+                <c:forEach var="innerData" items="${data.amenitiesesById}">
+                    <li>
+                        <input type="checkbox" name="advertisement.propertyAmenities" id="00${innerData.id}"
+                               value="${innerData.id}">
+                         <label for="00${innerData.id}"></label>
+                        ${innerData.name}
+                    </li>
+                </c:forEach>
+            </ul>
+        </nav>
+    </c:forEach>
 </div>
 <div class="ad_3 ">
     <h1>Rent & Other Charges</h1>

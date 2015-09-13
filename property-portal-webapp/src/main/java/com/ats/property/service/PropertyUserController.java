@@ -139,7 +139,7 @@ public class PropertyUserController {
             adminDelegate.getTransactionTypesList(response);
             adminDelegate.getPossessionStatusList(response);
             adminDelegate.getTermsList(response);
-
+            adminDelegate.getAmenitiesCategory(response);
             modelAndView.addObject("response", response);
         } else {
             modelAndView = new ModelAndView("userLogin");
@@ -334,7 +334,8 @@ public class PropertyUserController {
     }
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleAllException() {
+    public ModelAndView handleAllException(Exception ex) {
+        ex.printStackTrace();
         ModelAndView modelAndView = new ModelAndView("genericErrorpage");
         return modelAndView;
     }

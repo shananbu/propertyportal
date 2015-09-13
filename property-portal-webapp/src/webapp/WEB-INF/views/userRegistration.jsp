@@ -65,12 +65,12 @@
               </li>
               <li>
                 <label>Password<small>*</small></label>
-                  <input id="passwrd" name="propertyUser.passwrd" class="txt" type="text" value="" maxlength="30" placeholder="Password">
+                  <input id="passwrd" name="propertyUser.passwrd" class="txt" type="password" value="" maxlength="30" placeholder="Password">
                 <small>[ Password only consists of a-z, 0-9, (_) ] [ Min. 6 char and Max. 12 char ]</small>
               </li>
                 <li>
                     <label>Confirm Password<small>*</small></label>
-                    <input id="cpasswrd" name="cpasswrd" class="txt" type="text" value="" maxlength="30" placeholder="Confirm Password">
+                    <input id="cpasswrd" name="cpasswrd" class="txt" type="password" value="" maxlength="30" placeholder="Confirm Password">
                 </li>
 
               <li class="mobile_drop">

@@ -11,8 +11,8 @@ create table StatusMast (
   constraint pk7 primary key(id)
 );
 
--- insert into StatusMast values('1','Active','USER');
--- insert into StatusMast values('2','InActive','USER');
+insert into StatusMast values('1','Active','USER');
+insert into StatusMast values('2','InActive','USER');
 
 -- drop table UserType
 create table UserType (
@@ -21,11 +21,10 @@ create table UserType (
   shortName varchar(50),
   constraint pk8 primary key(id)
 );
--- -- ALTER TABLE UserType ADD shortName VARCHAR(60) AFTER name;
 
--- insert into UserType values('1','Individuals Property Owners', 'Owner ');
--- insert into UserType values('2','Brokers, Agents and Consultants', 'Agent ');
--- insert into UserType values('3','Builders', 'Builder');
+insert into UserType values('1','Individuals Property Owners', 'Owner ');
+insert into UserType values('2','Brokers, Agents and Consultants', 'Agent ');
+insert into UserType values('3','Builders', 'Builder');
 
 -- drop table Country;
 create table Country (
@@ -33,7 +32,7 @@ create table Country (
   name varchar(25),
   constraint pk1 primary key(id)
 );
--- insert into Country (name) values('India');
+insert into Country (name) values('India');
 
 -- drop table State;
 create table State (
@@ -78,12 +77,15 @@ insert into State (name, countryId) values ('West Bengal', 1);
 create table City (
   id bigint auto_increment,
   name varchar(25),
-  stateId bigint,
+  state
   isPopular boolean,
   constraint pk3 primary key(id),
   constraint fk2 foreign key (stateId) references State(id)
 );
--- -- ALTER TABLE City ADD isPopular boolean;
+
+insert into City (name, stateId, isPopular) values ('Chennai', 24, 1);
+insert into City (name, stateId, isPopular) values ('Madurai', 24, 1);
+insert into City (name, stateId, isPopular) values ('Trichy', 24, 1);
 
 -- drop table Locations;
 create table Locations (
@@ -93,6 +95,17 @@ create table Locations (
   constraint pk4 primary key(id),
   constraint fk3 foreign key (cityId) references City(id)
 );
+
+insert into Locations (name, cityId) values ('Adyar', 1);
+insert into Locations (name, cityId) values ('Chrompet', 1);
+insert into Locations (name, cityId) values ('Guindy', 1);
+
+insert into Locations (name, cityId) values ('Palakarai', 2);
+insert into Locations (name, cityId) values ('Teppakulam', 2);
+insert into Locations (name, cityId) values ('Srirangam', 2);
+
+insert into Locations (name, cityId) values ('Tirumangalam', 3);
+insert into Locations (name, cityId) values ('Madurai West', 3);
 
 -- drop table AdminLogin
 create table AdminLogin (
@@ -124,11 +137,22 @@ create table PlanMast (
   constraint fk5 foreign key (userTypeId) references UserType(id)
 );
 
+INSERT INTO PlanMast (name, cost, numberOfImages, userTypeId, description, validDays, createdDate) VALUES
+('Free', 0, 3, 1, '{days} days preferential visibility in search results.\r\nAdd multiple photos (max {maxphoto}).\r\nPlan cost Rs. {plancost}/-. ', '30', NULL),
+('Silver Pack', 300, 3, 1, '{days} days preferential visibility in search results.\r\nAdd multiple photos (max {maxphoto}).\r\nPlan cost Rs. {plancost}/-. ', '30', NULL),
+('Gold Pack', 500, 5, 1, '{days} days preferential visibility in search results.\r\nAdd multiple photos (max {maxphoto}).\r\nPlan cost Rs. {plancost}/-. ', '60', NULL),
+('Platinum Pack', 750, 10, 1, '{days} days preferential visibility in search results.\r\nAdd multiple photos (max {maxphoto}).\r\nPlan cost Rs. {plancost}/-. ', '90', NULL),
+('Basic', 6000, 10, 3, '{days} days preferential visibility in search results.\r\nAdd multiple photos (max {maxphoto}).\r\nPlan cost Rs. {plancost}/-. ', '90', NULL),
+('Premium', 10000, 20, 3, '{days} days preferential visibility in search results.\r\nAdd multiple photos (max {maxphoto}).\r\nPlan cost Rs. {plancost}/-. ', '180', NULL);
+
+
 -- drop table PropertyUser
 create table PropertyUser (
   id bigint auto_increment,
   userTypeId bigint,
   firstName varchar(50),
+  lastName varchar(50),
+  builderName varchar(100),
   emailId varchar(25),
   cityId bigint,
   phone varchar(25),
@@ -159,19 +183,19 @@ create table PropertyType (
   constraint fk8 foreign key (propertyMainTypeId) references PropertyMainType(id)
 );
 
--- insert into PropertyType (name, propertyMainTypeId) values('Flat', 1);
--- insert into PropertyType (name, propertyMainTypeId) values('House/Villa', 1);
--- insert into PropertyType (name, propertyMainTypeId) values('Plot', 1);
+insert into PropertyType (name, propertyMainTypeId) values('Flat', 1);
+insert into PropertyType (name, propertyMainTypeId) values('House/Villa', 1);
+insert into PropertyType (name, propertyMainTypeId) values('Plot', 1);
 
--- insert into PropertyType (name, propertyMainTypeId) values('Office Space', 2);
--- insert into PropertyType (name, propertyMainTypeId) values('Shop/Showroom', 2);
--- insert into PropertyType (name, propertyMainTypeId) values('Commercial Land', 2);
--- insert into PropertyType (name, propertyMainTypeId) values('Warehouse/ Godown', 2);
--- insert into PropertyType (name, propertyMainTypeId) values('Industrial Building', 2);
--- insert into PropertyType (name, propertyMainTypeId) values('Industrial Shed', 2);
+insert into PropertyType (name, propertyMainTypeId) values('Office Space', 2);
+insert into PropertyType (name, propertyMainTypeId) values('Shop/Showroom', 2);
+insert into PropertyType (name, propertyMainTypeId) values('Commercial Land', 2);
+insert into PropertyType (name, propertyMainTypeId) values('Warehouse/ Godown', 2);
+insert into PropertyType (name, propertyMainTypeId) values('Industrial Building', 2);
+insert into PropertyType (name, propertyMainTypeId) values('Industrial Shed', 2);
 
--- insert into PropertyType (name, propertyMainTypeId) values('Agricultural Land', 3);
--- insert into PropertyType (name, propertyMainTypeId) values('Farm House', 3);
+insert into PropertyType (name, propertyMainTypeId) values('Agricultural Land', 3);
+insert into PropertyType (name, propertyMainTypeId) values('Farm House', 3);
 
 
 create table Budget (
@@ -183,16 +207,16 @@ create table Budget (
   constraint pk10 primary key(id)
 );
 
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('Below 5 Lac', 0, 500000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('5 - 10 Lac',500001,1000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('10 - 20 Lac',1000001,2000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('20 - 30 Lac',2000001,3000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('30 - 40 Lac',3000001,4000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('40 - 50 Lac',4000001,5000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('50 - 60 Lac',5000001,6000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('60 - 70 Lac',6000001,7000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('70 - 80 Lac',7000001,8000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('80 - 90 Lac',8000001,9000000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal) values ('Below 5 Lakhs', 0, 500000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal) values ('5 - 10 Lakhs',500001,1000000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal) values ('10 - 20 Lakhs',1000001,2000000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal) values ('20 - 30 Lakhs',2000001,3000000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal) values ('30 - 40 Lakhs',3000001,4000000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal) values ('40 - 50 Lakhs',4000001,5000000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal) values ('50 - 60 Lakhs',5000001,6000000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal) values ('60 - 70 Lakhs',6000001,7000000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal) values ('70 - 80 Lakhs',7000001,8000000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal) values ('80 - 90 Lakhs',8000001,9000000,'INR');
 insert into Budget (name, fromlevel, tolevel, currencyVal) values ('90 - 1 Cr',9000001,10000000,'INR');
 
 insert into Budget (name, fromlevel, tolevel, currencyVal) values ('1 - 1.2 Cr',10000001,12000000,'INR');
@@ -216,7 +240,6 @@ insert into Budget (name, fromlevel, tolevel, currencyVal) values ('4.4 - 4.6 Cr
 insert into Budget (name, fromlevel, tolevel, currencyVal) values ('4.6 - 4.8 Cr',46000001,48000000,'INR');
 insert into Budget (name, fromlevel, tolevel, currencyVal) values ('4.8 - 5 Cr',48000001,50000000,'INR');
 insert into Budget  (name, fromlevel, tolevel, currencyVal) values ('> 5 Cr',50000000,-1,'INR');
-
 
 create table Bedroom (
   id bigint auto_increment,
@@ -256,8 +279,7 @@ create table PropertyForType (
 
 insert into PropertyForType (nameForPoster, nameForFinder) values('Sell', 'Buy');
 insert into PropertyForType (nameForPoster, nameForFinder) values('Rent', 'Rent');
-insert into PropertyForType (nameForPoster, nameForFinder) values('PG Accommodation', 'PG Accommodation');
---update PropertyForType set nameForPoster = 'PG Accommodation' , nameForFinder='PG Accommodation'  where id = 3;
+
 
 create table Bathroom (
   id bigint auto_increment,
@@ -298,8 +320,6 @@ create table TotalFloors(
   constraint pk16 primary key(id)
 );
 
-insert into TotalFloors (name, floors) values ('Lower Basement', -2);
-insert into TotalFloors (name, floors) values ('Upper Basement', -1);
 insert into TotalFloors (name, floors) values ('Ground', 1);
 insert into TotalFloors (name, floors) values ('1', 1);
 insert into TotalFloors (name, floors) values ('2', 2);
@@ -348,13 +368,12 @@ create table Terms (
   constraint pk20 primary key(id)
 );
 insert into Terms (name) values('Monthly');
-insert into Terms (name) values('Quartely');
+insert into Terms (name) values('Quarterly');
 insert into Terms (name) values('Yearly');
 insert into Terms (name) values('One-Time');
 insert into Terms (name) values('Per sq. Unit Monthly');
 
 ---------------------------------------------created on 29 AUG 2015-----------------------------------------------------
-
 
 create table PropertyOwnershipType (
 	id bigint auto_increment,
@@ -400,6 +419,7 @@ insert into ImageType (name) values('KITCHEN');
 insert into ImageType (name) values('FLOOR_PLAN');
 insert into ImageType (name) values('MASTER_PLAN');
 insert into ImageType (name) values('LOCATION_MAP');
+insert into ImageType (name) values('LOGO');
 insert into ImageType (name) values('OTHERS');
 
 create table FacingMast (
@@ -420,6 +440,7 @@ create table Advertisement (
 	propertyTypeId bigint,
 	locationId bigint,
 	address varchar(100),
+  builderName varchar(100),
 	projectName varchar(100),
 	transactionTypeId bigint,
 	propertyOwnershipId bigint,
@@ -512,6 +533,64 @@ create table GalleryImages (
 	constraint pk29 primary key(id),
 	constraint fk32 foreign key (advertisementId) references Advertisement(id),
 	constraint fk33 foreign key (imageTypeId) references ImageType(id)
+);
+
+
+create table AmenitiesCategory (
+	id bigint auto_increment,
+	name varchar(50),
+	displayOrder int,
+	constraint pk31 primary key(id)
+);
+
+insert into AmenitiesCategory (name, displayOrder) values ('Property Feature', 1);
+insert into AmenitiesCategory (name, displayOrder) values ('Society/Building Feature', 2);
+insert into AmenitiesCategory (name, displayOrder) values ('Other Features', 3);
+
+create table Amenities (
+	id bigint auto_increment,
+	amenitiesCategoryId bigint,
+	name varchar(50),
+	displayOrder int,
+	constraint pk32 primary key(id),
+	constraint fk34 foreign key (amenitiesCategoryId) references AmenitiesCategory(id)
+);
+
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (1,'Power Back-up',1);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (1,'Security / Fire Alarm',2);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (1,'Centrally Air Conditioned',3);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (1,'Private Garden / Terrace',4);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (1,'Vastu Compliant',5);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (1,'Intercom Facility',6);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (1,'Water Storage',7);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (1,'Piped-gas',8);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (1,'Internet/Wi-Fi connectivity',9);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (1,'Water purifier',10);
+
+
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (2,'Visitor Parking',1);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (2,'Swimming Pool',2);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (2,'Lift(s)',3);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (2,'Park',4);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (2,'Fitness Centre / GYM',5);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (2,'Club house / Community Center',6);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (2,'Security Personnel',7);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (2,'Maintenance Staff',8);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (2,'Water softening plant',9);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (2,'Shopping Centre',10);
+
+
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (3,'Waste Disposal',1);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (3,'Rain Water Harvesting',2);
+insert into Amenities (amenitiesCategoryId, name, displayOrder) values (3,'Bank Attached Property',3);
+
+create table PropertyAmenities (
+ 	id bigint auto_increment,
+ 	advertisementId bigint,
+	amenitiesId bigint,
+	constraint pk33 primary key(id),
+  constraint fk35 foreign key (advertisementId) references Advertisement(id),
+  constraint fk36 foreign key (amenitiesId) references Amenities(id)
 );
 
 -- drop table GalleryImages;
