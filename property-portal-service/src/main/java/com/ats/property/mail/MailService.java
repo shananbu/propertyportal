@@ -60,7 +60,7 @@ public class MailService implements IMailService {
     }
 
     private Session getSession() {
-        Properties props = new Properties();
+        Properties props = System.getProperties();
         props.put(PROP_MAIL_SERVER, MAIL_SERVER);
         props.put(PROP_MAIL_AUTH, PROP_MAIL_AUTH_VALUE);
         return Session.getDefaultInstance(props, new MailAuthenticator());

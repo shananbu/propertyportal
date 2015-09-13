@@ -20,16 +20,16 @@ public class CustomLogoutHandler extends SimpleUrlLogoutSuccessHandler {
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         String userTargetUrl = "/";
         String adminTargetUrl = "/admin";
-        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-        if (roles.contains("ROLE_ADMIN")) {
-            getRedirectStrategy().sendRedirect(request, response, adminTargetUrl);
-        } else if (roles.contains("ROLE_USER")) {
-            getRedirectStrategy().sendRedirect(request, response, userTargetUrl);
-        } else {
-            super.onLogoutSuccess(request, response, authentication);
-            return;
+        if(authentication != null && authentication.getAuthorities() != null) {
+            Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+            if (roles.contains("ROLE_ADMIN")) {
+                getRedirectStrategy().sendRedirect(request, response, adminTargetUrl);
+            } else if (roles.contains("ROLE_USER")) {
+                getRedirectStrategy().sendRedirect(request, response, userTargetUrl);
+            } else {
+                super.onLogoutSuccess(request, response, authentication);
+                return;
+            }
         }
-
-
     }
 }
