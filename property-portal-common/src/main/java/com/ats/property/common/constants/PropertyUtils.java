@@ -10,6 +10,14 @@ import java.util.Map;
  * @author anbarasan.s
  */
 public class PropertyUtils {
+
+    static public boolean isNull(Object obj) {
+        return obj == null;
+    }
+    static public boolean isNotNull(Object obj) {
+        return obj != null;
+    }
+
     public static <T extends Object, Y extends Object> void copyFields(T from, Y too) {
 
         Class<? extends Object> fromClass = from.getClass();

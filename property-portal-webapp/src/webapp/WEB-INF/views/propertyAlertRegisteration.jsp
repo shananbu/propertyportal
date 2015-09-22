@@ -130,10 +130,10 @@
                                     <small>*</small>
                                 </label>
                 <span>
-                <input type="radio" id="radio_5" name="1">
+                <input type="radio" id="radio_5" name="1" data-modal="modal-11" class="md-trigger">
                 <label for="radio_5"></label>
                 Existing User </span> <span>
-                <input type="radio" id="radio_6" name="1">
+                <input type="radio" id="radio_6" name="1" data-modal="modal-10" class="md-trigger">
                 <label for="radio_6"></label>
                 New User </span></li>
                             <li>
@@ -157,6 +157,103 @@
                 </section>
             </section>
         </div>
+        <!-- registe pop up start -->
+
+        <div class="md-modal md-effect-10" id="modal-10">
+            <div class="md-content pop_up_reg">
+                <h1 class="h_2">New User Registration</h1>
+                <i class="fa fa-times-circle md-close"></i>
+                <div class="user_register jq_chk">
+                    <ul>
+                        <li>
+                            <label>User Type<small>*</small></label>
+                <span>
+                <input type="radio" name="1" id="radio_1">
+                <label for="radio_1"></label>
+                Owner </span> <span>
+                <input type="radio" name="1" id="radio_2">
+                <label for="radio_2"></label>
+                Agent </span> <span>
+                <input type="radio" name="1" id="radio_3">
+                <label for="radio_3"></label>
+                Builder </span> </li>
+                        <li>
+                            <label>Builder/Company Name<small>*</small></label>
+                            <input type="text" placeholder="first name">
+                        </li>
+                        <li>
+                            <label>First Name<small>*</small></label>
+                            <input type="text" placeholder="Email">
+                        </li>
+                        <li>
+                            <label>Last Name<small>*</small></label>
+                            <input type="Password" placeholder="Password">
+
+                        <li>
+                            <label>Password<small>*</small></label>
+                            <select class="dropdown">
+                                <option>-- select your city --</option>
+                                <option>chennai</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>Confirm Password<small>*</small></label>
+                            <input type="Password" placeholder="Password">
+                        </li>
+
+                        <li class="mobile_drop">
+                            <label>Mobile<small>*</small></label>
+                            <select class="dropdown">
+                                <option>IND +91</option>
+                                <option>IND +91</option>
+                            </select>
+                            <input type="text" placeholder="mobile no">
+                        </li>
+
+                        <li>
+                            <p>
+                                <input type="checkbox" id="check_1">
+                                <label for="check_1"></label>
+                                I agree to MagicBricks' Terms of Use. I would like to receive property related communication through Email, Call or SMS. </p>
+                        </li>
+                        <li>
+                            <input type="button" class="btn_5" value="Register Now">
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="md-modal md-effect-10" id="modal-11">
+            <div class="md-content pop_up_reg">
+                <h1 class="h_2">New User Registration</h1>
+                <i class="fa fa-times-circle md-close"></i>
+                <div class="user_register jq_chk">
+                    <ul>
+
+
+                        <li>
+                            <label>Email - Id<small>*</small></label>
+                            <input type="text" placeholder="Email">
+                        </li>
+                        <li>
+                            <label>Password<small>*</small></label>
+                            <input type="Password" placeholder="Password">
+
+
+                        <li>
+                            <input type="button" class="btn_5" value="Login">
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="md-overlay"></div>
+
+        <!-- registe pop up end -->
     </section>
     <!-- footer start -->
     <footer class="clr_fix foot_main">
@@ -206,6 +303,10 @@
     <!-- forget password end -->
 </main>
 <!--script start-->
+<!-- pop up js start -->
+<script src="js/classie.js"></script>
+<script src="js/modalEffects.js"></script>
+<!-- pop up js end -->
 <!-- tab script start-->
 <script type="text/javascript">
     $(document).ready(function () {

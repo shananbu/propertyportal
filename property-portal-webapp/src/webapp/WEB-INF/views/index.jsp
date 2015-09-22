@@ -68,8 +68,8 @@
                         <c:forEach var="innerData" items="${data.propertyTypesById}">
                             <li>
                             <span class="jq_chk">
-                                <input type="checkbox" id="${innerData.id}" value="${innerData.id}" name="search.propertyTypeId">
-                                 <label for="${innerData.id}"></label>
+                                <input type="checkbox" id="0${innerData.id}" value="${innerData.id}" name="search.propertyTypeId">
+                                 <label for="0${innerData.id}"></label>
                             </span>  ${innerData.name}
                             </li>
                         </c:forEach>
@@ -130,8 +130,8 @@
                         <c:forEach var="innerData" items="${data.propertyTypesById}">
                             <li>
                             <span class="jq_chk">
-                                <input type="checkbox" id="${innerData.id}">
-                                 <label for="${innerData.id}"></label>
+                                 <input type="checkbox" id="00${innerData.id}" value="${innerData.id}" name="search.propertyTypeId">
+                                 <label for="00${innerData.id}"></label>
                             </span>  ${innerData.name}
                             </li>
                         </c:forEach>
@@ -194,8 +194,8 @@
                         <c:forEach var="innerData" items="${data.propertyTypesById}">
                             <li>
                             <span class="jq_chk">
-                                <input type="checkbox" id="${innerData.id}">
-                                 <label for="${innerData.id}"></label>
+                                 <input type="checkbox" id="000${innerData.id}" value="${innerData.id}" name="search.propertyTypeId">
+                                 <label for="000${innerData.id}"></label>
                             </span>  ${innerData.name}
                             </li>
                         </c:forEach>

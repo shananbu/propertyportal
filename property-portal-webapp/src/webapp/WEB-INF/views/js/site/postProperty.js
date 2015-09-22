@@ -30,4 +30,20 @@ $(document).ready(function(){
             // $('#drpDwnCity').addClass("dropdown");
         });
     });
+
+    $("#denominationLakhs").change(function() {
+        $("#expectedPrice").val(calculateAmount());
+    });
+
+    $("#denominationThousands").change(function() {
+        $("#expectedPrice").val(calculateAmount());
+    });
+
+    $("#denominationHundreds").change(function() {
+        $("#expectedPrice").val(calculateAmount());
+    });
+
+    function calculateAmount() {
+        return  $("#denominationLakhs").val() +  $("#denominationThousands").val() + $("#denominationHundreds").val();
+     }
 });

@@ -1851,7 +1851,7 @@ footer li a:hover {
 }
 .ad_post > div > ul > li {
 	display: block;
-	padding-top: 30px;
+	padding-top: 20px;
 }
 .ad_post > div > ul > li:first-child {
 	padding-top: 0px;
@@ -2289,7 +2289,7 @@ footer li a:hover {
 }
 .cont_adver > a i {
 	display: inline-block;
-	vertical-align: middlel;
+	vertical-align: middle;
 	margin-right: 5px;
 	font-size: 18px;
 	color: #636466;
@@ -3865,4 +3865,165 @@ select {
 
 .aminities_list {
     padding: 40px;
+}
+
+
+/* property features */
+.pro_feat li div{
+	display:inline-block;
+	margin:0px 25px 25px 0px;
+	vertical-align:middle;	
+}
+
+.pro_feat li div select{
+	width:auto !important;
+}
+.pro_feat li div:first-child{
+	margin-left:0px;
+
+}
+.pro_feat li input[type="text"]{
+	margin-right: 7px;
+    width: 120px;
+}
+
+
+.pro_chk_list > nav{
+	float:left;
+	margin-right:10px;
+margin-left:5%;	
+}
+.pro_chk_list > nav  > h3{
+	border-bottom: 1px solid #b1b3b6;
+    font-size: 14px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.pro_chk_list > nav  li{
+	display:block;
+	padding:5px 0px;
+	
+}
+
+.pro_desc textarea{width:40%; vertical-align:middle; margin-right:10px;}
+.pro_desc li > b{margin:0 10px;}
+.pro_desc input[type="text"]{width:40%;}
+
+
+.ad_post .appendGrid{
+	margin-left:5%;
+}
+
+.ad_post textarea{vertical-align;}
+
+
+
+
+
+/*pop up style*/
+.md-perspective, .md-perspective body {
+	height: 100%;
+	overflow: hidden;
+}
+.md-perspective body {
+	background: #222;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
+}
+.container {
+	background: #e74c3c;
+	min-height: 100%;
+}
+.md-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: auto;
+	max-width: 630px;
+	min-width: auto;
+	height: auto;
+	z-index: 2000;
+	visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+
+}
+.md-show {
+	visibility: visible;
+}
+.md-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	opacity: 0;
+	background: rgba(0,0,0,0.8);
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.md-show ~ .md-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+
+/* Effect 10: 3D sign */
+.md-effect-10.md-modal {
+	-webkit-perspective: 1300px;
+	-moz-perspective: 1300px;
+	perspective: 1300px;
+}
+.md-effect-10 .md-content {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: rotateX(-60deg);
+	-moz-transform: rotateX(-60deg);
+	-ms-transform: rotateX(-60deg);
+	transform: rotateX(-60deg);
+	-webkit-transform-origin: 50% 0;
+	-moz-transform-origin: 50% 0;
+	transform-origin: 50% 0;
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.md-show.md-effect-10 .md-content {
+	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	-ms-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+	opacity: 1;
+}
+.md-content{
+		background:#fff;
+	padding:10px;
+	border-radius:10px;
+}
+.md-content .h_2{
+	position:relative;
+}
+.md-close{
+	  color: #468a23;
+    cursor: pointer;
+    font-size: 21px !important;
+    position: absolute;
+    right: 11px;
+    top: 12px;
+}
+
+.pop_up_reg .user_register > ul > li > label{
+	min-width: 161px;
 }

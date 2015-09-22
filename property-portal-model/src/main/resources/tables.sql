@@ -446,8 +446,8 @@ create table Advertisement (
 	propertyOwnershipId bigint,
 	possessionStatusId bigint,
 	possessionOrAgeId bigint,
-	description varchar(1000),
-	propertyFeatures varchar(1000),
+	description varchar(5000),
+	propertyFeatures varchar(5000),
 	isTermsAgreed varchar(1),
 	constraint pk25 primary key(id),
   constraint fk334 foreign key (planId) references PlanMast(id),
@@ -592,6 +592,25 @@ create table PropertyAmenities (
   constraint fk35 foreign key (advertisementId) references Advertisement(id),
   constraint fk36 foreign key (amenitiesId) references Amenities(id)
 );
+
+create table PropertyRequirements (
+ 	id bigint auto_increment,
+ 	propertyForTypeId bigint,
+	locationId bigint,
+	buildupAreaFrom double,
+	buildupAreaTo double,
+	buildupAreaUnitId bigint,
+	budgetId bigint,
+	alertFrequency bigint,
+	registeredDate date,
+	isActive int,
+	constraint pk34 primary key(id),
+ 	constraint fk37 foreign key (propertyForTypeId) references PropertyForType(id),
+	constraint fk38 foreign key (locationId) references Locations(id),
+	  constraint fk30 foreign key (bedRoomId) references Bedroom(id),
+
+);
+
 
 -- drop table GalleryImages;
 -- drop table MorePropertyDetails;

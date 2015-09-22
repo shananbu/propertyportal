@@ -33,7 +33,6 @@
 
             // Initialize appendGrid
             $('#tblAppendGrid').appendGrid({
-                caption: 'More Properties',
                 initRows: 1,
                 maxRowsAllowed : 10,
                 columns: [
@@ -231,59 +230,10 @@
                 </span> I am not interested in getting response from brokers </li>
     </ul>
 </div>
-<div class="unit_left clr_fix">
-    <div class="box_shadow">
-      <%--  <table width="100%" cellspacing="0" cellpadding="0">
-            <thead>
-            <tr>
-                <td> Type </td>
-                <td> Area (SQ.FT) </td>
-                <td> Rate (Per sq.ft) </td>
-                <td> Total Cost </td>
-                <td> Floor Plan </td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td> 1bhk </td>
-                <td> 65 </td>
-                <td> Rs.6250 </td>
-                <td> Rs.458.20 </td>
-                <td><a href="#">click to view</a></td>
-            </tr>
-            <tr>
-                <td> 1bhk </td>
-                <td> 65 </td>
-                <td> Rs.6250 </td>
-                <td> Rs.458.20 </td>
-                <td><a href="#">click to view</a></td>
-            </tr>
-            <tr>
-                <td> 1bhk </td>
-                <td> 65 </td>
-                <td> Rs.6250 </td>
-                <td> Rs.458.20 </td>
-                <td><a href="#">click to view</a></td>
-            </tr>
-            <tr>
-                <td> 1bhk </td>
-                <td> 65 </td>
-                <td> Rs.6250 </td>
-                <td> Rs.458.20 </td>
-                <td><a href="#">click to view</a></td>
-            </tr>
-            <tr>
-                <td> 1bhk </td>
-                <td> 65 </td>
-                <td> Rs.6250 </td>
-                <td> Rs.458.20 </td>
-                <td><a href="#">click to view</a></td>
-            </tr>
-            </tbody>
-        </table>--%>
-         More properties: <table id="tblAppendGrid">
-          </table>
-    </div>
+<div class="unit_left clr_fix appen_grid">
+    <h1>More properties </h1>
+    <table id="tblAppendGrid">
+    </table>
 </div>
 <div class="ad_3">
     <h1>Property Description</h1>

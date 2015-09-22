@@ -145,20 +145,18 @@
         </li>
     </ul>
 </div>
-<div class="ad_3">
+
+<div class="pro_feat">
     <h1>Property Features</h1>
     <ul>
-
         <li class="col_2_text">
             <label>Builtup Area</label>
-            <span><input type="text" placeholder="Buildup Area" name="advertisement.buildupArea"></span>
-            <span>
+            <input type="text" placeholder="Buildup Area" name="advertisement.buildupArea">
             <select class="dropdown" name="advertisement.buildupAreaUnitId">
                 <c:forEach var="data" items="${response.module[0].moduleResponse.units}">
                     <option value="${data.id}">${data.name}</option>
                 </c:forEach>
             </select>
-           </span>
         </li>
         <li class="list_3">
             <label> Bed Rooms</label>
@@ -167,8 +165,7 @@
                     <option value="${data.id}">${data.name}</option>
                 </c:forEach>
             </select>
-        </li>
-        <li class="list_3">
+
             <label> Bath Rooms</label>
             <select  placeholder="Select Bath Rooms" class="dropdown" name="advertisement.bathRoomId">
                 <c:forEach var="data" items="${response.module[0].moduleResponse.bathrooms}">
@@ -184,8 +181,7 @@
                     <option value="${data.id}">${data.name}</option>
                 </c:forEach>
             </select>
-        </li>
-        <li>
+
             <label>Balconies</label>
             <select class="dropdown" name="advertisement.balconyId">
                 <option value="-1">--Select--</option>
@@ -202,8 +198,7 @@
                     <option value="${data.id}">${data.name}</option>
                 </c:forEach>
             </select>
-        </li>
-        <li>
+
             <label>Total Floors</label>
             <select class="dropdown" name="advertisement.totalFloor">
                 <option value="-1">--Select--</option>
@@ -214,18 +209,16 @@
         </li>
     </ul>
 </div>
-<div class="ad_3">
+<div class="pro_chk_list">
     <h1>Property Features and Amenities</h1>
     <c:forEach var="data" items="${response.module[0].moduleResponse.amenitiesCategory}">
-        <nav class="foot_1 soc_link clr_fix">
+        <nav>
             <h3> ${data.name}</h3>
             <ul>
                 <c:forEach var="innerData" items="${data.amenitiesesById}">
                     <li>
-                        <input type="checkbox" name="advertisement.propertyAmenities" id="00${innerData.id}"
-                               value="${innerData.id}">
-                         <label for="00${innerData.id}"></label>
-                        ${innerData.name}
+                        <input type="checkbox" name="advertisement.propertyAmenities" id="00${innerData.id}" value="${innerData.id}">
+                        <label for="00${innerData.id}"></label>${innerData.name}
                     </li>
                 </c:forEach>
             </ul>
@@ -239,7 +232,7 @@
             <label>Expected Rent </label>
                 <span>
                 <label> Lakhs </label>
-                Rs.<select class="dropdown">
+                Rs.<select class="dropdown" id="denominationLakhs">
                     <option value="-1">Select</option>
                     <c:forEach begin="1" end="99" var="val">
                         <option value="${val}">${val}</option>
@@ -247,7 +240,7 @@
                 </select>
                 </span> <span>
                 <label> Thousands </label>
-                <select class="dropdown">
+                <select class="dropdown" id="denominationThousands">
                     <option value="-1">Select</option>
                     <c:forEach begin="1" end="99" var="val">
                         <option value="${val}">${val}</option>
@@ -255,14 +248,16 @@
                 </select>
                 </span> <span>
                 <label> Hundreds </label>
-                <select class="dropdown">
+                <select class="dropdown" id="denominationHundreds">
                     <option value="-1">Select</option>
                     <c:forEach begin="1" end="9" var="val">
                         <option value="${val}">${val}</option>
                     </c:forEach>
                 </select>
-                </span> <span> Or
-                <input type="text" placeholder="Enter price" name="advertisement.expectedPrice">
+                </span> <span>
+                <label> &nbsp;</label>
+                Or
+                <input type="text" placeholder="Enter price" name="advertisement.expectedPrice" id="expectedPrice">
                 </span> </li>
                 <li class="col_2_text">
                     <label>Maintanance Charges</label>
@@ -287,7 +282,7 @@
                 </span> I am not interested in getting response from brokers </li>
     </ul>
 </div>
-<div class="ad_3">
+<div class="pro_desc">
     <h1>Property Description</h1>
     <ul>
         <li>
@@ -297,11 +292,12 @@
         <li>
             <label>Description</label>
             <textarea name="advertisement.description" cols="80" rows="6"></textarea>
+            <b>OR</b>Upload PDF/Excel file<input type="file">
         </li>
         <li>
             <label>Specification</label>
-            <textarea name="advertisement.propertyFeatures" cols="80" rows="6"></textarea><br>
-            OR Upload PDF file<input type="file">
+            <textarea name="advertisement.propertyFeatures" cols="80" rows="6"></textarea>
+            <b>OR</b>Upload PDF/Excel file<input type="file">
         </li>
     </ul>
 </div>
