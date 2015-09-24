@@ -1,5 +1,6 @@
 package com.ats.property.dao;
 
+import com.ats.property.dto.AlertRegistration;
 import com.ats.property.dto.SearchType;
 import com.ats.property.dto.StatusType;
 import com.ats.property.model.*;
@@ -473,5 +474,10 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         }
 
         return searchCriteria.list();
+    }
+
+    @Override
+    public PropertyRequirement saveAlert(PropertyRequirement requirement) {
+        return (PropertyRequirement)persist(requirement);
     }
 }

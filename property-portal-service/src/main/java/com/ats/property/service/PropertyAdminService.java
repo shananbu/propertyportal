@@ -598,4 +598,11 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         }
         return true;
     }
+
+    @Override
+    public PropertyRequirement saveAlert(PropertyRequirement requirement) {
+        requirement.setBudgetByBudgetId(adminDAO.findObjectById(requirement.getBudgetId(), Budget.class));
+        adminDAO.saveAlert(requirement);
+        return null;
+    }
 }

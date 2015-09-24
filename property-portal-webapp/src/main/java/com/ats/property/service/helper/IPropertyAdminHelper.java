@@ -51,5 +51,7 @@ public interface IPropertyAdminHelper {
     boolean searchProperty(SearchType searchType, ModuleList response);
     boolean getAmenitiesCategory(ModuleList response);
 
+    boolean saveAlert(AlertRegistrationType alertType, ModuleList response);
+
 
 }

@@ -47,4 +47,6 @@ public interface IPropertyAdminDelegate {
 
     boolean searchProperty(ModuleRequestType moduleRequest, ModuleList response);
     boolean getAmenitiesCategory(ModuleList response);
+
+    boolean saveAlert(ModuleRequestType moduleRequest, ModuleList response);
 }

@@ -293,4 +293,12 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     public boolean getAmenitiesCategory(ModuleList response) {
         return adminService.getAmenitiesCategory(response);
     }
+
+    @Override
+    public boolean saveAlert(AlertRegistrationType alertType, ModuleList response) {
+        PropertyRequirement alert = new PropertyRequirement();
+        PropertyUtils.copyFields(alertType, alert);
+        adminService.saveAlert(alert);
+        return true;
+    }
 }

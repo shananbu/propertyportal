@@ -167,19 +167,18 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="alertRegistration">
+    <xs:complexType name="alertRegistrationType">
         <xs:sequence>
             <xs:element name="id" type="xs:long" minOccurs="0"/>
-            <xs:element name="projectName" type="xs:string"/>
-            <xs:element name="galleryImage" type="galleryImageType" maxOccurs = "unbounded"/>
-            <xs:element name="propertyType" type="xs:string" minOccurs = "0"/>
-            <xs:element name="location" type="xs:string"/>
+            <xs:element name="propertyForTypeId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="locations" type="xs:string"/>
             <xs:element name="bedRooms" type="xs:string"/>
-            <xs:element name="startingPrice" type="xs:string"/>
-            <xs:element name="possession" type="xs:string"/>
-            <xs:element name="description" type="xs:string"/>
+            <xs:element name="buildupAreaFrom" type="xs:double" minOccurs = "0"/>
+            <xs:element name="buildupAreaTo" type="xs:double" minOccurs = "0"/>
+            <xs:element name="buildupAreaUnitId" type="xs:long" minOccurs="0"/>
+            <xs:element name="budgetId" type="xs:long" minOccurs="0"/>
+            <xs:element name="alertFrequency" type="xs:long" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
-
 </xs:schema>
 

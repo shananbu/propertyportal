@@ -237,4 +237,13 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     public boolean getAmenitiesCategory(ModuleList response) {
         return adminHelper.getAmenitiesCategory(response);
     }
+
+    @Override
+    public boolean saveAlert(ModuleRequestType moduleRequest, ModuleList response) {
+        AlertRegistrationType alertRegistrationType = null;
+        if(fromNullable(moduleRequest).isPresent()) {
+            alertRegistrationType = moduleRequest.getAlertRegistration();
+        }
+        return adminHelper.saveAlert(alertRegistrationType, response);
+    }
 }

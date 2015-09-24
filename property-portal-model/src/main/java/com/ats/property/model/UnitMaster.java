@@ -1,9 +1,7 @@
 package com.ats.property.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * The UnitMaster.
@@ -14,6 +12,10 @@ import javax.persistence.Id;
 public class UnitMaster {
     private Long id;
     private String name;
+    private Collection<MorePropertyDetails> morePropertyDetailsesById;
+    private Collection<PropertyRequirement> propertyRequirementsById;
+    private Collection<AdvertisementDetails> advertisementDetailsesById;
+
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -53,5 +55,32 @@ public class UnitMaster {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "unitMasterByBuildupAreaUnitId")
+    public Collection<AdvertisementDetails> getAdvertisementDetailsesById() {
+        return advertisementDetailsesById;
+    }
+
+    public void setAdvertisementDetailsesById(Collection<AdvertisementDetails> advertisementDetailsesById) {
+        this.advertisementDetailsesById = advertisementDetailsesById;
+    }
+
+    @OneToMany(mappedBy = "unitMasterByAreaAreaUnitId")
+    public Collection<MorePropertyDetails> getMorePropertyDetailsesById() {
+        return morePropertyDetailsesById;
+    }
+
+    public void setMorePropertyDetailsesById(Collection<MorePropertyDetails> morePropertyDetailsesById) {
+        this.morePropertyDetailsesById = morePropertyDetailsesById;
+    }
+
+    @OneToMany(mappedBy = "unitMasterByBuildupAreaUnitId")
+    public Collection<PropertyRequirement> getPropertyRequirementsById() {
+        return propertyRequirementsById;
+    }
+
+    public void setPropertyRequirementsById(Collection<PropertyRequirement> propertyRequirementsById) {
+        this.propertyRequirementsById = propertyRequirementsById;
     }
 }

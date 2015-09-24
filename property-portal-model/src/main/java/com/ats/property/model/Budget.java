@@ -1,6 +1,7 @@
 package com.ats.property.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * The Budget.
@@ -14,6 +15,8 @@ public class Budget {
     private Long fromlevel;
     private Long tolevel;
     private String currencyVal;
+    private Collection<PropertyRequirement> propertyRequirementsById;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -90,5 +93,14 @@ public class Budget {
         result = 31 * result + (tolevel != null ? tolevel.hashCode() : 0);
         result = 31 * result + (currencyVal != null ? currencyVal.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "budgetByBudgetId")
+    public Collection<PropertyRequirement> getPropertyRequirementsById() {
+        return propertyRequirementsById;
+    }
+
+    public void setPropertyRequirementsById(Collection<PropertyRequirement> propertyRequirementsById) {
+        this.propertyRequirementsById = propertyRequirementsById;
     }
 }

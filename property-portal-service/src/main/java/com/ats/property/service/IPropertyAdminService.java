@@ -53,5 +53,5 @@ public interface IPropertyAdminService {
     boolean searchProperty(SearchType searchType, ModuleList response);
     boolean getAmenitiesCategory(ModuleList response);
 
-
+    PropertyRequirement saveAlert(PropertyRequirement requirement);
 }

@@ -1,6 +1,7 @@
 package com.ats.property.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * The PropertyUser.
@@ -23,6 +24,8 @@ public class PropertyUser {
     private String status;
     private UserType userTypeByUserTypeId;
     private City cityByCityId;
+    private Collection<PropertyRequirement> propertyRequirementsById;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -204,5 +207,14 @@ public class PropertyUser {
 
     public void setCityByCityId(City cityByCityId) {
         this.cityByCityId = cityByCityId;
+    }
+
+    @OneToMany(mappedBy = "propertyUserByPropertyUserId")
+    public Collection<PropertyRequirement> getPropertyRequirementsById() {
+        return propertyRequirementsById;
+    }
+
+    public void setPropertyRequirementsById(Collection<PropertyRequirement> propertyRequirementsById) {
+        this.propertyRequirementsById = propertyRequirementsById;
     }
 }

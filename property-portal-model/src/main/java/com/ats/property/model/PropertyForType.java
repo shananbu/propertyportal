@@ -1,9 +1,7 @@
 package com.ats.property.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * The PropertyForType.
@@ -15,6 +13,7 @@ public class PropertyForType {
     private Long id;
     private String nameForPoster;
     private String nameForFinder;
+    private Collection<PropertyRequirement> propertyRequirementsById;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -68,5 +67,14 @@ public class PropertyForType {
         result = 31 * result + (nameForPoster != null ? nameForPoster.hashCode() : 0);
         result = 31 * result + (nameForFinder != null ? nameForFinder.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "propertyForTypeByPropertyForTypeId")
+    public Collection<PropertyRequirement> getPropertyRequirementsById() {
+        return propertyRequirementsById;
+    }
+
+    public void setPropertyRequirementsById(Collection<PropertyRequirement> propertyRequirementsById) {
+        this.propertyRequirementsById = propertyRequirementsById;
     }
 }

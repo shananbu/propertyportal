@@ -373,7 +373,7 @@ insert into Terms (name) values('Yearly');
 insert into Terms (name) values('One-Time');
 insert into Terms (name) values('Per sq. Unit Monthly');
 
----------------------------------------------created on 29 AUG 2015-----------------------------------------------------
+-- ------------------------------------------created on 29 AUG 2015-----------------------------------------------------
 
 create table PropertyOwnershipType (
 	id bigint auto_increment,
@@ -593,11 +593,12 @@ create table PropertyAmenities (
   constraint fk36 foreign key (amenitiesId) references Amenities(id)
 );
 
-create table PropertyRequirements (
+-- ------------------------------------------------------ Property Alert tables ----------------------------------------
+create table PropertyRequirement (
  	id bigint auto_increment,
+ 	propertyUserId bigint,
  	propertyForTypeId bigint,
-	locationId bigint,
-	buildupAreaFrom double,
+ 	buildupAreaFrom double,
 	buildupAreaTo double,
 	buildupAreaUnitId bigint,
 	budgetId bigint,
@@ -605,10 +606,28 @@ create table PropertyRequirements (
 	registeredDate date,
 	isActive int,
 	constraint pk34 primary key(id),
- 	constraint fk37 foreign key (propertyForTypeId) references PropertyForType(id),
-	constraint fk38 foreign key (locationId) references Locations(id),
-	  constraint fk30 foreign key (bedRoomId) references Bedroom(id),
+	constraint fk37 foreign key (propertyUserId) references PropertyUser(id),
+ 	constraint fk38 foreign key (propertyForTypeId) references PropertyForType(id),
+ 	constraint fk39 foreign key (buildupAreaUnitId) references UnitMaster(id),
+ 	constraint fk40 foreign key (budgetId) references Budget(id)
+);
 
+create table PreferredBeds (
+ 	id bigint auto_increment,
+ 	propertyRequirementId bigint,
+ 	bedRoomId bigint,
+	constraint pk35 primary key(id),
+ 	constraint fk41 foreign key (propertyRequirementId) references PropertyRequirement(id),
+	constraint fk42 foreign key (bedRoomId) references Bedroom(id)
+);
+
+create table PreferredLocations (
+ 	id bigint auto_increment,
+ 	propertyRequirementId bigint,
+ 	locationId bigint,
+	constraint pk36 primary key(id),
+	constraint fk43 foreign key (propertyRequirementId) references PropertyRequirement(id),
+ 	constraint fk44 foreign key (locationId) references Locations(id)
 );
 
 

@@ -27,9 +27,9 @@
         <%@ include file="userHeader.jsp" %>
     </header>
     <section class="clr_fix sec_main">
-        <div class="row_main box_shadow">
+    <form method="post" id="frmPost" commandName="moduleRequest" action="registerPropertyAlert">
+    <div class="row_main box_shadow">
             <section class="col_4 clr_fix">
-
                 <section class="inner_wrapper">
                     <h1 class="h_2">Post Requirement for Property</h1>
                     <div class="user_register post_buy_pro jq_chk">
@@ -40,7 +40,7 @@
                                 </label>
                                     <c:forEach var="data" items="${response.module[0].moduleResponse.propertyForTypes}">
                                         <span>
-                                            <input type="radio" id="0${data.id}" value="0${data.id}" name="advertisement.propertyForTypeId" checked>
+                                            <input type="radio" id="0${data.id}" value="0${data.id}" name="alertRegistration.propertyForTypeId" checked>
                                             <label for="0${data.id}"></label>
                                             ${data.nameForPoster}
                                         </span>
@@ -68,14 +68,14 @@
                                 <label>Location
                                     <small>*</small>
                                 </label>
-                                <select class="SlectBox" id="drpDwnLocation"  multiple="multiple">
+                                <select class="SlectBox" id="drpDwnLocation"  multiple="multiple" name="alertRegistration.locations">
                                 </select>
                             </li>
                             <li>
                                 <label>Bedrooms
                                     <small>*</small>
                                 </label>
-                                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="advertisement.bedRoomId">
+                                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="alertRegistration.bedRooms">
                                     <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
                                         <option value="${data.id}">${data.name}</option>
                                     </c:forEach>
@@ -85,20 +85,20 @@
                                 <label>Covered/Built-up Area
                                     <small>*</small>
                                 </label>
-                                <input type="text">
+                                <input type="text" name="alertRegistration.buildupAreaFrom">
                                 To
-                                <input type="text">
-                                <select class="dropdown" name="advertisement.buildupAreaUnitId">
+                                <input type="text" name="alertRegistration.buildupAreaTo">
+                                <select class="dropdown" name="alertRegistration.buildupAreaUnitId">
                                     <c:forEach var="data" items="${response.module[0].moduleResponse.units}">
                                         <option value="${data.id}">${data.name}</option>
                                     </c:forEach>
                                 </select>
                             </li>
-                            <li class="buget_input">
+                            <li class="buget_input" name="alertRegistration.buildupAreaTo">
                                 <label>Budget
                                     <small>*</small>
                                 </label>
-                                <select class="dropdown">
+                                <select class="dropdown" name="alertRegistration.budgetId">
                                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                                         <option value="${data.id}">${data.name}</option>
                                     </c:forEach>
@@ -109,22 +109,15 @@
                                     <small>*</small>
                                 </label>
                                 <span>
-                                      <input type="radio" id="radio_3" name="r">
+                                      <input type="radio" id="radio_3" name="alertRegistration.alertFrequency" value="1">
                                       <label for="radio_3"></label> Daily
                                 </span>
                                 <span>
-                                    <input type="radio" id="radio_4" name="r">
+                                    <input type="radio" id="radio_4" name="alertRegistration.alertFrequency" value="2">
                                     <label for="radio_4"></label> Weekly
                                 </span>
                             </li>
-                          <%--  <li class="spam_input">
-                                <label> Spam Check
-                                    <small>*</small>
-                                </label>
-                                6 - 2 =
-                                <input type="text">
-                                <span>Please answer this simple math question</span>
-                            </li>--%>
+
                             <li class="log_face">
                                 <label>I am
                                     <small>*</small>
@@ -136,27 +129,15 @@
                 <input type="radio" id="radio_6" name="1" data-modal="modal-10" class="md-trigger">
                 <label for="radio_6"></label>
                 New User </span></li>
-                            <li>
-                                <label>Username / Email id
-                                    <small>*</small>
-                                </label>
-                                <input type="text">
-                            </li>
-
-                            <li>
-                                <label>Password
-                                    <small>*</small>
-                                </label>
-                                <input type="text">
-                            </li>
                             <li class="sub_btn_li">
-                                <input type="button" value="Submit" class="btn_5">
+                                <input type="submit" value="Submit" class="btn_5">
                             </li>
                         </ul>
                     </div>
                 </section>
             </section>
         </div>
+    </form>
         <!-- registe pop up start -->
 
         <div class="md-modal md-effect-10" id="modal-10">
@@ -168,56 +149,58 @@
                         <li>
                             <label>User Type<small>*</small></label>
                 <span>
-                <input type="radio" name="1" id="radio_1">
-                <label for="radio_1"></label>
+                <input id="usertype1" name="propertyUser.userTypeId" type="radio" value="1" checked="checked">
+                <label for="usertype1"></label>
                 Owner </span> <span>
-                <input type="radio" name="1" id="radio_2">
-                <label for="radio_2"></label>
+               <input id="usertype2" name="propertyUser.userTypeId" type="radio" value="2">
+                <label for="usertype2"></label>
                 Agent </span> <span>
-                <input type="radio" name="1" id="radio_3">
-                <label for="radio_3"></label>
-                Builder </span> </li>
+                <input id="usertype3" name="propertyUser.userTypeId" type="radio" value="3">
+                <label for="usertype3"></label>
+                Builder </span>
+                        </li>
                         <li>
                             <label>Builder/Company Name<small>*</small></label>
-                            <input type="text" placeholder="first name">
+                            <input id="builderName" name="propertyUser.builderName" type="text" value="" maxlength="30" placeholder="Company Name">
                         </li>
                         <li>
                             <label>First Name<small>*</small></label>
-                            <input type="text" placeholder="Email">
+                            <input id="firstName" name="propertyUser.firstName" type="text" value="" maxlength="30" placeholder="First Name">
                         </li>
                         <li>
                             <label>Last Name<small>*</small></label>
-                            <input type="Password" placeholder="Password">
+                            <input id="lastName" name="propertyUser.lastName" type="text" value="" maxlength="30" placeholder="Last Name">
+                        </li>
 
                         <li>
+                            <label>Email<small>*</small></label>
+                            <input id="emailId" name="propertyUser.emailId" class="txt" type="text" value="" maxlength="30" placeholder="Email">
+                        </li>
+                        <li>
                             <label>Password<small>*</small></label>
-                            <select class="dropdown">
-                                <option>-- select your city --</option>
-                                <option>chennai</option>
-                            </select>
+                            <input id="passwrd" name="propertyUser.passwrd" class="txt" type="password" value="" maxlength="30" placeholder="Password">
+                            <small>[ Password only consists of a-z, 0-9, (_) ] [ Min. 6 char and Max. 12 char ]</small>
                         </li>
                         <li>
                             <label>Confirm Password<small>*</small></label>
-                            <input type="Password" placeholder="Password">
+                            <input id="cpasswrd" name="cpasswrd" class="txt" type="password" value="" maxlength="30" placeholder="Confirm Password">
                         </li>
 
                         <li class="mobile_drop">
                             <label>Mobile<small>*</small></label>
                             <select class="dropdown">
-                                <option>IND +91</option>
-                                <option>IND +91</option>
+                                <option value="91">IND +91</option>
                             </select>
-                            <input type="text" placeholder="mobile no">
+                            <input id="mobile" name="propertyUser.mobileNo" class="txt" type="text" value="" maxlength="30" placeholder="Mobile Number">
                         </li>
-
                         <li>
                             <p>
                                 <input type="checkbox" id="check_1">
                                 <label for="check_1"></label>
-                                I agree to MagicBricks' Terms of Use. I would like to receive property related communication through Email, Call or SMS. </p>
+                                I agree to 1AcreIndia's Terms of Use. I would like to receive property related communication through Email, Call or SMS. </p>
                         </li>
                         <li>
-                            <input type="button" class="btn_5" value="Register Now">
+                            <input type="submit" value="Register Now" class="btn_5">
                         </li>
                     </ul>
                 </div>
@@ -228,12 +211,10 @@
 
         <div class="md-modal md-effect-10" id="modal-11">
             <div class="md-content pop_up_reg">
-                <h1 class="h_2">New User Registration</h1>
+                <h1 class="h_2">Login here</h1>
                 <i class="fa fa-times-circle md-close"></i>
                 <div class="user_register jq_chk">
                     <ul>
-
-
                         <li>
                             <label>Email - Id<small>*</small></label>
                             <input type="text" placeholder="Email">
@@ -241,14 +222,11 @@
                         <li>
                             <label>Password<small>*</small></label>
                             <input type="Password" placeholder="Password">
-
-
                         <li>
                             <input type="button" class="btn_5" value="Login">
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
         <div class="md-overlay"></div>

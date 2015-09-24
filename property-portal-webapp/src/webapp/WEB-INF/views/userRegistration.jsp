@@ -45,7 +45,8 @@
                 Agent </span> <span>
                 <input id="usertype3" name="propertyUser.userTypeId" type="radio" value="3">
                 <label for="usertype3"></label>
-                Builder </span> </li>
+                Builder </span>
+              </li>
                 <li>
                     <label>Builder/Company Name<small>*</small></label>
                     <input id="builderName" name="propertyUser.builderName" type="text" value="" maxlength="30" placeholder="Company Name">

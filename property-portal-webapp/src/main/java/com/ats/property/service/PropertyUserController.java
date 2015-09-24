@@ -334,6 +334,14 @@ public class PropertyUserController {
         return modelAndView;
     }
 
+    @RequestMapping(value = {"/registerPropertyAlert" }, method = RequestMethod.POST)
+    public ModelAndView registerPropertyAlert(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
+        ModelAndView modelAndView = new ModelAndView("registerPropertyAlert");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.saveAlert(moduleRequest, response);
+        return modelAndView;
+    }
+
     @ExceptionHandler(Exception.class)
     public ModelAndView handleAllException(Exception ex) {
         ex.printStackTrace();
