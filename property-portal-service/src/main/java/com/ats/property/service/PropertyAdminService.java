@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.transaction.Transactional;
 import java.util.List;
 
+import static com.ats.property.common.constants.PropertyUtils.isNotNull;
 import static com.google.common.base.Optional.fromNullable;
 
 /**
@@ -284,6 +285,10 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         advertisement.setPropertyForTypeByPropertyForTypeId(adminDAO.findObjectById(advertisement.getPropertyForTypeId() , PropertyForType.class));
         advertisement.setPropertyTypeByPropertyTypeId(adminDAO.findObjectById(advertisement.getPropertyTypeId(), PropertyType.class));
         advertisement.setLocationsByLocationId(adminDAO.findObjectById(advertisement.getLocationId(), Locations.class));
+
+        advertisement.setPossessionOrAgeByPossessionOrAgeId(adminDAO.findObjectById(advertisement.getPossessionOrAgeId(), PossessionOrAge.class));
+        advertisement.setPossessionStatusByPossessionStatusId(adminDAO.findObjectById(advertisement.getPossessionStatusId(), PossessionStatus.class));
+
         advertisement.setPlanMastByPlanId(adminDAO.findObjectById(advertisement.getPlanId(), PlanMast.class));
         advertisementDetails.setUnitMasterByBuildupAreaUnitId(adminDAO.findObjectById(advertisementDetails.getBuildupAreaUnitId(), UnitMaster.class));
         advertisementDetails.setBalconiesByBalconyId(adminDAO.findObjectById(advertisementDetails.getBalconyId(), Balconies.class));
@@ -550,6 +555,21 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    public boolean getPossessionOrAgeList(ModuleList response) {
+        List<PossessionOrAge> types = adminDAO.getPossessionOrAge();
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        if(fromNullable(types).isPresent()) {
+            for(PossessionOrAge type : types) {
+                NameDataType nameDataType = new NameDataType();
+                PropertyUtils.copyFields(type, nameDataType);
+                moduleResponseType.getPossessionOrAge().add(nameDataType);
+            }
+        }
+        return true;
+    }
+
+    @Override
     public boolean getTermsList(ModuleList response) {
         List<Terms> types = adminDAO.getUTerms();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -600,9 +620,34 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
-    public PropertyRequirement saveAlert(PropertyRequirement requirement) {
+    public PropertyRequirement saveAlert(PropertyRequirement requirement, AlertRegistrationType alertType) {
         requirement.setBudgetByBudgetId(adminDAO.findObjectById(requirement.getBudgetId(), Budget.class));
-        adminDAO.saveAlert(requirement);
-        return null;
+        requirement.setPropertyForTypeByPropertyForTypeId(adminDAO.findObjectById(requirement.getPropertyForTypeId(), PropertyForType.class));
+        requirement.setUnitMasterByBuildupAreaUnitId(adminDAO.findObjectById(requirement.getBuildupAreaUnitId(), UnitMaster.class));
+        PropertyRequirement requirementFromDB = adminDAO.saveAlert(requirement);
+        if(isNotNull(requirementFromDB)) {
+            if(isNotNull(alertType)) {
+                if(isNotNull(alertType.getBedRooms())) {
+                    String bedArray[] = alertType.getBedRooms().split(",");
+                    for(String bed : bedArray) {
+                        PreferredBeds preferredBeds = new PreferredBeds();
+                        preferredBeds.setPropertyRequirementByPropertyRequirementId(requirementFromDB);
+                        preferredBeds.setBedroomByBedRoomId(adminDAO.findObjectById(Long.parseLong(bed), Bedroom.class));
+                        adminDAO.savePreferredBeds(preferredBeds);
+                    }
+                }
+
+                if(isNotNull(alertType.getLocations())) {
+                    String locationArray[] = alertType.getLocations().split(",");
+                    for(String location : locationArray) {
+                        PreferredLocations preferredLocations = new PreferredLocations();
+                        preferredLocations.setPropertyRequirementByPropertyRequirementId(requirementFromDB);
+                        preferredLocations.setLocationsByLocationId(adminDAO.findObjectById(Long.parseLong(location), Locations.class));
+                        adminDAO.savePreferredLocations(preferredLocations);
+                    }
+                }
+            }
+        }
+        return requirementFromDB;
     }
 }

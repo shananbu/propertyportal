@@ -1,6 +1,5 @@
 package com.ats.property.dao;
 
-import com.ats.property.dto.AlertRegistration;
 import com.ats.property.dto.SearchType;
 import com.ats.property.dto.StatusType;
 import com.ats.property.model.*;
@@ -479,5 +478,23 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     @Override
     public PropertyRequirement saveAlert(PropertyRequirement requirement) {
         return (PropertyRequirement)persist(requirement);
+    }
+
+    @Override
+    public PreferredBeds savePreferredBeds(PreferredBeds preferredBeds) {
+        return (PreferredBeds)persist(preferredBeds);
+    }
+
+    @Override
+    public List<PossessionOrAge> getPossessionOrAge() {
+        Session session = getSession();
+        Query query = session.createQuery("from PossessionOrAge");
+        List<PossessionOrAge> response = query.list();
+        return response;
+    }
+
+    @Override
+    public PreferredLocations savePreferredLocations(PreferredLocations preferredLocations) {
+        return (PreferredLocations)persist(preferredLocations);
     }
 }

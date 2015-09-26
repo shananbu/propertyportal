@@ -44,6 +44,15 @@ $(document).ready(function(){
     });
 
     function calculateAmount() {
-        return  $("#denominationLakhs").val() +  $("#denominationThousands").val() + $("#denominationHundreds").val();
+        return getValue($("#denominationLakhs"), 100000) +
+            getValue($("#denominationThousands"), 1000) +
+            getValue($("#denominationHundreds"), 100);
      }
+
+    function getValue(component, mulByVal) {
+        var value = parseInt(component.val());
+        if(value == -1) return 0;
+        return value * mulByVal;
+    }
+
 });

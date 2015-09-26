@@ -280,6 +280,11 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean getPossessionOrAgeList(ModuleList response) {
+        return adminService.getPossessionOrAgeList(response);
+    }
+
+    @Override
     public boolean getTermsList(ModuleList response) {
         return adminService.getTermsList(response);
     }
@@ -298,7 +303,7 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     public boolean saveAlert(AlertRegistrationType alertType, ModuleList response) {
         PropertyRequirement alert = new PropertyRequirement();
         PropertyUtils.copyFields(alertType, alert);
-        adminService.saveAlert(alert);
+        adminService.saveAlert(alert, alertType);
         return true;
     }
 }

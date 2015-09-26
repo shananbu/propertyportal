@@ -29,6 +29,7 @@ public class PropertyRequirement {
     private Budget budgetByBudgetId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public Long getId() {
         return id;

@@ -7,6 +7,7 @@ import com.ats.property.dto.ModuleList;
 import com.ats.property.dto.ModuleRequestType;
 import com.ats.property.service.delegate.IPropertyAdminDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,9 @@ public class PropertyUserController {
 
     @Autowired
     IPropertyAdminDelegate adminDelegate;
+
+    @Autowired
+    private Environment environment;
 
 
     @RequestMapping(value = {"/authenticateUser" }, method = RequestMethod.POST)
@@ -138,6 +142,7 @@ public class PropertyUserController {
             adminDelegate.getUnitsList(response);
             adminDelegate.getTransactionTypesList(response);
             adminDelegate.getPossessionStatusList(response);
+            adminDelegate.getPossessionOrAgeList(response);
             adminDelegate.getTermsList(response);
             adminDelegate.getAmenitiesCategory(response);
             modelAndView.addObject("response", response);

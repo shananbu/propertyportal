@@ -68,4 +68,11 @@ public interface IPropertyAdminDAO {
 
     PropertyRequirement saveAlert(PropertyRequirement requirement);
 
+    PreferredLocations savePreferredLocations(PreferredLocations preferredLocations);
+
+    PreferredBeds savePreferredBeds(PreferredBeds preferredBeds);
+
+    List<PossessionOrAge> getPossessionOrAge();
+
+
 }

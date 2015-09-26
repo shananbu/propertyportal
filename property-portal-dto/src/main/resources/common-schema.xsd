@@ -57,6 +57,7 @@
         <xs:sequence>
             <xs:element name="id" type="xs:long" minOccurs = "0"/>
             <xs:element name="name" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
             <xs:element name="parentId" type="xs:long"  minOccurs = "0"/>
             <xs:element name="isPopular" type="xs:byte" minOccurs = "0"/>
             <xs:element name="bedrooms" type="xs:long" minOccurs = "0"/>
@@ -121,6 +122,8 @@
             <xs:element name="isTermsAgreed" type="xs:string"/>
             <xs:element name="galleryImage" type="galleryImageType" maxOccurs = "unbounded"/>
             <xs:element name="propertyAmenities" type="xs:string"/>
+            <xs:element name="possessionStatusId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="possessionOrAgeId" type="xs:long" minOccurs = "0"/>
         </xs:sequence>
     </xs:complexType>
 

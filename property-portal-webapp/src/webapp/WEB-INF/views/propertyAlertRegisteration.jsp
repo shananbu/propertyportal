@@ -117,18 +117,23 @@
                                     <label for="radio_4"></label> Weekly
                                 </span>
                             </li>
-
-                            <li class="log_face">
-                                <label>I am
-                                    <small>*</small>
-                                </label>
-                <span>
-                <input type="radio" id="radio_5" name="1" data-modal="modal-11" class="md-trigger">
-                <label for="radio_5"></label>
-                Existing User </span> <span>
-                <input type="radio" id="radio_6" name="1" data-modal="modal-10" class="md-trigger">
-                <label for="radio_6"></label>
-                New User </span></li>
+                            <sec:authorize access="hasAnyRole('ROLE_ANONYMOUS')">
+                                <li class="log_face">
+                                    <label>I am
+                                        <small>*</small>
+                                    </label>
+                                    <span>
+                                        <input type="radio" id="radio_5" name="1" data-modal="modal-11" class="md-trigger">
+                                        <label for="radio_5"></label>
+                                        Existing User
+                                    </span>
+                                    <span>
+                                        <input type="radio" id="radio_6" name="1" data-modal="modal-10" class="md-trigger">
+                                        <label for="radio_6"></label>
+                                        New User
+                                  </span>
+                                </li>
+                            </sec:authorize>
                             <li class="sub_btn_li">
                                 <input type="submit" value="Submit" class="btn_5">
                             </li>

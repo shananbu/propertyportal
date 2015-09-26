@@ -43,6 +43,7 @@ public interface IPropertyAdminDelegate {
     boolean getUnitsList(ModuleList response);
     boolean getTransactionTypesList(ModuleList response);
     boolean getPossessionStatusList(ModuleList response);
+    boolean getPossessionOrAgeList(ModuleList response);
     boolean getTermsList(ModuleList response);
 
     boolean searchProperty(ModuleRequestType moduleRequest, ModuleList response);

@@ -28,6 +28,7 @@
                 <xs:element name="units" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="transactionTypes" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="possessionStatus" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="possessionOrAge" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="terms" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="advertisement" type="advertisementType" minOccurs="0"/>
                 <xs:element name="searchResult" type="searchResultType" minOccurs="0" maxOccurs="unbounded"/>

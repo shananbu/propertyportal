@@ -209,6 +209,30 @@
         </li>
     </ul>
 </div>
+<div class="ad_3">
+    <h1>Availability</h1>
+    <ul>
+        <li>
+            <label>Availability</label>
+            <c:forEach var="data" items="${response.module[0].moduleResponse.possessionStatus}">
+                <span>
+                    <input type="radio" id="000${data.id}" value="000${data.id}" name="advertisement.possessionStatusId" checked>
+                    <label for="000${data.id}"></label>
+                    ${data.name}
+                </span>
+            </c:forEach>
+        </li>
+        <li>
+            <label>Possession of Property</label>
+            <select id="drpPossessionOrAge" name="advertisement.possessionOrAgeId">
+                <option value="-1">--Select--</option>
+                <c:forEach var="data" items="${response.module[0].moduleResponse.possessionOrAge}">
+                    <option value="${data.id}">${data.name}</option>
+                </c:forEach>
+            </select>
+        </li>
+    </ul>
+</div>
 <div class="pro_chk_list">
     <h1>Property Features and Amenities</h1>
     <c:forEach var="data" items="${response.module[0].moduleResponse.amenitiesCategory}">
@@ -232,7 +256,7 @@
             <label>Expected Rent </label>
                 <span>
                 <label> Lakhs </label>
-                Rs.<select class="dropdown" id="denominationLakhs">
+                <i class="fa fa-inr fa-2x"></i> &nbsp;<select class="dropdown" id="denominationLakhs">
                     <option value="-1">Select</option>
                     <c:forEach begin="1" end="99" var="val">
                         <option value="${val}">${val}</option>
@@ -261,7 +285,7 @@
                 </span> </li>
                 <li class="col_2_text">
                     <label>Maintanance Charges</label>
-                    Rs.<span><input type="text" placeholder="Maintenance Charges" name="advertisement.maintenanceCharges">
+                    <i class="fa fa-inr fa-2x"></i> &nbsp;<span><input type="text" placeholder="Maintenance Charges" name="advertisement.maintenanceCharges">
                         </span> <span>
                         <select class="dropdown" name="advertisement.maintenancePeriodId">
                             <c:forEach var="data" items="${response.module[0].moduleResponse.terms}">
@@ -272,7 +296,7 @@
                 </li>
         <li>
             <label>Security Deposit</label>
-            Rs.<input type="text" placeholder="Security Deposit" name="advertisement.securityDeposit">
+            <i class="fa fa-inr fa-2x"></i> &nbsp;<input type="text" placeholder="Security Deposit" name="advertisement.securityDeposit">
         </li>
         <li class="check_brok">
             <label>Response from brokers</label>

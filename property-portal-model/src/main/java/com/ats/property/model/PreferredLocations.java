@@ -16,6 +16,7 @@ public class PreferredLocations {
     private Locations locationsByLocationId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public Long getId() {
         return id;
