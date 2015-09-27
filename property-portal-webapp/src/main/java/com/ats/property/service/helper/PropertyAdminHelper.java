@@ -280,8 +280,22 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
-    public boolean getPossessionOrAgeList(ModuleList response) {
-        return adminService.getPossessionOrAgeList(response);
+    public boolean getPossessionOrAgeList(final Long availabilityId, ModuleList response) {
+        boolean status = adminService.getPossessionOrAgeList(response);
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        if(availabilityId != null) {
+            List<NameDataType> filteredData = Lists.newArrayList(Collections2.filter(moduleResponseType.getPossessionOrAge(), new Predicate<NameDataType>() {
+                        @Override
+                        public boolean apply(NameDataType input) {
+                            return input.getParentId().equals(availabilityId);
+                        }
+                    }
+            ));
+            moduleResponseType.getPossessionOrAge().clear();
+            moduleResponseType.getPossessionOrAge().addAll(filteredData);
+        }
+        return status;
     }
 
     @Override

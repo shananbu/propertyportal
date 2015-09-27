@@ -27,7 +27,6 @@ $(document).ready(function(){
                         .attr("value", this.id)
                         .text(this.name));
             });
-            // $('#drpDwnCity').addClass("dropdown");
         });
     });
 
@@ -43,6 +42,33 @@ $(document).ready(function(){
         $("#expectedPrice").val(calculateAmount());
     });
 
+    $("#possessionStatus1").click(function() {
+        $.ajax({
+            url: "rest/v1/admin/modules/get/possessionByAvailabilityId?availabilityId=" + $("#possessionStatus1").val()
+        }).done(function(data) {
+            $('#drpPossessionOrAge').empty();
+            $.each(data.module[0].moduleResponse.possessionOrAge, function() {
+                $('#drpPossessionOrAge')
+                    .append($("<option></option>")
+                        .attr("value", this.id)
+                        .text(this.name));
+            });
+        });
+     });
+
+    $("#possessionStatus2").click(function() {
+        $.ajax({
+            url: "rest/v1/admin/modules/get/possessionByAvailabilityId?availabilityId=" + $("#possessionStatus2").val()
+        }).done(function(data) {
+            $('#drpPossessionOrAge').empty();
+            $.each(data.module[0].moduleResponse.possessionOrAge, function() {
+                $('#drpPossessionOrAge')
+                    .append($("<option></option>")
+                        .attr("value", this.id)
+                        .text(this.name));
+            });
+        });
+    });
     function calculateAmount() {
         return getValue($("#denominationLakhs"), 100000) +
             getValue($("#denominationThousands"), 1000) +

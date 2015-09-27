@@ -989,6 +989,7 @@
                     ctrlName = settings.nameFormatter(settings.idPrefix, settings.columns[y].name, uniqueIndex);
                 } else {
                     ctrlName = ctrlId;
+                    ctrlName = settings.columns[y].name;
                 }
                 // Check control type
                 ctrl = null;
@@ -1076,6 +1077,14 @@
                     ctrl.id = ctrlId;
                     ctrl.name = ctrlName;
                     tbCell.appendChild(ctrl);
+                }
+                else if (settings.columns[y].type == 'file') {
+                    ctrl = document.createElement('input');
+                    ctrl.type = 'file';
+                    ctrl.id = ctrlId;
+                    ctrl.name = ctrlName;
+                    tbCell.appendChild(ctrl);
+                    tbCell.style.textAlign = 'center';
                 }
                 else if (-1 != settings.columns[y].type.search(/^(color|date|datetime|datetime\-local|email|month|number|range|search|tel|time|url|week)$/)) {
                     ctrl = document.createElement('input');

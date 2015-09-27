@@ -15,34 +15,32 @@
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/owl.carousel.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/img_upload.css" type="text/css"/>
-    <%--
-        <script src="js/jquery-1.10.2.min.js"></script>
-    --%>
+<%--
+    <script src="js/jquery-1.10.2.min.js"></script>
+--%>
     <script src="js/modernizr-2.6.2.min.js" type="text/javascript"></script>
 
     <link rel="stylesheet" type="text/css" href="appendGrid/jquery-ui.structure.min.css"/>
     <link rel="stylesheet" type="text/css" href="appendGrid/jquery-ui.theme.min.css"/>
     <link rel="stylesheet" type="text/css" href="appendGrid/jquery.appendGrid-1.6.0.css"/>
-
     <script src="js/jquery.sumoselect.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3, selectAll:false });
+            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3,selectAll:true });
             window.test = $('.testsel').SumoSelect({okCancelInMulti:true });
             window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
             window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true });
-
 
             // Initialize appendGrid
             $('#tblAppendGrid').appendGrid({
                 initRows: 1,
                 maxRowsAllowed : 10,
                 columns: [
-                    { name: 'advertisement.moreProType', display: 'Type', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px'} },
-                    { name: 'advertisement.moreProArea', display: 'Area (Sq.ft)', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100px'} },
-                    { name: 'advertisement.moreProRatePerSqFt', display: 'Rate (Per sq.ft)', type: 'text', ctrlAttr: { maxlength: 1 }, ctrlCss: { width: '100px'} },
-                    { name: 'advertisement.moreProTotalCost', display: 'Total Cost', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '100px'} },
-                    { name: 'advertisement.moreProFloorPlan', display: 'Floor Plan', type: 'file', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '100px'} },
+                    { name: 'type', display: 'Type', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px'} },
+                    { name: 'area', display: 'Area (Sq.ft)', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100px'} },
+                    { name: 'ratePerSqFt', display: 'Rate (Per sq.ft)', type: 'text', ctrlAttr: { maxlength: 1 }, ctrlCss: { width: '100px'} },
+                    { name: 'totalCost', display: 'Total Cost', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '100px'} },
+                    { name: 'floorPlan', display: 'Floor Plan', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '100px'} },
                 ]
             });
         });
@@ -50,7 +48,6 @@
     <script src="js/site/postProperty.js"></script>
 </head>
 <body>
-<form method="post" id="frmPost" commandName="moduleRequest" action="saveOrUpdateAdvertisement">
 <main class="main_wrapper clr_fix">
 <header class="clr_fix top_head">
     <%@ include file="userHeader.jsp" %>
@@ -60,7 +57,7 @@
 <section class="clr_fix">
 <nav class="clr_fix step_process">
     <ul>
-        <li class="process_1 process_on"> <span>1</span> </li>
+        <li class="process_1 process_on process_end_1"> <span>1</span> </li>
         <li class="process_2"> <span>2</span> </li>
         <li class="process_3"> <span>3</span> </li>
     </ul>
@@ -71,7 +68,7 @@
         <li>
             <label>Select Listing Package <small>*</small></label>
 
-            <select class="dropdown" name="advertisement.planId">
+            <select class="dropdown">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.plans}">
                     <option value="${data.id}">${data.name}</option>
@@ -84,55 +81,29 @@
     <h1>Property Info</h1>
     <ul>
         <li>
-            <label>Property For
-                <small>*</small>
-            </label>
-            <c:forEach var="data" items="${response.module[0].moduleResponse.propertyForTypes}">
+            <label>Property For<small>*</small></label>
                 <span>
-                    <input type="radio" id="0${data.id}" value="0${data.id}" name="advertisement.propertyForTypeId" checked>
-                    <label for="0${data.id}"></label>
-                    ${data.nameForPoster}
-                </span>
-            </c:forEach>
-            <%--          <span>
-                          <input type="radio" id="radio_1" name="1" checked>
-                          <label for="radio_1"></label>
-                          Sale
-                      </span>
-                      <span>
-                          <input type="radio" id="radio_2" name="1">
-                          <label for="radio_2"></label>
-                          Rent
-                      </span>
-                      <span>
-                          <input type="radio" id="radio_3" name="1">
-                          <label for="radio_3"></label>
-                          PG Accommodation
-                      </span>--%>
-        </li>
-
+                <input type="radio" id="radio_1" name="1">
+                <label for="radio_1"></label>
+                Sale </span> <span>
+                <input type="radio" id="radio_2" name="1">
+                <label for="radio_2"></label>
+                Rent </span> <span>
+                <input type="radio" id="radio_3" name="1">
+                <label for="radio_3"></label>
+                PG Accommodation </span> </li>
         <li>
             <label>Property Type</label>
-            <div class="search_loc">
-                <div class="pro_type">
-                    Property Type <i class="fa fa-caret-down"></i>
-                </div>
-                <div class="pro_list">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
-                        <h1> ${data.name}</h1>
-                        <ul>
-                            <c:forEach var="innerData" items="${data.propertyTypesById}">
-                                <li>
-                                    <span class="jq_chk">
-                                        <input type="radio" name="advertisement.propertyTypeId" id="${innerData.id}" value="${innerData.id}">
-                                         <label for="${innerData.id}"></label>
-                                    </span>  ${innerData.name}
-                                </li>
-                            </c:forEach>
-                        </ul>
+            <select class="dropdown">
+                <option>Select Property Type</option>
+                <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
+                    <%--  <optGroup label="${data.name}">--%>
+                    <c:forEach var="innerData" items="${data.propertyTypesById}">
+                        <option value="${innerData.id}">${innerData.name}</option>
                     </c:forEach>
-                </div>
-            </div>
+                    <%--  </optGroup>--%>
+                </c:forEach>
+            </select>
         </li>
     </ul>
 </div>
@@ -150,65 +121,29 @@
         </li>
         <li>
             <label>City</label>
-            <select id="drpDwnCity" name="drpDwnCity">
+            <select class="dropdown" id="drpDwnCity"  name="drpDwnCity">
                 <option value="-1">--Select--</option>
             </select>
         </li>
         <li>
             <label>Location</label>
-            <select id="drpDwnLocation" name="advertisement.locationId">
+            <select class="dropdown">
                 <option value="-1">--Select--</option>
+
             </select>
         </li>
         <li>
-            <label>Address</label>
-            <input type="text" placeholder="Address" name="advertisement.address" class="projectname">
-        </li>
-        <li>
-            <label>Company/Builder Name</label>
-            <input type="text" placeholder="Builder Name" name="advertisement.builderName" class="projectname">
+            <label>Locality</label>
+            <input type="text" placeholder="Locality">
         </li>
     </ul>
 </div>
-
-<div class="pro_feat">
+<div class="ad_3">
     <h1>Property Features</h1>
     <ul>
-        <li class="col_2_text">
-            <label>Builtup Area</label>
-            <input type="text" placeholder="Buildup Area" name="advertisement.buildupArea">
-            <select class="dropdown" name="advertisement.buildupAreaUnitId">
-                <c:forEach var="data" items="${response.module[0].moduleResponse.units}">
-                    <option value="${data.id}">${data.name}</option>
-                </c:forEach>
-            </select>
-        </li>
-        <li class="list_3">
-            <label> Bed Rooms</label>
-            <select placeholder="Select Bed Rooms" class="dropdown" name="advertisement.bedRoomId">
-                <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
-                    <option value="${data.id}">${data.name}</option>
-                </c:forEach>
-            </select>
-
-            <label> Bath Rooms</label>
-            <select  placeholder="Select Bath Rooms" class="dropdown" name="advertisement.bathRoomId">
-                <c:forEach var="data" items="${response.module[0].moduleResponse.bathrooms}">
-                    <option value="${data.id}">${data.name}</option>
-                </c:forEach>
-            </select>
-        </li>
         <li>
-            <label>Furnished Status</label>
-            <select class="dropdown" name="advertisement.furnishedStatusId">
-                <option value="-1">--Select--</option>
-                <c:forEach var="data" items="${response.module[0].moduleResponse.furnishedStatus}">
-                    <option value="${data.id}">${data.name}</option>
-                </c:forEach>
-            </select>
-
             <label>Balconies</label>
-            <select class="dropdown" name="advertisement.balconyId">
+            <select class="dropdown">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.balconies}">
                     <option value="${data.id}">${data.name}</option>
@@ -216,16 +151,26 @@
             </select>
         </li>
         <li>
+            <label>Furnished Status</label>
+            <select class="dropdown">
+                <option value="-1">--Select--</option>
+                <c:forEach var="data" items="${response.module[0].moduleResponse.furnishedStatus}">
+                    <option value="${data.id}">${data.name}</option>
+                </c:forEach>
+            </select>
+        </li>
+        <li>
             <label>Floor No</label>
-            <select class="dropdown" name="advertisement.propertyOnFloorId">
+            <select class="dropdown">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.totalFloors}">
                     <option value="${data.id}">${data.name}</option>
                 </c:forEach>
             </select>
-
+        </li>
+        <li>
             <label>Total Floors</label>
-            <select class="dropdown" name="advertisement.totalFloor">
+            <select class="dropdown">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.totalFloors}">
                     <option value="${data.id}">${data.name}</option>
@@ -233,46 +178,6 @@
             </select>
         </li>
     </ul>
-</div>
-<div class="ad_3">
-    <h1>Availability</h1>
-    <ul>
-        <li>
-            <label>Availability</label>
-            <c:forEach var="data" items="${response.module[0].moduleResponse.possessionStatus}">
-                <span>
-                    <input type="radio" id="possessionStatus${data.id}" value="000${data.id}" name="advertisement.possessionStatusId">
-                    <label for="possessionStatus${data.id}"></label>
-                    ${data.name}
-                </span>
-            </c:forEach>
-        </li>
-        <li>
-            <label>Possession of Property</label>
-            <select id="drpPossessionOrAge" name="advertisement.possessionOrAgeId">
-                <option value="-1">--Select--</option>
-                <c:forEach var="data" items="${response.module[0].moduleResponse.possessionOrAge}">
-                    <option value="${data.id}">${data.name}</option>
-                </c:forEach>
-            </select>
-        </li>
-    </ul>
-</div>
-<div class="pro_chk_list">
-    <h1>Property Features and Amenities</h1>
-    <c:forEach var="data" items="${response.module[0].moduleResponse.amenitiesCategory}">
-        <nav>
-            <h3> ${data.name}</h3>
-            <ul>
-                <c:forEach var="innerData" items="${data.amenitiesesById}">
-                    <li>
-                        <input type="checkbox" name="advertisement.propertyAmenities" id="00${innerData.id}" value="${innerData.id}">
-                        <label for="00${innerData.id}"></label>${innerData.name}
-                    </li>
-                </c:forEach>
-            </ul>
-        </nav>
-    </c:forEach>
 </div>
 <div class="ad_3 ">
     <h1>Rent & Other Charges</h1>
@@ -281,52 +186,46 @@
             <label>Expected Rent </label>
                 <span>
                 <label> Lakhs </label>
-                <i class="fa fa-inr fa-2x"></i> &nbsp;<select class="dropdown" id="denominationLakhs">
-                    <option value="-1">Select</option>
-                    <c:forEach begin="1" end="99" var="val">
-                        <option value="${val}">${val}</option>
-                    </c:forEach>
+                Rs.<select class="dropdown">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                 </select>
                 </span> <span>
                 <label> Thousands </label>
-                <select class="dropdown" id="denominationThousands">
-                    <option value="-1">Select</option>
-                    <c:forEach begin="1" end="99" var="val">
-                        <option value="${val}">${val}</option>
-                    </c:forEach>
+                <select class="dropdown">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                 </select>
                 </span> <span>
                 <label> Hundreds </label>
-                <select class="dropdown" id="denominationHundreds">
-                    <option value="-1">Select</option>
-                    <c:forEach begin="1" end="9" var="val">
-                        <option value="${val}">${val}</option>
-                    </c:forEach>
+                <select class="dropdown">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                 </select>
-                </span> <span>
-                <label> &nbsp;</label>
-                Or
-                <input type="text" placeholder="Enter price" name="advertisement.expectedPrice" id="expectedPrice">
+                </span> <span> Or
+                <input type="text" placeholder="Enter Toal Rent">
                 </span> </li>
         <li class="col_2_text">
             <label>Maintanance Charges</label>
-            <i class="fa fa-inr fa-2x"></i> &nbsp;<span><input type="text" placeholder="Maintenance Charges" name="advertisement.maintenanceCharges">
-                        </span> <span>
-                        <select class="dropdown" name="advertisement.maintenancePeriodId">
-                            <c:forEach var="data" items="${response.module[0].moduleResponse.terms}">
-                                <option value="${data.id}">${data.name}</option>
-                            </c:forEach>
-                        </select>
-                        </span>
-        </li>
+            Rs.<span><input type="text" placeholder="Maintanance Charges">
+                </span> <span>
+                <select class="dropdown">
+                    <option>Monthly</option>
+                    <option>Quarterly</option>
+                    <option>Yearly</option>
+                </select>
+                </span> </li>
         <li>
             <label>Security Deposit</label>
-            <i class="fa fa-inr fa-2x"></i> &nbsp;<input type="text" placeholder="Security Deposit" name="advertisement.securityDeposit">
+            Rs.<input type="text" placeholder="Security Deposit">
         </li>
         <li class="check_brok">
             <label>Response from brokers</label>
                 <span>
-                <input type="checkbox" id="new_1" name="advertisement.responseFromBrokers" value="1">
+                <input type="checkbox" id="new_1">
                 <label for="new_1"></label>
                 </span> I am not interested in getting response from brokers </li>
     </ul>
@@ -336,22 +235,12 @@
     <table id="tblAppendGrid">
     </table>
 </div>
-<div class="pro_desc">
+<div class="ad_3">
     <h1>Property Description</h1>
     <ul>
         <li>
-            <label>Name of Project</label>
-            <input type="text" name="advertisement.projectName" class="projectname">
-        </li>
-        <li>
             <label>Description</label>
-            <textarea name="advertisement.description" cols="80" rows="6"></textarea>
-            <b>OR</b>Upload PDF/Excel file<input type="file">
-        </li>
-        <li>
-            <label>Specification</label>
-            <textarea name="advertisement.propertyFeatures" cols="80" rows="6"></textarea>
-            <b>OR</b>Upload PDF/Excel file<input type="file">
+            <textarea name="" cols="80" rows="6"></textarea>
         </li>
     </ul>
 </div>
@@ -388,7 +277,6 @@
 </footer>
 <!-- footer end -->
 </main>
-</form>
 <!--script start-->
 <!-- tab script start-->
 <script type="text/javascript">

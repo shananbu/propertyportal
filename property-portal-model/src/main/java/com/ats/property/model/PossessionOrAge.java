@@ -14,6 +14,7 @@ public class PossessionOrAge {
     private String name;
     private String type;
     private Collection<Advertisement> advertisementsById;
+    private PossessionStatus possessionStatusByPossessionStatusId;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -74,5 +75,15 @@ public class PossessionOrAge {
 
     public void setAdvertisementsById(Collection<Advertisement> advertisementsById) {
         this.advertisementsById = advertisementsById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "possessionStatusId", referencedColumnName = "id")
+    public PossessionStatus getPossessionStatusByPossessionStatusId() {
+        return possessionStatusByPossessionStatusId;
+    }
+
+    public void setPossessionStatusByPossessionStatusId(PossessionStatus possessionStatusByPossessionStatusId) {
+        this.possessionStatusByPossessionStatusId = possessionStatusByPossessionStatusId;
     }
 }

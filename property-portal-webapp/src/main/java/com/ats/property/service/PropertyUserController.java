@@ -142,7 +142,7 @@ public class PropertyUserController {
             adminDelegate.getUnitsList(response);
             adminDelegate.getTransactionTypesList(response);
             adminDelegate.getPossessionStatusList(response);
-            adminDelegate.getPossessionOrAgeList(response);
+           // adminDelegate.getPossessionOrAgeList(response);
             adminDelegate.getTermsList(response);
             adminDelegate.getAmenitiesCategory(response);
             modelAndView.addObject("response", response);

@@ -216,8 +216,8 @@
             <label>Availability</label>
             <c:forEach var="data" items="${response.module[0].moduleResponse.possessionStatus}">
                 <span>
-                    <input type="radio" id="000${data.id}" value="000${data.id}" name="advertisement.possessionStatusId" checked>
-                    <label for="000${data.id}"></label>
+                    <input type="radio" id="possessionStatus${data.id}" value="000${data.id}" name="advertisement.possessionStatusId">
+                    <label for="possessionStatus${data.id}"></label>
                     ${data.name}
                 </span>
             </c:forEach>

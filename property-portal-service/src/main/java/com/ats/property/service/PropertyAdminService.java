@@ -563,6 +563,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             for(PossessionOrAge type : types) {
                 NameDataType nameDataType = new NameDataType();
                 PropertyUtils.copyFields(type, nameDataType);
+                nameDataType.setParentId(type.getPossessionStatusByPossessionStatusId().getId());
                 moduleResponseType.getPossessionOrAge().add(nameDataType);
             }
         }

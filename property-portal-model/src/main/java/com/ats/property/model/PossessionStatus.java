@@ -1,9 +1,7 @@
 package com.ats.property.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * The PossessionStatus.
@@ -14,6 +12,7 @@ import javax.persistence.Id;
 public class PossessionStatus {
     private Long id;
     private String name;
+    private Collection<PossessionOrAge> possessionOrAgesById;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -53,5 +52,14 @@ public class PossessionStatus {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "possessionStatusByPossessionStatusId")
+    public Collection<PossessionOrAge> getPossessionOrAgesById() {
+        return possessionOrAgesById;
+    }
+
+    public void setPossessionOrAgesById(Collection<PossessionOrAge> possessionOrAgesById) {
+        this.possessionOrAgesById = possessionOrAgesById;
     }
 }

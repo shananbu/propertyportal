@@ -219,8 +219,8 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
-    public boolean getPossessionOrAgeList(ModuleList response) {
-        return adminHelper.getPossessionOrAgeList(response);
+    public boolean getPossessionOrAgeList(Long availabilityId, ModuleList response) {
+        return adminHelper.getPossessionOrAgeList(availabilityId, response);
     }
 
     @Override

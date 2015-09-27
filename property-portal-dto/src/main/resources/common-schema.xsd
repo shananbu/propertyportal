@@ -124,6 +124,11 @@
             <xs:element name="propertyAmenities" type="xs:string"/>
             <xs:element name="possessionStatusId" type="xs:long" minOccurs = "0"/>
             <xs:element name="possessionOrAgeId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="moreProType" type="xs:string"/>
+            <xs:element name="moreProArea" type="xs:string"/>
+            <xs:element name="moreProRatePerSqFt" type="xs:string"/>
+            <xs:element name="moreProTotalCost" type="xs:string"/>
+            <xs:element name="moreProFloorPlan" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 

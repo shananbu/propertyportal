@@ -389,22 +389,24 @@ insert into PropertyOwnershipType (name) values('Power of Attorney');
 
 create table PossessionOrAge (
 	id bigint auto_increment,
+	possessionStatusId bigint,
 	name varchar(50),
 	type varchar(20),
-  constraint pk22 primary key(id)
+  constraint pk22 primary key(id),
+  constraint fk45 foreign key (possessionStatusId) references PossessionStatus(id)
 );
-insert into PossessionOrAge (name, type) values('Within 3 Months','POSSESSION');
-insert into PossessionOrAge (name, type) values('Within 6 Months','POSSESSION');
-insert into PossessionOrAge (name, type) values('By 2016','POSSESSION');
-insert into PossessionOrAge (name, type) values('By 2017','POSSESSION');
-insert into PossessionOrAge (name, type) values('By 2018','POSSESSION');
-insert into PossessionOrAge (name, type) values('By 2019','POSSESSION');
-insert into PossessionOrAge (name, type) values('By 2020','POSSESSION');
+insert into PossessionOrAge (name, type, possessionStatusId) values('Within 3 Months','POSSESSION', 1);
+insert into PossessionOrAge (name, type, possessionStatusId) values('Within 6 Months','POSSESSION', 1);
+insert into PossessionOrAge (name, type, possessionStatusId) values('By 2016','POSSESSION', 1);
+insert into PossessionOrAge (name, type, possessionStatusId) values('By 2017','POSSESSION', 1);
+insert into PossessionOrAge (name, type, possessionStatusId) values('By 2018','POSSESSION', 1);
+insert into PossessionOrAge (name, type, possessionStatusId) values('By 2019','POSSESSION', 1);
+insert into PossessionOrAge (name, type, possessionStatusId) values('By 2020','POSSESSION', 1);
 
-insert into PossessionOrAge (name, type) values('0-1 Year Old Property','AGE');
-insert into PossessionOrAge (name, type) values('1-5 Year Old Property','AGE');
-insert into PossessionOrAge (name, type) values('5-10 Year Old Property','AGE');
-insert into PossessionOrAge (name, type) values('10+ Year Old Property','AGE');
+insert into PossessionOrAge (name, type, possessionStatusId) values('0-1 Year Old Property','AGE', 2);
+insert into PossessionOrAge (name, type, possessionStatusId) values('1-5 Year Old Property','AGE', 2);
+insert into PossessionOrAge (name, type, possessionStatusId) values('5-10 Year Old Property','AGE', 2);
+insert into PossessionOrAge (name, type, possessionStatusId) values('10+ Year Old Property','AGE', 2);
 
  create table ImageType (
 	id bigint auto_increment,

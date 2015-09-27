@@ -142,6 +142,14 @@ public class PropertyAdminWebService {
         return response;
     }
 
+    @GET
+    @Path("/modules/get/possessionByAvailabilityId")
+    public ModuleList getPossessionByAvailabilityId(@QueryParam("availabilityId") Long availabilityId) {
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getPossessionOrAgeList(availabilityId, response);
+        return response;
+    }
+
     //Sample starts here.............................
 
     private static DummyDB dummyDB = new DummyDB();
