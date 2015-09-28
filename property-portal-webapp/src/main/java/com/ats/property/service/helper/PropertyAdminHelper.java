@@ -172,9 +172,18 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
         Advertisement advertisement = new Advertisement();
         Residential residential = new Residential();
         AdvertisementDetails advertisementDetails = new AdvertisementDetails();
+
+        List<MorePropertyDetails> morePropertyDetails = new ArrayList<MorePropertyDetails>();
         PropertyUtils.copyFields(advertisementType, advertisement);
         PropertyUtils.copyFields(advertisementType, residential);
         PropertyUtils.copyFields(advertisementType, advertisementDetails);
+
+        for(MorePropertyType more : advertisementType.getMoreProperty()) {
+            MorePropertyDetails details = new MorePropertyDetails();
+            PropertyUtils.copyFields(more, details);
+            morePropertyDetails.add(details);
+        }
+
         residential.setAdvertisementByAdvertisementId(advertisement);
         advertisementDetails.setAdvertisementByAdvertisementId(advertisement);
 
@@ -189,7 +198,7 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
                 }
             }
         }
-        AdvertisementType resAdvertisementType = adminService.saveOrUpdateAdvertisement(advertisement, advertisementDetails, residential, amenitieses);
+        AdvertisementType resAdvertisementType = adminService.saveOrUpdateAdvertisement(advertisement, advertisementDetails, residential, amenitieses, morePropertyDetails);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
         ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
         moduleResponseType.setAdvertisement(resAdvertisementType);

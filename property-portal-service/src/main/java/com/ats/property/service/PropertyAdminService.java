@@ -281,7 +281,8 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
     @Override
     @Transactional
-    public AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement, AdvertisementDetails advertisementDetails, Residential residential, List<PropertyAmenities> amenitieses) {
+    public AdvertisementType saveOrUpdateAdvertisement(Advertisement advertisement, AdvertisementDetails advertisementDetails, Residential residential,
+                                                       List<PropertyAmenities> amenitieses, List<MorePropertyDetails> moreProperties) {
         advertisement.setPropertyForTypeByPropertyForTypeId(adminDAO.findObjectById(advertisement.getPropertyForTypeId() , PropertyForType.class));
         advertisement.setPropertyTypeByPropertyTypeId(adminDAO.findObjectById(advertisement.getPropertyTypeId(), PropertyType.class));
         advertisement.setLocationsByLocationId(adminDAO.findObjectById(advertisement.getLocationId(), Locations.class));
@@ -309,6 +310,15 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                     am.setAdvertisementByAdvertisementId(advertisementFromDb);
                     am.setAmenitiesByAmenitiesId(adminDAO.findObjectById(am.getAmenitiesId(), Amenities.class));
                      PropertyAmenities amenitiesFromDB = adminDAO.savePropertyAmenities(am);
+                }
+            }
+
+            if(moreProperties.size() > 0 ) {
+                for(MorePropertyDetails morePropertyDetail : moreProperties) {
+                    morePropertyDetail.setAdvertisementByAdvertisementId(advertisementFromDb);
+                    morePropertyDetail.setUnitMasterByAreaAreaUnitId(adminDAO.findObjectById(1L, UnitMaster.class));
+                    morePropertyDetail.setBedroomByBedRoomId(adminDAO.findObjectById(morePropertyDetail.getBedRoomId(), Bedroom.class));
+                    MorePropertyDetails morePropertyDetails = adminDAO.saveMorePropertyDetails(morePropertyDetail);
                 }
             }
         }

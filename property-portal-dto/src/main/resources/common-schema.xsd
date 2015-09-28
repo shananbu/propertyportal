@@ -124,11 +124,7 @@
             <xs:element name="propertyAmenities" type="xs:string"/>
             <xs:element name="possessionStatusId" type="xs:long" minOccurs = "0"/>
             <xs:element name="possessionOrAgeId" type="xs:long" minOccurs = "0"/>
-            <xs:element name="moreProType" type="xs:string"/>
-            <xs:element name="moreProArea" type="xs:string"/>
-            <xs:element name="moreProRatePerSqFt" type="xs:string"/>
-            <xs:element name="moreProTotalCost" type="xs:string"/>
-            <xs:element name="moreProFloorPlan" type="xs:string"/>
+            <xs:element name="moreProperty" type="morePropertyType" maxOccurs = "unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -186,6 +182,17 @@
             <xs:element name="buildupAreaUnitId" type="xs:long" minOccurs="0"/>
             <xs:element name="budgetId" type="xs:long" minOccurs="0"/>
             <xs:element name="alertFrequency" type="xs:long" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="morePropertyType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs = "0"/>
+            <xs:element name="bedRoomId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="area" type="xs:long" minOccurs = "0"/>
+            <xs:element name="pricePerUnitArea" type="xs:long" minOccurs = "0"/>
+            <xs:element name="totalCost" type="xs:long"  minOccurs = "0"/>
+            <xs:element name="floorPlanFileName" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

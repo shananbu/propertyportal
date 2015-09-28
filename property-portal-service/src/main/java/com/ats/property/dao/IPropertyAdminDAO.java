@@ -37,6 +37,7 @@ public interface IPropertyAdminDAO {
     AdvertisementDetails saveAdvertisementDetails(AdvertisementDetails advertisementDetails);
     Residential saveResidential(Residential residential);
     PropertyAmenities savePropertyAmenities(PropertyAmenities amenities);
+    MorePropertyDetails saveMorePropertyDetails(MorePropertyDetails moreProperty);
 
     Advertisement updateAdvertisement(Advertisement advertisement);
     GalleryImages saveImage(GalleryImages galleryImage);

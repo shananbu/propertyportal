@@ -989,7 +989,8 @@
                     ctrlName = settings.nameFormatter(settings.idPrefix, settings.columns[y].name, uniqueIndex);
                 } else {
                     ctrlName = ctrlId;
-                    ctrlName = settings.columns[y].name;
+                    var arraySize = "[" + uniqueIndex + "]";
+                    ctrlName = settings.columns[y].name.replace("[]", arraySize);
                 }
                 // Check control type
                 ctrl = null;

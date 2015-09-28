@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -32,19 +33,26 @@
             window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
             window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true });
 
+            <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
+             <c:set var="options" value="${options} ${data.id}  :  ${data.name} ;" />
+            </c:forEach>
 
             // Initialize appendGrid
             $('#tblAppendGrid').appendGrid({
                 initRows: 1,
                 maxRowsAllowed : 10,
                 columns: [
-                    { name: 'advertisement.moreProType', display: 'Type', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px'} },
-                    { name: 'advertisement.moreProArea', display: 'Area (Sq.ft)', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100px'} },
-                    { name: 'advertisement.moreProRatePerSqFt', display: 'Rate (Per sq.ft)', type: 'text', ctrlAttr: { maxlength: 1 }, ctrlCss: { width: '100px'} },
-                    { name: 'advertisement.moreProTotalCost', display: 'Total Cost', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '100px'} },
-                    { name: 'advertisement.moreProFloorPlan', display: 'Floor Plan', type: 'file', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '100px'} },
+                    { name: 'advertisement.moreProperty[].bedRoomId', display: 'Type', type: 'select', ctrlOptions: "${fn:substring(options, 0, (fn:length(options) - 1) )}", ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px'} },
+                    { name: 'advertisement.moreProperty[].area', onChange: calculateTotalCost, display: 'Area (Sq.ft)', type: 'text', ctrlAttr: { maxlength: 5 }, ctrlCss: { width: '100px'} },
+                    { name: 'advertisement.moreProperty[].pricePerUnitArea',onChange: calculateTotalCost, display: 'Rate (Per sq.ft)', type: 'text', ctrlAttr: { maxlength: 5 }, ctrlCss: { width: '100px'} },
+                    { name: 'advertisement.moreProperty[].totalCost', display: 'Total Cost', type: 'text', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '100px'} },
+                    { name: 'advertisement.moreProperty[].floorPlanFileName', display: 'Floor Plan', type: 'file', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '100px'} },
                 ]
             });
+            
+            function calculateTotalCost() {
+              //  alert();
+            }
         });
     </script>
     <script src="js/site/postProperty.js"></script>
