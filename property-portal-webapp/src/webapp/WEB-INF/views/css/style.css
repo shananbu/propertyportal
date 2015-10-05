@@ -3911,10 +3911,6 @@ margin-left:5%;
 .pro_desc input[type="text"]{width:40%;}
 
 
-.ad_post .appendGrid{
-	margin-left:5%;
-}
-
 .ad_post textarea{vertical-align;}
 
 
@@ -4026,4 +4022,8 @@ margin-left:5%;
 
 .pop_up_reg .user_register > ul > li > label{
 	min-width: 161px;
+}
+
+.ad_post .appendGrid {
+    margin-left: 2%;
 }

@@ -432,34 +432,6 @@
             </figcaption>
         </a>
         </li>
-        <li> <a href="#"> <img src="images/image_7.jpg">
-            <figcaption class="pro_info_1">
-                <h1>Silver Ripples </h1>
-                <p> Sumadhura Infracon Pvt. Ltd. </p>
-                <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                <ul>
-                    <li> Beds : <span> 2, 3  BHK </span> </li>
-                    <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
-                    <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
-                    <li> <span> <small>Read More</small> </span> </li>
-                </ul>
-            </figcaption>
-        </a>
-        </li>
-        <li> <a href="#"> <img src="images/image_7.jpg">
-            <figcaption class="pro_info_1">
-                <h1>Silver Ripples </h1>
-                <p> Sumadhura Infracon Pvt. Ltd. </p>
-                <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                <ul>
-                    <li> Beds : <span> 2, 3  BHK </span> </li>
-                    <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
-                    <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
-                    <li> <span> <small>Read More</small> </span> </li>
-                </ul>
-            </figcaption>
-        </a>
-        </li>
     </ul>
 </section>
 </div>

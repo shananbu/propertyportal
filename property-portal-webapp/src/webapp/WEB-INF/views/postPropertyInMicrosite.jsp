@@ -42,7 +42,7 @@
                 initRows: 1,
                 maxRowsAllowed : 10,
                 columns: [
-                    { name: 'advertisement.moreProperty[].bedRoomId', display: 'Type', type: 'select', ctrlOptions: "${fn:substring(options, 0, (fn:length(options) - 1) )}", ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px'} },
+                    { name: 'advertisement.moreProperty[].bedRoomId', display: 'Type', type: 'select', ctrlOptions: "${fn:substring(options, 0, (fn:length(options) - 1) )}", ctrlAttr: { maxlength: 70 }, ctrlCss: { width: '100px'} },
                     { name: 'advertisement.moreProperty[].area', onChange: calculateTotalCost, display: 'Area (Sq.ft)', type: 'text', ctrlAttr: { maxlength: 5 }, ctrlCss: { width: '100px'} },
                     { name: 'advertisement.moreProperty[].pricePerUnitArea',onChange: calculateTotalCost, display: 'Rate (Per sq.ft)', type: 'text', ctrlAttr: { maxlength: 5 }, ctrlCss: { width: '100px'} },
                     { name: 'advertisement.moreProperty[].totalCost', display: 'Total Cost', type: 'text', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '100px'} },
@@ -341,8 +341,10 @@
 </div>
 <div class="unit_left clr_fix appen_grid">
     <h1>More properties </h1>
-    <table id="tblAppendGrid">
-    </table>
+    <div class="appendGrid">
+        <table id="tblAppendGrid"></table>
+    </div>
+    <span> <b> OR </b> Upload PDF file <input type="file"></span>
 </div>
 <div class="pro_desc">
     <h1>Property Description</h1>

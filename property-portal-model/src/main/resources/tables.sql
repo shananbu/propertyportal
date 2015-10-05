@@ -640,8 +640,9 @@ create table PreferredLocations (
 -- drop table Advertisement;
 
 -- delete from GalleryImages;
--- delete from  MorePropertyDetails;
--- delete from  Residential;
--- delete from  AdvertisementDetails;
+-- delete from MorePropertyDetails;
+-- delete from Residential;
+-- delete from AdvertisementDetails;
+-- delete from PropertyAmenities;
 -- delete from  Advertisement;
 -- ---------------------------------------------------------------------------------------------------------------------

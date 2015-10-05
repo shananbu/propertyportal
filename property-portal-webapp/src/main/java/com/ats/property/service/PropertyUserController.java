@@ -197,7 +197,7 @@ public class PropertyUserController {
     }
 
     @RequestMapping(value = { "/projectOverview" }, method = RequestMethod.GET)
-    public ModelAndView showProjectOverview() {
+    public ModelAndView showProjectOverview(@ModelAttribute("advertisementId") String advertisementId) {
         ModelAndView modelAndView = new ModelAndView("projectOverview");
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.getCityList(null, response);
@@ -270,7 +270,9 @@ public class PropertyUserController {
             adminDelegate.getUnitsList(response);
             adminDelegate.getTransactionTypesList(response);
             adminDelegate.getPossessionStatusList(response);
+            // adminDelegate.getPossessionOrAgeList(response);
             adminDelegate.getTermsList(response);
+            adminDelegate.getAmenitiesCategory(response);
 
             modelAndView.addObject("response", response);
         } else {
