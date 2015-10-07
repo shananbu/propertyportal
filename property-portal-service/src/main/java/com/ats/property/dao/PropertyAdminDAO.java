@@ -499,6 +499,14 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
+    public List<ImageType> getImageTypes() {
+        Session session = getSession();
+        Query query = session.createQuery("from ImageType");
+        List<ImageType> response = query.list();
+        return response;
+    }
+
+    @Override
     public PreferredLocations savePreferredLocations(PreferredLocations preferredLocations) {
         return (PreferredLocations)persist(preferredLocations);
     }

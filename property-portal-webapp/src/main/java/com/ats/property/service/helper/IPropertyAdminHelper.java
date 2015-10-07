@@ -55,5 +55,5 @@ public interface IPropertyAdminHelper {
 
     boolean saveAlert(AlertRegistrationType alertType, ModuleList response);
 
-
+    boolean getImageTypeList(ModuleList response);
 }

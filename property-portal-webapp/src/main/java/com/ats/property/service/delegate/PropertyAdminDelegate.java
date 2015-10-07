@@ -251,4 +251,9 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
         }
         return adminHelper.saveAlert(alertRegistrationType, response);
     }
+
+    @Override
+    public boolean getImageTypeList(ModuleList response) {
+        return adminHelper.getImageTypeList(response);
+    }
 }

@@ -13,6 +13,9 @@ public class ImageType {
     private Long id;
     private String name;
     private Collection<GalleryImages> galleryImagesesById;
+    private String label;
+    private Integer imageOrder;
+    private Boolean isActive;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -61,5 +64,35 @@ public class ImageType {
 
     public void setGalleryImagesesById(Collection<GalleryImages> galleryImagesesById) {
         this.galleryImagesesById = galleryImagesesById;
+    }
+
+    @Basic
+    @Column(name = "label", nullable = true, insertable = true, updatable = true, length = 25)
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    @Basic
+    @Column(name = "imageOrder", nullable = true, insertable = true, updatable = true)
+    public Integer getImageOrder() {
+        return imageOrder;
+    }
+
+    public void setImageOrder(Integer imageOrder) {
+        this.imageOrder = imageOrder;
+    }
+
+    @Basic
+    @Column(name = "isActive", nullable = true, insertable = true, updatable = true)
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 }

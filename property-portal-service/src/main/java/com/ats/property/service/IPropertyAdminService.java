@@ -56,4 +56,6 @@ public interface IPropertyAdminService {
     boolean getAmenitiesCategory(ModuleList response);
 
     PropertyRequirement saveAlert(PropertyRequirement requirement, AlertRegistrationType alertType);
+
+    boolean getImageTypeList(ModuleList response);
 }

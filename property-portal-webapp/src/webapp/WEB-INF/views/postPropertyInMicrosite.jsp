@@ -42,11 +42,11 @@
                 initRows: 1,
                 maxRowsAllowed : 10,
                 columns: [
-                    { name: 'advertisement.moreProperty[].bedRoomId', display: 'Type', type: 'select', ctrlOptions: "${fn:substring(options, 0, (fn:length(options) - 1) )}", ctrlAttr: { maxlength: 70 }, ctrlCss: { width: '100px'} },
-                    { name: 'advertisement.moreProperty[].area', onChange: calculateTotalCost, display: 'Area (Sq.ft)', type: 'text', ctrlAttr: { maxlength: 5 }, ctrlCss: { width: '100px'} },
-                    { name: 'advertisement.moreProperty[].pricePerUnitArea',onChange: calculateTotalCost, display: 'Rate (Per sq.ft)', type: 'text', ctrlAttr: { maxlength: 5 }, ctrlCss: { width: '100px'} },
-                    { name: 'advertisement.moreProperty[].totalCost', display: 'Total Cost', type: 'text', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '100px'} },
-                    { name: 'advertisement.moreProperty[].floorPlanFileName', display: 'Floor Plan', type: 'file', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '100px'} },
+                    { name: 'advertisement.moreProperty[].bedRoomId', display: 'Type', type: 'select', ctrlOptions: "${fn:substring(options, 0, (fn:length(options) - 1) )}", ctrlAttr: { maxlength: 70 }/*, ctrlCss: { width: '100px'}*/ },
+                    { name: 'advertisement.moreProperty[].area', onChange: calculateTotalCost, display: 'Area (Sq.ft)', type: 'text', ctrlAttr: { maxlength: 5 }/*, ctrlCss: { width: '100px'}*/ },
+                    { name: 'advertisement.moreProperty[].pricePerUnitArea',onChange: calculateTotalCost, display: 'Rate (Per sq.ft)', type: 'text', ctrlAttr: { maxlength: 5 }/*, ctrlCss: { width: '100px'} */},
+                    { name: 'advertisement.moreProperty[].totalCost', display: 'Total Cost', type: 'text', ctrlAttr: { maxlength: 10 }/*, ctrlCss: { width: '100px'} */},
+                    { name: 'advertisement.moreProperty[].floorPlanFileName', display: 'Floor Plan', type: 'file', ctrlAttr: { maxlength: 4 }/*, ctrlCss: { width: '100px'}*/ }
                 ]
             });
             
@@ -181,7 +181,7 @@
 
 <div class="pro_feat">
     <h1>Property Features</h1>
-    <ul>
+    <ul class="drop_size_1">
         <li class="col_2_text">
             <label>Builtup Area</label>
             <input type="text" placeholder="Buildup Area" name="advertisement.buildupArea">

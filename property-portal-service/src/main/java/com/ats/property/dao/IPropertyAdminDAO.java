@@ -75,5 +75,6 @@ public interface IPropertyAdminDAO {
 
     List<PossessionOrAge> getPossessionOrAge();
 
+    List<ImageType> getImageTypes();
 
 }

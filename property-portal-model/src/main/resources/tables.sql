@@ -411,18 +411,21 @@ insert into PossessionOrAge (name, type, possessionStatusId) values('10+ Year Ol
  create table ImageType (
 	id bigint auto_increment,
   name varchar(25),
+  label varchar(25),
+  imageOrder int,
+  isActive bit,
   constraint pk23 primary key(id)
 );
 
-insert into ImageType (name) values('EXTERIOR_VIEW');
-insert into ImageType (name) values('BEDROOMS');
-insert into ImageType (name) values('BATHROOMS');
-insert into ImageType (name) values('KITCHEN');
-insert into ImageType (name) values('FLOOR_PLAN');
-insert into ImageType (name) values('MASTER_PLAN');
-insert into ImageType (name) values('LOCATION_MAP');
-insert into ImageType (name) values('LOGO');
-insert into ImageType (name) values('OTHERS');
+insert into ImageType (name, label) values('EXTERIOR_VIEW', 'Exterior View');
+insert into ImageType (name, label) values('BEDROOMS','Bedrooms');
+insert into ImageType (name, label) values('BATHROOMS','Bathrooms');
+insert into ImageType (name, label) values('KITCHEN','Kitchen');
+insert into ImageType (name, label) values('FLOOR_PLAN','Floor Plan');
+insert into ImageType (name, label) values('MASTER_PLAN','Master Plan');
+insert into ImageType (name, label) values('LOCATION_MAP','Location Map');
+insert into ImageType (name, label) values('LOGO','Logo');
+insert into ImageType (name, label) values('OTHERS','Others');
 
 create table FacingMast (
 	id bigint auto_increment,

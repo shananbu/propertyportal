@@ -76,30 +76,30 @@
       <p>
           Each luxury flat for sale at Urban Tree Infinity in Porur is fully Vastu compliant and is well connected to the heart of the city through a bustling transport hub. Buy a home at Urban Tree Infinity and you'll discover every convenience of modern living right beside your contemporary home in Porur. Be it world-class education avenues, financial centers, shopping districts, global work districts, healthcare facilities, it's all a hop away if you buy a fabulous flat in Urban Tree Infinity in Porur. What's more, Infinity is blessed with abundant clean air, potable drinking water & 24-hour security, ensuring it is a dream come true. </p>
     </div>
-    <div class="row_main">
+    <div class="pro_chk_list row_main">
       <h1><span>Property Features and Amenities</span></h1>
-      <nav class="foot_1 soc_link clr_fix">
+      <nav>
           <ul>
-              <li><a><i class="fa fa-check-square-o"></i> Power Back-up</a></li>
-              <li><a><i class="fa fa-check-square-o"></i> Security / Fire Alarm</a></li>
-              <li><a><i class="fa fa-check-square-o"></i> Centrally Air Conditioned</a></li>
-              <li><a><i class="fa fa-check-square-o"></i> Private Garden</a></li>
+              <li><i class="fa fa-check-square-o"></i> Power Back-up</li>
+              <li><i class="fa fa-check-square-o"></i> Security / Fire Alarm</li>
+              <li><i class="fa fa-check-square-o"></i> Centrally Air Conditioned</li>
+              <li><i class="fa fa-check-square-o"></i> Private Garden</li>
           </ul>
       </nav>
-      <nav class="foot_1 soc_link clr_fix">
+      <nav>
           <ul>
-              <li><a><i class="fa fa-check-square-o"></i>  Water Storage</a></li>
-              <li><a><i class="fa fa-check-square-o"></i> Internet/Wi-Fi connectivity</a></li>
-              <li><a><i class="fa fa-check-square-o"></i> Water purifier</a></li>
-              <li><a><i class="fa fa-check-square-o"></i> Park</a></li>
+              <li><i class="fa fa-check-square-o"></i>  Water Storage</li>
+              <li><i class="fa fa-check-square-o"></i> Internet/Wi-Fi connectivity</li>
+              <li><i class="fa fa-check-square-o"></i> Water purifier</li>
+              <li><i class="fa fa-check-square-o"></i> Park</li>
           </ul>
       </nav>
-      <nav class="foot_1 soc_link clr_fix">
+      <nav>
            <ul>
-              <li><a><i class="fa fa-check-square-o"></i> Waste Disposal</a></li>
-              <li><a><i class="fa fa-check-square-o"></i> Rain Water Harvesting</a></li>
-              <li><a><i class="fa fa-check-square-o"></i> Bank Attached Property</a></li>
-              <li><a><i class="fa fa-check-square-o"></i> Maintenance Staff</a></li>
+              <li><i class="fa fa-check-square-o"></i> Waste Disposal</li>
+              <li><i class="fa fa-check-square-o"></i> Rain Water Harvesting</li>
+              <li><i class="fa fa-check-square-o"></i> Bank Attached Property</li>
+              <li><i class="fa fa-check-square-o"></i> Maintenance Staff</li>
           </ul>
       </nav>
     </div>

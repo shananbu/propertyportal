@@ -50,4 +50,6 @@ public interface IPropertyAdminDelegate {
     boolean getAmenitiesCategory(ModuleList response);
 
     boolean saveAlert(ModuleRequestType moduleRequest, ModuleList response);
+
+    boolean getImageTypeList(ModuleList response);
 }

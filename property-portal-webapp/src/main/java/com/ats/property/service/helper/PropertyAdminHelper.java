@@ -329,4 +329,9 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
         adminService.saveAlert(alert, alertType);
         return true;
     }
+
+    @Override
+    public boolean getImageTypeList(ModuleList response) {
+        return adminService.getImageTypeList(response);
+    }
 }

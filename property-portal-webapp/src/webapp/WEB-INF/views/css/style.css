@@ -4024,6 +4024,19 @@ margin-left:5%;
 	min-width: 161px;
 }
 
-.ad_post .appendGrid {
-    margin-left: 2%;
+.ad_post .appendGrid{
+    display: inline-block;
+    vertical-align: middle;
+    width: 67%;
+}
+
+.drop_size_1 > li > select {
+    width: 162px !important;
+}
+
+
+.pro_chk_list nav ul li > i{
+    color: #5daf33;
+    font-size: 18px;
+    margin: 0 5px;
 }

@@ -295,6 +295,9 @@ public class PropertyUserController {
         ModelAndView modelAndView= new ModelAndView("userLogin");
         if (request.isUserInRole("ROLE_USER")) {
             modelAndView = new ModelAndView("uploadFile");
+            ModuleList response = CommonHelper.getSuccessModuleList();
+            adminDelegate.getImageTypeList(response);
+            modelAndView.addObject("response", response);
         }
         return modelAndView;
     }

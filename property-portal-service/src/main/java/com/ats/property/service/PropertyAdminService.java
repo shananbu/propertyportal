@@ -661,4 +661,19 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         }
         return requirementFromDB;
     }
+
+    @Override
+    public boolean getImageTypeList(ModuleList response) {
+        List<ImageType> types = adminDAO.getImageTypes();
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        if(fromNullable(types).isPresent()) {
+            for(ImageType type : types) {
+                NameDataType nameDataType = new NameDataType();
+                PropertyUtils.copyFields(type, nameDataType);
+                moduleResponseType.getImageTypes().add(nameDataType);
+            }
+        }
+        return true;
+    }
 }
