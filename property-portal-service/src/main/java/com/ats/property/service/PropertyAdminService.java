@@ -14,6 +14,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.ats.property.common.constants.PropertyUtils.isNotNull;
@@ -336,6 +338,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         for(GalleryImageType imageType : advertisementType.getGalleryImage()) {
             GalleryImages image = new GalleryImages();
             image.setImageName(imageType.getImageName());
+            image.setImageTypeByImageTypeId(adminDAO.findObjectById(advertisementType.getImageTypeId(), ImageType.class));
             image.setAdvertisementByAdvertisementId(advtForUpdate);
             images = adminDAO.saveImage(image);
 
@@ -675,5 +678,52 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             }
         }
         return true;
+    }
+
+    @Override
+    public boolean getAdvertisementById(String advertisementId, ModuleList response) {
+        Advertisement advertisement = adminDAO.findObjectById(Long.parseLong(advertisementId), Advertisement.class);
+        AdvertisementType advertisementType = new AdvertisementType();
+        if(fromNullable(advertisement).isPresent()) {
+            PropertyUtils.copyFields(advertisement, advertisementType);
+            if(fromNullable(advertisement.getGalleryImagesesById()).isPresent()) {
+                for(GalleryImages galleryImage : advertisement.getGalleryImagesesById()) {
+                    GalleryImageType imageType = new GalleryImageType();
+                    PropertyUtils.copyFields(galleryImage, imageType);
+                    advertisementType.getGalleryImage().add(imageType);
+                }
+            }
+
+            if(fromNullable(advertisement.getMorePropertyDetailsesById()).isPresent()) {
+                for(MorePropertyDetails morePropertyDetails : advertisement.getMorePropertyDetailsesById()) {
+                    MorePropertyType morePropertyType = new MorePropertyType();
+                    PropertyUtils.copyFields(morePropertyDetails, morePropertyType);
+                    advertisementType.getMoreProperty().add(morePropertyType);
+                }
+            }
+
+            if(fromNullable(advertisement.getPropertyAmenitiesesById()).isPresent()) {
+                advertisementType.setPropertyAmenitiesMap(new HashMap());
+                for(PropertyAmenities propertyAmenity : advertisement.getPropertyAmenitiesesById()) {
+                    Long parent = propertyAmenity.getAmenitiesByAmenitiesId().getAmenitiesCategoryByAmenitiesCategoryId().getId();
+                    Object dataFromMap = (advertisementType.getPropertyAmenitiesMap() != null) ? advertisementType.getPropertyAmenitiesMap().get(parent) : null;
+                    List<NameDataType> amenitiesList = null;
+                    if(dataFromMap == null) {
+                        amenitiesList = new ArrayList<NameDataType>();
+                    } else {
+                        amenitiesList = (List<NameDataType>)dataFromMap;
+                    }
+                    NameDataType amenity = new NameDataType();
+                    amenity.setName(propertyAmenity.getAmenitiesByAmenitiesId().getName());
+                    amenitiesList.add(amenity);
+
+                    advertisementType.getPropertyAmenitiesMap().put(parent, amenitiesList);
+                }
+            }
+        }
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        moduleResponseType.setAdvertisement(advertisementType);
+        return false;
     }
 }

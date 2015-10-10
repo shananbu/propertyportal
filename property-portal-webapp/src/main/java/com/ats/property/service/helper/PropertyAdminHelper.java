@@ -334,4 +334,9 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     public boolean getImageTypeList(ModuleList response) {
         return adminService.getImageTypeList(response);
     }
+
+    @Override
+    public boolean getAdvertisementById(String advertisementId, ModuleList response) {
+        return adminService.getAdvertisementById(advertisementId, response);
+    }
 }

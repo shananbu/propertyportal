@@ -256,4 +256,9 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     public boolean getImageTypeList(ModuleList response) {
         return adminHelper.getImageTypeList(response);
     }
+
+    @Override
+    public boolean getAdvertisementById(String advertisementId, ModuleList response) {
+        return adminHelper.getAdvertisementById(advertisementId, response);
+    }
 }

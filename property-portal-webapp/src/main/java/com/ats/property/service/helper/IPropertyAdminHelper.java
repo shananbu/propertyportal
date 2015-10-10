@@ -56,4 +56,6 @@ public interface IPropertyAdminHelper {
     boolean saveAlert(AlertRegistrationType alertType, ModuleList response);
 
     boolean getImageTypeList(ModuleList response);
+
+    boolean getAdvertisementById(String advertisementId, ModuleList response);
 }

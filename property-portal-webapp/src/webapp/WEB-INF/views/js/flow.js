@@ -1175,7 +1175,8 @@
         flowFilename: this.fileObj.name,
         flowRelativePath: this.fileObj.relativePath,
         flowTotalChunks: this.fileObj.chunks.length,
-        advertisementId: document.getElementById("advertisementId").value
+        advertisementId: document.getElementById("advertisementId").value,
+        imageTypeId: (document.getElementsByClassName("upload_active")[0]).getAttribute("rel")
       };
     },
 

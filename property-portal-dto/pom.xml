@@ -62,10 +62,8 @@
                         </goals>
                         <configuration>
                             <schemaFiles>property-portal-schema.xsd</schemaFiles>
-                            <!--<bindingFiles>experience-schema.xjb</bindingFiles>-->
-<!--
+                            <bindingFiles>property-portal.xjb</bindingFiles>
                             <arguments>-mark-generated -Xannotate -Xsetters -Xsetters-mode=direct -Xinheritance</arguments>
--->
                             <extension>true</extension>
                             <clearOutputDir>false</clearOutputDir>
                             <packageName>com.ats.property.dto</packageName>

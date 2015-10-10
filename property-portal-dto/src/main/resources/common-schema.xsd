@@ -126,7 +126,12 @@
             <xs:element name="possessionStatusId" type="xs:long" minOccurs = "0"/>
             <xs:element name="possessionOrAgeId" type="xs:long" minOccurs = "0"/>
             <xs:element name="moreProperty" type="morePropertyType" maxOccurs = "unbounded"/>
+            <xs:element name="imageTypeId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="propertyAmenitiesMap" type="amenitiesByCategory"/>
         </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="amenitiesByCategory">
     </xs:complexType>
 
     <xs:complexType name="galleryImageType">
@@ -196,5 +201,6 @@
             <xs:element name="floorPlanFileName" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
+
 </xs:schema>
 

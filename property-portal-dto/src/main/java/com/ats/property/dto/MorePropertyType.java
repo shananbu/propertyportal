@@ -16,23 +16,21 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for searchType complex type.
+ * <p>Java class for morePropertyType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="searchType">
+ * &lt;complexType name="morePropertyType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="propertyForTypeId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="propertyTypeId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="locationId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="expectedPrice" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="bedRoomId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="userTypeId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="pageNumber" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="searchString" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="area" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="pricePerUnitArea" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="totalCost" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="floorPlanFileName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -42,39 +40,33 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "searchType", propOrder = {
-    "propertyForTypeId",
-    "propertyTypeId",
-    "locationId",
-    "expectedPrice",
+@XmlType(name = "morePropertyType", propOrder = {
+    "id",
     "bedRoomId",
-    "userTypeId",
-    "pageNumber",
-    "searchString"
+    "area",
+    "pricePerUnitArea",
+    "totalCost",
+    "floorPlanFileName"
 })
 @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-public class SearchType {
+public class MorePropertyType {
 
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    protected Long propertyForTypeId;
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    protected Long propertyTypeId;
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    protected Long locationId;
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    protected Long expectedPrice;
+    protected Long id;
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
     protected Long bedRoomId;
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    protected Long userTypeId;
+    protected Long area;
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    protected Integer pageNumber;
+    protected Long pricePerUnitArea;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
+    protected Long totalCost;
     @XmlElement(required = true)
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    protected String searchString;
+    protected String floorPlanFileName;
 
     /**
-     * Gets the value of the propertyForTypeId property.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -82,12 +74,12 @@ public class SearchType {
      *     
      */
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public Long getPropertyForTypeId() {
-        return propertyForTypeId;
+    public Long getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the propertyForTypeId property.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
@@ -95,86 +87,8 @@ public class SearchType {
      *     
      */
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public void setPropertyForTypeId(Long value) {
-        this.propertyForTypeId = value;
-    }
-
-    /**
-     * Gets the value of the propertyTypeId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public Long getPropertyTypeId() {
-        return propertyTypeId;
-    }
-
-    /**
-     * Sets the value of the propertyTypeId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public void setPropertyTypeId(Long value) {
-        this.propertyTypeId = value;
-    }
-
-    /**
-     * Gets the value of the locationId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public Long getLocationId() {
-        return locationId;
-    }
-
-    /**
-     * Sets the value of the locationId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public void setLocationId(Long value) {
-        this.locationId = value;
-    }
-
-    /**
-     * Gets the value of the expectedPrice property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public Long getExpectedPrice() {
-        return expectedPrice;
-    }
-
-    /**
-     * Sets the value of the expectedPrice property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public void setExpectedPrice(Long value) {
-        this.expectedPrice = value;
+    public void setId(Long value) {
+        this.id = value;
     }
 
     /**
@@ -204,7 +118,7 @@ public class SearchType {
     }
 
     /**
-     * Gets the value of the userTypeId property.
+     * Gets the value of the area property.
      * 
      * @return
      *     possible object is
@@ -212,12 +126,12 @@ public class SearchType {
      *     
      */
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public Long getUserTypeId() {
-        return userTypeId;
+    public Long getArea() {
+        return area;
     }
 
     /**
-     * Sets the value of the userTypeId property.
+     * Sets the value of the area property.
      * 
      * @param value
      *     allowed object is
@@ -225,38 +139,64 @@ public class SearchType {
      *     
      */
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public void setUserTypeId(Long value) {
-        this.userTypeId = value;
+    public void setArea(Long value) {
+        this.area = value;
     }
 
     /**
-     * Gets the value of the pageNumber property.
+     * Gets the value of the pricePerUnitArea property.
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Long }
      *     
      */
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public Integer getPageNumber() {
-        return pageNumber;
+    public Long getPricePerUnitArea() {
+        return pricePerUnitArea;
     }
 
     /**
-     * Sets the value of the pageNumber property.
+     * Sets the value of the pricePerUnitArea property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Long }
      *     
      */
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public void setPageNumber(Integer value) {
-        this.pageNumber = value;
+    public void setPricePerUnitArea(Long value) {
+        this.pricePerUnitArea = value;
     }
 
     /**
-     * Gets the value of the searchString property.
+     * Gets the value of the totalCost property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
+    public Long getTotalCost() {
+        return totalCost;
+    }
+
+    /**
+     * Sets the value of the totalCost property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
+    public void setTotalCost(Long value) {
+        this.totalCost = value;
+    }
+
+    /**
+     * Gets the value of the floorPlanFileName property.
      * 
      * @return
      *     possible object is
@@ -264,12 +204,12 @@ public class SearchType {
      *     
      */
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public String getSearchString() {
-        return searchString;
+    public String getFloorPlanFileName() {
+        return floorPlanFileName;
     }
 
     /**
-     * Sets the value of the searchString property.
+     * Sets the value of the floorPlanFileName property.
      * 
      * @param value
      *     allowed object is
@@ -277,8 +217,8 @@ public class SearchType {
      *     
      */
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2015-10-09T04:20:55+05:30", comments = "JAXB RI vhudson-jaxb-ri-2.1-833")
-    public void setSearchString(String value) {
-        this.searchString = value;
+    public void setFloorPlanFileName(String value) {
+        this.floorPlanFileName = value;
     }
 
 }

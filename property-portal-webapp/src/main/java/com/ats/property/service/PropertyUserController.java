@@ -200,10 +200,13 @@ public class PropertyUserController {
     public ModelAndView showProjectOverview(@ModelAttribute("advertisementId") String advertisementId) {
         ModelAndView modelAndView = new ModelAndView("projectOverview");
         ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getAdvertisementById(advertisementId, response);
         adminDelegate.getCityList(null, response);
         adminDelegate.getBedroomsList(response);
         adminDelegate.getBudgetList(response);
         adminDelegate.getPropertyTypeList(response);
+        adminDelegate.getImageTypeList(response);
+        adminDelegate.getAmenitiesCategory(response);
         modelAndView.addObject("response", response);
         return modelAndView;
     }
@@ -303,9 +306,12 @@ public class PropertyUserController {
     }
 
     @RequestMapping(value = "/uploadFileAndUpdate", method = RequestMethod.POST)
-    public String uploadFileAndUpdateAdvertisement(@RequestParam("file") MultipartFile file, @RequestParam("flowFilename") String fileName, @RequestParam("advertisementId") Long advertisementId) {
-       // String fileRootDir = "D:\\tmp\\";
-        String fileRootDir = "/home/acreindia/uploadedResources/";
+    public String uploadFileAndUpdateAdvertisement(@RequestParam("file") MultipartFile file,
+                                                   @RequestParam("flowFilename") String fileName,
+                                                   @RequestParam("advertisementId") Long advertisementId,
+                                                   @RequestParam("imageTypeId") Long imageTypeId) {
+        String fileRootDir = "D:\\tmp\\";
+      //  String fileRootDir = "/home/acreindia/uploadedResources/";
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
@@ -317,6 +323,7 @@ public class PropertyUserController {
                 ModuleRequestType moduleRequest = new ModuleRequestType();
                 AdvertisementType advertisementType = new AdvertisementType();
                 advertisementType.setId(advertisementId);
+                advertisementType.setImageTypeId(imageTypeId);
                 GalleryImageType imageType = new GalleryImageType();
                 imageType.setImageName(fileName);
                 advertisementType.getGalleryImage().add(imageType);

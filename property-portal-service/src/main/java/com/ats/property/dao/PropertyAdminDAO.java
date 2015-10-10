@@ -436,7 +436,7 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     @Override
     public List<AmenitiesCategory> getAmenitiesCategory() {
         Session session = getSession();
-        Query query = session.createQuery("from AmenitiesCategory");
+        Query query = session.createQuery("from AmenitiesCategory c order by c.displayOrder");
         List<AmenitiesCategory> response = query.list();
         return response;
     }

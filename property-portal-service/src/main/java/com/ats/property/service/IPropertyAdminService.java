@@ -58,4 +58,6 @@ public interface IPropertyAdminService {
     PropertyRequirement saveAlert(PropertyRequirement requirement, AlertRegistrationType alertType);
 
     boolean getImageTypeList(ModuleList response);
+
+    boolean getAdvertisementById(String advertisementId, ModuleList response);
 }

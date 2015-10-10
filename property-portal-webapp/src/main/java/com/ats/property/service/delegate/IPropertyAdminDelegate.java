@@ -52,4 +52,6 @@ public interface IPropertyAdminDelegate {
     boolean saveAlert(ModuleRequestType moduleRequest, ModuleList response);
 
     boolean getImageTypeList(ModuleList response);
+
+    boolean getAdvertisementById(String advertisementId, ModuleList response);
 }
