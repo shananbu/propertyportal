@@ -77,7 +77,7 @@ insert into State (name, countryId) values ('West Bengal', 1);
 create table City (
   id bigint auto_increment,
   name varchar(25),
-  state
+  stateId bigint,
   isPopular boolean,
   constraint pk3 primary key(id),
   constraint fk2 foreign key (stateId) references State(id)
@@ -171,9 +171,9 @@ create table PropertyMainType (
   constraint pk8 primary key(id)
 );
 
--- insert into PropertyMainType (name) values('RESIDENTIAL');
--- insert into PropertyMainType (name) values('COMMERCIAL');
--- insert into PropertyMainType (name) values('OTHERS');
+insert into PropertyMainType (name) values('RESIDENTIAL');
+insert into PropertyMainType (name) values('COMMERCIAL');
+insert into PropertyMainType (name) values('OTHERS');
 
 create table PropertyType (
   id bigint auto_increment,
@@ -456,8 +456,8 @@ create table Advertisement (
 	propertyFeatures varchar(5000),
 	isTermsAgreed varchar(1),
 	constraint pk25 primary key(id),
-  constraint fk34 foreign key (planId) references PlanMast(id),
-  constraint fk46 foreign key (propertyUserId) references PropertyUser(id),
+  constraint fk46 foreign key (planId) references PlanMast(id),
+  constraint fk47 foreign key (propertyUserId) references PropertyUser(id),
 	constraint fk9 foreign key (propertyForTypeId) references PropertyForType(id),
 	constraint fk10 foreign key (propertyTypeId) references PropertyType(id),
 	constraint fk11 foreign key (locationId) references Locations(id),

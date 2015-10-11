@@ -38,7 +38,7 @@
 </header>
 <section class="clr_fix">
     <div class="clr_fix prod_img_banner">
-        <span>${response.module[0].moduleResponse.advertisement.projectName} -- Pronect name need to modify</span>
+        <span>${response.module[0].moduleResponse.advertisement.companyName}</span>
         <ul class="rslides" id="slider1">
             <li><img src="images/slider_1.jpg"></li>
             <li><img src="images/slider_2.jpg"></li>

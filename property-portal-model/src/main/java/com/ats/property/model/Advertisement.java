@@ -38,6 +38,7 @@ public class Advertisement {
     private Collection<MorePropertyDetails> morePropertyDetailsesById;
     private Collection<PropertyAmenities> propertyAmenitiesesById;
     private Collection<Residential> residentialsById;
+    private PropertyUser propertyUserByPropertyUserId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -367,5 +368,15 @@ public class Advertisement {
 
     public void setResidentialsById(Collection<Residential> residentialsById) {
         this.residentialsById = residentialsById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "propertyUserId", referencedColumnName = "id")
+    public PropertyUser getPropertyUserByPropertyUserId() {
+        return propertyUserByPropertyUserId;
+    }
+
+    public void setPropertyUserByPropertyUserId(PropertyUser propertyUserByPropertyUserId) {
+        this.propertyUserByPropertyUserId = propertyUserByPropertyUserId;
     }
 }

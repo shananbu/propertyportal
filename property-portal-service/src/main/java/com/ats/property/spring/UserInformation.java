@@ -15,6 +15,7 @@ import java.util.Collection;
  */
 public class UserInformation extends User {
     String firstName;
+    Long userId;
 
     public String getFirstName() {
         return firstName;
@@ -22,6 +23,14 @@ public class UserInformation extends User {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public UserInformation(String username, String password, Collection<? extends GrantedAuthority> authorities) {

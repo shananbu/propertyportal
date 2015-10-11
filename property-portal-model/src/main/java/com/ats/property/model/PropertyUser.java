@@ -25,6 +25,7 @@ public class PropertyUser {
     private UserType userTypeByUserTypeId;
     private City cityByCityId;
     private Collection<PropertyRequirement> propertyRequirementsById;
+    private Collection<Advertisement> advertisementsById;
 
 
     @Id
@@ -216,5 +217,14 @@ public class PropertyUser {
 
     public void setPropertyRequirementsById(Collection<PropertyRequirement> propertyRequirementsById) {
         this.propertyRequirementsById = propertyRequirementsById;
+    }
+
+    @OneToMany(mappedBy = "propertyUserByPropertyUserId")
+    public Collection<Advertisement> getAdvertisementsById() {
+        return advertisementsById;
+    }
+
+    public void setAdvertisementsById(Collection<Advertisement> advertisementsById) {
+        this.advertisementsById = advertisementsById;
     }
 }

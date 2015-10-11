@@ -49,6 +49,7 @@ public class AdminUserDetailsService implements UserDetailsService {
             }};
             user = new UserInformation(propertyUser.getEmailId(), propertyUser.getPasswrd(), true, true, true, true, authorityList);
             user.setFirstName(propertyUser.getFirstName());
+            user.setUserId(propertyUser.getId());
         } else if(adminlogin != null) {
                 authorityList = new ArrayList<GrantedAuthority>() {{
                 String role = "ROLE_ADMIN";
@@ -56,6 +57,7 @@ public class AdminUserDetailsService implements UserDetailsService {
             }};
             user = new UserInformation(adminlogin.getUserName(), adminlogin.getPassword(), true, true, true, true, authorityList);
             user.setFirstName(adminlogin.getFirstName());
+            user.setUserId(adminlogin.getId());
         }
         return user;
     }

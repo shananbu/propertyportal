@@ -10,10 +10,19 @@ import com.ats.property.mail.MailService;
 import com.ats.property.model.*;
 import com.ats.property.model.Advertisement;
 import com.ats.property.model.TotalFloors;
+import com.ats.property.spring.UserInformation;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +45,23 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
     private  ObjectFactory objectFactory;
 
+    public static UserInformation getCurrentUser(){
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        Authentication authentication = securityContext.getAuthentication();
+        if (authentication != null) {
+            Object principal = authentication.getPrincipal();
+            return principal instanceof UserInformation ? (UserInformation) principal : null;
+        }
+        return null;
+    }
+
+    public Long getCurrentUserId() {
+        UserInformation user = getCurrentUser();
+        if (user != null) {
+            return user.getUserId();
+        }
+        return null;
+    }
     @Override
     public void afterPropertiesSet() throws Exception {
          objectFactory = new ObjectFactory();
@@ -288,6 +314,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         advertisement.setPropertyForTypeByPropertyForTypeId(adminDAO.findObjectById(advertisement.getPropertyForTypeId() , PropertyForType.class));
         advertisement.setPropertyTypeByPropertyTypeId(adminDAO.findObjectById(advertisement.getPropertyTypeId(), PropertyType.class));
         advertisement.setLocationsByLocationId(adminDAO.findObjectById(advertisement.getLocationId(), Locations.class));
+        advertisement.setPropertyUserByPropertyUserId(adminDAO.findObjectById(getCurrentUserId(), PropertyUser.class));
 
         advertisement.setPossessionOrAgeByPossessionOrAgeId(adminDAO.findObjectById(advertisement.getPossessionOrAgeId(), PossessionOrAge.class));
         advertisement.setPossessionStatusByPossessionStatusId(adminDAO.findObjectById(advertisement.getPossessionStatusId(), PossessionStatus.class));
@@ -696,7 +723,10 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             AdvertisementType advertisementType = new AdvertisementType();
             if(fromNullable(advertisement).isPresent()) {
                 PropertyUtils.copyFields(advertisement, advertisementType);
-                advertisementType.setCompanyName("Company name...");
+                advertisementType.setCompanyName(advertisement.getBuilderName());
+                if(advertisement.getBuilderName() == null) {
+                    advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());
+                }
                 advertisementType.setCompanyLogo("image_7.jpg");
                 advertisementType.setLocationName(advertisement.getLocationsByLocationId().getName());
                 for(Residential residential : advertisement.getResidentialsById()) {
