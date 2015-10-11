@@ -128,7 +128,20 @@
             <xs:element name="moreProperty" type="morePropertyType" maxOccurs = "unbounded"/>
             <xs:element name="imageTypeId" type="xs:long" minOccurs = "0"/>
             <xs:element name="propertyAmenitiesMap" type="amenitiesByCategory"/>
+            <xs:element name="galleryImageByImageTypeMap" type="galleryImagesByImageType"/>
+            <xs:element name="propertyLogo" type="xs:string"/>
+            <xs:element name="companyLogo" type="xs:string"/>
+            <xs:element name="companyName" type="xs:string"/>
+            <xs:element name="locationName" type="xs:string"/>
+            <xs:element name="bedRooms" type="xs:string"/>
+            <xs:element name="buildupAreaName" type="xs:string"/>
+            <xs:element name="cost" type="xs:string"/>
+            <xs:element name="buildupAreaRange" type="xs:string"/>
+            <xs:element name="priceRange" type="xs:string"/>
         </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="galleryImagesByImageType">
     </xs:complexType>
 
     <xs:complexType name="amenitiesByCategory">

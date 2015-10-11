@@ -58,4 +58,6 @@ public interface IPropertyAdminHelper {
     boolean getImageTypeList(ModuleList response);
 
     boolean getAdvertisementById(String advertisementId, ModuleList response);
+
+    public boolean getAdvertisements(ModuleList response);
 }

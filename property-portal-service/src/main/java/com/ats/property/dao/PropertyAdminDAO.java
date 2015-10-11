@@ -507,6 +507,14 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
+    public List<Advertisement> getAdvertisements() {
+        Session session = getSession();
+        Query query = session.createQuery("from Advertisement");
+        List<Advertisement> response = query.list();
+        return response;
+    }
+
+    @Override
     public PreferredLocations savePreferredLocations(PreferredLocations preferredLocations) {
         return (PreferredLocations)persist(preferredLocations);
     }

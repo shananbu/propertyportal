@@ -12,6 +12,7 @@ import java.util.List;
  * @author anbarasan.s
  */
 public interface IPropertyAdminService {
+    Long ONE_LAKH = 100000L;
     void getCountry();
     AdminLogin getAdminUser(String userName, String password);
     AdminUserType saveOrUpdateAdminUser(AdminLogin adminUser);
@@ -60,4 +61,7 @@ public interface IPropertyAdminService {
     boolean getImageTypeList(ModuleList response);
 
     boolean getAdvertisementById(String advertisementId, ModuleList response);
+
+    boolean getAdvertisements(ModuleList response);
+
 }

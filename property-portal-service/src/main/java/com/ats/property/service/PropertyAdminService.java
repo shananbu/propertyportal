@@ -683,47 +683,97 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     @Override
     public boolean getAdvertisementById(String advertisementId, ModuleList response) {
         Advertisement advertisement = adminDAO.findObjectById(Long.parseLong(advertisementId), Advertisement.class);
-        AdvertisementType advertisementType = new AdvertisementType();
-        if(fromNullable(advertisement).isPresent()) {
-            PropertyUtils.copyFields(advertisement, advertisementType);
-            if(fromNullable(advertisement.getGalleryImagesesById()).isPresent()) {
-                for(GalleryImages galleryImage : advertisement.getGalleryImagesesById()) {
-                    GalleryImageType imageType = new GalleryImageType();
-                    PropertyUtils.copyFields(galleryImage, imageType);
-                    advertisementType.getGalleryImage().add(imageType);
-                }
-            }
+        List<Advertisement> advertisements = new ArrayList<Advertisement>();
+        advertisements.add(advertisement);
+        getAdvertisements(advertisements, response);
+        return true;
+    }
 
-            if(fromNullable(advertisement.getMorePropertyDetailsesById()).isPresent()) {
-                for(MorePropertyDetails morePropertyDetails : advertisement.getMorePropertyDetailsesById()) {
-                    MorePropertyType morePropertyType = new MorePropertyType();
-                    PropertyUtils.copyFields(morePropertyDetails, morePropertyType);
-                    advertisementType.getMoreProperty().add(morePropertyType);
-                }
-            }
-
-            if(fromNullable(advertisement.getPropertyAmenitiesesById()).isPresent()) {
-                advertisementType.setPropertyAmenitiesMap(new HashMap());
-                for(PropertyAmenities propertyAmenity : advertisement.getPropertyAmenitiesesById()) {
-                    Long parent = propertyAmenity.getAmenitiesByAmenitiesId().getAmenitiesCategoryByAmenitiesCategoryId().getId();
-                    Object dataFromMap = (advertisementType.getPropertyAmenitiesMap() != null) ? advertisementType.getPropertyAmenitiesMap().get(parent) : null;
-                    List<NameDataType> amenitiesList = null;
-                    if(dataFromMap == null) {
-                        amenitiesList = new ArrayList<NameDataType>();
-                    } else {
-                        amenitiesList = (List<NameDataType>)dataFromMap;
-                    }
-                    NameDataType amenity = new NameDataType();
-                    amenity.setName(propertyAmenity.getAmenitiesByAmenitiesId().getName());
-                    amenitiesList.add(amenity);
-
-                    advertisementType.getPropertyAmenitiesMap().put(parent, amenitiesList);
-                }
-            }
-        }
+    private boolean getAdvertisements(List<Advertisement> advertisements, ModuleList response) {
         ModuleType moduleType = CommonHelper.getFirstModule(response);
         ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
-        moduleResponseType.setAdvertisement(advertisementType);
-        return false;
+        for(Advertisement advertisement : advertisements) {
+            AdvertisementType advertisementType = new AdvertisementType();
+            if(fromNullable(advertisement).isPresent()) {
+                PropertyUtils.copyFields(advertisement, advertisementType);
+                advertisementType.setCompanyName("Company name...");
+                advertisementType.setCompanyLogo("image_7.jpg");
+                advertisementType.setLocationName(advertisement.getLocationsByLocationId().getName());
+                for(Residential residential : advertisement.getResidentialsById()) {
+                    advertisementType.setBedRooms(residential.getBedroomByBedRoomId().getName());
+                }
+                for(AdvertisementDetails advertisementDetails : advertisement.getAdvertisementDetailsesById()) {
+                    String buildupAreaName = advertisementDetails.getBuildupArea().longValue() + " " + advertisementDetails.getUnitMasterByBuildupAreaUnitId().getName() + " " + PropertyConstants.ONWARDS.value();
+                    advertisementType.setBuildupAreaName(buildupAreaName);
+                    advertisementType.setBuildupAreaRange(buildupAreaName);
+                    String cost = advertisementDetails.getExpectedPrice() / ONE_LAKH + " " + PropertyConstants.LAKHS.value() + " " + PropertyConstants.ONWARDS.value();
+                    advertisementType.setCost(cost);
+                    advertisementType.setPriceRange(cost);
+                }
+
+
+                if(fromNullable(advertisement.getGalleryImagesesById()).isPresent()) {
+                    advertisementType.setGalleryImageByImageTypeMap(new HashMap());
+                    for(GalleryImages galleryImage : advertisement.getGalleryImagesesById()) {
+                        Long parent = galleryImage.getImageTypeByImageTypeId().getId();
+                        Object dataFromMap = (advertisementType.getGalleryImageByImageTypeMap() != null) ? advertisementType.getGalleryImageByImageTypeMap().get(parent) : null;
+                        List<GalleryImageType> imagesList = null;
+                        if(dataFromMap == null) {
+                            imagesList = new ArrayList<GalleryImageType>();
+                        } else {
+                            imagesList = (List<GalleryImageType>)dataFromMap;
+                        }
+                        GalleryImageType imageType = new GalleryImageType();
+                        PropertyUtils.copyFields(galleryImage, imageType);
+                        imageType.setImageName(PropertyConstants.RESOURCE_DIR.value() + imageType.getImageName());
+                        if(galleryImage.getImageTypeByImageTypeId().getName().equals(PropertyConstants.EXTERIOR_VIEW.value())) {
+                            advertisementType.setPropertyLogo("image_7.jpg");
+                        }
+
+                        imagesList.add(imageType);
+
+                        advertisementType.getGalleryImageByImageTypeMap().put(parent, imagesList);
+                    }
+                }
+
+                if(fromNullable(advertisement.getMorePropertyDetailsesById()).isPresent()) {
+                    for(MorePropertyDetails morePropertyDetails : advertisement.getMorePropertyDetailsesById()) {
+                        MorePropertyType morePropertyType = new MorePropertyType();
+                        PropertyUtils.copyFields(morePropertyDetails, morePropertyType);
+                        advertisementType.getMoreProperty().add(morePropertyType);
+                    }
+                }
+
+                if(fromNullable(advertisement.getPropertyAmenitiesesById()).isPresent()) {
+                    advertisementType.setPropertyAmenitiesMap(new HashMap());
+                    for(PropertyAmenities propertyAmenity : advertisement.getPropertyAmenitiesesById()) {
+                        Long parent = propertyAmenity.getAmenitiesByAmenitiesId().getAmenitiesCategoryByAmenitiesCategoryId().getId();
+                        Object dataFromMap = (advertisementType.getPropertyAmenitiesMap() != null) ? advertisementType.getPropertyAmenitiesMap().get(parent) : null;
+                        List<NameDataType> amenitiesList = null;
+                        if(dataFromMap == null) {
+                            amenitiesList = new ArrayList<NameDataType>();
+                        } else {
+                            amenitiesList = (List<NameDataType>)dataFromMap;
+                        }
+                        NameDataType amenity = new NameDataType();
+                        amenity.setName(propertyAmenity.getAmenitiesByAmenitiesId().getName());
+                        amenitiesList.add(amenity);
+
+                        advertisementType.getPropertyAmenitiesMap().put(parent, amenitiesList);
+                    }
+                }
+            }
+            moduleResponseType.setAdvertisement(advertisementType);
+            moduleResponseType.getAdvertisements().add(advertisementType);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean getAdvertisements(ModuleList response) {
+        List<Advertisement> advertisements = adminDAO.getAdvertisements();
+        getAdvertisements(advertisements, response);
+        return true;
     }
 }

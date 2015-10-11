@@ -62,6 +62,7 @@ public class PropertyUserController {
         adminDelegate.getBedroomsList(response);
         adminDelegate.getBudgetList(response);
         adminDelegate.getPropertyTypeList(response);
+        adminDelegate.getAdvertisements(response);
         modelAndView.addObject("response", response);
         return modelAndView;
     }

@@ -9,7 +9,12 @@ public enum PropertyConstants {
     USER("USER"),
     PLAN_DAYS_PLACEHOLDER("\\{days}"),
     PLAN_COST_PLACEHOLDER("\\{plancost}"),
-    MAX_IMAGE_PLACEHOLDER("\\{maxphoto}");
+    MAX_IMAGE_PLACEHOLDER("\\{maxphoto}"),
+    LAKHS("Lakhs"),
+    ONWARDS("onwards"),
+    EXTERIOR_VIEW("EXTERIOR_VIEW"),
+    RESOURCE_DIR("propertyResources/");
+
 
     private final String value;
 

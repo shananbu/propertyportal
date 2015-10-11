@@ -54,7 +54,7 @@
                 </li>
                 <li><i class="fa fa-arrows-alt"></i>
 
-                    <p> Area Range <span> 929 - 1518 Sq-ft </span></p>
+                    <p> Area Range <span> ${response.module[0].moduleResponse.advertisement.buildupAreaRange}</span></p>
                 </li>
                 <li><i class="fa fa-key"></i>
 
@@ -62,11 +62,11 @@
                 </li>
                 <li><i class="fa fa-inr"></i>
 
-                    <p> Price <span> 53.25 - 53.25 Lakhs </span> All Inclusive </p>
+                    <p> Price <span> ${response.module[0].moduleResponse.advertisement.priceRange} </span> All Inclusive </p>
                 </li>
                 <li><i class="fa fa-bed"></i>
 
-                    <p> Bed Room <span>2 & 3 BHK </span> Appartments</p>
+                    <p> Bed Room <span>${response.module[0].moduleResponse.advertisement.bedRooms} </span> Appartments</p>
                 </li>
             </ul>
         </div>
@@ -146,10 +146,12 @@
                 </ul>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.imageTypes}">
                     <div id="${data.id}" class="gal_tab_view_main">
+                    <c:forEach var="imageType" items="${response.module[0].moduleResponse.advertisement.galleryImageByImageTypeMap[data.id]}">
                         <ul class="gal_pop">
-                            <li><a href="images/large_img_1.jpg" data-lightbox="img_1"> <img src="images/image_1.jpg"
-                                                                                             alt=""/> </a></li>
+                            <li><a href="${imageType.imageName}" data-lightbox="img_1">
+                                <img src="${imageType.imageName}" alt=""/> </a></li>
                         </ul>
+                    </c:forEach>
                     </div>
                 </c:forEach>
             </div>

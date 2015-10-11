@@ -77,4 +77,6 @@ public interface IPropertyAdminDAO {
 
     List<ImageType> getImageTypes();
 
+    List<Advertisement> getAdvertisements();
+
 }

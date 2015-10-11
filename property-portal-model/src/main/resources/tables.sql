@@ -441,6 +441,7 @@ insert into FacingMast (name)  values ('South');
 create table Advertisement (
 	id bigint auto_increment,
 	planId bigint,
+	propertyUserId bigint,
  	propertyForTypeId bigint,
 	propertyTypeId bigint,
 	locationId bigint,
@@ -455,7 +456,8 @@ create table Advertisement (
 	propertyFeatures varchar(5000),
 	isTermsAgreed varchar(1),
 	constraint pk25 primary key(id),
-  constraint fk334 foreign key (planId) references PlanMast(id),
+  constraint fk34 foreign key (planId) references PlanMast(id),
+  constraint fk46 foreign key (propertyUserId) references PropertyUser(id),
 	constraint fk9 foreign key (propertyForTypeId) references PropertyForType(id),
 	constraint fk10 foreign key (propertyTypeId) references PropertyType(id),
 	constraint fk11 foreign key (locationId) references Locations(id),
