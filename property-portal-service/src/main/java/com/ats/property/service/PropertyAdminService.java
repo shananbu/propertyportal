@@ -343,6 +343,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             }
 
             if(moreProperties.size() > 0 ) {
+                moreProperties.remove(0);
                 for(MorePropertyDetails morePropertyDetail : moreProperties) {
                     morePropertyDetail.setAdvertisementByAdvertisementId(advertisementFromDb);
                     morePropertyDetail.setUnitMasterByAreaAreaUnitId(adminDAO.findObjectById(1L, UnitMaster.class));
@@ -723,6 +724,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             AdvertisementType advertisementType = new AdvertisementType();
             if(fromNullable(advertisement).isPresent()) {
                 PropertyUtils.copyFields(advertisement, advertisementType);
+                advertisementType.setPossession(advertisement.getPossessionOrAgeByPossessionOrAgeId().getName());
                 advertisementType.setCompanyName(advertisement.getBuilderName());
                 if(advertisement.getBuilderName() == null) {
                     advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());

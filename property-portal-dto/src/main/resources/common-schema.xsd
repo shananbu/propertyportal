@@ -138,6 +138,7 @@
             <xs:element name="cost" type="xs:string"/>
             <xs:element name="buildupAreaRange" type="xs:string"/>
             <xs:element name="priceRange" type="xs:string"/>
+            <xs:element name="possession" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 

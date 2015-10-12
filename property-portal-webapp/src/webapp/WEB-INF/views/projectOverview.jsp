@@ -58,7 +58,7 @@
                 </li>
                 <li><i class="fa fa-key"></i>
 
-                    <p> Possession <span> Ready to Move </span></p>
+                    <p> Possession <span> ${response.module[0].moduleResponse.advertisement.possession} </span></p>
                 </li>
                 <li><i class="fa fa-inr"></i>
 
