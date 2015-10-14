@@ -181,7 +181,7 @@
     </ul>
 </div>
 
-<div class="pro_feat">
+<%--<div class="pro_feat">
     <h1>Property Features</h1>
     <ul class="drop_size_1">
         <li class="col_2_text">
@@ -243,7 +243,7 @@
             </select>
         </li>
     </ul>
-</div>
+</div>--%>
 <div class="ad_3">
     <h1>Availability</h1>
     <ul>
@@ -284,7 +284,7 @@
         </nav>
     </c:forEach>
 </div>
-<div class="ad_3 ">
+<%--<div class="ad_3 ">
     <h1>Rent & Other Charges</h1>
     <ul>
         <li class="ad_col_1">
@@ -340,7 +340,7 @@
                 <label for="new_1"></label>
                 </span> I am not interested in getting response from brokers </li>
     </ul>
-</div>
+</div>--%>
 <div class="unit_left clr_fix appen_grid">
     <h1>More properties </h1>
     <div class="appendGrid">

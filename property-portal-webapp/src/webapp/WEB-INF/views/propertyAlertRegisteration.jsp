@@ -42,7 +42,7 @@
                                         <span>
                                             <input type="radio" id="0${data.id}" value="0${data.id}" name="alertRegistration.propertyForTypeId" checked>
                                             <label for="0${data.id}"></label>
-                                            ${data.nameForPoster}
+                                            ${data.nameForFinder}
                                         </span>
                                     </c:forEach>
                             </li>
