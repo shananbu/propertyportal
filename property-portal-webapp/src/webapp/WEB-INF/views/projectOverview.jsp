@@ -40,9 +40,9 @@
     <div class="clr_fix prod_img_banner">
         <span>${response.module[0].moduleResponse.advertisement.companyName}</span>
         <ul class="rslides" id="slider1">
-            <li><img src="images/slider_1.jpg"></li>
-            <li><img src="images/slider_2.jpg"></li>
-            <li><img src="images/slider_1.jpg"></li>
+            <c:forEach var="data" items="${response.module[0].moduleResponse.advertisement.overviewBannerImages}">
+                <li><img src="${data.imageName}"></li>
+            </c:forEach>
         </ul>
     </div>
     <div class="clr_fix over_img_info">

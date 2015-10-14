@@ -1,17 +1,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
-    <title>Post Property</title>
+    <title>Post Property In Microsite</title>
+
+    <script type="text/javascript" src="appendGrid/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="appendGrid/jquery-ui-1.11.2.min.js"></script>
+    <script type="text/javascript" src="appendGrid/jquery.appendGrid-1.6.0.js"></script>
+
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/owl.carousel.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/img_upload.css" type="text/css"/>
-    <script src="js/jquery-1.10.2.min.js"></script>
+    <%--
+        <script src="js/jquery-1.10.2.min.js"></script>
+    --%>
     <script src="js/modernizr-2.6.2.min.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" type="text/css" href="appendGrid/jquery-ui.structure.min.css"/>
+    <link rel="stylesheet" type="text/css" href="appendGrid/jquery-ui.theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="appendGrid/jquery.appendGrid-1.6.0.css"/>
 
     <script src="js/jquery.sumoselect.js"></script>
     <script type="text/javascript">
@@ -20,6 +32,10 @@
             window.test = $('.testsel').SumoSelect({okCancelInMulti:true });
             window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
             window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true });
+
+            function calculateTotalCost() {
+                //  alert();
+            }
         });
     </script>
     <script src="js/site/postProperty.js"></script>
@@ -69,21 +85,21 @@
                     ${data.nameForPoster}
                 </span>
             </c:forEach>
-  <%--          <span>
-                <input type="radio" id="radio_1" name="1" checked>
-                <label for="radio_1"></label>
-                Sale
-            </span>
-            <span>
-                <input type="radio" id="radio_2" name="1">
-                <label for="radio_2"></label>
-                Rent
-            </span>
-            <span>
-                <input type="radio" id="radio_3" name="1">
-                <label for="radio_3"></label>
-                PG Accommodation
-            </span>--%>
+            <%--          <span>
+                          <input type="radio" id="radio_1" name="1" checked>
+                          <label for="radio_1"></label>
+                          Sale
+                      </span>
+                      <span>
+                          <input type="radio" id="radio_2" name="1">
+                          <label for="radio_2"></label>
+                          Rent
+                      </span>
+                      <span>
+                          <input type="radio" id="radio_3" name="1">
+                          <label for="radio_3"></label>
+                          PG Accommodation
+                      </span>--%>
         </li>
 
         <li>
@@ -148,7 +164,7 @@
 
 <div class="pro_feat">
     <h1>Property Features</h1>
-    <ul>
+    <ul class="drop_size_1">
         <li class="col_2_text">
             <label>Builtup Area</label>
             <input type="text" placeholder="Buildup Area" name="advertisement.buildupArea">
@@ -283,9 +299,9 @@
                 Or
                 <input type="text" placeholder="Enter price" name="advertisement.expectedPrice" id="expectedPrice">
                 </span> </li>
-                <li class="col_2_text">
-                    <label>Maintanance Charges</label>
-                    <i class="fa fa-inr fa-2x"></i> &nbsp;<span><input type="text" placeholder="Maintenance Charges" name="advertisement.maintenanceCharges">
+        <li class="col_2_text">
+            <label>Maintanance Charges</label>
+            <i class="fa fa-inr fa-2x"></i> &nbsp;<span><input type="text" placeholder="Maintenance Charges" name="advertisement.maintenanceCharges">
                         </span> <span>
                         <select class="dropdown" name="advertisement.maintenancePeriodId">
                             <c:forEach var="data" items="${response.module[0].moduleResponse.terms}">
@@ -293,7 +309,7 @@
                             </c:forEach>
                         </select>
                         </span>
-                </li>
+        </li>
         <li>
             <label>Security Deposit</label>
             <i class="fa fa-inr fa-2x"></i> &nbsp;<input type="text" placeholder="Security Deposit" name="advertisement.securityDeposit">
@@ -306,6 +322,7 @@
                 </span> I am not interested in getting response from brokers </li>
     </ul>
 </div>
+
 <div class="pro_desc">
     <h1>Property Description</h1>
     <ul>

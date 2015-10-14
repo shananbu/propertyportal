@@ -96,11 +96,13 @@
                 <small>*</small>
             </label>
             <c:forEach var="data" items="${response.module[0].moduleResponse.propertyForTypes}">
-                <span>
-                    <input type="radio" id="0${data.id}" value="0${data.id}" name="advertisement.propertyForTypeId" checked>
-                    <label for="0${data.id}"></label>
-                    ${data.nameForPoster}
-                </span>
+                <c:if test="${data.nameForPoster eq 'Sell'}">
+                    <span>
+                        <input type="radio" id="0${data.id}" value="0${data.id}" name="advertisement.propertyForTypeId" checked>
+                        <label for="0${data.id}"></label>
+                        ${data.nameForPoster}
+                    </span>
+                </c:if>
             </c:forEach>
             <%--          <span>
                           <input type="radio" id="radio_1" name="1" checked>

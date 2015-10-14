@@ -139,6 +139,7 @@
             <xs:element name="buildupAreaRange" type="xs:string"/>
             <xs:element name="priceRange" type="xs:string"/>
             <xs:element name="possession" type="xs:string"/>
+            <xs:element name="overviewBannerImages" type="galleryImageType" maxOccurs = "unbounded"/>
         </xs:sequence>
     </xs:complexType>
 

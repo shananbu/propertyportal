@@ -405,7 +405,7 @@
     <h1> <span>Project Gallery</span> </h1>
     <ul class="img_panel_3 owl-carousel">
     <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}">
-        <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="images/image_7.jpg">
+        <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="${data.propertyLogo}">
             <figcaption class="pro_info_1">
                 <h1>${data.projectName} </h1>
                 <p>${data.companyName}</p>

@@ -13,7 +13,7 @@ public enum PropertyConstants {
     LAKHS("Lakhs"),
     ONWARDS("onwards"),
     EXTERIOR_VIEW("EXTERIOR_VIEW"),
-    RESOURCE_DIR("propertyResources/");
+    RESOURCE_DIR("/propertyResources/");
 
 
     private final String value;

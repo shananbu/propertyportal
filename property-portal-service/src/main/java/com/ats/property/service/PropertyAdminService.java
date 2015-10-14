@@ -722,9 +722,12 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
         for(Advertisement advertisement : advertisements) {
             AdvertisementType advertisementType = new AdvertisementType();
+            Long EXTERIOR_VIEW_ID = null;
             if(fromNullable(advertisement).isPresent()) {
                 PropertyUtils.copyFields(advertisement, advertisementType);
-                advertisementType.setPossession(advertisement.getPossessionOrAgeByPossessionOrAgeId().getName());
+                if(advertisement.getPossessionOrAgeByPossessionOrAgeId() != null) {
+                    advertisementType.setPossession(advertisement.getPossessionOrAgeByPossessionOrAgeId().getName());
+                }
                 advertisementType.setCompanyName(advertisement.getBuilderName());
                 if(advertisement.getBuilderName() == null) {
                     advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());
@@ -759,13 +762,16 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                         PropertyUtils.copyFields(galleryImage, imageType);
                         imageType.setImageName(PropertyConstants.RESOURCE_DIR.value() + imageType.getImageName());
                         if(galleryImage.getImageTypeByImageTypeId().getName().equals(PropertyConstants.EXTERIOR_VIEW.value())) {
-                            advertisementType.setPropertyLogo("image_7.jpg");
+                            advertisementType.setPropertyLogo(PropertyConstants.RESOURCE_DIR.value() + galleryImage.getImageName());
+                            EXTERIOR_VIEW_ID = galleryImage.getImageTypeByImageTypeId().getId();
                         }
 
                         imagesList.add(imageType);
 
                         advertisementType.getGalleryImageByImageTypeMap().put(parent, imagesList);
                     }
+                    List<GalleryImageType> exteriorImagesList = (List<GalleryImageType>)advertisementType.getGalleryImageByImageTypeMap().get(EXTERIOR_VIEW_ID);
+                    advertisementType.getOverviewBannerImages().addAll(exteriorImagesList);
                 }
 
                 if(fromNullable(advertisement.getMorePropertyDetailsesById()).isPresent()) {
