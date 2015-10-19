@@ -266,4 +266,9 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     public boolean getAdvertisements(ModuleList response) {
         return adminHelper.getAdvertisements(response);
     }
+
+    @Override
+    public boolean getAdvertisementsForApproval(String status, ModuleList response) {
+        return adminHelper.getAdvertisementsForApproval(status, response);
+    }
 }

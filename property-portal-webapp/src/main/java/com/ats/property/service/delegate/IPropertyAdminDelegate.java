@@ -56,4 +56,7 @@ public interface IPropertyAdminDelegate {
     boolean getAdvertisementById(String advertisementId, ModuleList response);
 
     boolean getAdvertisements(ModuleList response);
+
+    boolean getAdvertisementsForApproval(String status, ModuleList response);
+
 }

@@ -38,7 +38,7 @@
         });
     </script>
     <!-- jq_table script end-->
-
+    <script type="text/javascript" language="javascript" src="js/site/advertisementApproval.js"></script>
 </head>
 <body>
 <main class="wrapper clr_fix">
@@ -57,8 +57,9 @@
                                 <label class="label_right">Status </label>
                             </td>
                             <td class="td_left">
-                                <select>
-                                    <option>--Select--</option>
+                                <select id="advtStatus">
+                                    <option value="true">Approved</option>
+                                    <option value="false">UnApproved</option>
                                 </select>
                             </td>
                         </tr>
@@ -80,7 +81,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="odd gradeX">
+<%--                            <tr class="odd gradeX">
                                 <td><input type="checkbox"/></td>
                                 <td>Ardente Realtors Pvt. Ltd</td>
                                 <td>Pine Grove</td>
@@ -88,8 +89,8 @@
                                 <td>Chennai north</td>
                                 <td>Sale</td>
                                 <td><a href="">View</a></td>
-                            </tr>
-                            <tr class="even gradeX">
+                            </tr>--%>
+<%--                            <tr class="even gradeX">
                                 <td><input type="checkbox"/></td>
                                 <td>Ardente Realtors Pvt. Ltd</td>
                                 <td>Pine Grove</td>
@@ -97,7 +98,7 @@
                                 <td>Chennai north</td>
                                 <td>Sale</td>
                                 <td><a href="">View</a></td>
-                            </tr>
+                            </tr>--%>
 
                             </tbody>
                         </table>

@@ -1,7 +1,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <script src="js/site/userHeader.js"></script>
 <div class="row_main">
-    <div class="col_1 clr_fix"><a href="/index" class="logo"> <img src="images/logo.png"> </a></div>
+    <div class="col_1 clr_fix"><a href="index" class="logo"> <img src="images/logo.png"> </a></div>
     <div class="col_2 clr_fix">
         <div class="clr_fix">
             <ul class="nav_2 clr_fix">

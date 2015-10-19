@@ -140,6 +140,8 @@
             <xs:element name="priceRange" type="xs:string"/>
             <xs:element name="possession" type="xs:string"/>
             <xs:element name="overviewBannerImages" type="galleryImageType" maxOccurs = "unbounded"/>
+            <xs:element name="propertyForTypeName" type="xs:string"/>
+            <xs:element name="propertyTypeName" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -213,6 +215,8 @@
             <xs:element name="area" type="xs:long" minOccurs = "0"/>
             <xs:element name="pricePerUnitArea" type="xs:long" minOccurs = "0"/>
             <xs:element name="totalCost" type="xs:long"  minOccurs = "0"/>
+            <xs:element name="totalCostInWords" type="xs:string"/>
+            <xs:element name="bedRoom" type="xs:string"  minOccurs = "0"/>
             <xs:element name="floorPlanFileName" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>

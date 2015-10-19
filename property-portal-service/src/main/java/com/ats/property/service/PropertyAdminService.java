@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -729,21 +730,25 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                     advertisementType.setPossession(advertisement.getPossessionOrAgeByPossessionOrAgeId().getName());
                 }
                 advertisementType.setCompanyName(advertisement.getBuilderName());
-                if(advertisement.getBuilderName() == null) {
+                if(advertisement.getBuilderName() == null || (advertisement.getBuilderName() != null && advertisement.getBuilderName().equals("") )) {
                     advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());
                 }
                 advertisementType.setCompanyLogo("image_7.jpg");
                 advertisementType.setLocationName(advertisement.getLocationsByLocationId().getName());
                 for(Residential residential : advertisement.getResidentialsById()) {
-                    advertisementType.setBedRooms(residential.getBedroomByBedRoomId().getName());
+                    if(residential.getBedroomByBedRoomId() != null) {
+                        advertisementType.setBedRooms(residential.getBedroomByBedRoomId().getName());
+                    }
                 }
                 for(AdvertisementDetails advertisementDetails : advertisement.getAdvertisementDetailsesById()) {
-                    String buildupAreaName = advertisementDetails.getBuildupArea().longValue() + " " + advertisementDetails.getUnitMasterByBuildupAreaUnitId().getName() + " " + PropertyConstants.ONWARDS.value();
-                    advertisementType.setBuildupAreaName(buildupAreaName);
-                    advertisementType.setBuildupAreaRange(buildupAreaName);
-                    String cost = advertisementDetails.getExpectedPrice() / ONE_LAKH + " " + PropertyConstants.LAKHS.value() + " " + PropertyConstants.ONWARDS.value();
-                    advertisementType.setCost(cost);
-                    advertisementType.setPriceRange(cost);
+                    if(advertisementDetails.getBuildupArea() != null) {
+                        String buildupAreaName = advertisementDetails.getBuildupArea().longValue() + " " + advertisementDetails.getUnitMasterByBuildupAreaUnitId().getName() + " " + PropertyConstants.ONWARDS.value();
+                        advertisementType.setBuildupAreaName(buildupAreaName);
+                        advertisementType.setBuildupAreaRange(buildupAreaName);
+                        String cost = advertisementDetails.getExpectedPrice() / ONE_LAKH + " " + PropertyConstants.LAKHS.value() + " " + PropertyConstants.ONWARDS.value();
+                        advertisementType.setCost(cost);
+                        advertisementType.setPriceRange(cost);
+                    }
                 }
 
 
@@ -770,16 +775,39 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
                         advertisementType.getGalleryImageByImageTypeMap().put(parent, imagesList);
                     }
-                    List<GalleryImageType> exteriorImagesList = (List<GalleryImageType>)advertisementType.getGalleryImageByImageTypeMap().get(EXTERIOR_VIEW_ID);
-                    advertisementType.getOverviewBannerImages().addAll(exteriorImagesList);
+                    if(null != advertisementType.getGalleryImageByImageTypeMap().get(EXTERIOR_VIEW_ID)) {
+                        List<GalleryImageType> exteriorImagesList = (List<GalleryImageType>) advertisementType.getGalleryImageByImageTypeMap().get(EXTERIOR_VIEW_ID);
+                        advertisementType.getOverviewBannerImages().addAll(exteriorImagesList);
+                    }
                 }
 
                 if(fromNullable(advertisement.getMorePropertyDetailsesById()).isPresent()) {
+                    List<Long> costList = new ArrayList<Long>();
+                    List<Long> buildupAreaList = new ArrayList<Long>();
+                    String unitName = "";
+                    String bedRooms = "";
                     for(MorePropertyDetails morePropertyDetails : advertisement.getMorePropertyDetailsesById()) {
+                        unitName = morePropertyDetails.getUnitMasterByAreaAreaUnitId().getName();
+                        bedRooms = bedRooms + ", " + morePropertyDetails.getBedroomByBedRoomId().getName();
                         MorePropertyType morePropertyType = new MorePropertyType();
                         PropertyUtils.copyFields(morePropertyDetails, morePropertyType);
+                        buildupAreaList.add(morePropertyDetails.getArea());
+                        costList.add(morePropertyDetails.getTotalCost());
+                        morePropertyType.setBedRoom(morePropertyDetails.getBedroomByBedRoomId().getName());
+                        morePropertyType.setTotalCostInWords(morePropertyDetails.getTotalCost() / ONE_LAKH + " " + PropertyConstants.LAKHS.value());
                         advertisementType.getMoreProperty().add(morePropertyType);
                     }
+                    bedRooms = bedRooms.substring(1);
+                    bedRooms = bedRooms.replaceAll("BHK","");
+                    bedRooms = bedRooms + " BHK";
+                    advertisementType.setBedRooms(bedRooms);
+                    String buildupAreaName = Collections.min(buildupAreaList) + " " + unitName + " " + PropertyConstants.ONWARDS.value();
+                    advertisementType.setBuildupAreaName(buildupAreaName);
+                    advertisementType.setBuildupAreaRange(buildupAreaName);
+                    String cost = Collections.min(costList) / ONE_LAKH + " " + PropertyConstants.LAKHS.value() + " " + PropertyConstants.ONWARDS.value();
+                    advertisementType.setCost(cost);
+                    advertisementType.setPriceRange(cost);
+
                 }
 
                 if(fromNullable(advertisement.getPropertyAmenitiesesById()).isPresent()) {
@@ -810,8 +838,30 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
     @Override
     public boolean getAdvertisements(ModuleList response) {
-        List<Advertisement> advertisements = adminDAO.getAdvertisements();
+        List<Advertisement> advertisements = adminDAO.getAdvertisements(true);
         getAdvertisements(advertisements, response);
         return true;
+    }
+
+    @Override
+    public boolean getAdvertisementsForApproval(String status, ModuleList response) {
+        List<Advertisement> advertisements = adminDAO.getAdvertisements(false);
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        for(Advertisement advertisement : advertisements) {
+            AdvertisementType advertisementType = new AdvertisementType();
+            if (fromNullable(advertisement).isPresent()) {
+                PropertyUtils.copyFields(advertisement, advertisementType);
+                advertisementType.setCompanyName(advertisement.getBuilderName());
+                if(advertisement.getBuilderName() == null || (advertisement.getBuilderName() != null && advertisement.getBuilderName().equals("") )) {
+                    advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());
+                }
+                advertisementType.setLocationName(advertisement.getLocationsByLocationId().getName());
+                advertisementType.setPropertyForTypeName(advertisement.getPropertyForTypeByPropertyForTypeId().getNameForPoster());
+                advertisementType.setPropertyTypeName(advertisement.getPropertyTypeByPropertyTypeId().getName());
+            }
+            moduleResponseType.getAdvertisements().add(advertisementType);
+        }
+        return false;
     }
 }

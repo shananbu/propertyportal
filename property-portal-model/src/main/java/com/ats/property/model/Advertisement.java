@@ -39,6 +39,7 @@ public class Advertisement {
     private Collection<PropertyAmenities> propertyAmenitiesesById;
     private Collection<Residential> residentialsById;
     private PropertyUser propertyUserByPropertyUserId;
+    private Boolean isApproved;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -378,5 +379,15 @@ public class Advertisement {
 
     public void setPropertyUserByPropertyUserId(PropertyUser propertyUserByPropertyUserId) {
         this.propertyUserByPropertyUserId = propertyUserByPropertyUserId;
+    }
+
+    @Basic
+    @Column(name = "isApproved", nullable = true, insertable = true, updatable = true)
+    public Boolean getIsApproved() {
+        return isApproved;
+    }
+
+    public void setIsApproved(Boolean isApproved) {
+        this.isApproved = isApproved;
     }
 }

@@ -272,7 +272,6 @@
     <h1>Property Features and Amenities</h1>
     <c:forEach var="data" items="${response.module[0].moduleResponse.amenitiesCategory}">
         <nav>
-            <h3> ${data.name}</h3>
             <ul>
                 <c:forEach var="innerData" items="${data.amenitiesesById}">
                     <li>
@@ -352,7 +351,7 @@
     <h1>Property Description</h1>
     <ul>
         <li>
-            <label>Name of Project</label>
+            <label>Name of Project / Title</label>
             <input type="text" name="advertisement.projectName" class="projectname">
         </li>
         <li>

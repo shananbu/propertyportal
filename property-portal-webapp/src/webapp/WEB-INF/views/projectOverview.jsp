@@ -24,7 +24,7 @@
 <main class="main_wrapper clr_fix pro_view_top">
 <header class="clr_fix top_head single-page-nav">
     <div class="row_main">
-        <div class="col_1 clr_fix"><a href="#" class="logo"> <img src="images/logo.png"> </a></div>
+        <div class="col_1 clr_fix"><a href="index" class="logo"> <img src="images/logo.png"> </a></div>
         <div class="col_2 clr_fix">
             <nav class="clr_fix nav_1 top_nav_2">
                 <ul>
@@ -88,7 +88,6 @@
         <h1><span>Property Features and Amenities</span></h1>
         <c:forEach var="data" items="${response.module[0].moduleResponse.amenitiesCategory}">
             <nav>
-                <h3> ${data.name}</h3>
                 <ul>
                     <c:forEach var="innerData" items="${response.module[0].moduleResponse.advertisement.propertyAmenitiesMap[data.id]}">
                         <li>
@@ -119,10 +118,10 @@
                     <tbody>
                     <c:forEach var="data" items="${response.module[0].moduleResponse.advertisement.moreProperty}">
                         <tr>
-                            <td> ${data.bedRoomId} </td>
+                            <td> ${data.bedRoom} </td>
                             <td> ${data.area} </td>
-                            <td> Rs.${data.pricePerUnitArea} </td>
-                            <td> Rs.${data.totalCost} </td>
+                            <td> <i class="fa fa-inr fa-1x"></i> ${data.pricePerUnitArea} </td>
+                            <td> <i class="fa fa-inr fa-1x"></i> ${data.totalCostInWords} </td>
                             <td><a href="#">click to view</a></td>
                         </tr>
                     </c:forEach>

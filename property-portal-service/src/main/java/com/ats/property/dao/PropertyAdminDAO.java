@@ -507,9 +507,9 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
-    public List<Advertisement> getAdvertisements() {
+    public List<Advertisement> getAdvertisements(boolean isApproved) {
         Session session = getSession();
-        Query query = session.createQuery("from Advertisement");
+        Query query = session.createQuery("from Advertisement a where a.isApproved = " + isApproved);
         List<Advertisement> response = query.list();
         return response;
     }

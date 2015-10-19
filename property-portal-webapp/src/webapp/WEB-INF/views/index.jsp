@@ -276,19 +276,23 @@
                     </ul>
                 </figcaption>
             </li>
-            <li> <a href="#"> <img src="images/image_1.jpg">
-                <figcaption class="pro_info_1">
-                    <h1>Silver Ripples </h1>
-                    <p> Sumadhura Infracon Pvt. Ltd. </p>
-                    <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                    <ul>
-                        <li> Beds : <span> 2, 3  BHK </span> </li>
-                        <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
-                        <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
-                        <li> <span> <small>Read More</small> </span> </li>
-                    </ul>
-                </figcaption>
-            </a> </li>
+            <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
+                <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}"  end="0">
+                    <li> <a href="projectOverview?advertisementId=${data.id}" target="_blank"> <img src="${data.propertyLogo}">
+                        <figcaption class="pro_info_1">
+                            <h1>${data.projectName} </h1>
+                            <p>${data.companyName}</p>
+                            <span> <i class="fa fa-map-marker"></i>&nbsp;${data.locationName}</span>
+                            <ul>
+                                <li> Beds : <span>${data.bedRooms}</span> </li>
+                                <li> Buildup Area : <span> ${data.buildupAreaName}</span> </li>
+                                <li> Cost : <span> <i class="fa fa-inr"></i> ${data.cost}</span> </li>
+                                <li> <span> <small>Read More</small> </span> </li>
+                            </ul>
+                        </figcaption>
+                    </a> </li>
+                </c:forEach>
+            </c:if>
         </ul>
     </aside>
     <section class="clr_fix pro_block">
@@ -310,20 +314,24 @@
                         </ul>
                     </figcaption>
                 </a> </li>
-            <li> <a href="projectOverview"> <img src="images/image_5.jpg">
-                <figcaption class="pro_info_1"> <img src="images/image_4.jpg">
-                    <summary>
-                        <h1>Silver Ripples </h1>
-                        <p> Sumadhura Infracon Pvt. Ltd. </p>
-                        <span> <i class="fa fa-map-marker"></i> Bangalore East </span> </summary>
-                    <ul>
-                        <li> Beds : <span> 2, 3  BHK </span> </li>
-                        <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
-                        <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
-                        <li> <span> <small>Read More</small> </span> </li>
-                    </ul>
-                </figcaption>
-            </a> </li>
+                <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
+                    <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" end="0">
+                        <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="${data.propertyLogo}">
+                            <figcaption class="pro_info_1"> <img src="images/image_4.jpg">
+                                <summary>
+                                    <h1>${data.projectName}</h1>
+                                    <p>${data.companyName}</p>
+                                    <span> <i class="fa fa-map-marker"></i>&nbsp;${data.locationName}</span> </summary>
+                                <ul>
+                                    <li> Beds : <span>${data.bedRooms}</span> </li>
+                                    <li> Buildup Area : <span> ${data.buildupAreaName}</span> </li>
+                                    <li> Cost : <span> <i class="fa fa-inr"></i> ${data.cost}</span> </li>
+                                    <li> <span> <small>Read More</small> </span> </li>
+                                </ul>
+                            </figcaption>
+                        </a> </li>
+                    </c:forEach>
+                </c:if>
         </ul>
         <ul class="img_panel_2">
             <li>
@@ -341,85 +349,70 @@
                     </ul>
                 </figcaption>
             </li>
-            <li> <a href="#"> <img src="images/image_6.jpg">
-                <figcaption class="pro_info_1">
-                    <h1>Silver Ripples </h1>
-                    <p> Sumadhura Infracon Pvt. Ltd. </p>
-                    <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                    <ul>
-                        <li> Beds : <span> 2, 3  BHK </span> </li>
-                        <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
-                        <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
-                        <li> <span> <small>Read More</small> </span> </li>
-                    </ul>
-                </figcaption>
-            </a> </li>
-            <li> <a href="#"> <img src="images/image_6.jpg">
-                <figcaption class="pro_info_1">
-                    <h1>Silver Ripples </h1>
-                    <p> Sumadhura Infracon Pvt. Ltd. </p>
-                    <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                    <ul>
-                        <li> Beds : <span> 2, 3  BHK </span> </li>
-                        <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
-                        <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
-                        <li> <span> <small>Read More</small> </span> </li>
-                    </ul>
-                </figcaption>
-            </a> </li>
+            <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
+                <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}"  end="2">
+                    <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="${data.propertyLogo}">
+                        <figcaption class="pro_info_1">
+                            <h1>${data.projectName}</h1>
+                            <p>${data.companyName}</p>
+                            <span> <i class="fa fa-map-marker"></i>&nbsp;${data.locationName}</span>
+                            <ul>
+                                <li> Beds : <span>${data.bedRooms}</span> </li>
+                                <li> Buildup Area : <span> ${data.buildupAreaName}</span> </li>
+                                <li> Cost : <span> <i class="fa fa-inr"></i> ${data.cost}</span> </li>
+                                <li> <span> <small>Read More</small> </span> </li>
+                            </ul>
+                        </figcaption>
+                    </a> </li>
+                </c:forEach>
+            </c:if>
         </ul>
     </section>
     <aside class="ad_1_left re_m clr_fix">
         <h1 class="h_1">New projects</h1>
         <ul class="box_shadow clr_fix">
-            <li> <a href="#"> <img src="images/image_1.jpg">
-                <figcaption class="pro_info_1">
-                    <h1>Silver Ripples </h1>
-                    <p> Sumadhura Infracon Pvt. Ltd. </p>
-                    <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                    <ul>
-                        <li> Beds : <span> 2, 3  BHK </span> </li>
-                        <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
-                        <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
-                        <li> <span> <small>Read More</small> </span> </li>
-                    </ul>
-                </figcaption>
-            </a> </li>
-            <li> <a href="#"> <img src="images/image_1.jpg">
-                <figcaption class="pro_info_1">
-                    <h1>Silver Ripples </h1>
-                    <p> Sumadhura Infracon Pvt. Ltd. </p>
-                    <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                    <ul>
-                        <li> Beds : <span> 2, 3  BHK </span> </li>
-                        <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
-                        <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
-                        <li> <span> <small>Read More</small> </span> </li>
-                    </ul>
-                </figcaption>
-            </a> </li>
+            <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
+                <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}"  end="0">
+                    <li> <a href="projectOverview?advertisementId=${data.id}" target="_blank"> <img src="${data.propertyLogo}">
+                        <figcaption class="pro_info_1">
+                            <h1>${data.projectName} </h1>
+                            <p>${data.companyName}</p>
+                            <span> <i class="fa fa-map-marker"></i>&nbsp;${data.locationName}</span>
+                            <ul>
+                                <li> Beds : <span>${data.bedRooms}</span> </li>
+                                <li> Buildup Area : <span> ${data.buildupAreaName}</span> </li>
+                                <li> Cost : <span> <i class="fa fa-inr"></i> ${data.cost}</span> </li>
+                                <li> <span> <small>Read More</small> </span> </li>
+                            </ul>
+                        </figcaption>
+                    </a> </li>
+                </c:forEach>
+             </c:if>
         </ul>
+
     </aside>
 </section>
 <section class="clr_fix box_shadow pro_gal">
     <h1> <span>Project Gallery</span> </h1>
     <ul class="img_panel_3 owl-carousel">
-    <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}">
-        <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="${data.propertyLogo}">
-            <figcaption class="pro_info_1">
-                <h1>${data.projectName} </h1>
-                <p>${data.companyName}</p>
-                <span> <i class="fa fa-map-marker"></i>&nbsp;${data.locationName}</span>
-                <ul>
-                    <li> Beds : <span>${data.bedRooms}</span> </li>
-                    <li> Buildup Area : <span> ${data.buildupAreaName}</span> </li>
-                    <li> Cost : <span> <i class="fa fa-inr"></i> ${data.cost}</span> </li>
-                    <li> <span> <small>Read More</small> </span> </li>
-                </ul>
-            </figcaption>
-        </a>
-        </li>
-    </c:forEach>
+    <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
+        <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" end="10">
+            <li> <a href="projectOverview?advertisementId=${data.id}" target="_blank"> <img src="${data.propertyLogo}">
+                <figcaption class="pro_info_1">
+                    <h1>${data.projectName} </h1>
+                    <p>${data.companyName}</p>
+                    <span> <i class="fa fa-map-marker"></i>&nbsp;${data.locationName}</span>
+                    <ul>
+                        <li> Beds : <span>${data.bedRooms}</span> </li>
+                        <li> Buildup Area : <span> ${data.buildupAreaName}</span> </li>
+                        <li> Cost : <span> <i class="fa fa-inr"></i> ${data.cost}</span> </li>
+                        <li> <span> <small>Read More</small> </span> </li>
+                    </ul>
+                </figcaption>
+            </a>
+            </li>
+        </c:forEach>
+    </c:if>
     </ul>
 </section>
 </div>

@@ -77,6 +77,6 @@ public interface IPropertyAdminDAO {
 
     List<ImageType> getImageTypes();
 
-    List<Advertisement> getAdvertisements();
+    List<Advertisement> getAdvertisements(boolean isApproved);
 
 }

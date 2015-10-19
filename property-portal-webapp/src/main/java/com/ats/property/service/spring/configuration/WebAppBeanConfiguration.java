@@ -3,6 +3,8 @@ package com.ats.property.service.spring.configuration;
 import com.ats.property.dao.IPropertyAdminDAO;
 import com.ats.property.dao.PropertyAdminDAO;
 import com.ats.property.mail.MailService;
+import com.ats.property.scheduler.PropertyAlertNotificationJob;
+import com.ats.property.scheduler.PropertyAlertNotificationTask;
 import com.ats.property.service.AdminUserDetailsService;
 import com.ats.property.service.IPropertyAdminService;
 import com.ats.property.service.PropertyAdminService;
@@ -18,6 +20,10 @@ import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.apache.cxf.message.Message;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.*;
+import org.springframework.scheduling.quartz.CronTriggerBean;
+import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
+import org.springframework.scheduling.quartz.JobDetailBean;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -25,9 +31,8 @@ import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuc
 import org.springframework.web.context.ServletContextAware;
 
 import javax.servlet.ServletContext;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.text.ParseException;
+import java.util.*;
 
 /**
  * The WebAppConfiguration.
@@ -142,9 +147,46 @@ public class WebAppBeanConfiguration {
     @Bean(name = "customLogoutHandler")
     @Scope(value = "singleton")
     @Lazy(value = false)
-    public SimpleUrlLogoutSuccessHandler CustomLogoutHandler() {
+    public SimpleUrlLogoutSuccessHandler customLogoutHandler() {
         return new CustomLogoutHandler();
     }
 
+    @Bean(name = "jobDetailBean")
+    @Scope(value = "singleton")
+    public JobDetailBean jobDetailBean() {
+        JobDetailBean jobDetailBean = new JobDetailBean();
+        jobDetailBean.setJobClass(PropertyAlertNotificationJob.class);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("name", "anbu");
+        jobDetailBean.setJobDataAsMap(map);
+        return jobDetailBean;
+    }
 
+    @Bean(name = "cronTriggerBean")
+    @Scope(value = "singleton")
+    public CronTriggerBean cronTriggerBean(@Qualifier("jobDetailBean") final JobDetailBean jobDetailBean) {
+        CronTriggerBean cronTriggerBean = new CronTriggerBean();
+        cronTriggerBean.setJobDetail(jobDetailBean);
+        try {
+          //  cronTriggerBean.setCronExpression("0/5 * * * * ?");
+            cronTriggerBean.setCronExpression("0 16 11 * * ?");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return cronTriggerBean;
+    }
+
+    @Bean(name = "propertyAlertNotificationTask")
+    @Scope(value = "singleton")
+    public PropertyAlertNotificationTask propertyAlertNotificationTask() {
+        return new PropertyAlertNotificationTask();
+    }
+
+    @Bean(name = "schedulerFactoryBean")
+    @Scope(value = "singleton")
+    public SchedulerFactoryBean schedulerFactoryBean(@Qualifier("cronTriggerBean") final CronTriggerBean cronTriggerBean) {
+        SchedulerFactoryBean bean = new SchedulerFactoryBean();
+        bean.setTriggers(cronTriggerBean);
+        return bean;
+    }
 }

@@ -455,6 +455,7 @@ create table Advertisement (
 	description varchar(5000),
 	propertyFeatures varchar(5000),
 	isTermsAgreed varchar(1),
+	isApproved bit,
 	constraint pk25 primary key(id),
   constraint fk46 foreign key (planId) references PlanMast(id),
   constraint fk47 foreign key (propertyUserId) references PropertyUser(id),
