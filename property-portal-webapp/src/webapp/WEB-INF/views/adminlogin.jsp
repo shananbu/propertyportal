@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 <body>
-<form method="post" class="frmAdminLogin" commandName="moduleRequest"  action="<c:url value='/login'/>">
+<form method="post" class="frmAdminLogin" commandName="moduleRequest"  action="<c:url value='/userLogin'/>">
 <header class="header_bg">
   <h1>Property Portal</h1>
 </header>

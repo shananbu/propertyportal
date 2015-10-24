@@ -399,7 +399,7 @@
             </div>
         </li>
         <li class="text_center">
-            <input type="submit" class="btn_5" value="Post Property">
+            <input type="submit" class="btn_5" value="Proceed & Upload Gallery">
         </li>
     </ul>
 </div>

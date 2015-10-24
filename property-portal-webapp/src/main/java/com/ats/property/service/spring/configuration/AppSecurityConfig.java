@@ -22,7 +22,7 @@ import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuc
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled=true)
+@EnableGlobalMethodSecurity(prePostEnabled=true, securedEnabled = true)
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -46,20 +46,20 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .formLogin()
                     .successHandler(customAuthenticationHandler)
-                    .loginPage("/login")
-                    .failureUrl("/login?error")
-                    .failureUrl("/login?error")
+                    .loginPage("/userLogin")
+                    .failureUrl("/userLogin?error")
+                    .failureUrl("/userLogin?error")
                     .usernameParameter("username")
                     .passwordParameter("password")
             .and()
                 .authorizeRequests()
                 .antMatchers("/admindashboard").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/postProperty").hasAuthority("ROLE_USER")
-                .antMatchers("/", "/userRegistration", "/registerUser", "/userLogin", "/postProperty", "/advertiseWithUs",
+                .antMatchers("/postProperty", "/postPropertyInMicrosite").hasAuthority("ROLE_USER")
+                .antMatchers("/", "/userRegistration", "/registerUser", "/userLogin", "/advertiseWithUs",
                         "/searchViewPage", "/propertyAlertRegisteration", "/projectOverview", "/emiCalculator",
                         "/admin", "/authenticateAdmin", "/login", "/activateAccount", "/rest/v1/admin/modules/get/stateByCityId",
                         "/rest/v1/admin/modules/get/locationByCityId",
-                        "/contactUs", "/feedback", "/privacyPolicy", "/termsAndConditions", "/postPropertyInMicrosite",
+                        "/contactUs", "/feedback", "/privacyPolicy", "/termsAndConditions",
                         "/uploadFile", "/uploadFileAndUpdate", "/deleteUploadFile","/advtPostingComplete",
                         "/saveOrUpdateAdvertisement", "/genericErrorpage", "/registerPropertyAlert").permitAll()
 

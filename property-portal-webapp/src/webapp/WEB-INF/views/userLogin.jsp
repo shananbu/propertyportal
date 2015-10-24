@@ -23,7 +23,7 @@
     </script>
 </head>
 <body>
-<form method="post" class="frmAdminLogin" commandName="moduleRequest" action="<c:url value='/login'/>">
+<form method="post" class="frmAdminLogin" commandName="moduleRequest" action="<c:url value='/userLogin'/>">
     <main class="main_wrapper clr_fix">
         <header class="clr_fix top_head">
             <%@ include file="userHeader.jsp" %>

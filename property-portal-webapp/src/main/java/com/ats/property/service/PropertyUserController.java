@@ -123,33 +123,29 @@ public class PropertyUserController {
 */
 
     @RequestMapping(value = { "/postProperty" }, method = RequestMethod.GET)
+    @Secured ({"ROLE_USER"})
     public ModelAndView postProperty(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest, HttpServletRequest request) {
-        ModelAndView modelAndView = null;
-        if (request.isUserInRole("ROLE_USER")) {
-            modelAndView = new ModelAndView("postProperty");
-            ModuleList response = CommonHelper.getSuccessModuleList();
-            adminDelegate.getStateList(null, response);
-            adminDelegate.getCityList(null, response);
-            adminDelegate.getBedroomsList(response);
-            adminDelegate.getAdvertisePlanList(null, response, false);
-            adminDelegate.getBudgetList(response);
-            adminDelegate.getPropertyTypeList(response);
+        ModelAndView modelAndView = new ModelAndView("postProperty");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getStateList(null, response);
+        adminDelegate.getCityList(null, response);
+        adminDelegate.getBedroomsList(response);
+        adminDelegate.getAdvertisePlanList(null, response, false);
+        adminDelegate.getBudgetList(response);
+        adminDelegate.getPropertyTypeList(response);
 
-            adminDelegate.getPropertyForTypeList(response);
-            adminDelegate.getFurnishedStatusList(response);
-            adminDelegate.getBathroomsList(response);
-            adminDelegate.getBalconiesList(response);
-            adminDelegate.getTotalFloorsList(response);
-            adminDelegate.getUnitsList(response);
-            adminDelegate.getTransactionTypesList(response);
-            adminDelegate.getPossessionStatusList(response);
-           // adminDelegate.getPossessionOrAgeList(response);
-            adminDelegate.getTermsList(response);
-            adminDelegate.getAmenitiesCategory(response);
-            modelAndView.addObject("response", response);
-        } else {
-            modelAndView = new ModelAndView("userLogin");
-        }
+        adminDelegate.getPropertyForTypeList(response);
+        adminDelegate.getFurnishedStatusList(response);
+        adminDelegate.getBathroomsList(response);
+        adminDelegate.getBalconiesList(response);
+        adminDelegate.getTotalFloorsList(response);
+        adminDelegate.getUnitsList(response);
+        adminDelegate.getTransactionTypesList(response);
+        adminDelegate.getPossessionStatusList(response);
+       // adminDelegate.getPossessionOrAgeList(response);
+        adminDelegate.getTermsList(response);
+        adminDelegate.getAmenitiesCategory(response);
+        modelAndView.addObject("response", response);
         return modelAndView;
     }
 
@@ -254,34 +250,31 @@ public class PropertyUserController {
     }
 
     @RequestMapping(value = { "/postPropertyInMicrosite" }, method = RequestMethod.GET)
+    @Secured ({"ROLE_USER"})
     public ModelAndView postPropertyInMicrosite(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest, HttpServletRequest request) {
-        ModelAndView modelAndView = null;
-        if (request.isUserInRole("ROLE_USER")) {
-            modelAndView = new ModelAndView("postPropertyInMicrosite");
-            ModuleList response = CommonHelper.getSuccessModuleList();
-            adminDelegate.getStateList(null, response);
-            adminDelegate.getCityList(null, response);
-            adminDelegate.getBedroomsList(response);
-            adminDelegate.getAdvertisePlanList(null, response, false);
-            adminDelegate.getBudgetList(response);
-            adminDelegate.getPropertyTypeList(response);
+        ModelAndView modelAndView = new ModelAndView("postPropertyInMicrosite");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getStateList(null, response);
+        adminDelegate.getCityList(null, response);
+        adminDelegate.getBedroomsList(response);
+        adminDelegate.getAdvertisePlanList(null, response, false);
+        adminDelegate.getBudgetList(response);
+        adminDelegate.getPropertyTypeList(response);
 
-            adminDelegate.getPropertyForTypeList(response);
-            adminDelegate.getFurnishedStatusList(response);
-            adminDelegate.getBathroomsList(response);
-            adminDelegate.getBalconiesList(response);
-            adminDelegate.getTotalFloorsList(response);
-            adminDelegate.getUnitsList(response);
-            adminDelegate.getTransactionTypesList(response);
-            adminDelegate.getPossessionStatusList(response);
-            // adminDelegate.getPossessionOrAgeList(response);
-            adminDelegate.getTermsList(response);
-            adminDelegate.getAmenitiesCategory(response);
+        adminDelegate.getPropertyForTypeList(response);
+        adminDelegate.getFurnishedStatusList(response);
+        adminDelegate.getBathroomsList(response);
+        adminDelegate.getBalconiesList(response);
+        adminDelegate.getTotalFloorsList(response);
+        adminDelegate.getUnitsList(response);
+        adminDelegate.getTransactionTypesList(response);
+        adminDelegate.getPossessionStatusList(response);
+        // adminDelegate.getPossessionOrAgeList(response);
+        adminDelegate.getTermsList(response);
+        adminDelegate.getAmenitiesCategory(response);
 
-            modelAndView.addObject("response", response);
-        } else {
-            modelAndView = new ModelAndView("userLogin");
-        }
+        modelAndView.addObject("response", response);
+
         return modelAndView;
     }
 
@@ -295,14 +288,12 @@ public class PropertyUserController {
     }
 
     @RequestMapping(value = {"/uploadFile" }, method = RequestMethod.GET)
+    @Secured ({"ROLE_USER"})
     public ModelAndView uploadFileForAdvertisement(@ModelAttribute("uploadFile") ModuleRequestType moduleRequest, HttpServletRequest request) {
-        ModelAndView modelAndView= new ModelAndView("userLogin");
-        if (request.isUserInRole("ROLE_USER")) {
-            modelAndView = new ModelAndView("uploadFile");
-            ModuleList response = CommonHelper.getSuccessModuleList();
-            adminDelegate.getImageTypeList(response);
-            modelAndView.addObject("response", response);
-        }
+        ModelAndView modelAndView = new ModelAndView("uploadFile");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getImageTypeList(response);
+        modelAndView.addObject("response", response);
         return modelAndView;
     }
 
