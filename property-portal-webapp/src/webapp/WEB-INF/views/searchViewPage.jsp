@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
-    <title>User Register</title>
+    <title>Search Result</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
@@ -59,7 +59,7 @@
                     </select>
                 </div>
             </div>
-            <div class="sear_list">
+<%--            <div class="sear_list">
                 <ul>
                     <li>
                         <figure class="gal_pop_open"> <img src="images/image_1.jpg">
@@ -98,8 +98,8 @@
                         </div>
                     </li>
                 </ul>
-            </div>
-            <c:forEach var="data" items="${response.module[0].moduleResponse.searchResult}">
+            </div>--%>
+            <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}">
             <div class="sear_list">
                 <ul>
                     <li>
@@ -116,22 +116,22 @@
                                 <ul>
                                     <li>
                                         <label>Property Type :</label>
-                                        <span>${data.propertyType}</span> </li>
+                                        <span>${data.propertyTypeName}</span> </li>
                                     <li>
                                         <label>Location :</label>
-                                        <span>${data.location}</span> </li>
+                                        <span>${data.address}</span> </li>
                                     <li>
                                         <label>Bed Rooms :</label>
                                         <span>${data.bedRooms}</span> </li>
                                     <li>
-                                        <label>Starting Prie :</label>
-                                        <span>${data.startingPrice}</span> </li>
+                                        <label>Starting Price :</label>
+                                        <span>${data.cost}</span> </li>
                                     <li>
                                         <label>Possession :</label>
                                         <span>August 2015 </span> </li>
                                     <li class="unit_block">
-                                        <label>Decritpion : </label>
-                                        <p class="content more truncate" will-truncate-max-height="0" data-text-truncate-lines="5"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                                        <label>Description : </label>
+                                        <p class="content more truncate" will-truncate-max-height="0" data-text-truncate-lines="5">${data.description}</p>
                                         <a class="more-link" href="#">Read More</a>
                                     </li>
                                 </ul>
@@ -225,13 +225,8 @@
 
     $(function(){
         var i=0;
-
         $(document).on('click','.slider ul li img',function(){
-
-
-
             $('.img_wrapper img').attr('src',$(this).attr('src')+'?'+i);
-
             i=parseInt(i)+1;
             $('.slider ul li img').removeClass('thum_active');
             $(this).addClass('thum_active');
@@ -267,8 +262,6 @@
             $('.img_gal_pop').fadeOut();
 
         });
-
-
 
         $('.text_panel input[type="text"]').click(function(){
             $('.loc_list').slideDown(300);

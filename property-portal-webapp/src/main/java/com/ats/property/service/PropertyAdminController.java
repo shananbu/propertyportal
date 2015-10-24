@@ -3,6 +3,7 @@ package com.ats.property.service;
 import com.ats.property.common.constants.CommonHelper;
 import com.ats.property.dto.ModuleList;
 import com.ats.property.dto.ModuleRequestType;
+import com.ats.property.dto.NameDataType;
 import com.ats.property.service.delegate.IPropertyAdminDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.*;
@@ -171,8 +172,11 @@ public class PropertyAdminController {
     }
 
     @RequestMapping(value="/upload", method=RequestMethod.POST)
-    public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file){
+    public @ResponseBody NameDataType handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("hiddenFieldName") String hiddenFieldName){
         String name = file.getOriginalFilename();
+        NameDataType response = new NameDataType();
+        response.setName(name);
+        response.setLabel(hiddenFieldName);
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
@@ -180,12 +184,12 @@ public class PropertyAdminController {
                         new BufferedOutputStream(new FileOutputStream(new File("D:\\tmp\\" + name)));
                 stream.write(bytes);
                 stream.close();
-                return "You successfully uploaded " + name + "!";
+                return response;
             } catch (Exception e) {
-                return "You failed to upload " + name + " => " + e.getMessage();
+                return response;
             }
         } else {
-            return "You failed to upload " + name + " because the file was empty.";
+            return response;
         }
     }
 

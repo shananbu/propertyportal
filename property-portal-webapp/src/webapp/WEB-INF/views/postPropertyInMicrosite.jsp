@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Post Property In Microsite</title>
 
     <script type="text/javascript" src="appendGrid/jquery-1.11.2.min.js"></script>
@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="appendGrid/jquery-ui.structure.min.css"/>
     <link rel="stylesheet" type="text/css" href="appendGrid/jquery-ui.theme.min.css"/>
     <link rel="stylesheet" type="text/css" href="appendGrid/jquery.appendGrid-1.6.0.css"/>
+    <link rel="stylesheet" type="text/css" href="css/fileUpload.css"/>
 
     <script src="js/jquery.sumoselect.js"></script>
     <script type="text/javascript">
@@ -46,7 +47,20 @@
                     { name: 'advertisement.moreProperty[].area', onChange: calculateTotalCost, display: 'Area (Sq.ft)', type: 'text', ctrlAttr: { maxlength: 5 }/*, ctrlCss: { width: '100px'}*/ },
                     { name: 'advertisement.moreProperty[].pricePerUnitArea',onChange: calculateTotalCost, display: 'Rate (Per sq.ft)', type: 'text', ctrlAttr: { maxlength: 5 }/*, ctrlCss: { width: '100px'} */},
                     { name: 'advertisement.moreProperty[].totalCost', display: 'Total Cost', type: 'text', ctrlAttr: { maxlength: 10 }/*, ctrlCss: { width: '100px'} */},
-                    { name: 'advertisement.moreProperty[].floorPlanFileName', display: 'Floor Plan', type: 'file', ctrlAttr: { maxlength: 4 }/*, ctrlCss: { width: '100px'}*/ }
+                    { name: 'advertisement.moreProperty[].floorPlanFileNameTd', display: 'Floor Plan', type: 'custom', ctrlAttr: { maxlength: 4 },
+                        customBuilder:  function (cell, idPrefix, name, uniqueIndex) {
+                            $('<div id="imagePreview' + uniqueIndex + '"></div>' +
+                                    '<input type="hidden" id="floorPlanFileName' + uniqueIndex + '" name="advertisement.moreProperty[' + uniqueIndex + '].floorPlanFileName">' +
+                                    '<input id="uploadFile' + uniqueIndex + '" type="file" name="floorPlanImage' + uniqueIndex + '" class="floorPlanImage"/>' +
+                                    '<div id="status' + uniqueIndex + '"></div>').appendTo(cell);
+                        }/*,
+                        customGetter: function (idPrefix, name, uniqueIndex) {
+
+                        },
+                        customSetter: function (idPrefix, name, uniqueIndex, value) {
+
+                        }*/
+                    }
                 ]
             });
             
@@ -56,6 +70,7 @@
         });
     </script>
     <script src="js/site/postProperty.js"></script>
+    <script src="js/site/fileUploader.js"></script>
 </head>
 <body>
 <form method="post" id="frmPost" commandName="moduleRequest" action="saveOrUpdateAdvertisement">

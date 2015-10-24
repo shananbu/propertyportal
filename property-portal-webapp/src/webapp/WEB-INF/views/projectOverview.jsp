@@ -122,7 +122,7 @@
                             <td> ${data.area} </td>
                             <td> <i class="fa fa-inr fa-1x"></i> ${data.pricePerUnitArea} </td>
                             <td> <i class="fa fa-inr fa-1x"></i> ${data.totalCostInWords} </td>
-                            <td><a href="#">click to view</a></td>
+                            <td><a href="${data.floorPlanFileName}" data-lightbox="img_1">View</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

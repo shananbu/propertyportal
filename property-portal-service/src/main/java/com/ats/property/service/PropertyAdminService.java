@@ -630,7 +630,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     @Override
     public boolean searchProperty(SearchType searchType, ModuleList response) {
         List<Advertisement> result = adminDAO.searchProperty(searchType);
-        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        /*ModuleType moduleType = CommonHelper.getFirstModule(response);
         ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
         for(Advertisement advt : result) {
             SearchResultType searchResult = new SearchResultType();
@@ -638,7 +638,8 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             searchResult.setDescription(advt.getDescription());
             searchResult.setPropertyType(advt.getPropertyTypeByPropertyTypeId().getName());
             moduleResponseType.getSearchResult().add(searchResult);
-        }
+        }*/
+        getAdvertisements(result, response);
         return true;
     }
 
@@ -729,6 +730,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 if(advertisement.getPossessionOrAgeByPossessionOrAgeId() != null) {
                     advertisementType.setPossession(advertisement.getPossessionOrAgeByPossessionOrAgeId().getName());
                 }
+                advertisementType.setPropertyTypeName(advertisement.getPropertyTypeByPropertyTypeId().getName());
                 advertisementType.setCompanyName(advertisement.getBuilderName());
                 if(advertisement.getBuilderName() == null || (advertisement.getBuilderName() != null && advertisement.getBuilderName().equals("") )) {
                     advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());
@@ -791,6 +793,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                         bedRooms = bedRooms + ", " + morePropertyDetails.getBedroomByBedRoomId().getName();
                         MorePropertyType morePropertyType = new MorePropertyType();
                         PropertyUtils.copyFields(morePropertyDetails, morePropertyType);
+                        morePropertyType.setFloorPlanFileName(PropertyConstants.RESOURCE_DIR.value() + morePropertyDetails.getFloorPlanFileName());
                         buildupAreaList.add(morePropertyDetails.getArea());
                         costList.add(morePropertyDetails.getTotalCost());
                         morePropertyType.setBedRoom(morePropertyDetails.getBedroomByBedRoomId().getName());
