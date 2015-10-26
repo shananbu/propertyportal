@@ -79,7 +79,7 @@
         </div>
         <div class="text_panel">
             <input type="text" placeholder="Type Location or Project"  name="search.searchString">
-            <input type="button" value="Search" id="searchBtn">
+            <input type="button" value="Search" id="searchBtn1" class="searchBtn">
         </div>
     </div>
 
@@ -142,8 +142,8 @@
 
         </div>
         <div class="text_panel">
-            <input type="text" placeholder="Type Location or Project">
-            <input type="button" value="Search">
+            <input type="text" placeholder="Type Location or Project"  name="search.searchString">
+            <input type="button" value="Search" id="searchBtn2" class="searchBtn">
         </div>
     </div>
     <div class="clr_fix loc_list">
@@ -206,8 +206,8 @@
 
         </div>
         <div class="text_panel">
-            <input type="text" placeholder="Type Location or Project">
-            <input type="button" value="Search">
+            <input type="text" placeholder="Type Location or Project"  name="search.searchString">
+            <input type="button" value="Search" id="searchBtn3" class="searchBtn">
         </div>
     </div>
     <div class="clr_fix loc_list">

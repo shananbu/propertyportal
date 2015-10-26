@@ -730,7 +730,9 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 if(advertisement.getPossessionOrAgeByPossessionOrAgeId() != null) {
                     advertisementType.setPossession(advertisement.getPossessionOrAgeByPossessionOrAgeId().getName());
                 }
-                advertisementType.setPropertyTypeName(advertisement.getPropertyTypeByPropertyTypeId().getName());
+                if(null != advertisement.getPropertyTypeByPropertyTypeId()) {
+                    advertisementType.setPropertyTypeName(advertisement.getPropertyTypeByPropertyTypeId().getName());
+                }
                 advertisementType.setCompanyName(advertisement.getBuilderName());
                 if(advertisement.getBuilderName() == null || (advertisement.getBuilderName() != null && advertisement.getBuilderName().equals("") )) {
                     advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());
@@ -848,7 +850,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
     @Override
     public boolean getAdvertisementsForApproval(String status, ModuleList response) {
-        List<Advertisement> advertisements = adminDAO.getAdvertisements(false);
+        List<Advertisement> advertisements = adminDAO.getAdvertisements(Boolean.parseBoolean(status));
         ModuleType moduleType = CommonHelper.getFirstModule(response);
         ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
         for(Advertisement advertisement : advertisements) {

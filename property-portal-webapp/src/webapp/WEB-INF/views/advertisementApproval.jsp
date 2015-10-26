@@ -29,11 +29,13 @@
             oTable = $('#advertisementApprovalTable').dataTable({
                 "bJQueryUI": true,
                 "bAutoWidth": true,
-                "bSort": true,
+                "bSort": false,
+                "bFilter": false,
                 //"sScrollX": "100%",
                 "bScrollCollapse": false,
                 "sScrollY": "300px",
-                "sPaginationType": "full_numbers"
+                "sPaginationType": "full_numbers",
+                "oLanguage": {"sZeroRecords": "", "sEmptyTable": ""}
             });
         });
     </script>
@@ -71,7 +73,7 @@
                         <table cellpadding="0" cellspacing="0" border="0" class="display" id="advertisementApprovalTable">
                             <thead>
                             <tr>
-                                <th><input type="checkbox"/></th>
+                                <th><input type="checkbox" id="allCheck"/></th>
                                 <th>Property Developer Name</th>
                                 <th>Name of Project/Society</th>
                                 <th>Property Type</th>
@@ -111,10 +113,10 @@
                             <td></td>
                             <td></td>
                             <td class="td_right_align">
-                                <input type="submit" value="submit">
+                                <input type="button" value="Approve" id="btnApprove">
                             </td>
                             <td class="td_right_align">
-                                <input type="reset" value="reset">
+                                <input type="button" value="Reload" id="btnReload">
                             </td>
                         </tr>
                     </table>

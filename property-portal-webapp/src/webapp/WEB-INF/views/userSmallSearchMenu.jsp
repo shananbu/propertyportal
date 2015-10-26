@@ -8,6 +8,7 @@
         </ul>
     </div>
     <div class="inner_loc clr_fix">
+        <form method="post" id="form_top_tab_1" action="searchViewPage">
         <ul id="top_tab_1" class="tab_content_2">
             <li class="inner_city">
                 <select  name="locality.parentId" id="parentId1" class="dropdown">
@@ -48,9 +49,11 @@
                 </select>
             </li>
             <li class="inner_top_btn">
-                <input type="button" value="Search" class="btn_5">
+                <input type="button" value="Search" class="btn_5" id="searchBtn1">
             </li>
         </ul>
+        </form>
+        <form method="post" id="form_top_tab_2" action="searchViewPage">
         <ul id="top_tab_2" class="tab_content_2">
             <li class="inner_city">
                 <select  name="locality.parentId" id="parentId2" class="dropdown">
@@ -91,9 +94,11 @@
                 </select>
             </li>
             <li class="inner_top_btn">
-                <input type="button" value="Search" class="btn_5">
+                <input type="button" value="Search" class="btn_5"  id="searchBtn2">
             </li>
         </ul>
+        </form>
+        <form method="post" id="form_top_tab_3" action="searchViewPage">
         <ul id="top_tab_3" class="tab_content_2">
             <li class="inner_city">
                 <select  name="locality.parentId" id="parentId3" class="dropdown">
@@ -134,9 +139,10 @@
                 </select>
             </li>
             <li class="inner_top_btn">
-                <input type="button" value="Search" class="btn_5" id="btnSearch">
+                <input type="button" value="Search" class="btn_5" id="searchBtn3">
             </li>
         </ul>
+        </form>
     </div>
 </div>
 </div>

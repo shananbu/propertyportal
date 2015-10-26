@@ -1,7 +1,14 @@
 $(document).ready(function(){
-    $("#searchBtn").click(function(){
+    $("#searchBtn1").click(function(){
         $( "#tab_info_1" ).submit();
-       // window.location.href = "searchViewPage";
+    });
+
+    $("#searchBtn2").click(function(){
+        $( "#tab_info_2" ).submit();
+    });
+
+    $("#searchBtn3").click(function(){
+        $( "#tab_info_3" ).submit();
     });
 });
 

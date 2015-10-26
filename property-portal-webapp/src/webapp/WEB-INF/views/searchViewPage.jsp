@@ -142,7 +142,7 @@
             </div>
             </c:forEach>
         </section>
-        <aside class="ad_1_left re_m clr_fix">
+ <%--       <aside class="ad_1_left re_m clr_fix">
             <h1 class="h_1">New projects</h1>
             <ul class="box_shadow clr_fix">
                 <li> <a href="#"> <img src="images/image_1.jpg">
@@ -172,7 +172,7 @@
                     </figcaption>
                 </a> </li>
             </ul>
-        </aside>
+        </aside>--%>
 
     </section>
 </div>
