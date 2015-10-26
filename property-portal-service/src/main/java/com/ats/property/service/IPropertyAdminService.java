@@ -66,4 +66,6 @@ public interface IPropertyAdminService {
 
     boolean getAdvertisementsForApproval(String status, ModuleList response);
 
+    boolean approveOrRejectAdvertisements(List<AdvertisementType> advertisements, ModuleList response);
+
 }

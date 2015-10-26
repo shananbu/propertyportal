@@ -59,4 +59,7 @@ public interface IPropertyAdminDelegate {
 
     boolean getAdvertisementsForApproval(String status, ModuleList response);
 
+    boolean approveOrRejectAdvertisements(ModuleRequestType moduleRequest, ModuleList response);
+
+
 }

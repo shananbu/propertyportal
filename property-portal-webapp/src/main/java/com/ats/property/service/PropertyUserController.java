@@ -302,8 +302,8 @@ public class PropertyUserController {
                                                    @RequestParam("flowFilename") String fileName,
                                                    @RequestParam("advertisementId") Long advertisementId,
                                                    @RequestParam("imageTypeId") Long imageTypeId) {
-        String fileRootDir = "D:\\tmp\\";
-       // String fileRootDir = "/home/acreindia/uploadedResources/";
+     //   String fileRootDir = "D:\\tmp\\";
+        String fileRootDir = "/home/acreindia/uploadedResources/";
         if (!file.isEmpty()) {
             try {
                 fileName = advertisementId + "_" + fileName;

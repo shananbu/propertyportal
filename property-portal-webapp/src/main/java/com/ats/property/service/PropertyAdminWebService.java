@@ -158,6 +158,14 @@ public class PropertyAdminWebService {
         return response;
     }
 
+    @POST
+    @Path("/modules/update/approveOrRejectAdvertisements")
+    public ModuleList approveOrRejectAdvertisements(ModuleRequestType request) {
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.approveOrRejectAdvertisements(request, response);
+        return response;
+    }
+
     //Sample starts here.............................
 
     private static DummyDB dummyDB = new DummyDB();

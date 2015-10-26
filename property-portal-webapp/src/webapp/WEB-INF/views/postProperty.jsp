@@ -164,7 +164,7 @@
 
 <div class="pro_feat">
     <h1>Property Features</h1>
-    <ul class="drop_size_1">
+    <ul class="drop_size_1 drop_size_2">
         <li class="col_2_text">
             <label>Builtup Area</label>
             <input type="text" placeholder="Buildup Area" name="advertisement.buildupArea">

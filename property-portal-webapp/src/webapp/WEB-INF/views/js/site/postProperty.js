@@ -69,6 +69,12 @@ $(document).ready(function(){
             });
         });
     });
+
+
+    $('.pro_list li input[type="radio"]').click(function(){
+        $('.pro_list').hide();
+    })
+
     function calculateAmount() {
         return getValue($("#denominationLakhs"), 100000) +
             getValue($("#denominationThousands"), 1000) +

@@ -4,6 +4,8 @@ import com.ats.property.dto.*;
 import com.ats.property.model.PlanMast;
 import com.ats.property.model.PropertyUser;
 
+import java.util.List;
+
 /**
  * The PropertyAdminHelper.
  *
@@ -62,4 +64,7 @@ public interface IPropertyAdminHelper {
     boolean getAdvertisements(ModuleList response);
 
     boolean getAdvertisementsForApproval(String status, ModuleList response);
+
+    boolean approveOrRejectAdvertisements(List<AdvertisementType> advertisements,  ModuleList response);
+
 }

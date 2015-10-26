@@ -869,4 +869,14 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         }
         return false;
     }
+
+    @Override
+    public boolean approveOrRejectAdvertisements(List<AdvertisementType> advertisements, ModuleList response) {
+        for(AdvertisementType advertisement : advertisements) {
+             Advertisement advtFromDB = adminDAO.findObjectById(advertisement.getId(), Advertisement.class);
+            advtFromDB.setIsApproved(advertisement.isIsApproved());
+            adminDAO.updateAdvertisement(advtFromDB);
+        }
+        return true;
+    }
 }

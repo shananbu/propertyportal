@@ -142,6 +142,7 @@
             <xs:element name="overviewBannerImages" type="galleryImageType" maxOccurs = "unbounded"/>
             <xs:element name="propertyForTypeName" type="xs:string"/>
             <xs:element name="propertyTypeName" type="xs:string"/>
+            <xs:element name="isApproved" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
 

@@ -7,8 +7,8 @@
             <li rel="top_tab_3"><a> New Project</a> </li>
         </ul>
     </div>
-    <div class="inner_loc clr_fix">
-        <form method="post" id="form_top_tab_1" action="searchViewPage">
+    <div class="clr_fix">
+        <form method="post" id="form_top_tab_1" action="searchViewPage" class="inner_loc">
         <ul id="top_tab_1" class="tab_content_2">
             <li class="inner_city">
                 <select  name="locality.parentId" id="parentId1" class="dropdown">
@@ -53,7 +53,7 @@
             </li>
         </ul>
         </form>
-        <form method="post" id="form_top_tab_2" action="searchViewPage">
+        <form method="post" id="form_top_tab_2" action="searchViewPage" class="inner_loc">
         <ul id="top_tab_2" class="tab_content_2">
             <li class="inner_city">
                 <select  name="locality.parentId" id="parentId2" class="dropdown">
@@ -98,7 +98,7 @@
             </li>
         </ul>
         </form>
-        <form method="post" id="form_top_tab_3" action="searchViewPage">
+        <form method="post" id="form_top_tab_3" action="searchViewPage" class="inner_loc">
         <ul id="top_tab_3" class="tab_content_2">
             <li class="inner_city">
                 <select  name="locality.parentId" id="parentId3" class="dropdown">

@@ -15,6 +15,7 @@
                 <xs:element name="advertisement" type="advertisementType" minOccurs="0"/>
                 <xs:element name="search" type="searchType" minOccurs="0"/>
                 <xs:element name="alertRegistration" type="alertRegistrationType" minOccurs="0"/>
+                <xs:element name="advertisements" type="advertisementType" maxOccurs="unbounded"/>
             </xs:choice>
         </xs:sequence>
     </xs:complexType>

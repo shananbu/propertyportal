@@ -1485,6 +1485,11 @@ footer li a:hover {
 .inner_city {
 	width: 13%;
 }
+.inner_loc > ul > li input[type="button"]{
+	background:#d1443c;
+	padding:5px 20px;
+	
+}
 .inner_loc_search {
 	width: 22%;
 }
@@ -4039,4 +4044,14 @@ margin-left:5%;
     color: #5daf33;
     font-size: 18px;
     margin: 0 5px;
+}
+
+.agree_form > label {
+    margin-top: 0px !important;
+}
+.drop_size_2 > li label {
+    min-width: 109px !important;
+}	
+.drop_size_2 > li > select{
+	margin-right:10px;
 }

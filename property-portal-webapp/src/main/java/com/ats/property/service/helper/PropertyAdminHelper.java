@@ -349,4 +349,9 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     public boolean getAdvertisementsForApproval(String status, ModuleList response) {
         return adminService.getAdvertisementsForApproval(status, response);
     }
+
+    @Override
+    public boolean approveOrRejectAdvertisements(List<AdvertisementType> advertisements, ModuleList response) {
+        return adminService.approveOrRejectAdvertisements(advertisements, response);
+    }
 }
