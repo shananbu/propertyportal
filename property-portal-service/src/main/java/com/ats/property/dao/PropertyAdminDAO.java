@@ -6,9 +6,7 @@ import com.ats.property.model.*;
 import com.google.common.base.Optional;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Expression;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.*;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.springframework.beans.factory.InitializingBean;
@@ -453,27 +451,37 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     public List<Advertisement> searchProperty(SearchType searchType) {
         Session session = getSession();
         Criteria searchCriteria = session.createCriteria(Advertisement.class);
+        searchCriteria.createAlias("advertisementDetailsesById", "advertisementDetails");
+        searchCriteria.createAlias("morePropertyDetailsesById", "morePropertyDetails");
+        searchCriteria.createAlias("residentialsById", "residential");
+
         if (searchType.getSearchString() != null) {
             searchCriteria.add(Restrictions.like("projectName", searchType.getSearchString(), MatchMode.ANYWHERE));
         }
 
-/*        if (searchType.getLocationId() != null) {
+        if (searchType.getLocationId() != null) {
             searchCriteria.add(Restrictions.eq("locationId", searchType.getLocationId()));
         }
 
         if (searchType.getExpectedPrice() != null) {
             Budget budget = findObjectById(searchType.getExpectedPrice(), Budget.class);
-            searchCriteria.createAlias("advertisementDetailsesById", "advertisementDetails");
-            searchCriteria.add(Restrictions.between("advertisementDetails.expectedPrice", budget.getFromlevel(), budget.getTolevel()));
+
+            Criterion price1 = Restrictions.between("advertisementDetails.expectedPrice", budget.getFromlevel(), budget.getTolevel());
+
+            Criterion price2 = Restrictions.between("morePropertyDetails.totalCost", budget.getFromlevel(), budget.getTolevel());
+            LogicalExpression priceOrExp = Restrictions.or(price1, price2);
+            searchCriteria.add(priceOrExp);
         }
 
-        if (searchType.getBedRoomId() != null) {
-            searchCriteria.createAlias("residentialsById", "residential");
-            searchCriteria.add(Restrictions.eq("residential.bedRoomId", searchType.getBedRoomId()));
-        }*/
+        if (searchType.getBedRoomId().size() > 0) {
+            Criterion bedroom1 = Restrictions.in("residential.bedRoomId", searchType.getBedRoomId());
+            Criterion bedroom2 = Restrictions.in("morePropertyDetails.bedRoomId", searchType.getBedRoomId());
+            LogicalExpression priceOrExp = Restrictions.or(bedroom1, bedroom2);
+            searchCriteria.add(priceOrExp);
+        }
 
         if (searchType.getUserTypeId() != null) {
-
+            searchCriteria.add(Restrictions.eq("propertyTypeId", searchType.getUserTypeId()));
         }
 
         return searchCriteria.list();

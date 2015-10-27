@@ -5,7 +5,9 @@ import com.ats.property.dto.ModuleList;
 import com.ats.property.dto.ModuleRequestType;
 import com.ats.property.dto.NameDataType;
 import com.ats.property.service.delegate.IPropertyAdminDelegate;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,10 +30,20 @@ import java.io.FileOutputStream;
  * @author anbarasan.s
  */
 @Controller
-public class PropertyAdminController {
+public class PropertyAdminController implements InitializingBean{
 
     @Autowired
     IPropertyAdminDelegate adminDelegate;
+
+    @Autowired
+    private Environment environment;
+
+    private String fileRootDir = "";
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        fileRootDir = environment.getRequiredProperty("upload.resources.path");
+    }
 
     /** Admin Pages Start*/
     @RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
@@ -173,15 +185,16 @@ public class PropertyAdminController {
 
     @RequestMapping(value="/upload", method=RequestMethod.POST)
     public @ResponseBody NameDataType handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("hiddenFieldName") String hiddenFieldName){
-        String name = file.getOriginalFilename();
+        String fileName = file.getOriginalFilename();
         NameDataType response = new NameDataType();
-        response.setName(name);
+        response.setName(fileName);
         response.setLabel(hiddenFieldName);
+        fileName = fileRootDir + "_" + fileName;
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream =
-                        new BufferedOutputStream(new FileOutputStream(new File("D:\\tmp\\" + name)));
+                        new BufferedOutputStream(new FileOutputStream(new File(fileName)));
                 stream.write(bytes);
                 stream.close();
                 return response;

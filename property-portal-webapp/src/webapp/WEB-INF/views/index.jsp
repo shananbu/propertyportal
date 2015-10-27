@@ -14,7 +14,7 @@
     <script src="js/jquery.sumoselect.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3,selectAll:true });
+            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3,selectAll:false });
             window.test = $('.testsel').SumoSelect({okCancelInMulti:true });
             window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
             window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true }); });
@@ -79,7 +79,7 @@
         </div>
         <div class="text_panel">
             <input type="text" placeholder="Type Location or Project"  name="search.searchString">
-            <input type="button" value="Search" id="searchBtn1" class="searchBtn">
+            <input type="submit" value="Search" id="searchBtn1" class="searchBtn">
         </div>
     </div>
 
@@ -87,7 +87,7 @@
         <ul>
             <li class="list_3">
                 <label> Price</label>
-                <select multiple="multiple" placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
+                <select  placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -103,11 +103,11 @@
             </li>
             <li class="list_3">
                 <label> Posted By </label>
-                <select class="dropdown" placeholder="select">
+                <select class="dropdown" placeholder="select" name="search.userTypeId">
                     <option> Select Posted</option>
-                    <option> Owner</option>
-                    <option> Builder</option>
-                    <option> Dealer</option>
+                    <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
+                        <option value="${data.id}">${data.name}</option>
+                    </c:forEach>
                 </select>
             </li>
             <li class="list_4"><span> Clear All </span></li>
@@ -143,14 +143,14 @@
         </div>
         <div class="text_panel">
             <input type="text" placeholder="Type Location or Project"  name="search.searchString">
-            <input type="button" value="Search" id="searchBtn2" class="searchBtn">
+            <input type="submit" value="Search" id="searchBtn2" class="searchBtn">
         </div>
     </div>
     <div class="clr_fix loc_list">
         <ul>
             <li class="list_3">
                 <label> Price</label>
-                <select multiple="multiple" placeholder="Select Price" class="SlectBox">
+                <select placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -158,7 +158,7 @@
             </li>
             <li class="list_3">
                 <label> Bed Rooms</label>
-                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox">
+                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="search.bedRoomId">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -167,11 +167,10 @@
             </li>
             <li class="list_3">
                 <label> Posted By </label>
-                <select class="dropdown" placeholder="select">
-                    <option> Select Posted</option>
-                    <option> Owner</option>
-                    <option> Builder</option>
-                    <option> Dealer</option>
+                <select class="dropdown" placeholder="select" name="search.userTypeId">
+                    <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
+                        <option value="${data.id}">${data.name}</option>
+                    </c:forEach>
                 </select>
             </li>
             <li class="list_4"><span> Clear All </span></li>
@@ -207,14 +206,14 @@
         </div>
         <div class="text_panel">
             <input type="text" placeholder="Type Location or Project"  name="search.searchString">
-            <input type="button" value="Search" id="searchBtn3" class="searchBtn">
+            <input type="submit" value="Search" id="searchBtn3" class="searchBtn">
         </div>
     </div>
     <div class="clr_fix loc_list">
         <ul>
             <li class="list_3">
                 <label> Price</label>
-                <select multiple="multiple" placeholder="Select Price" class="SlectBox">
+                <select placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -222,7 +221,7 @@
             </li>
             <li class="list_3">
                 <label> Bed Rooms</label>
-                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox">
+                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="search.bedRoomId">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -231,11 +230,11 @@
             </li>
             <li class="list_3">
                 <label> Posted By </label>
-                <select class="dropdown" placeholder="select">
+                <select class="dropdown" placeholder="select" name="search.userTypeId">
                     <option> Select Posted</option>
-                    <option> Owner</option>
-                    <option> Builder</option>
-                    <option> Dealer</option>
+                    <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
+                        <option value="${data.id}">${data.name}</option>
+                    </c:forEach>
                 </select>
             </li>
             <li class="list_4"><span> Clear All </span></li>
@@ -262,22 +261,10 @@
     <aside class="ad_1_left clr_fix">
         <h1 class="h_1">New projects</h1>
         <ul class="box_shadow clr_fix">
-            <li> <img src="images/image_1.jpg">
-                <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a> <a href="projectOverview" class="cli_add">click here for sample add</a> </div>
-                <figcaption class="pro_info_1">
-                    <h1>Project Name </h1>
-                    <p> Company Name </p>
-                    <span> <i class="fa fa-map-marker"></i> Location </span>
-                    <ul>
-                        <li> Beds : <span> </span> </li>
-                        <li> Buildup Area : <span> </span> </li>
-                        <li> Cost : <span> </span> </li>
-                        <li> <span>&nbsp; </span> </li>
-                    </ul>
-                </figcaption>
-            </li>
+            <c:set var="counter" value="0" scope="request"/>
             <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
-                <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}"  end="0">
+                <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" begin="5" end="6" >
+                    <c:set var="counter" value="${counter + 1}"/>
                     <li> <a href="projectOverview?advertisementId=${data.id}" target="_blank"> <img src="${data.propertyLogo}">
                         <figcaption class="pro_info_1">
                             <h1>${data.projectName} </h1>
@@ -293,64 +280,76 @@
                     </a> </li>
                 </c:forEach>
             </c:if>
+
+            <c:forEach begin="${counter}" end="1" var="val">
+                <li> <img src="images/image_1.jpg">
+                    <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a>
+                        <a target="_blank" href="projectOverview?advertisementId=1" class="cli_add">click here for sample add</a> </div>
+                    <figcaption class="pro_info_1">
+                        <h1>Project Name </h1>
+                        <p> Company Name </p>
+                        <span> <i class="fa fa-map-marker"></i> Location </span>
+                        <ul>
+                            <li> Beds : <span> </span> </li>
+                            <li> Buildup Area : <span> </span> </li>
+                            <li> Cost : <span> </span> </li>
+                            <li> <span>&nbsp; </span> </li>
+                        </ul>
+                    </figcaption>
+                </li>
+            </c:forEach>
+            <c:set var="counter" value="0"/>
         </ul>
     </aside>
     <section class="clr_fix pro_block">
         <h1 class="h_2">Project Gallery</h1>
         <ul class="block_1">
-            <li>
-                <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a> <a href="projectOverview" class="cli_add">click here for sample add</a> </div>
-                <a href="#"> <img src="images/image_3.jpg">
-                    <figcaption class="pro_info_1"> <img src="images/no_image.jpg">
-                        <summary>
-                            <h1>Project Name </h1>
-                            <p> Company Name </p>
-                            <span> <i class="fa fa-map-marker"></i> Location </span> </summary>
-                        <ul>
-                            <li> Beds : <span> </span> </li>
-                            <li> Buildup Area : <span> </span> </li>
-                            <li> Cost : <span> </span> </li>
-                            <li> <span> &nbsp; </span> </li>
-                        </ul>
-                    </figcaption>
-                </a> </li>
-                <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" end="0">
-                        <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="${data.propertyLogo}">
-                            <figcaption class="pro_info_1"> <img src="images/image_4.jpg">
-                                <summary>
-                                    <h1>${data.projectName}</h1>
-                                    <p>${data.companyName}</p>
-                                    <span> <i class="fa fa-map-marker"></i>&nbsp;${data.locationName}</span> </summary>
-                                <ul>
-                                    <li> Beds : <span>${data.bedRooms}</span> </li>
-                                    <li> Buildup Area : <span> ${data.buildupAreaName}</span> </li>
-                                    <li> Cost : <span> <i class="fa fa-inr"></i> ${data.cost}</span> </li>
-                                    <li> <span> <small>Read More</small> </span> </li>
-                                </ul>
-                            </figcaption>
-                        </a> </li>
-                    </c:forEach>
-                </c:if>
+            <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
+                <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" end="1" >
+                    <c:set var="counter" value="${counter + 1}"/>
+                    <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="${data.propertyLogo}">
+                        <figcaption class="pro_info_1"> <img src="images/image_4.jpg">
+                            <summary>
+                                <h1>${data.projectName}</h1>
+                                <p>${data.companyName}</p>
+                                <span> <i class="fa fa-map-marker"></i>&nbsp;${data.locationName}</span> </summary>
+                            <ul>
+                                <li> Beds : <span>${data.bedRooms}</span> </li>
+                                <li> Buildup Area : <span> ${data.buildupAreaName}</span> </li>
+                                <li> Cost : <span> <i class="fa fa-inr"></i> ${data.cost}</span> </li>
+                                <li> <span> <small>Read More</small> </span> </li>
+                            </ul>
+                        </figcaption>
+                    </a> </li>
+                </c:forEach>
+            </c:if>
+
+            <c:forEach begin="${counter}" end="1" var="val">
+                <li>
+                    <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a>
+                        <a target="_blank" href="projectOverview?advertisementId=1" class="cli_add">click here for sample add</a> </div>
+                    <a href="#"> <img src="images/image_3.jpg">
+                        <figcaption class="pro_info_1"> <img src="images/no_image.jpg">
+                            <summary>
+                                <h1>Project Name </h1>
+                                <p> Company Name </p>
+                                <span> <i class="fa fa-map-marker"></i> Location </span> </summary>
+                            <ul>
+                                <li> Beds : <span> </span> </li>
+                                <li> Buildup Area : <span> </span> </li>
+                                <li> Cost : <span> </span> </li>
+                                <li> <span> &nbsp; </span> </li>
+                            </ul>
+                        </figcaption>
+                    </a>
+                </li>
+            </c:forEach>
+            <c:set var="counter" value="0"/>
         </ul>
         <ul class="img_panel_2">
-            <li>
-                <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a> <a href="projectOverview" class="cli_add">click here for sample add</a> </div>
-                <img src="images/image_6.jpg">
-                <figcaption class="pro_info_1">
-                    <h1>Project Name </h1>
-                    <p> Company Name </p>
-                    <span> <i class="fa fa-map-marker"></i> Location </span>
-                    <ul>
-                        <li> Beds : <span> </span> </li>
-                        <li> Buildup Area : <span> </span> </li>
-                        <li> Cost : <span> </span> </li>
-                        <li> <span>&nbsp; </span> </li>
-                    </ul>
-                </figcaption>
-            </li>
             <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
-                <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}"  end="2">
+                <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" begin="2" end="4">
+                    <c:set var="counter" value="${counter + 1}"/>
                     <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="${data.propertyLogo}">
                         <figcaption class="pro_info_1">
                             <h1>${data.projectName}</h1>
@@ -366,13 +365,34 @@
                     </a> </li>
                 </c:forEach>
             </c:if>
+
+            <c:forEach begin="${counter}" end="2" var="val">
+                <li>
+                    <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a>
+                        <a target="_blank" href="projectOverview?advertisementId=1" class="cli_add">click here for sample add</a> </div>
+                    <img src="images/image_6.jpg">
+                    <figcaption class="pro_info_1">
+                        <h1>Project Name </h1>
+                        <p> Company Name </p>
+                        <span> <i class="fa fa-map-marker"></i> Location </span>
+                        <ul>
+                            <li> Beds : <span> </span> </li>
+                            <li> Buildup Area : <span> </span> </li>
+                            <li> Cost : <span> </span> </li>
+                            <li> <span>&nbsp; </span> </li>
+                        </ul>
+                    </figcaption>
+                </li>
+            </c:forEach>
+            <c:set var="counter" value="0"/>
         </ul>
     </section>
     <aside class="ad_1_left re_m clr_fix">
         <h1 class="h_1">New projects</h1>
         <ul class="box_shadow clr_fix">
             <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
-                <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}"  end="0">
+                <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" begin="7" end="8" >
+                    <c:set var="counter" value="${counter + 1}"/>
                     <li> <a href="projectOverview?advertisementId=${data.id}" target="_blank"> <img src="${data.propertyLogo}">
                         <figcaption class="pro_info_1">
                             <h1>${data.projectName} </h1>
@@ -388,6 +408,24 @@
                     </a> </li>
                 </c:forEach>
              </c:if>
+            <c:forEach begin="${counter}" end="1" var="val">
+                <li> <img src="images/image_1.jpg">
+                    <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a>
+                        <a target="_blank" href="projectOverview?advertisementId=1" class="cli_add">click here for sample add</a> </div>
+                    <figcaption class="pro_info_1">
+                        <h1>Project Name </h1>
+                        <p> Company Name </p>
+                        <span> <i class="fa fa-map-marker"></i> Location </span>
+                        <ul>
+                            <li> Beds : <span> </span> </li>
+                            <li> Buildup Area : <span> </span> </li>
+                            <li> Cost : <span> </span> </li>
+                            <li> <span>&nbsp; </span> </li>
+                        </ul>
+                    </figcaption>
+                </li>
+            </c:forEach>
+            <c:set var="counter" value="0"/>
         </ul>
 
     </aside>
@@ -396,7 +434,8 @@
     <h1> <span>Project Gallery</span> </h1>
     <ul class="img_panel_3 owl-carousel">
     <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
-        <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" end="10">
+        <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" begin="9" end="13" >
+            <c:set var="counter" value="${counter + 1}"/>
             <li> <a href="projectOverview?advertisementId=${data.id}" target="_blank"> <img src="${data.propertyLogo}">
                 <figcaption class="pro_info_1">
                     <h1>${data.projectName} </h1>
@@ -413,6 +452,24 @@
             </li>
         </c:forEach>
     </c:if>
+    <c:forEach begin="${counter}" end="5" var="val">
+        <li> <img src="images/image_1.jpg">
+            <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a>
+                <a target="_blank" href="projectOverview?advertisementId=1" class="cli_add">click here for sample add</a> </div>
+            <figcaption class="pro_info_1">
+                <h1>Project Name </h1>
+                <p> Company Name </p>
+                <span> <i class="fa fa-map-marker"></i> Location </span>
+                <ul>
+                    <li> Beds : <span> </span> </li>
+                    <li> Buildup Area : <span> </span> </li>
+                    <li> Cost : <span> </span> </li>
+                    <li> <span>&nbsp; </span> </li>
+                </ul>
+            </figcaption>
+        </li>
+    </c:forEach>
+    <c:set var="counter" value="0"/>
     </ul>
 </section>
 </div>

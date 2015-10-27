@@ -319,7 +319,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
         advertisement.setPossessionOrAgeByPossessionOrAgeId(adminDAO.findObjectById(advertisement.getPossessionOrAgeId(), PossessionOrAge.class));
         advertisement.setPossessionStatusByPossessionStatusId(adminDAO.findObjectById(advertisement.getPossessionStatusId(), PossessionStatus.class));
-
+        advertisement.setIsApproved(false);
         advertisement.setPlanMastByPlanId(adminDAO.findObjectById(advertisement.getPlanId(), PlanMast.class));
         advertisementDetails.setUnitMasterByBuildupAreaUnitId(adminDAO.findObjectById(advertisementDetails.getBuildupAreaUnitId(), UnitMaster.class));
         advertisementDetails.setBalconiesByBalconyId(adminDAO.findObjectById(advertisementDetails.getBalconyId(), Balconies.class));
@@ -727,6 +727,9 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             Long EXTERIOR_VIEW_ID = null;
             if(fromNullable(advertisement).isPresent()) {
                 PropertyUtils.copyFields(advertisement, advertisementType);
+                if( advertisement.getLocationsByLocationId() != null){
+                    advertisementType.setAddress(advertisementType.getBuilderName() + ", " + advertisement.getLocationsByLocationId().getName() );
+                }
                 if(advertisement.getPossessionOrAgeByPossessionOrAgeId() != null) {
                     advertisementType.setPossession(advertisement.getPossessionOrAgeByPossessionOrAgeId().getName());
                 }

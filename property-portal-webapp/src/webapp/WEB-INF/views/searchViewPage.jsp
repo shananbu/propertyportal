@@ -14,7 +14,7 @@
     <script src="js/jquery.sumoselect.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3,selectAll:true });
+            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3,selectAll:false });
             window.test = $('.testsel').SumoSelect({okCancelInMulti:true });
             window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
             window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true });

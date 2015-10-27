@@ -6,6 +6,7 @@ import com.ats.property.dto.GalleryImageType;
 import com.ats.property.dto.ModuleList;
 import com.ats.property.dto.ModuleRequestType;
 import com.ats.property.service.delegate.IPropertyAdminDelegate;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.access.annotation.Secured;
@@ -27,7 +28,7 @@ import java.security.Principal;
  * @author anbarasan.s
  */
 @Controller
-public class PropertyUserController {
+public class PropertyUserController implements InitializingBean {
 
     @Autowired
     IPropertyAdminDelegate adminDelegate;
@@ -35,6 +36,7 @@ public class PropertyUserController {
     @Autowired
     private Environment environment;
 
+    private String fileRootDir = "";
 
     @RequestMapping(value = {"/authenticateUser" }, method = RequestMethod.POST)
     public ModelAndView authenticateAdmin(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
@@ -63,6 +65,7 @@ public class PropertyUserController {
         adminDelegate.getBudgetList(response);
         adminDelegate.getPropertyTypeList(response);
         adminDelegate.getAdvertisements(response);
+        adminDelegate.getUserType(response);
         modelAndView.addObject("response", response);
         return modelAndView;
     }
@@ -302,14 +305,12 @@ public class PropertyUserController {
                                                    @RequestParam("flowFilename") String fileName,
                                                    @RequestParam("advertisementId") Long advertisementId,
                                                    @RequestParam("imageTypeId") Long imageTypeId) {
-     //   String fileRootDir = "D:\\tmp\\";
-        String fileRootDir = "/home/acreindia/uploadedResources/";
         if (!file.isEmpty()) {
             try {
                 fileName = advertisementId + "_" + fileName;
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream = new BufferedOutputStream(
-                        new FileOutputStream(new File(fileRootDir+ fileName)));
+                        new FileOutputStream(new File(fileRootDir + fileName)));
                 stream.write(bytes);
                 stream.close();
                 ModuleList response = CommonHelper.getSuccessModuleList();
@@ -359,4 +360,8 @@ public class PropertyUserController {
         return modelAndView;
     }
 
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        fileRootDir = environment.getRequiredProperty("upload.resources.path");
+    }
 }

@@ -163,10 +163,10 @@
     <xs:complexType name="searchType">
         <xs:sequence>
             <xs:element name="propertyForTypeId" type="xs:long" minOccurs = "0"/>
-            <xs:element name="propertyTypeId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="propertyTypeId" type="xs:long" maxOccurs="unbounded"/>
             <xs:element name="locationId" type="xs:long" minOccurs = "0"/>
             <xs:element name="expectedPrice" type="xs:long" minOccurs = "0"/>
-            <xs:element name="bedRoomId" type="xs:long" minOccurs = "0"/>
+            <xs:element name="bedRoomId" type="xs:long" maxOccurs="unbounded"/>
             <xs:element name="userTypeId" type="xs:long" minOccurs = "0"/>
             <xs:element name="pageNumber" type="xs:int" minOccurs = "0"/>
             <xs:element name="searchString" type="xs:string"/>

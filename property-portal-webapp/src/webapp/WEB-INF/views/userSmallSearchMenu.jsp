@@ -19,11 +19,10 @@
                 </select>
             </li>
             <li class="inner_loc_search">
-                <input type="text" placeholder="Enter Locally or Project">
+                <input type="text" placeholder="Enter Locally or Project" name="search.searchString">
             </li>
             <li class="inner_pro_type">
-                <select multiple="multiple" placeholder="Select Property Type" class="SlectBox">
-                    <option>Select Property Type</option>
+                <select multiple="multiple" placeholder="Select Property Type" class="SlectBox" name="search.propertyTypeId">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
                         <%--  <optGroup label="${data.name}">--%>
                         <c:forEach var="innerData" items="${data.propertyTypesById}">
@@ -35,14 +34,14 @@
 
             </li>
             <li class="inner_bedroom">
-                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox">
+                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="search.bedRoomId">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
                 </select>
             </li>
             <li class="inner_max_price">
-                <select multiple="multiple" placeholder="Select Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="SlectBox">
+                <select placeholder="Select Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="SlectBox" name="search.expectedPrice">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -64,11 +63,10 @@
                 </select>
             </li>
             <li class="inner_loc_search">
-                <input type="text" placeholder="Enter Locally or Project">
+                <input type="text" placeholder="Enter Locally or Project" name="search.searchString">
             </li>
             <li class="inner_pro_type">
-                <select multiple="multiple" placeholder="Select Property Type" class="SlectBox">
-                    <option>Select Property Type</option>
+                <select multiple="multiple" placeholder="Select Property Type" class="SlectBox" name="search.propertyTypeId">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
                         <%--  <optGroup label="${data.name}">--%>
                         <c:forEach var="innerData" items="${data.propertyTypesById}">
@@ -80,14 +78,14 @@
 
             </li>
             <li class="inner_bedroom">
-                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox">
+                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="search.bedRoomId">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
                 </select>
             </li>
             <li class="inner_max_price">
-                <select multiple="multiple" placeholder="Select Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="SlectBox">
+                <select placeholder="Select Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="SlectBox" name="search.expectedPrice">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -109,30 +107,27 @@
                 </select>
             </li>
             <li class="inner_loc_search">
-                <input type="text" placeholder="Enter Locally or Project">
+                <input type="text" placeholder="Enter Locally or Project"  name="search.searchString">
             </li>
             <li class="inner_pro_type">
-                <select multiple="multiple" placeholder="Select Property Type" class="SlectBox">
-                    <option>Select Property Type</option>
+                <select multiple="multiple" placeholder="Select Property Type" class="SlectBox" name="search.propertyTypeId">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
-                        <%--  <optGroup label="${data.name}">--%>
                         <c:forEach var="innerData" items="${data.propertyTypesById}">
                             <option value="${innerData.id}">${innerData.name}</option>
                         </c:forEach>
-                        <%--  </optGroup>--%>
                     </c:forEach>
                 </select>
 
             </li>
             <li class="inner_bedroom">
-                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox">
+                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox"  name="search.bedRoomId">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
                 </select>
             </li>
             <li class="inner_max_price">
-                <select multiple="multiple" placeholder="Select Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="SlectBox">
+                <select placeholder="Select Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="SlectBox" name="search.expectedPrice">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>

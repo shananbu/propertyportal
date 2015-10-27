@@ -1,4 +1,5 @@
-$(document).ready(function(){
+$(document).ready(function() {
+    loadData();
     $("#advtStatus").change(loadData);
 
     $("#btnReload").click(loadData);

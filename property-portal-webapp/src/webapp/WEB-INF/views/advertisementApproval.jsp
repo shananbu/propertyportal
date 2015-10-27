@@ -60,8 +60,8 @@
                             </td>
                             <td class="td_left">
                                 <select id="advtStatus">
-                                    <option value="true">Approved</option>
                                     <option value="false">UnApproved</option>
+                                    <option value="true">Approved</option>
                                 </select>
                             </td>
                         </tr>

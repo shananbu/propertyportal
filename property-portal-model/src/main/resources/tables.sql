@@ -123,6 +123,8 @@ create table AdminLogin (
   constraint fk4 foreign key (statusId) references StatusMast(id)
 );
 
+insert into AdminLogin (firstName, designation, userName, password) values ('Anbu', 'Admin','admin','admin123');
+
 -- drop table PlanMast
 create table PlanMast (
   id bigint auto_increment,
