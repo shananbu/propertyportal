@@ -307,10 +307,11 @@ public class PropertyUserController implements InitializingBean {
                                                    @RequestParam("imageTypeId") Long imageTypeId) {
         if (!file.isEmpty()) {
             try {
-                fileName = advertisementId + "_" + fileName;
+                fileName = fileRootDir + advertisementId + "_" + fileName;
+                System.out.print("uploadFileAndUpdate FileName >> " + fileName);
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream = new BufferedOutputStream(
-                        new FileOutputStream(new File(fileRootDir + fileName)));
+                        new FileOutputStream(new File(fileName)));
                 stream.write(bytes);
                 stream.close();
                 ModuleList response = CommonHelper.getSuccessModuleList();
@@ -325,6 +326,8 @@ public class PropertyUserController implements InitializingBean {
                 adminDelegate.updateAdvertisement(moduleRequest, response);
                 return "uploadSuccess";
             } catch (Exception e) {
+                 System.out.print("Error while saving >> " + fileName);
+                 e.printStackTrace();
                  return "uploadSuccess";
             }
         } else {

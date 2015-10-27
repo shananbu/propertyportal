@@ -104,7 +104,6 @@
             <li class="list_3">
                 <label> Posted By </label>
                 <select class="dropdown" placeholder="select" name="search.userTypeId">
-                    <option> Select Posted</option>
                     <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -231,7 +230,6 @@
             <li class="list_3">
                 <label> Posted By </label>
                 <select class="dropdown" placeholder="select" name="search.userTypeId">
-                    <option> Select Posted</option>
                     <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>

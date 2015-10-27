@@ -47,7 +47,11 @@ public class AdminUserDetailsService implements UserDetailsService {
                 String role = "ROLE_USER";
                 add(new SimpleGrantedAuthority(role));
             }};
-            user = new UserInformation(propertyUser.getEmailId(), propertyUser.getPasswrd(), true, true, true, true, authorityList);
+            boolean isMailVerified = false;
+            if(propertyUser.getIsMailVerified() != null && propertyUser.getIsMailVerified().equals("Y")){
+                isMailVerified = true;
+            }
+            user = new UserInformation(propertyUser.getEmailId(), propertyUser.getPasswrd(), isMailVerified, true, true, true, authorityList);
             user.setFirstName(propertyUser.getFirstName());
             user.setUserId(propertyUser.getId());
         } else if(adminlogin != null) {

@@ -190,6 +190,7 @@ public class PropertyAdminController implements InitializingBean{
         response.setName(fileName);
         response.setLabel(hiddenFieldName);
         fileName = fileRootDir + "_" + fileName;
+        System.out.print("uploadFileAndUpdate FileName >> " + fileName);
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
@@ -199,6 +200,8 @@ public class PropertyAdminController implements InitializingBean{
                 stream.close();
                 return response;
             } catch (Exception e) {
+                System.out.print("Error while saving >> " + fileName);
+                e.printStackTrace();
                 return response;
             }
         } else {
