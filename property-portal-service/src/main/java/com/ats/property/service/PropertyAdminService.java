@@ -777,6 +777,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                             advertisementType.setPropertyLogo(PropertyConstants.RESOURCE_DIR.value() + galleryImage.getImageName());
                             EXTERIOR_VIEW_ID = galleryImage.getImageTypeByImageTypeId().getId();
                         }
+                        advertisementType.getGalleryImage().add(imageType);
 
                         imagesList.add(imageType);
 
@@ -787,7 +788,6 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                         advertisementType.getOverviewBannerImages().addAll(exteriorImagesList);
                     }
                 }
-
                 if(fromNullable(advertisement.getMorePropertyDetailsesById()).isPresent()) {
                     List<Long> costList = new ArrayList<Long>();
                     List<Long> buildupAreaList = new ArrayList<Long>();

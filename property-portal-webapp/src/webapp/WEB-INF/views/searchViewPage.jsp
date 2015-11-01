@@ -59,51 +59,11 @@
                     </select>
                 </div>
             </div>
-<%--            <div class="sear_list">
-                <ul>
-                    <li>
-                        <figure class="gal_pop_open"> <img src="images/image_1.jpg">
-                            <figcaption>5 photos</figcaption>
-                        </figure>
-                        <div>
-                            <div class="search_head">
-                                <div class="left_head">
-                                    <h1>BBCL Ananya</h1>
-                                </div>
-                            </div>
-                            <div class="clr_fix sear_block_2">
-                                <ul>
-                                    <li>
-                                        <label>Property Type :</label>
-                                        <span>Residential Appartments</span> </li>
-                                    <li>
-                                        <label>Location :</label>
-                                        <span>Porur, Chennai </span> </li>
-                                    <li>
-                                        <label>Bed Rooms :</label>
-                                        <span>1,2,3BHK Penthouses </span> </li>
-                                    <li>
-                                        <label>Starting Prie :</label>
-                                        <span>On Request </span> </li>
-                                    <li>
-                                        <label>Possession :</label>
-                                        <span>August 2015 </span> </li>
-                                    <li class="unit_block">
-                                        <label>Decritpion : </label>
-                                        <p class="content more truncate" will-truncate-max-height="0" data-text-truncate-lines="5"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                                        <a class="more-link" href="#">Read More</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>--%>
-            <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}">
+            <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" varStatus="entry">
             <div class="sear_list">
                 <ul>
                     <li>
-                        <figure class="gal_pop_open"> <img src="images/image_1.jpg">
+                        <figure class="gal_pop_open" id="${data.id}"> <img src="images/image_1.jpg">
                             <figcaption>5 photos</figcaption>
                         </figure>
                         <div>
@@ -186,26 +146,20 @@
 <div class="img_gal_pop">
     <div class="img_gal_pop_wrap">
         <h1 class="h_2">Image Gallery <span class="gal_close"> <i class="fa fa-times-circle"></i> </span> </h1>
-
         <div class="ad_gallery_user">
             <div class="img_wrapper"> <span> <img src="images/large_img_1.jpg" /> </span></div>
             <div class="nav_tab">
                 <div class="slider">
-                    <ul>
-                        <li><span><img src="images/large_img_1.jpg"> </span></li>
-                        <li><span><img src="images/large_img_2.jpg"> </span></li>
-                        <li> <span><img src="images/large_img_3.jpg"></span> </li>
-                        <li><span> <img src="images/large_img_4.jpg"></span></li>
-                        <li> <span><img src="images/large_img_5.jpg"> </span></li>
-                        <li><span><img src="images/large_img_6.jpg"> </span></li>
+                    <ul id="img_gal_pop_ul">
                     </ul>
                 </div>
-                <a href="#" class="slider-arrow sa-left"><i class="fa fa-chevron-circle-left"></i> </a> <a href="#" class="slider-arrow sa-right"><i class="fa fa-chevron-circle-right"></i></a> </div>
+                <a href="#" class="slider-arrow sa-left"><i class="fa fa-chevron-circle-left"></i> </a>
+                <a href="#" class="slider-arrow sa-right"><i class="fa fa-chevron-circle-right"></i></a>
+            </div>
         </div>
-
     </div>
 </div>
-<!-- image gallery popup end -->
+ <!-- image gallery popup end -->
 </main>
 <!--script start-->
 
@@ -242,13 +196,20 @@
             $('.forget_pop').fadeIn();
         });
 
-
         $('#close_pop').click(function(){
             $('.forget_pop').fadeOut();
         });
 
-
         $('.gal_pop_open').click(function(){
+
+            $.ajax({
+                url: "rest/v1/admin/modules/get/getAdvertisement?advertisementId=" + $(this).prop("id")
+            }).done(function(data) {
+                $('#img_gal_pop_ul').empty();
+                $.each(data.module[0].moduleResponse.advertisement.galleryImage, function() {
+                    $('#img_gal_pop_ul').append($('<li><span><img src="/' +  (this.imageName) + '"> </span></li>'));
+                });
+            });
 
             $('.img_gal_pop').fadeIn();
             if(k == 0){
@@ -257,10 +218,8 @@
             }
         });
 
-
         $('.gal_close').click(function(){
             $('.img_gal_pop').fadeOut();
-
         });
 
         $('.text_panel input[type="text"]').click(function(){

@@ -166,17 +166,18 @@ public class PropertyAdminWebService {
         return response;
     }
 
+    @GET
+    @Path("/modules/get/getAdvertisement")
+    public ModuleList getAdvertisementById(@QueryParam("advertisementId") String advertisementId) {
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getAdvertisementById(advertisementId, response);
+        return response;
+    }
+
+
     //Sample starts here.............................
 
     private static DummyDB dummyDB = new DummyDB();
-
-/*    @Path(value = "/index")
-    public ModelAndView index() {
-
-        User userForm = new User();
-
-        return new ModelAndView("index", "userForm", userForm);
-    }*/
 
     @GET
     @Path("/modules/get/countryList")
