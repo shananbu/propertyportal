@@ -11,6 +11,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
+
+
 /**
  * The PropertyAuthenticationProvider.
  *

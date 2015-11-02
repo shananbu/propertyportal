@@ -100,6 +100,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getStatusFieldData(String targetForm, ModuleList response) {
         List<StatusType> data = adminDAO.getStatusFieldData(targetForm);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -109,6 +110,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getUserList(String searchKey, ModuleList response) {
         List<AdminLogin> logins = adminDAO.findUsers(searchKey);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -134,6 +136,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getStateList(String searchKey, ModuleList response) {
         List<State> states = adminDAO.findState(searchKey);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -149,6 +152,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getCityList(String searchKey, ModuleList response) {
         List<City> cities = adminDAO.findCity(searchKey);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -165,6 +169,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getCityByStateId(String stateId, ModuleList response) {
         List<City> cities = adminDAO.findCityByStateId(stateId);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -181,6 +186,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getLocationByCityId(String cityId, ModuleList response) {
         List<Locations> locations = adminDAO.findLocationByCityId(cityId);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -197,6 +203,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getLocationList(String searchKey, ModuleList response) {
         List<Locations> locations = adminDAO.findLocation(searchKey);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -212,6 +219,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getAdvertisePlanList(String searchKey, ModuleList response, boolean lineByLineDesc) {
         List<PlanMast> plans = adminDAO.findAdvertisePlan(searchKey);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -235,6 +243,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public NameDataType saveOrUpdateCity(City location) {
         City city = null;
         if(!fromNullable(location.getId()).isPresent() || location.getId() == -1) {
@@ -253,6 +262,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public NameDataType saveOrUpdateLocation(Locations location) {
 
         Locations locations = null;
@@ -273,6 +283,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getUserType(ModuleList response) {
         List<UserType> userTypes = adminDAO.getUserType();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -381,9 +392,11 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
 
     @Override
+    @Transactional
     public PropertyUserType saveOrUpdateUser(PropertyUser user) {
         user.setUserTypeByUserTypeId(adminDAO.findUserTypeById(user.getUserTypeId()));
         user.setCityByCityId(adminDAO.findCityById(user.getCityId()));
+        user.setIsMailVerified("N");
         PropertyUser propertyUserResponse = adminDAO.saveOrUpdateUser(user);
         if(fromNullable(propertyUserResponse).isPresent()) {
             PropertyUserType userType =  new PropertyUserType();
@@ -399,6 +412,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public PropertyUserType activateAccount(PropertyUser user) {
         PropertyUserType propertyUserResponse = null;
         adminDAO.updateUserByIdAndMail(user.getId(), user.getEmailId());
@@ -427,6 +441,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getPropertyTypeList(ModuleList response) {
         List<PropertyMainType> propertyTypes = adminDAO.getPropertyTypes();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -447,6 +462,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getBudgetList(ModuleList response) {
         List<Budget> budgets = adminDAO.getBudgets();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -462,6 +478,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getBedroomsList(ModuleList response) {
         List<Bedroom> bedrooms = adminDAO.getBedrooms();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -477,6 +494,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getPropertyForTypeList(ModuleList response) {
         List<PropertyForType> types = adminDAO.getPropertyForTypes();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -492,6 +510,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getFurnishedStatusList(ModuleList response) {
         List<FurnishedStatus> types = adminDAO.getFurnishedStatus();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -507,6 +526,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getBathroomsList(ModuleList response) {
         List<Bathroom> types = adminDAO.getBathrooms();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -522,6 +542,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getBalconiesList(ModuleList response) {
         List<Balconies> types = adminDAO.getBalconies();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -537,6 +558,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getTotalFloorsList(ModuleList response) {
         List<TotalFloors> types = adminDAO.getTotalFloors();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -552,6 +574,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getUnitsList(ModuleList response) {
         List<UnitMaster> types = adminDAO.getUnits();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -567,6 +590,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getTransactionTypesList(ModuleList response) {
         List<TransactionType> types = adminDAO.getTransactionTypes();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -582,6 +606,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getPossessionStatusList(ModuleList response) {
         List<PossessionStatus> types = adminDAO.getPossessionStatus();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -597,6 +622,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getPossessionOrAgeList(ModuleList response) {
         List<PossessionOrAge> types = adminDAO.getPossessionOrAge();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -613,6 +639,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getTermsList(ModuleList response) {
         List<Terms> types = adminDAO.getUTerms();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -628,6 +655,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean searchProperty(SearchType searchType, ModuleList response) {
         List<Advertisement> result = adminDAO.searchProperty(searchType);
         /*ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -644,6 +672,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getAmenitiesCategory(ModuleList response) {
         List<AmenitiesCategory> result = adminDAO.getAmenitiesCategory();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -664,6 +693,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public PropertyRequirement saveAlert(PropertyRequirement requirement, AlertRegistrationType alertType) {
         requirement.setBudgetByBudgetId(adminDAO.findObjectById(requirement.getBudgetId(), Budget.class));
         requirement.setPropertyForTypeByPropertyForTypeId(adminDAO.findObjectById(requirement.getPropertyForTypeId(), PropertyForType.class));
@@ -696,6 +726,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getImageTypeList(ModuleList response) {
         List<ImageType> types = adminDAO.getImageTypes();
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -711,6 +742,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getAdvertisementById(String advertisementId, ModuleList response) {
         Advertisement advertisement = adminDAO.findObjectById(Long.parseLong(advertisementId), Advertisement.class);
         List<Advertisement> advertisements = new ArrayList<Advertisement>();
@@ -788,7 +820,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                         advertisementType.getOverviewBannerImages().addAll(exteriorImagesList);
                     }
                 }
-                if(fromNullable(advertisement.getMorePropertyDetailsesById()).isPresent()) {
+                if(fromNullable(advertisement.getMorePropertyDetailsesById()).isPresent() && advertisement.getMorePropertyDetailsesById().size() > 0) {
                     List<Long> costList = new ArrayList<Long>();
                     List<Long> buildupAreaList = new ArrayList<Long>();
                     String unitName = "";
@@ -845,6 +877,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getAdvertisements(ModuleList response) {
         List<Advertisement> advertisements = adminDAO.getAdvertisements(true);
         getAdvertisements(advertisements, response);
@@ -852,6 +885,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean getAdvertisementsForApproval(String status, ModuleList response) {
         List<Advertisement> advertisements = adminDAO.getAdvertisements(Boolean.parseBoolean(status));
         ModuleType moduleType = CommonHelper.getFirstModule(response);
@@ -874,6 +908,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     @Override
+    @Transactional
     public boolean approveOrRejectAdvertisements(List<AdvertisementType> advertisements, ModuleList response) {
         for(AdvertisementType advertisement : advertisements) {
              Advertisement advtFromDB = adminDAO.findObjectById(advertisement.getId(), Advertisement.class);

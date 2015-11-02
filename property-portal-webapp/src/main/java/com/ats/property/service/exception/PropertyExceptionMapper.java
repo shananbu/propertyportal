@@ -13,6 +13,7 @@ public class PropertyExceptionMapper implements ExceptionMapper<Exception> {
 
     @Override
     public Response toResponse(Exception e) {
+        e.printStackTrace();
         if (e instanceof WebApplicationException) {
             WebApplicationException webExcp=(WebApplicationException)e;
             return webExcp.getResponse();

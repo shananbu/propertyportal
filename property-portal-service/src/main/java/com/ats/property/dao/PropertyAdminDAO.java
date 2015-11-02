@@ -164,7 +164,6 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         Query query = session.createQuery("from City c where c.stateByStateId.id = :stateId");
         query.setParameter("stateId", Long.parseLong(stateId));
         List<City> responseList = query.list();
-        session.close();
         return responseList;
     }
 
@@ -174,7 +173,6 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         Query query = session.createQuery("from Locations l where l.cityByCityId.id = :cityId");
         query.setParameter("cityId", Long.parseLong(cityId));
         List<Locations> responseList = query.list();
-        session.close();
         return responseList;
     }
 
