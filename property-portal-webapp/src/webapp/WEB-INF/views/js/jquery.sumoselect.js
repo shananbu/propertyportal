@@ -224,7 +224,7 @@
                         //select all checkbox state change.
                         if (sc == vc) O.selAll.removeClass('partial').addClass('selected');
                         else if (sc == 0) O.selAll.removeClass('selected partial');
-                        else O.selAll.addClass('partial')//.removeClass('selected');
+                       /* else O.selAll.addClass('partial')//.removeClass('selected');*/
                     }
                 },
 

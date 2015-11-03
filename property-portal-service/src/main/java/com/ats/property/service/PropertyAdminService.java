@@ -182,6 +182,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 moduleResponseType.getCities().add(nameDataType);
             }
         }
+        moduleResponseType.getCities().add(getOtherLocation());
         return true;
     }
 
@@ -199,6 +200,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 moduleResponseType.getCities().add(nameDataType);
             }
         }
+        moduleResponseType.getCities().add(getOtherLocation());
         return true;
     }
 
@@ -916,5 +918,12 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             adminDAO.updateAdvertisement(advtFromDB);
         }
         return true;
+    }
+
+    private NameDataType getOtherLocation() {
+        NameDataType nameDataType = new NameDataType();
+        nameDataType.setName("Others");
+        nameDataType.setId(-99L);
+        return nameDataType;
     }
 }

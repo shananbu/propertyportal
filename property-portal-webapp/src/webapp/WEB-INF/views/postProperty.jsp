@@ -144,12 +144,14 @@
             <select id="drpDwnCity" name="drpDwnCity">
                 <option value="-1">--Select--</option>
             </select>
+            <a href="#"> <i class="fa fa-plus fa-2x" data-modal="modal-10" class="md-trigger"></i> </a>
         </li>
         <li>
             <label>Location</label>
             <select id="drpDwnLocation" name="advertisement.locationId">
                 <option value="-1">--Select--</option>
             </select>
+            <a href="#"> <i class="fa fa-plus fa-2x" data-modal="modal-10" class="md-trigger"></i> </a>
         </li>
         <li>
             <label>Address</label>
@@ -360,6 +362,23 @@
 </div>
 </section>
 </div>
+<div class="md-modal md-effect-10" id="modal-10">
+    <div class="md-content pop_up_reg">
+        <h1 class="h_2">Add City / Location</h1>
+        <i class="fa fa-times-circle md-close"></i>
+        <div class="user_register jq_chk">
+            <ul>
+                <li>
+                    <label>City / Location<small>*</small></label>
+                    <input type="text" placeholder="Email">
+                </li>
+                <input type="button" class="btn_5" value="Login">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="md-overlay"></div>
 </section>
 </section>
 <!-- footer start -->
