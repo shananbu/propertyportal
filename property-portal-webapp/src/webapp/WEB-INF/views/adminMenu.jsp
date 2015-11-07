@@ -18,7 +18,9 @@
         <li class="nav_arrow"><a href="#">Approvals</a>
             <ul>
                 <li><a href="advertisementApproval">Advertisement</a></li>
+<%--
                 <li><a href="locationApproval">Location</a></li>
+--%>
             </ul>
         </li>
         <li class="nav_arrow"><a href="#">Reports</a>

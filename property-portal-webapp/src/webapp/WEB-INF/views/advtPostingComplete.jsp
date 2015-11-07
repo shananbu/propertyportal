@@ -42,11 +42,11 @@
                     </nav>
                     <div class="clr_fix box-shadow ad_post jq_chk">
                         <div class="ad_3">
-                            <li class="text_center">
-                                Successfully updated the advertisement. <br>
-                                Yor advertisement will be displayed after the admin review and approval.
-                            </li>
-                            </ul>
+                            <div style="width:200px"><span class="success-screen"><i class="fa fa-check-square-o fa-5x"></i> </span></div>
+                            <div style="width:400px"><span>
+                                    Successfully updated the advertisement. <br>
+                                    Your advertisement will be displayed after the admin review and approval.
+                                    </span></div>
                         </div>
                     </div>
                 </section>

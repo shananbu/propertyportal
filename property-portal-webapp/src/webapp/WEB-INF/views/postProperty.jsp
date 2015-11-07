@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
-    <title>Post Property In Microsite</title>
+    <title>Post Property</title>
 
     <script type="text/javascript" src="appendGrid/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="appendGrid/jquery-ui-1.11.2.min.js"></script>
@@ -39,6 +39,7 @@
         });
     </script>
     <script src="js/site/postProperty.js"></script>
+    <script type="text/javascript" src="js/pop_up_div.js"></script>
 </head>
 <body>
 <form method="post" id="frmPost" commandName="moduleRequest" action="saveOrUpdateAdvertisement">
@@ -144,14 +145,14 @@
             <select id="drpDwnCity" name="drpDwnCity">
                 <option value="-1">--Select--</option>
             </select>
-            <a href="#"> <i class="fa fa-plus fa-2x" data-modal="modal-10" class="md-trigger"></i> </a>
+            <span class="pop_up_icon" pop-model-id="popup1"><i class="fa fa-plus-square"></i></span>
         </li>
         <li>
             <label>Location</label>
             <select id="drpDwnLocation" name="advertisement.locationId">
                 <option value="-1">--Select--</option>
             </select>
-            <a href="#"> <i class="fa fa-plus fa-2x" data-modal="modal-10" class="md-trigger"></i> </a>
+            <span class="pop_up_icon" pop-model-id="popup1"><i class="fa fa-plus-square"></i></span>
         </li>
         <li>
             <label>Address</label>
@@ -362,10 +363,19 @@
 </div>
 </section>
 </div>
-<div class="md-modal md-effect-10" id="modal-10">
+</section>
+</section>
+<!-- footer start -->
+<footer class="clr_fix foot_main">
+    <%@ include file="userFooter.jsp" %>
+</footer>
+<!-- footer end -->
+</main>
+</form>
+<div  id="popup1" class="modal-box" style="width:50%">
     <div class="md-content pop_up_reg">
         <h1 class="h_2">Add City / Location</h1>
-        <i class="fa fa-times-circle md-close"></i>
+        <i class="fa fa-times js-modal-close"></i>
         <div class="user_register jq_chk">
             <ul>
                 <li>
@@ -378,16 +388,7 @@
         </div>
     </div>
 </div>
-<div class="md-overlay"></div>
-</section>
-</section>
-<!-- footer start -->
-<footer class="clr_fix foot_main">
-    <%@ include file="userFooter.jsp" %>
-</footer>
-<!-- footer end -->
-</main>
-</form>
+
 <!--script start-->
 <!-- tab script start-->
 <script type="text/javascript">

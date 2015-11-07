@@ -37,7 +37,7 @@ public class AppInitializer implements WebApplicationInitializer  {
         ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(rootContext));
         servlet.setLoadOnStartup(2);
         servlet.addMapping("/");
-        servlet.setMultipartConfig(new MultipartConfigElement("d:/tmp", 1024 * 1024 * 5, 1024 * 1024 * 5 * 5, 1024 * 1024));
+        servlet.setMultipartConfig(new MultipartConfigElement("/home/acreindia/uploadedResources/", 1024 * 1024 * 5, 1024 * 1024 * 5 * 5, 1024 * 1024));
 
     }
 }

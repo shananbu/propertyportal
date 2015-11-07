@@ -136,7 +136,7 @@
         <h1><span>Image Gallery</span></h1>
 
         <div class="clr_fix unit_details">
-            <div class="gallery_left clr_fix">
+            <div class="gallery_left img_gal_panel clr_fix">
                 <ul class="gal_tab">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.imageTypes}">
                         <li <c:if test="${data.name eq 'EXTERIOR_VIEW'}"> class="gal_tab_active" </c:if>

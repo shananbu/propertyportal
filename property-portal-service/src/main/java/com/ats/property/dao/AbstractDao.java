@@ -27,10 +27,8 @@ public class AbstractDao {
 
     protected Session getSession(){
         if(Optional.fromNullable(sessionFactory.getCurrentSession()).isPresent()) {
-            System.out.println("About to execute getCurrentSession");
             return getCurrentSession();
         } else {
-            System.out.println("About to execute openSession");
             return sessionFactory.openSession();
         }
       }
