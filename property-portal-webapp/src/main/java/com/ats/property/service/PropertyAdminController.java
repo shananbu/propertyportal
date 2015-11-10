@@ -189,18 +189,15 @@ public class PropertyAdminController implements InitializingBean{
         NameDataType response = new NameDataType();
         response.setName(fileName);
         response.setLabel(hiddenFieldName);
-        fileName = fileRootDir + "_" + fileName;
-        System.out.print("uploadFileAndUpdate FileName >> " + fileName);
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream =
-                        new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+                        new BufferedOutputStream(new FileOutputStream(new File(fileRootDir + "_" + fileName)));
                 stream.write(bytes);
                 stream.close();
                 return response;
             } catch (Exception e) {
-                System.out.print("Error while saving >> " + fileName);
                 e.printStackTrace();
                 return response;
             }

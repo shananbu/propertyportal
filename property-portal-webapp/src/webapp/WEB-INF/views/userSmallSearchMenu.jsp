@@ -1,144 +1,200 @@
 
 <div class="inner_search row_main clr_fix">
-    <div class="inner_tab clr_fix">
-        <ul class="tabs_2">
-            <li class="inner_tab_active" rel="top_tab_1"><a>Buy</a> </li>
-            <li rel="top_tab_2"><a>REnt</a> </li>
-            <li rel="top_tab_3"><a> New Project</a> </li>
+    <nav class="tab_menu clr_fix">
+        <ul>
+            <li class="tab_active tab_1"> Buy</li>
+            <li class="tab_2"> Rent</li>
+            <li class="tab_3"> New Project</li>
         </ul>
+    </nav>
+    <div class="tab_info clr_fix box_shadow">
+        <div class="tab_info_1 tab_view clr_fix" style="display:block;">
+            <form method="post" id="tab_info_1" action="searchViewPage">
+                <div class="clr_fix">
+                    <div class="search_loc">
+                        <div class="pro_type">
+                            Property Type <i class="fa fa-caret-down"></i>
+                        </div>
+
+                        <div class="pro_list">
+                            <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
+                                <h1> ${data.name}</h1>
+                                <ul>
+                                    <c:forEach var="innerData" items="${data.propertyTypesById}">
+                                        <li>
+                            <span class="jq_chk">
+                                <input type="checkbox" id="0${innerData.id}" value="${innerData.id}" name="search.propertyTypeId">
+                                 <label for="0${innerData.id}"></label>
+                            </span>  ${innerData.name}
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </c:forEach>
+                        </div>
+                    </div>
+                    <div class="text_panel">
+                        <input type="text" placeholder="Type Location or Project"  name="search.searchString">
+                        <input type="submit" value="Search" id="searchBtn1" class="searchBtn">
+                    </div>
+                </div>
+
+                <div class="clr_fix loc_list">
+                    <ul>
+                        <li class="list_3">
+                            <label> Price</label>
+                            <select  placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
+                                <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
+                                    <option value="${data.id}">${data.name}</option>
+                                </c:forEach>
+                            </select>
+                        </li>
+                        <li class="list_3">
+                            <label> Bed Rooms</label>
+                            <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="search.bedRoomId">
+                                <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
+                                    <option value="${data.id}">${data.name}</option>
+                                </c:forEach>
+                            </select>
+                        </li>
+                        <li class="list_3">
+                            <label> Posted By </label>
+                            <select class="dropdown" placeholder="select" name="search.userTypeId">
+                                <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
+                                    <option value="${data.id}">${data.name}</option>
+                                </c:forEach>
+                            </select>
+                        </li>
+                        <li class="list_4"><span> Clear All </span></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <div class="tab_info_2 tab_view clr_fix">
+            <form method="post" id="tab_info_2" action="searchViewPage">
+                <div class="clr_fix">
+                    <div class="search_loc">
+                        <div class="pro_type">
+                            Property Type <i class="fa fa-caret-down"></i>
+                        </div>
+
+                        <div class="pro_list">
+                            <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
+                                <h1> ${data.name}</h1>
+                                <ul>
+                                    <c:forEach var="innerData" items="${data.propertyTypesById}">
+                                        <li>
+                            <span class="jq_chk">
+                                 <input type="checkbox" id="00${innerData.id}" value="${innerData.id}" name="search.propertyTypeId">
+                                 <label for="00${innerData.id}"></label>
+                            </span>  ${innerData.name}
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </c:forEach>
+
+                        </div>
+
+                    </div>
+                    <div class="text_panel">
+                        <input type="text" placeholder="Type Location or Project"  name="search.searchString">
+                        <input type="submit" value="Search" id="searchBtn2" class="searchBtn">
+                    </div>
+                </div>
+                <div class="clr_fix loc_list">
+                    <ul>
+                        <li class="list_3">
+                            <label> Price</label>
+                            <select placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
+                                <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
+                                    <option value="${data.id}">${data.name}</option>
+                                </c:forEach>
+                            </select>
+                        </li>
+                        <li class="list_3">
+                            <label> Bed Rooms</label>
+                            <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="search.bedRoomId">
+                                <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
+                                    <option value="${data.id}">${data.name}</option>
+                                </c:forEach>
+                            </select>
+
+                        </li>
+                        <li class="list_3">
+                            <label> Posted By </label>
+                            <select class="dropdown" placeholder="select" name="search.userTypeId">
+                                <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
+                                    <option value="${data.id}">${data.name}</option>
+                                </c:forEach>
+                            </select>
+                        </li>
+                        <li class="list_4"><span> Clear All </span></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <div class="tab_info_3 tab_view clr_fix">
+            <form method="post" id="tab_info_3" action="searchViewPage">
+                <div class="clr_fix">
+                    <div class="search_loc">
+                        <div class="pro_type">
+                            Property Type <i class="fa fa-caret-down"></i>
+                        </div>
+
+                        <div class="pro_list">
+                            <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
+                                <h1> ${data.name}</h1>
+                                <ul>
+                                    <c:forEach var="innerData" items="${data.propertyTypesById}">
+                                        <li>
+                            <span class="jq_chk">
+                                 <input type="checkbox" id="000${innerData.id}" value="${innerData.id}" name="search.propertyTypeId">
+                                 <label for="000${innerData.id}"></label>
+                            </span>  ${innerData.name}
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </c:forEach>
+
+                        </div>
+
+                    </div>
+                    <div class="text_panel">
+                        <input type="text" placeholder="Type Location or Project"  name="search.searchString">
+                        <input type="submit" value="Search" id="searchBtn3" class="searchBtn">
+                    </div>
+                </div>
+                <div class="clr_fix loc_list">
+                    <ul>
+                        <li class="list_3">
+                            <label> Price</label>
+                            <select placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
+                                <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
+                                    <option value="${data.id}">${data.name}</option>
+                                </c:forEach>
+                            </select>
+                        </li>
+                        <li class="list_3">
+                            <label> Bed Rooms</label>
+                            <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="search.bedRoomId">
+                                <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
+                                    <option value="${data.id}">${data.name}</option>
+                                </c:forEach>
+                            </select>
+
+                        </li>
+                        <li class="list_3">
+                            <label> Posted By </label>
+                            <select class="dropdown" placeholder="select" name="search.userTypeId">
+                                <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
+                                    <option value="${data.id}">${data.name}</option>
+                                </c:forEach>
+                            </select>
+                        </li>
+                        <li class="list_4"><span> Clear All </span></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="clr_fix">
-        <form method="post" id="form_top_tab_1" action="searchViewPage" class="inner_loc">
-        <ul id="top_tab_1" class="tab_content_2">
-            <li class="inner_city">
-                <select  name="locality.parentId" id="parentId1" class="dropdown">
-                    <option value="-1">--Select--</option>
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.cities}">
-                        <option value="${data.id}">${data.name}</option>
-                    </c:forEach>
-                </select>
-            </li>
-            <li class="inner_loc_search">
-                <input type="text" placeholder="Enter Locally or Project" name="search.searchString">
-            </li>
-            <li class="inner_pro_type">
-                <select multiple="multiple" placeholder="Select Property Type" class="SlectBox" name="search.propertyTypeId">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
-                        <%--  <optGroup label="${data.name}">--%>
-                        <c:forEach var="innerData" items="${data.propertyTypesById}">
-                            <option value="${innerData.id}">${innerData.name}</option>
-                        </c:forEach>
-                        <%--  </optGroup>--%>
-                    </c:forEach>
-                </select>
-
-            </li>
-            <li class="inner_bedroom">
-                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="search.bedRoomId">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
-                        <option value="${data.id}">${data.name}</option>
-                    </c:forEach>
-                </select>
-            </li>
-            <li class="inner_max_price">
-                <select placeholder="Select Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="SlectBox" name="search.expectedPrice">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
-                        <option value="${data.id}">${data.name}</option>
-                    </c:forEach>
-                </select>
-            </li>
-            <li class="inner_top_btn">
-                <input type="button" value="Search" class="btn_5" id="searchBtn1">
-            </li>
-        </ul>
-        </form>
-        <form method="post" id="form_top_tab_2" action="searchViewPage" class="inner_loc">
-        <ul id="top_tab_2" class="tab_content_2">
-            <li class="inner_city">
-                <select  name="locality.parentId" id="parentId2" class="dropdown">
-                    <option value="-1">--Select--</option>
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.cities}">
-                        <option value="${data.id}">${data.name}</option>
-                    </c:forEach>
-                </select>
-            </li>
-            <li class="inner_loc_search">
-                <input type="text" placeholder="Enter Locally or Project" name="search.searchString">
-            </li>
-            <li class="inner_pro_type">
-                <select multiple="multiple" placeholder="Select Property Type" class="SlectBox" name="search.propertyTypeId">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
-                        <%--  <optGroup label="${data.name}">--%>
-                        <c:forEach var="innerData" items="${data.propertyTypesById}">
-                            <option value="${innerData.id}">${innerData.name}</option>
-                        </c:forEach>
-                        <%--  </optGroup>--%>
-                    </c:forEach>
-                </select>
-
-            </li>
-            <li class="inner_bedroom">
-                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox" name="search.bedRoomId">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
-                        <option value="${data.id}">${data.name}</option>
-                    </c:forEach>
-                </select>
-            </li>
-            <li class="inner_max_price">
-                <select placeholder="Select Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="SlectBox" name="search.expectedPrice">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
-                        <option value="${data.id}">${data.name}</option>
-                    </c:forEach>
-                </select>
-            </li>
-            <li class="inner_top_btn">
-                <input type="button" value="Search" class="btn_5"  id="searchBtn2">
-            </li>
-        </ul>
-        </form>
-        <form method="post" id="form_top_tab_3" action="searchViewPage" class="inner_loc">
-        <ul id="top_tab_3" class="tab_content_2">
-            <li class="inner_city">
-                <select  name="locality.parentId" id="parentId3" class="dropdown">
-                    <option value="-1">--Select--</option>
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.cities}">
-                        <option value="${data.id}">${data.name}</option>
-                    </c:forEach>
-                </select>
-            </li>
-            <li class="inner_loc_search">
-                <input type="text" placeholder="Enter Locally or Project"  name="search.searchString">
-            </li>
-            <li class="inner_pro_type">
-                <select multiple="multiple" placeholder="Select Property Type" class="SlectBox" name="search.propertyTypeId">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
-                        <c:forEach var="innerData" items="${data.propertyTypesById}">
-                            <option value="${innerData.id}">${innerData.name}</option>
-                        </c:forEach>
-                    </c:forEach>
-                </select>
-
-            </li>
-            <li class="inner_bedroom">
-                <select multiple="multiple" placeholder="Select Bed Rooms" class="SlectBox"  name="search.bedRoomId">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.bedrooms}">
-                        <option value="${data.id}">${data.name}</option>
-                    </c:forEach>
-                </select>
-            </li>
-            <li class="inner_max_price">
-                <select placeholder="Select Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="SlectBox" name="search.expectedPrice">
-                    <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
-                        <option value="${data.id}">${data.name}</option>
-                    </c:forEach>
-                </select>
-            </li>
-            <li class="inner_top_btn">
-                <input type="button" value="Search" class="btn_5" id="searchBtn3">
-            </li>
-        </ul>
-        </form>
-    </div>
-</div>
 </div>
 <script src="js/site/userSmallSearchMenu.js"></script>

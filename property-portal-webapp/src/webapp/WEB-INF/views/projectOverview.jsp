@@ -76,13 +76,18 @@
     <div class="row_main">
         <h1><span>${response.module[0].moduleResponse.advertisement.projectName}</span></h1>
 
-        <p>${response.module[0].moduleResponse.advertisement.description}<br>
-        </p>
+        <p>${response.module[0].moduleResponse.advertisement.description}<br></p>
+        <c:if test="${response.module[0].moduleResponse.advertisement.specificationFileName ne null}">
+             <p><a href="${response.module[0].moduleResponse.advertisement.specificationFileName}" target="_blank">More</a> <br></p>
+        </c:if>
     </div>
     <div class="row_main">
         <h1><span>PROJECT SPECIFICATION</span></h1>
 
         <p>${response.module[0].moduleResponse.advertisement.propertyFeatures}</p>
+        <c:if test="${response.module[0].moduleResponse.advertisement.specificationFileName ne null}">
+           <p><a href="${response.module[0].moduleResponse.advertisement.specificationFileName}" target="_blank">More</a> <br></p>
+        </c:if>
     </div>
     <div class="pro_chk_list row_main">
         <h1><span>Property Features and Amenities</span></h1>
@@ -129,6 +134,9 @@
                 </table>
             </div>
         </div>
+        <c:if test="${response.module[0].moduleResponse.advertisement.morePropertiesFileName ne null}">
+             <p><a href="${response.module[0].moduleResponse.advertisement.morePropertiesFileName}" target="_blank">More</a> <br></p>
+        </c:if>
     </div>
 </section>
 <section class="sec_view_3 sec_view_block" id="gallery">

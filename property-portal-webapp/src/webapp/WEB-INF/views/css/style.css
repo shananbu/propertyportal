@@ -1406,9 +1406,7 @@ footer li a:hover {
 .inner_top {
 }
 .inner_search {
-	background: #5daf33;
-	padding: 0 0 20px 10px;
-	margin-top: 10px;
+    margin-top: 10px;
 }
 .inner_tab {
 	border-bottom: 1px solid #5daf33;
@@ -1708,7 +1706,7 @@ footer li a:hover {
 	font-size: 12px;
 	font-weight: 600;
 	display: inline-block;
-	min-width: 100px;
+	min-width: 170px;
 	position: relative;
 	margin-right: 15px;
 }

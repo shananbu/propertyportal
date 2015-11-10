@@ -84,13 +84,9 @@ public class PropertyUserController implements InitializingBean {
 
     @RequestMapping(value = { "/registerUser" }, method = RequestMethod.POST)
     public ModelAndView registerUser(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
-        ModelAndView modelAndView = new ModelAndView("userRegistration");
+        ModelAndView modelAndView = new ModelAndView("userResponse");
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.saveOrUpdateUser(moduleRequest, response);
-        adminDelegate.getCityList(null, response);
-        adminDelegate.getBedroomsList(response);
-        adminDelegate.getBudgetList(response);
-        adminDelegate.getPropertyTypeList(response);
         modelAndView.addObject("response", response);
         return modelAndView;
     }
@@ -132,8 +128,9 @@ public class PropertyUserController implements InitializingBean {
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.getStateList(null, response);
         adminDelegate.getCityList(null, response);
+
         adminDelegate.getBedroomsList(response);
-        adminDelegate.getAdvertisePlanList(null, response, false);
+        adminDelegate.getAdvertisePlanListByUserType(PropertyAdminService.getCurrentUserTypeId().toString(), response, false);
         adminDelegate.getBudgetList(response);
         adminDelegate.getPropertyTypeList(response);
 
@@ -260,7 +257,7 @@ public class PropertyUserController implements InitializingBean {
         adminDelegate.getStateList(null, response);
         adminDelegate.getCityList(null, response);
         adminDelegate.getBedroomsList(response);
-        adminDelegate.getAdvertisePlanList(null, response, false);
+        adminDelegate.getAdvertisePlanListByUserType(PropertyAdminService.getCurrentUserTypeId().toString(), response, false);
         adminDelegate.getBudgetList(response);
         adminDelegate.getPropertyTypeList(response);
 
@@ -362,6 +359,13 @@ public class PropertyUserController implements InitializingBean {
         ModelAndView modelAndView = new ModelAndView("genericErrorpage");
         return modelAndView;
     }
+
+    @RequestMapping(value = {"/userResponse" }, method = RequestMethod.GET)
+    public ModelAndView userResponse() {
+        ModelAndView modelAndView = new ModelAndView("userResponse");
+        return modelAndView;
+    }
+
 
     @Override
     public void afterPropertiesSet() throws Exception {

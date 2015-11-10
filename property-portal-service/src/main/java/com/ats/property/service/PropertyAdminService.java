@@ -63,6 +63,13 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         }
         return null;
     }
+    public static Long getCurrentUserTypeId() {
+        UserInformation user = getCurrentUser();
+        if (user != null) {
+            return user.getUserTypeId();
+        }
+        return null;
+    }
     @Override
     public void afterPropertiesSet() throws Exception {
          objectFactory = new ObjectFactory();
@@ -770,6 +777,16 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 if(null != advertisement.getPropertyTypeByPropertyTypeId()) {
                     advertisementType.setPropertyTypeName(advertisement.getPropertyTypeByPropertyTypeId().getName());
                 }
+                if( null != advertisement.getMorePropertiesFileName()) {
+                    advertisementType.setMorePropertiesFileName(PropertyConstants.RESOURCE_DIR.value() + advertisement.getMorePropertiesFileName());
+                }
+                if( null != advertisement.getDescriptionFileName()) {
+                    advertisementType.setDescriptionFileName(PropertyConstants.RESOURCE_DIR.value() + advertisement.getDescriptionFileName());
+                }
+                if( null != advertisement.getSpecificationFileName()) {
+                    advertisementType.setSpecificationFileName(PropertyConstants.RESOURCE_DIR.value() + advertisement.getSpecificationFileName());
+                }
+
                 advertisementType.setCompanyName(advertisement.getBuilderName());
                 if(advertisement.getBuilderName() == null || (advertisement.getBuilderName() != null && advertisement.getBuilderName().equals("") )) {
                     advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());

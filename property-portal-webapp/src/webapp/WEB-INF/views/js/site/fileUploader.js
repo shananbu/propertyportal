@@ -151,4 +151,34 @@ $(document).ready(function()
         handleFileUpload(files, obj, hiddenFieldName);
 
     });
+
+    $(document).on('change', '.morePropertiesFile', function(e) {
+        var obj = $("#dragandrophandler");
+        $(this).css('border', '2px dotted #0B85A1');
+        e.preventDefault();
+        var files = e.target.files || (e.dataTransfer && e.dataTransfer.files);
+        var hiddenFieldName = "morePropertiesFileName";
+        //We need to send dropped files to Server
+        handleFileUpload(files, obj, hiddenFieldName);
+    });
+
+    $(document).on('change', '.descriptionFile', function(e) {
+        var obj = $("#dragandrophandler");
+        $(this).css('border', '2px dotted #0B85A1');
+        e.preventDefault();
+        var files = e.target.files || (e.dataTransfer && e.dataTransfer.files);
+        var hiddenFieldName = "descriptionFileName";
+        //We need to send dropped files to Server
+        handleFileUpload(files, obj, hiddenFieldName);
+    });
+
+    $(document).on('change', '.specificationFile', function(e) {
+        var obj = $("#dragandrophandler");
+        $(this).css('border', '2px dotted #0B85A1');
+        e.preventDefault();
+        var files = e.target.files || (e.dataTransfer && e.dataTransfer.files);
+        var hiddenFieldName = "specificationFileName";
+        //We need to send dropped files to Server
+        handleFileUpload(files, obj, hiddenFieldName);
+    });
 });

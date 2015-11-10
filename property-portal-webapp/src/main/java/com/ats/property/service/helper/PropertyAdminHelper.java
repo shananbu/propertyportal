@@ -120,6 +120,23 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
         boolean status = adminService.getAdvertisePlanList(null, response, lineByLineBreak);
         ModuleType moduleType = CommonHelper.getFirstModule(response);
         ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        try {
+            if(Long.valueOf(userType) != null) {
+                List<PlanType> filteredPlans = Lists.newArrayList(Collections2.filter(moduleResponseType.getPlans(), new Predicate<PlanType>() {
+                            @Override
+                            public boolean apply(PlanType input) {
+                                return input.getUserTypeId().longValue() == Long.valueOf(userType).longValue();
+                            }
+                        }
+                ));
+                moduleResponseType.getPlans().clear();
+                moduleResponseType.getPlans().addAll(filteredPlans);
+            }
+            return status;
+        } catch (Exception ex) {
+
+        }
+
         if(userType != null) {
             List<PlanType> filteredPlans = Lists.newArrayList(Collections2.filter(moduleResponseType.getPlans(), new Predicate<PlanType>() {
                         @Override
@@ -131,6 +148,9 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
             moduleResponseType.getPlans().clear();
             moduleResponseType.getPlans().addAll(filteredPlans);
         }
+
+
+
         return status;
     }
 
@@ -221,6 +241,7 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
         PropertyUser user = new PropertyUser();
         PropertyUtils.copyFields(userType, user);
         adminService.saveOrUpdateUser(user);
+        response.getMessages().get(0).setMessage("Registration completed Successfully. Registration mail has sent to your mail. <br> Please validate your mail by clicking 'Approve me'.");
         return true;
     }
 

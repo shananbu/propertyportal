@@ -40,6 +40,9 @@ public class Advertisement {
     private Collection<Residential> residentialsById;
     private PropertyUser propertyUserByPropertyUserId;
     private Boolean isApproved;
+    private String specificationFileName;
+    private String descriptionFileName;
+    private String morePropertiesFileName;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -389,5 +392,35 @@ public class Advertisement {
 
     public void setIsApproved(Boolean isApproved) {
         this.isApproved = isApproved;
+    }
+
+    @Basic
+    @Column(name = "descriptionFileName", nullable = true, insertable = true, updatable = true, length = 100)
+    public String getDescriptionFileName() {
+        return descriptionFileName;
+    }
+
+    public void setDescriptionFileName(String descriptionFileName) {
+        this.descriptionFileName = descriptionFileName;
+    }
+
+    @Basic
+    @Column(name = "specificationFileName", nullable = true, insertable = true, updatable = true, length = 100)
+    public String getSpecificationFileName() {
+        return specificationFileName;
+    }
+
+    public void setSpecificationFileName(String specificationFileName) {
+        this.specificationFileName = specificationFileName;
+    }
+
+    @Basic
+    @Column(name = "morePropertiesFileName", nullable = true, insertable = true, updatable = true, length = 100)
+    public String getMorePropertiesFileName() {
+        return morePropertiesFileName;
+    }
+
+    public void setMorePropertiesFileName(String morePropertiesFileName) {
+        this.morePropertiesFileName = morePropertiesFileName;
     }
 }

@@ -360,7 +360,8 @@
     <div class="appendGrid">
         <table id="tblAppendGrid"></table>
     </div>
-    <span> <b> OR </b> Upload PDF file <input type="file"></span>
+    <span> <b> OR </b> Upload PDF file <input type="file" class="morePropertiesFile" id="morePropertiesFile">
+    <input type="hidden" id="morePropertiesFileName" name="advertisement.morePropertiesFileName"></span>
 </div>
 <div class="pro_desc">
     <h1>Property Description</h1>
@@ -372,12 +373,14 @@
         <li>
             <label>Description</label>
             <textarea name="advertisement.description" cols="80" rows="6"></textarea>
-            <b>OR</b>Upload PDF/Excel file<input type="file">
+            <b>OR</b>Upload PDF/Excel file<input type="file" class="descriptionFile" id="descriptionFile">
+            <input type="hidden" id="descriptionFileName" name="advertisement.descriptionFileName">
         </li>
         <li>
             <label>Specification</label>
             <textarea name="advertisement.propertyFeatures" cols="80" rows="6"></textarea>
-            <b>OR</b>Upload PDF/Excel file<input type="file">
+            <b>OR</b>Upload PDF/Excel file<input type="file" class="specificationFile" id="specificationFile">
+            <input type="hidden" id="specificationFileName" name="advertisement.specificationFileName">
         </li>
     </ul>
 </div>

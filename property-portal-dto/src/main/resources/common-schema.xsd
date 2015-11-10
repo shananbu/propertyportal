@@ -143,6 +143,9 @@
             <xs:element name="propertyForTypeName" type="xs:string"/>
             <xs:element name="propertyTypeName" type="xs:string"/>
             <xs:element name="isApproved" type="xs:boolean"/>
+            <xs:element name="morePropertiesFileName" type="xs:string"/>
+            <xs:element name="descriptionFileName" type="xs:string"/>
+            <xs:element name="specificationFileName" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
