@@ -14,6 +14,7 @@ public class PropertyForType {
     private String nameForPoster;
     private String nameForFinder;
     private Collection<PropertyRequirement> propertyRequirementsById;
+    private Collection<Budget> budgetsById;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -76,5 +77,14 @@ public class PropertyForType {
 
     public void setPropertyRequirementsById(Collection<PropertyRequirement> propertyRequirementsById) {
         this.propertyRequirementsById = propertyRequirementsById;
+    }
+
+    @OneToMany(mappedBy = "propertyForTypeByPropertyForTypeId")
+    public Collection<Budget> getBudgetsById() {
+        return budgetsById;
+    }
+
+    public void setBudgetsById(Collection<Budget> budgetsById) {
+        this.budgetsById = budgetsById;
     }
 }

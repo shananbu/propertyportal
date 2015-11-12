@@ -4066,6 +4066,7 @@ margin-left:5%;
     display:inline-block;
     vertical-align:middle;
     cursor:pointer;
+    visibility: hidden;
 }
 .pop_up_icon > i{
     color:#5DAF33;

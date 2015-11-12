@@ -16,6 +16,8 @@ public class Budget {
     private Long tolevel;
     private String currencyVal;
     private Collection<PropertyRequirement> propertyRequirementsById;
+    private PropertyForType propertyForTypeByPropertyForTypeId;
+    private Long propertyForTypeId;
 
 
     @Id
@@ -102,5 +104,25 @@ public class Budget {
 
     public void setPropertyRequirementsById(Collection<PropertyRequirement> propertyRequirementsById) {
         this.propertyRequirementsById = propertyRequirementsById;
+    }
+
+    @Basic
+    @Column(name = "propertyForTypeId", nullable = true, insertable = false, updatable = false)
+    public Long getPropertyForTypeId() {
+        return propertyForTypeId;
+    }
+
+    public void setPropertyForTypeId(Long propertyForTypeId) {
+        this.propertyForTypeId = propertyForTypeId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "propertyForTypeId", referencedColumnName = "id")
+    public PropertyForType getPropertyForTypeByPropertyForTypeId() {
+        return propertyForTypeByPropertyForTypeId;
+    }
+
+    public void setPropertyForTypeByPropertyForTypeId(PropertyForType propertyForTypeByPropertyForTypeId) {
+        this.propertyForTypeByPropertyForTypeId = propertyForTypeByPropertyForTypeId;
     }
 }

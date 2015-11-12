@@ -206,42 +206,53 @@ create table Budget (
   fromlevel bigint,
   tolevel bigint,
   currencyVal varchar(25),
-  constraint pk10 primary key(id)
+  propertyForTypeId bigint,
+  constraint pk10 primary key(id),
+  constraint fk48 foreign key (propertyForTypeId) references PropertyForType(id)
 );
 
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('Below 5 Lakhs', 0, 500000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('5 - 10 Lakhs',500001,1000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('10 - 20 Lakhs',1000001,2000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('20 - 30 Lakhs',2000001,3000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('30 - 40 Lakhs',3000001,4000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('40 - 50 Lakhs',4000001,5000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('50 - 60 Lakhs',5000001,6000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('60 - 70 Lakhs',6000001,7000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('70 - 80 Lakhs',7000001,8000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('80 - 90 Lakhs',8000001,9000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('90 - 1 Cr',9000001,10000000,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('Below 5 Lakhs', 0, 500000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('5 - 10 Lakhs',500001,1000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('10 - 20 Lakhs',1000001,2000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('20 - 30 Lakhs',2000001,3000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('30 - 40 Lakhs',3000001,4000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('40 - 50 Lakhs',4000001,5000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('50 - 60 Lakhs',5000001,6000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('60 - 70 Lakhs',6000001,7000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('70 - 80 Lakhs',7000001,8000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('80 - 90 Lakhs',8000001,9000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('90 - 1 Cr',9000001,10000000,'INR', 1);
 
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('1 - 1.2 Cr',10000001,12000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('1.2 - 1.4 Cr',12000001,14000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('1.4 - 1.6 Cr',14000001,16000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('1.6 - 1.8 Cr',16000001,18000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('1.8 - 2 Cr',18000001,20000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('2 - 2.2 Cr',20000001,22000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('2.2 - 2.4 Cr',22000001,24000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('2.4 - 2.6 Cr',24000001,26000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('2.6 - 2.8 Cr',26000001,28000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('2.8 - 3 Cr',28000001,30000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('3 - 3.2 Cr',30000001,32000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('3.2 - 3.4 Cr',32000001,34000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('3.4 - 3.6 Cr',34000001,36000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('3.6 - 3.8 Cr',36000001,38000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('3.8 - 4 Cr',38000001,40000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('4 - 4.2 Cr',40000001,42000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('4.2 - 4.4 Cr',42000001,44000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('4.4 - 4.6 Cr',44000001,46000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('4.6 - 4.8 Cr',46000001,48000000,'INR');
-insert into Budget (name, fromlevel, tolevel, currencyVal) values ('4.8 - 5 Cr',48000001,50000000,'INR');
-insert into Budget  (name, fromlevel, tolevel, currencyVal) values ('> 5 Cr',50000000,-1,'INR');
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('1 - 1.2 Cr',10000001,12000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('1.2 - 1.4 Cr',12000001,14000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('1.4 - 1.6 Cr',14000001,16000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('1.6 - 1.8 Cr',16000001,18000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('1.8 - 2 Cr',18000001,20000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('2 - 2.2 Cr',20000001,22000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('2.2 - 2.4 Cr',22000001,24000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('2.4 - 2.6 Cr',24000001,26000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('2.6 - 2.8 Cr',26000001,28000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('2.8 - 3 Cr',28000001,30000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('3 - 3.2 Cr',30000001,32000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('3.2 - 3.4 Cr',32000001,34000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('3.4 - 3.6 Cr',34000001,36000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('3.6 - 3.8 Cr',36000001,38000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('3.8 - 4 Cr',38000001,40000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('4 - 4.2 Cr',40000001,42000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('4.2 - 4.4 Cr',42000001,44000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('4.4 - 4.6 Cr',44000001,46000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('4.6 - 4.8 Cr',46000001,48000000,'INR', 1);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('4.8 - 5 Cr',48000001,50000000,'INR', 1);
+insert into Budget  (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('> 5 Cr',50000000,-1,'INR', 1);
+
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('Below 5 K', 0, 5000,'INR', 2);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('5 - 10 K',5001,10000,'INR', 2);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('10 - 20 K',10001,20000,'INR', 2);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('20 - 30 K',20001,30000,'INR', 2);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('30 - 40 K',30001,40000,'INR', 2);
+insert into Budget (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('40 - 50 K',40001,50000,'INR', 2);
+insert into Budget  (name, fromlevel, tolevel, currencyVal, propertyForTypeId) values ('> 50 K',50001, -1,'INR', 2);
+
 
 create table Bedroom (
   id bigint auto_increment,

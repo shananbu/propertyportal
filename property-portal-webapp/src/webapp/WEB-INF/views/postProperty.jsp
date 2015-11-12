@@ -66,7 +66,9 @@
             <select class="dropdown" name="advertisement.planId">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.plans}">
-                    <option value="${data.id}">${data.name}</option>
+                    <c:if test="${data.name eq 'Free'}">
+                         <option value="${data.id}">${data.name}</option>
+                    </c:if>
                 </c:forEach>
             </select>
         </li>
@@ -145,14 +147,14 @@
             <select id="drpDwnCity" name="drpDwnCity">
                 <option value="-1">--Select--</option>
             </select>
-            <span class="pop_up_icon" pop-model-id="popup1"><i class="fa fa-plus-square"></i></span>
+            <span class="pop_up_icon" pop-model-id="addCityPopup" id="addCityButton"><i class="fa fa-plus-square"></i></span>
         </li>
         <li>
             <label>Location</label>
             <select id="drpDwnLocation" name="advertisement.locationId">
                 <option value="-1">--Select--</option>
             </select>
-            <span class="pop_up_icon" pop-model-id="popup1"><i class="fa fa-plus-square"></i></span>
+            <span class="pop_up_icon" pop-model-id="addLocationPopup" id="addLocationButton"><i class="fa fa-plus-square"></i></span>
         </li>
         <li>
             <label>Address</label>
@@ -372,21 +374,40 @@
 <!-- footer end -->
 </main>
 </form>
-<div  id="popup1" class="modal-box" style="width:50%">
+<div  id="addCityPopup" class="modal-box" style="width:40%">
     <div class="md-content pop_up_reg">
-        <h1 class="h_2">Add City / Location</h1>
+        <h1 class="h_2">Add City</h1>
         <i class="fa fa-times js-modal-close"></i>
         <div class="user_register jq_chk">
             <ul>
                 <li>
-                    <label>City / Location<small>*</small></label>
-                    <input type="text" placeholder="Email">
+                    <label>City<small>*</small></label>
+                    <input type="text" id="txtCity" placeholder="City">
                 </li>
-                <input type="button" class="btn_5" value="Login">
+                <input type="button" class="btn_5" value="Add" name="addCity" id="addCity">
                 </li>
             </ul>
         </div>
     </div>
+</div>
+
+<div  id="addLocationPopup" class="modal-box" style="width:40%">
+    <div class="md-content pop_up_reg">
+        <h1 class="h_2">Add Location</h1>
+        <i class="fa fa-times js-modal-close"></i>
+        <div class="user_register jq_chk">
+            <ul>
+                <li>
+                    <label>Location<small>*</small></label>
+                    <input type="text" placeholder="Location" id="txtLocation">
+                </li>
+                <input type="button" class="btn_5" value="Add" id="addLocation" name="addLocation">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 </div>
 
 <!--script start-->
