@@ -324,6 +324,24 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
+    public City findCityByName(String name) {
+        Session session = getSession();
+        Query query = session.createQuery("from City c where lower(c.name) = :name");
+        query.setParameter("name", name.toLowerCase());
+        City response = (City)query.uniqueResult();
+        return response;
+    }
+
+    @Override
+    public Locations findLocationByName(String name) {
+        Session session = getSession();
+        Query query = session.createQuery("from Locations l where lower(l.name) = :name");
+        query.setParameter("name", name.toLowerCase());
+        Locations response = (Locations)query.uniqueResult();
+        return response;
+    }
+
+    @Override
     public State findStateById(Long id) {
         Session session = getSession();
         Query query = session.createQuery("from State s where s.id = :id");

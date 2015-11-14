@@ -123,20 +123,16 @@ $(document).ready(function(){
                 .attr("value", -2)
                 .text("--Select--"));
             $.each(data.module[0].moduleResponse.cities, function() {
-                if(this.name == $('#txtCity').val()){
-                    $('#drpDwnCity')
-                        .append($("<option></option>")
-                            .attr("value", this.id)
-                            .attr("selected", "true")
-                            .text(this.name));
-                } else {
-                    $('#drpDwnCity')
+                $('#drpDwnCity')
                     .append($("<option></option>")
                         .attr("value", this.id)
                         .text(this.name));
-
-                }
             });
+
+            $("#drpDwnCity option").filter(function() {
+                 return $(this).text() == $('#txtCity').val();
+            }).prop('selected', true);
+            $('#txtCity').val("");
         });
     }
 
@@ -155,19 +151,16 @@ $(document).ready(function(){
                         .attr("value", -2)
                         .text("--Select--"));
                 $.each(data.module[0].moduleResponse.cities, function () {
-                    if(this.name == $('#txtLocation').val()){
-                        $('#drpDwnLocation')
-                            .append($("<option></option>")
-                                .attr("value", this.id)
-                                .attr("selected", "true")
-                                .text(this.name));
-                    } else {
-                        $('#drpDwnLocation')
-                            .append($("<option></option>")
-                                .attr("value", this.id)
-                                .text(this.name));
-                    }
+                    $('#drpDwnLocation')
+                        .append($("<option></option>")
+                            .attr("value", this.id)
+                            .text(this.name));
                 });
+
+                $("#drpDwnLocation option").filter(function() {
+                    return $(this).text() == $('#txtLocation').val();
+                }).prop('selected', true);
+                $('#txtLocation').val("")
             });
         }
     }

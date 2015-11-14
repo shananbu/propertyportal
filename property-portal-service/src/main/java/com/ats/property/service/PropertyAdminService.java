@@ -256,8 +256,10 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     public NameDataType saveOrUpdateCity(City location) {
         City city = null;
         if(!fromNullable(location.getId()).isPresent() || location.getId() == -1) {
-            location.setStateByStateId(adminDAO.findStateById(location.getStateId()));
-            city = adminDAO.saveOrUpdateCity(location);
+            if(adminDAO.findCityByName(location.getName()) == null) {
+                location.setStateByStateId(adminDAO.findStateById(location.getStateId()));
+                city = adminDAO.saveOrUpdateCity(location);
+            }
         } else {
             city = adminDAO.updateCity(location);
         }
@@ -276,13 +278,15 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
         Locations locations = null;
         if(!fromNullable(location.getId()).isPresent() || location.getId() == -1) {
-            location.setCityByCityId(adminDAO.findCityById(location.getCityId()));
-            locations = adminDAO.saveOrUpdateLocation(location);
+            if(adminDAO.findLocationByName(location.getName()) == null) {
+                location.setCityByCityId(adminDAO.findCityById(location.getCityId()));
+                locations = adminDAO.saveOrUpdateLocation(location);
+            }
         } else {
             locations = adminDAO.updateLocation(location);
         }
 
-        if(fromNullable(location).isPresent()) {
+        if(fromNullable(locations).isPresent()) {
             NameDataType nameDataType = new NameDataType();
             nameDataType.setId(locations.getId());
             return nameDataType;

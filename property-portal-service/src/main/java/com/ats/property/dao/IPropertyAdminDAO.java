@@ -45,6 +45,8 @@ public interface IPropertyAdminDAO {
     PropertyUser saveOrUpdateUser(PropertyUser user);
     PropertyUser updateUserByIdAndMail(Long id, String mailId);
     City findCityById(Long id);
+    City findCityByName(String name);
+    Locations findLocationByName(String name);
     State findStateById(Long id);
     List<PropertyMainType> getPropertyTypes();
     List<Budget> getBudgets();
