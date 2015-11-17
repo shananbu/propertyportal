@@ -68,4 +68,6 @@ public interface IPropertyAdminService {
 
     boolean approveOrRejectAdvertisements(List<AdvertisementType> advertisements, ModuleList response);
 
+    boolean getUserByMail(String mailId);
+
 }

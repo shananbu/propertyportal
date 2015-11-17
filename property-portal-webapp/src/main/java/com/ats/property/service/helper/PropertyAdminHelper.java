@@ -240,8 +240,14 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     public boolean saveOrUpdateUser(PropertyUserType userType, ModuleList response) {
         PropertyUser user = new PropertyUser();
         PropertyUtils.copyFields(userType, user);
-        adminService.saveOrUpdateUser(user);
-        response.getMessages().get(0).setMessage("Registration completed Successfully. Registration mail has sent to your mail. <br> Please validate your mail by clicking 'Approve me'.");
+        PropertyUserType savedUser = adminService.saveOrUpdateUser(user);
+        if(savedUser != null) {
+            response.getMessages().get(0).setCode(ResponseMessage.SUCCESSFUL_RESPONSE.code());
+            response.getMessages().get(0).setMessage("Registration completed Successfully. Registration mail has sent to your mail. <br> Please validate your mail by clicking 'Approve me'.");
+        } else {
+            response.getMessages().get(0).setMessage(ResponseMessage.USER_EXISTS.message());
+            response.getMessages().get(0).setCode(ResponseMessage.USER_EXISTS.code());
+        }
         return true;
     }
 

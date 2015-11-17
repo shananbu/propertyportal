@@ -538,6 +538,15 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
+    public PropertyUser getUserByMail(String mailId) {
+        Session session = getSession();
+        Query query = session.createQuery("from PropertyUser u where lower(u.emailId) = :mailId");
+        query.setParameter("mailId", mailId.toLowerCase());
+        PropertyUser response = (PropertyUser)query.uniqueResult();
+        return response;
+    }
+
+    @Override
     public PreferredLocations savePreferredLocations(PreferredLocations preferredLocations) {
         return (PreferredLocations)persist(preferredLocations);
     }

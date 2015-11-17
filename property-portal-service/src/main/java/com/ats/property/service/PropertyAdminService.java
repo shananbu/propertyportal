@@ -407,18 +407,22 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     @Override
     @Transactional
     public PropertyUserType saveOrUpdateUser(PropertyUser user) {
-        user.setUserTypeByUserTypeId(adminDAO.findUserTypeById(user.getUserTypeId()));
-        user.setCityByCityId(adminDAO.findCityById(user.getCityId()));
-        user.setIsMailVerified("N");
-        PropertyUser propertyUserResponse = adminDAO.saveOrUpdateUser(user);
-        if(fromNullable(propertyUserResponse).isPresent()) {
-            PropertyUserType userType =  new PropertyUserType();
-            userType.setId(propertyUserResponse.getId());
-            if(user.getEmailId() != null){
-                MailBean data = getMailData(user);
-                mailService.sendMail(data);
+        if(getUserByMail(user.getEmailId())) {
+            user.setUserTypeByUserTypeId(adminDAO.findUserTypeById(user.getUserTypeId()));
+            user.setCityByCityId(adminDAO.findCityById(user.getCityId()));
+            user.setIsMailVerified("N");
+            PropertyUser propertyUserResponse = adminDAO.saveOrUpdateUser(user);
+            if (fromNullable(propertyUserResponse).isPresent()) {
+                PropertyUserType userType = new PropertyUserType();
+                userType.setId(propertyUserResponse.getId());
+                if (user.getEmailId() != null) {
+                    MailBean data = getMailData(user);
+                    mailService.sendMail(data);
+                }
+                return userType;
+            } else {
+                return null;
             }
-            return userType;
         } else {
             return null;
         }
@@ -939,6 +943,12 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             adminDAO.updateAdvertisement(advtFromDB);
         }
         return true;
+    }
+
+    @Override
+    public boolean getUserByMail(String mailId) {
+        return adminDAO.getUserByMail(mailId) == null;
+
     }
 
     private NameDataType getOtherLocation() {

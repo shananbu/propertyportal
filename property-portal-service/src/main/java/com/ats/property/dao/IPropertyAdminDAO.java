@@ -81,4 +81,6 @@ public interface IPropertyAdminDAO {
 
     List<Advertisement> getAdvertisements(boolean isApproved);
 
+    PropertyUser getUserByMail(String mailId);
+
 }

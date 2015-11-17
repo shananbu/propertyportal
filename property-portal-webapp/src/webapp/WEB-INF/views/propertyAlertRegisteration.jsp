@@ -13,9 +13,9 @@
     <script src="js/jquery.sumoselect.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3, selectAll: true });
+            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3});
             window.test = $('.testsel').SumoSelect({okCancelInMulti: true });
-            window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti: true, selectAll: true });
+            window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti: true});
             window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll: true });
         });
     </script>
@@ -34,6 +34,23 @@
                     <h1 class="h_2">Post Requirement for Property</h1>
                     <div class="user_register post_buy_pro jq_chk">
                         <ul>
+                            <sec:authorize access="hasAnyRole('ROLE_ANONYMOUS')">
+                                <li class="log_face">
+                                    <label>I am
+                                        <small>*</small>
+                                    </label>
+                                    <span>
+                                        <input type="radio" id="radio_5" name="1" data-modal="modal-11" class="md-trigger">
+                                        <label for="radio_5"></label>
+                                        Existing User
+                                    </span>
+                                    <span>
+                                        <input type="radio" id="radio_6" name="1" data-modal="modal-10" class="md-trigger">
+                                        <label for="radio_6"></label>
+                                        New User
+                                  </span>
+                                </li>
+                            </sec:authorize>
                             <li>
                                 <label>I want to
                                     <small>*</small>
@@ -117,23 +134,6 @@
                                     <label for="radio_4"></label> Weekly
                                 </span>
                             </li>
-                            <sec:authorize access="hasAnyRole('ROLE_ANONYMOUS')">
-                                <li class="log_face">
-                                    <label>I am
-                                        <small>*</small>
-                                    </label>
-                                    <span>
-                                        <input type="radio" id="radio_5" name="1" data-modal="modal-11" class="md-trigger">
-                                        <label for="radio_5"></label>
-                                        Existing User
-                                    </span>
-                                    <span>
-                                        <input type="radio" id="radio_6" name="1" data-modal="modal-10" class="md-trigger">
-                                        <label for="radio_6"></label>
-                                        New User
-                                  </span>
-                                </li>
-                            </sec:authorize>
                             <li class="sub_btn_li">
                                 <input type="submit" value="Submit" class="btn_5">
                             </li>
@@ -184,7 +184,7 @@
                         <li>
                             <label>Password<small>*</small></label>
                             <input id="passwrd" name="propertyUser.passwrd" class="txt" type="password" value="" maxlength="30" placeholder="Password">
-                            <small>[ Password only consists of a-z, 0-9, (_) ] [ Min. 6 char and Max. 12 char ]</small>
+                            <small></small>
                         </li>
                         <li>
                             <label>Confirm Password<small>*</small></label>
@@ -205,7 +205,7 @@
                                 I agree to 1AcreIndia's Terms of Use. I would like to receive property related communication through Email, Call or SMS. </p>
                         </li>
                         <li>
-                            <input type="submit" value="Register Now" class="btn_5">
+                            <input type="submit" value="Register Now" class="btn_5" name="btnRegisterUser" id="btnRegisterUser">
                         </li>
                     </ul>
                 </div>
@@ -221,14 +221,15 @@
                 <div class="user_register jq_chk">
                     <ul>
                         <li>
-                            <label>Email - Id<small>*</small></label>
-                            <input type="text" placeholder="Email">
+                            <label>Email Id</label>
+                            <input type="email" placeholder="Username" name="username">
                         </li>
                         <li>
-                            <label>Password<small>*</small></label>
-                            <input type="Password" placeholder="Password">
+                            <label>Password</label>
+                            <input type="password" placeholder="Password" name="password">
+                        </li>
                         <li>
-                            <input type="button" class="btn_5" value="Login">
+                            <input type="button" class="btn_5" value="Login"  name="btnUserLogin" id="btnUserLogin">
                         </li>
                     </ul>
                 </div>

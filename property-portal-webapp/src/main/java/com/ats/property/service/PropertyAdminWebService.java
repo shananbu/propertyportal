@@ -11,6 +11,7 @@ import com.ats.property.service.delegate.IPropertyAdminDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.ws.rs.*;
@@ -173,6 +174,16 @@ public class PropertyAdminWebService {
         adminDelegate.getAdvertisementById(advertisementId, response);
         return response;
     }
+
+    @POST
+    @Path("/modules/create/registerUser")
+    @Consumes("application/json")
+    public ModuleList registerUser(ModuleRequestType moduleRequest) {
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.saveOrUpdateUser(moduleRequest, response);
+        return response;
+    }
+
 
 
     //Sample starts here.............................

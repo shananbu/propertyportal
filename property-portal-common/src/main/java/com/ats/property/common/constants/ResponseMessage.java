@@ -10,7 +10,8 @@ public enum ResponseMessage {
     INVALID_CREDENTIALS(101, "Invalid Username/Password"),
     AUTH_REQUIRED(102, "Authentication Required"),
     UNEXPECTED_ERROR(103, "Unexpected Error"),
-    INVALID_SESSION(104, "Invalid Session");
+    INVALID_SESSION(104, "Invalid Session"),
+    USER_EXISTS(105, "User Already Exists!");
 
     private final int code;
 
