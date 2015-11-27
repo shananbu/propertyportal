@@ -1706,7 +1706,7 @@ footer li a:hover {
 	font-size: 12px;
 	font-weight: 600;
 	display: inline-block;
-	min-width: 170px;
+	min-width: 50px;
 	position: relative;
 	margin-right: 15px;
 }
@@ -1725,8 +1725,8 @@ footer li a:hover {
 .user_register > ul > li > span {
 	margin-right: 20px;
 }
-.user_register li input[type="text"], .user_register li input[type="password"] {
-	width: 296px;
+.user_register li input[type="text"], .user_register li input[type="password"], .user_register li input[type="email"] {
+	width: 220px;
 }
 .user_register li > small {
 	font-size: 11px;
@@ -4023,10 +4023,13 @@ margin-left:5%;
     top: 12px;
 }
 
-.pop_up_reg .user_register > ul > li > label{
+.pop_up_reg > ul > li > label{
 	min-width: 161px;
 }
 
+.user_register > ul > li > label{
+    min-width: 80px;
+}
 .ad_post .appendGrid{
     display: inline-block;
     vertical-align: middle;

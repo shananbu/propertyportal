@@ -29,6 +29,10 @@ public class AppInitializer implements WebApplicationInitializer  {
         rootContext.scan("com.ats.property");
         container.addListener(new ContextLoaderListener(rootContext));
 
+        FilterRegistration.Dynamic springSecurityFilterChain = container.addFilter("requestFilter", new RequestFilter());
+        springSecurityFilterChain.addMappingForUrlPatterns(null, false, "/*");
+        springSecurityFilterChain.setAsyncSupported(true);
+
         ServletRegistration.Dynamic restServlet = container.addServlet("rest", new PropertyPortalCXFServlet());
         restServlet.setLoadOnStartup(1);
         restServlet.setAsyncSupported(true);

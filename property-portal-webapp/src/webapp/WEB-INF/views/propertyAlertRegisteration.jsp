@@ -245,46 +245,6 @@
     </footer>
     <!-- footer end -->
 
-    <!-- forget password start -->
-    <div class="forget_pop">
-        <div class="pop_wrapper">
-            <h1 class="h_2">Forget Password
-                <span id="close_pop"> <i class="fa fa-close"></i> </span>
-            </h1>
-
-            <div class="for_para">
-                <p>
-                    Enter the username or email id you provided when you registered on Magicbricks.com. A reset password
-                    link will be sent on your registered email id.
-
-                </p>
-    <span>
-    <label>Username </label>
-    <input type="text">
-    </span>
-                Or
-    <span>
-        <label>Email </label>
-    <input type="text">
-    </span>
-    <span>
-     I agree to MagicBricks' <a href="#">Terms & Conditions.</a>
-     </span>
-                <input type="button" value="Submit" class="btn_5">
-
-                <p>
-                    If you've signed up with Facebook, please visit your Facebook account to retrieve your password and
-                    login again.
-
-     <span>
-     Contact customer care at: 0124-4869300
-     </span>
-                </p>
-            </div>
-
-        </div>
-    </div>
-    <!-- forget password end -->
 </main>
 <!--script start-->
 <!-- pop up js start -->

@@ -68,19 +68,27 @@ $(document).ready(function(){
         var requestMap = new Object();
         requestMap["username"] = $('[name="username"]').val();
         requestMap["password"] = $('[name="password"]').val();
-        var saveCity = $.ajax({
+        var loginResponse;
+            loginResponse = $.ajax({
             type: 'POST',
             url: "userLogin",
             data: requestMap,
             dataType: "text",
-            success: function(resultData) {
-                $(".md-modal, .mod-overlay").fadeOut(200, function() {
-                    $(".md-overlay").remove();
-                    $("#modal-11").remove();
-                });
+            success: function(resultData, status, xhr) {
+                 if(xhr.getResponseHeader("isAutheticated") == "true") {
+                    window.location.href = "propertyAlertRegisteration";
+/*                     $(".md-modal, .mod-overlay").fadeOut(200, function() {
+                         $(".md-overlay").remove();
+                         $("#modal-11").remove();
+                     });*/
+                } else {
+                    alert("Invalid Username / Password.");
+                     $('[name="username"]').val("");
+                     $('[name="password"]').val("");
+                }
             }
         });
-        saveCity.error(function() { alert("Something went wrong while registering the user.."); });
+        loginResponse.error(function() { alert("Something went wrong while registering the user.."); });
     });
 
     function clearLocation() {
