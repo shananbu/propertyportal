@@ -70,4 +70,6 @@ public interface IPropertyAdminService {
 
     boolean getUserByMail(String mailId);
 
+    PlanType getPlanById(Long planId);
+
 }

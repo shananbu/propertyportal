@@ -95,7 +95,7 @@
         <li>
             <label>Select Listing Package <small>*</small></label>
 
-            <select class="dropdown" name="advertisement.planId">
+            <select class="dropdown" name="advertisement.planId" required>
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.plans}">
                     <option value="${data.id}">${data.name}</option>
@@ -114,7 +114,7 @@
             <c:forEach var="data" items="${response.module[0].moduleResponse.propertyForTypes}">
                 <c:if test="${data.nameForPoster eq 'Sell'}">
                     <span>
-                        <input type="radio" id="0${data.id}" value="0${data.id}" name="advertisement.propertyForTypeId" checked>
+                        <input type="radio" id="0${data.id}" value="0${data.id}" name="advertisement.propertyForTypeId" checked required>
                         <label for="0${data.id}"></label>
                         ${data.nameForPoster}
                     </span>
@@ -138,7 +138,7 @@
         </li>
 
         <li>
-            <label>Property Type</label>
+            <label>Property Type <small>*</small></label>
             <div class="search_loc">
                 <div class="pro_type">
                     Property Type <i class="fa fa-caret-down"></i>
@@ -150,7 +150,7 @@
                             <c:forEach var="innerData" items="${data.propertyTypesById}">
                                 <li>
                                     <span class="jq_chk">
-                                        <input type="radio" name="advertisement.propertyTypeId" id="${innerData.id}" value="${innerData.id}">
+                                        <input type="radio" name="advertisement.propertyTypeId" id="${innerData.id}" value="${innerData.id}" required>
                                          <label for="${innerData.id}"></label>
                                     </span>  ${innerData.name}
                                 </li>
@@ -166,8 +166,8 @@
     <h1>Location</h1>
     <ul>
         <li>
-            <label>State</label>
-            <select class="dropdown" id="drpDwnState"  name="drpDwnState">
+            <label>State<small>*</small></label>
+            <select class="dropdown" id="drpDwnState"  name="drpDwnState" required>
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.states}">
                     <option value="${data.id}">${data.name}</option>
@@ -175,26 +175,26 @@
             </select>
         </li>
         <li>
-            <label>City</label>
-            <select id="drpDwnCity" name="drpDwnCity">
+            <label>City<small>*</small></label>
+            <select id="drpDwnCity" name="drpDwnCity" required>
                 <option value="-1">--Select--</option>
             </select>
             <span class="pop_up_icon" pop-model-id="addCityPopup" id="addCityButton"><i class="fa fa-plus-square"></i></span>
         </li>
         <li>
-            <label>Location</label>
-            <select id="drpDwnLocation" name="advertisement.locationId">
+            <label>Location<small>*</small></label>
+            <select id="drpDwnLocation" name="advertisement.locationId" required>
                 <option value="-1">--Select--</option>
             </select>
             <span class="pop_up_icon" pop-model-id="addLocationPopup" id="addLocationButton"><i class="fa fa-plus-square"></i></span>
         </li>
         <li>
-            <label>Address</label>
-            <input type="text" placeholder="Address" name="advertisement.address" class="projectname">
+            <label>Address<small>*</small></label>
+            <input type="text" placeholder="Address" name="advertisement.address" class="projectname" required>
         </li>
         <li>
-            <label>Company/Builder Name</label>
-            <input type="text" placeholder="Builder Name" name="advertisement.builderName" class="projectname">
+            <label>Company/Builder Name<small>*</small></label>
+            <input type="text" placeholder="Builder Name" name="advertisement.builderName" class="projectname" required>
         </li>
     </ul>
 </div>
@@ -266,18 +266,18 @@
     <h1>Availability</h1>
     <ul>
         <li>
-            <label>Availability</label>
+            <label>Availability<small>*</small></label>
             <c:forEach var="data" items="${response.module[0].moduleResponse.possessionStatus}">
                 <span>
-                    <input type="radio" id="possessionStatus${data.id}" value="000${data.id}" name="advertisement.possessionStatusId">
+                    <input type="radio" id="possessionStatus${data.id}" value="000${data.id}" name="advertisement.possessionStatusId" required>
                     <label for="possessionStatus${data.id}"></label>
                     ${data.name}
                 </span>
             </c:forEach>
         </li>
         <li>
-            <label>Possession of Property</label>
-            <select id="drpPossessionOrAge" name="advertisement.possessionOrAgeId">
+            <label>Possession of Property<small>*</small></label>
+            <select id="drpPossessionOrAge" name="advertisement.possessionOrAgeId" required>
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.possessionOrAge}">
                     <option value="${data.id}">${data.name}</option>
@@ -370,18 +370,18 @@
     <h1>Property Description</h1>
     <ul>
         <li>
-            <label>Name of Project / Title</label>
-            <input type="text" name="advertisement.projectName" class="projectname">
+            <label>Name of Project / Title<small>*</small></label>
+            <input type="text" name="advertisement.projectName" class="projectname" required>
         </li>
         <li>
-            <label>Description</label>
-            <textarea name="advertisement.description" cols="80" rows="6"></textarea>
+            <label>Description<small>*</small></label>
+            <textarea name="advertisement.description" cols="80" rows="6" required></textarea>
             <b>OR</b>Upload PDF/Excel file<input type="file" class="descriptionFile" id="descriptionFile">
             <input type="hidden" id="descriptionFileName" name="advertisement.descriptionFileName">
         </li>
         <li>
-            <label>Specification</label>
-            <textarea name="advertisement.propertyFeatures" cols="80" rows="6"></textarea>
+            <label>Specification<small>*</small></label>
+            <textarea name="advertisement.propertyFeatures" cols="80" rows="6" required></textarea>
             <b>OR</b>Upload PDF/Excel file<input type="file" class="specificationFile" id="specificationFile">
             <input type="hidden" id="specificationFileName" name="advertisement.specificationFileName">
         </li>
@@ -395,7 +395,7 @@
             <div class="add_block">
                 <ul>
                     <li class="agree_form">
-                        <input type="checkbox" id="check_45" name="advertisement.isTermsAgreed" value="1">
+                        <input type="checkbox" id="check_45" name="advertisement.isTermsAgreed" value="1" required>
                         <label for="check_45"></label>
                         <p> I am the owner/I have the authority to post this property.
                             I agree not to provide incorrect property information or state a discriminatory preference.

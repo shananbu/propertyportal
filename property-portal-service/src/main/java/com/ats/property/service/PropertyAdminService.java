@@ -960,6 +960,12 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
     }
 
+    @Override
+    public PlanType getPlanById(Long planId) {
+        PlanMast planMast = adminDAO.findObjectById(planId, PlanMast.class);
+        return null;
+    }
+
     private NameDataType getOtherLocation() {
         NameDataType nameDataType = new NameDataType();
         nameDataType.setName("Others");

@@ -284,15 +284,21 @@ public class PropertyUserController implements InitializingBean {
         System.out.println("PlanId : " + moduleRequest.getAdvertisement().getPlanId());
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.saveOrUpdateAdvertisement(moduleRequest, response);
-        ModelAndView modelAndView = new ModelAndView("redirect:uploadFile?advertisementId=" + response.getModule().get(0).getModuleResponse().getAdvertisement().getId());
+        ModelAndView modelAndView = new ModelAndView("redirect:uploadFile?advertisementId=" +
+                response.getModule().get(0).getModuleResponse().getAdvertisement().getId() + "&planId=" +
+                response.getModule().get(0).getModuleResponse().getAdvertisement().getPlanId());
         return modelAndView;
     }
 
     @RequestMapping(value = {"/uploadFile" }, method = RequestMethod.GET)
     @Secured ({"ROLE_USER"})
-    public ModelAndView uploadFileForAdvertisement(@ModelAttribute("uploadFile") ModuleRequestType moduleRequest, HttpServletRequest request) {
+    public ModelAndView uploadFileForAdvertisement(@ModelAttribute("uploadFile") ModuleRequestType moduleRequest,
+                                                   @RequestParam("advertisementId") Long advertisementId,
+                                                   @RequestParam("planId") Long planId,
+                                                   HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("uploadFile");
         ModuleList response = CommonHelper.getSuccessModuleList();
+       // adminDelegate.getPl
         adminDelegate.getImageTypeList(response);
         modelAndView.addObject("response", response);
         return modelAndView;
