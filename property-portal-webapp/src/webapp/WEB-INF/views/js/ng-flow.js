@@ -254,9 +254,11 @@ angular.module('flow.img', ['flow.init'])
         var fileReader = new FileReader();
         fileReader.readAsDataURL(file.file);
         fileReader.onload = function (event) {
-          scope.$apply(function () {
-            attrs.$set('src', event.target.result);
-          });
+            if ($("#remainingFileCount").val() != 0) {
+                scope.$apply(function () {
+                    attrs.$set('src', event.target.result);
+                });
+            }
         };
       });
     }

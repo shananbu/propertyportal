@@ -312,7 +312,7 @@
                 <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" end="1" >
                     <c:set var="counter" value="${counter + 1}"/>
                     <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="${data.propertyLogo}">
-                        <figcaption class="pro_info_1"> <img src="images/image_4.jpg">
+                        <figcaption class="pro_info_1"> <img src="${data.companyLogo}">
                             <summary>
                                 <h1>${data.projectName}</h1>
                                 <p>${data.companyName}</p>

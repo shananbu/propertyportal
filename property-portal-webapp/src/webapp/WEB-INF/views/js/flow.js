@@ -1207,7 +1207,13 @@
       this.xhr.addEventListener("load", this.testHandler, false);
       this.xhr.addEventListener("error", this.testHandler, false);
       var data = this.prepareXhrRequest('GET');
-      this.xhr.send(data);
+      if ($("#remainingFileCount").val() != 0) {
+          this.xhr.send(data);
+          $("#remainingFileCount").val(parseInt($("#remainingFileCount").val()) - 1);
+      } else {
+          alert("Your Max upload image count reached.");
+          return;
+      }
     },
 
     /**

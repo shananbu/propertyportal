@@ -775,6 +775,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             Long EXTERIOR_VIEW_ID = null;
             if(fromNullable(advertisement).isPresent()) {
                 PropertyUtils.copyFields(advertisement, advertisementType);
+                advertisementType.setCompanyLogo(PropertyConstants.NO_IMAGE_PATH.value());
                 if( advertisement.getLocationsByLocationId() != null){
                     advertisementType.setAddress(advertisementType.getBuilderName() + ", " + advertisement.getLocationsByLocationId().getName() );
                 }
@@ -798,7 +799,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 if(advertisement.getBuilderName() == null || (advertisement.getBuilderName() != null && advertisement.getBuilderName().equals("") )) {
                     advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());
                 }
-                advertisementType.setCompanyLogo("image_7.jpg");
+
                 advertisementType.setLocationName(advertisement.getLocationsByLocationId().getName());
                 for(Residential residential : advertisement.getResidentialsById()) {
                     if(residential.getBedroomByBedRoomId() != null) {
@@ -834,6 +835,10 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                         if(galleryImage.getImageTypeByImageTypeId().getName().equals(PropertyConstants.EXTERIOR_VIEW.value())) {
                             advertisementType.setPropertyLogo(PropertyConstants.RESOURCE_DIR.value() + galleryImage.getImageName());
                             EXTERIOR_VIEW_ID = galleryImage.getImageTypeByImageTypeId().getId();
+                        }
+
+                        if(galleryImage.getImageTypeByImageTypeId().getName().equals(PropertyConstants.LOGO.value())) {
+                            advertisementType.setCompanyLogo(PropertyConstants.RESOURCE_DIR.value() + galleryImage.getImageName());
                         }
                         advertisementType.getGalleryImage().add(imageType);
 
