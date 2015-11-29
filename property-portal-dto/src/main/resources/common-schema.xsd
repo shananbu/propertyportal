@@ -84,6 +84,7 @@
             <xs:element name="fromlevel" type="xs:long" minOccurs = "0"/>
             <xs:element name="tolevel" type="xs:long" minOccurs = "0"/>
             <xs:element name="currencyVal" type="xs:string"/>
+            <xs:element name="propertyForTypeId" type="xs:long" minOccurs = "0"/>
         </xs:sequence>
     </xs:complexType>
 

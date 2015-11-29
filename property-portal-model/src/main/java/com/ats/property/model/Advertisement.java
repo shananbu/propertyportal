@@ -1,6 +1,7 @@
 package com.ats.property.model;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.Collection;
 
 /**
@@ -43,6 +44,9 @@ public class Advertisement {
     private String specificationFileName;
     private String descriptionFileName;
     private String morePropertiesFileName;
+    private Date postDate;
+    private Date approvedDate;
+    private Date lastUpdatedDate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -422,5 +426,34 @@ public class Advertisement {
 
     public void setMorePropertiesFileName(String morePropertiesFileName) {
         this.morePropertiesFileName = morePropertiesFileName;
+    }
+    @Basic
+    @Column(name = "approvedDate", nullable = true, insertable = true, updatable = true)
+    public Date getApprovedDate() {
+        return approvedDate;
+    }
+
+    public void setApprovedDate(Date approvedDate) {
+        this.approvedDate = approvedDate;
+    }
+
+    @Basic
+    @Column(name = "lastUpdatedDate", nullable = true, insertable = true, updatable = true)
+    public Date getLastUpdatedDate() {
+        return lastUpdatedDate;
+    }
+
+    public void setLastUpdatedDate(Date lastUpdatedDate) {
+        this.lastUpdatedDate = lastUpdatedDate;
+    }
+
+    @Basic
+    @Column(name = "postDate", nullable = true, insertable = true, updatable = true)
+    public Date getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(Date postDate) {
+        this.postDate = postDate;
     }
 }

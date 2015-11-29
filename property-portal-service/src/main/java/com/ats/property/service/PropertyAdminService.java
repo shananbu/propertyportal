@@ -23,10 +23,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.sql.Date;
+import java.util.*;
 
 import static com.ats.property.common.constants.PropertyUtils.isNotNull;
 import static com.google.common.base.Optional.fromNullable;
@@ -344,6 +342,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         advertisement.setPossessionOrAgeByPossessionOrAgeId(adminDAO.findObjectById(advertisement.getPossessionOrAgeId(), PossessionOrAge.class));
         advertisement.setPossessionStatusByPossessionStatusId(adminDAO.findObjectById(advertisement.getPossessionStatusId(), PossessionStatus.class));
         advertisement.setIsApproved(false);
+        advertisement.setPostDate(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
         advertisement.setPlanMastByPlanId(adminDAO.findObjectById(advertisement.getPlanId(), PlanMast.class));
         advertisementDetails.setUnitMasterByBuildupAreaUnitId(adminDAO.findObjectById(advertisementDetails.getBuildupAreaUnitId(), UnitMaster.class));
         advertisementDetails.setBalconiesByBalconyId(adminDAO.findObjectById(advertisementDetails.getBalconyId(), Balconies.class));
@@ -940,6 +939,11 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         for(AdvertisementType advertisement : advertisements) {
              Advertisement advtFromDB = adminDAO.findObjectById(advertisement.getId(), Advertisement.class);
             advtFromDB.setIsApproved(advertisement.isIsApproved());
+            if(advertisement.isIsApproved()) {
+                advtFromDB.setApprovedDate(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
+            } else {
+                advtFromDB.setApprovedDate(null);
+            }
             adminDAO.updateAdvertisement(advtFromDB);
         }
         return true;

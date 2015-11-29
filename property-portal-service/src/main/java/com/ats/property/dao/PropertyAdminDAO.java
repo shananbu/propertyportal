@@ -470,6 +470,10 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         searchCriteria.createAlias("advertisementDetailsesById", "advertisementDetails");
         searchCriteria.createAlias("morePropertyDetailsesById", "morePropertyDetails");
         searchCriteria.createAlias("residentialsById", "residential");
+       // searchCriteria.createAlias("planMastByPlanId", "plan");
+
+        searchCriteria.add(Restrictions.eq("isApproved", true));
+        searchCriteria.add(Restrictions.sqlRestriction("DATEDIFF(this_.approvedDate, curdate()) < validDays"));
 
         if (searchType.getSearchString() != null) {
             searchCriteria.add(Restrictions.like("projectName", searchType.getSearchString(), MatchMode.ANYWHERE));
