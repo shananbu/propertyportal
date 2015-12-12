@@ -61,5 +61,5 @@ public interface IPropertyAdminDelegate {
 
     boolean approveOrRejectAdvertisements(ModuleRequestType moduleRequest, ModuleList response);
 
-
+    boolean getBudgetsByPropertyForType(ModuleList response, Long propertyForTypeId);
 }

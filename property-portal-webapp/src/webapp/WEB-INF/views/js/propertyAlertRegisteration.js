@@ -91,6 +91,21 @@ $(document).ready(function(){
         loginResponse.error(function() { alert("Something went wrong while registering the user.."); });
     });
 
+    $('.propertyForType').click(function(){
+        $.ajax({
+            url: "rest/v1/admin/modules/get/budgetByPropertyForTypeId?propertyForTypeId=" + $(this).val()
+        }).done(function(data) {
+            $('#budget').empty();
+            $.each(data.module[0].moduleResponse.budgets, function() {
+                $('#budget')
+                    .append($("<option></option>")
+                        .attr("value", this.id)
+                        .text(this.name));
+            });
+        });
+    });
+
+
     function clearLocation() {
         var num = $('#drpDwnLocation option').length;
         for(var i= num -1 ; i >= 0; i--){

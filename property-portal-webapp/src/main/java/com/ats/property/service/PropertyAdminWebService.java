@@ -152,6 +152,14 @@ public class PropertyAdminWebService {
     }
 
     @GET
+    @Path("/modules/get/budgetByPropertyForTypeId")
+    public ModuleList getBudgetByPropertyForType(@QueryParam("propertyForTypeId") Long propertyForTypeId) {
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getBudgetsByPropertyForType(response, propertyForTypeId);
+        return response;
+    }
+
+    @GET
     @Path("/modules/get/advertisementsForApprove")
     public ModuleList getAdvertisementsForApproval(@QueryParam("status") String status) {
         ModuleList response = CommonHelper.getSuccessModuleList();

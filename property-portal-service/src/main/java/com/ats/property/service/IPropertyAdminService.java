@@ -40,6 +40,7 @@ public interface IPropertyAdminService {
 
     boolean getPropertyTypeList(ModuleList response);
     boolean getBudgetList(ModuleList response);
+    boolean getBudgetsByPropertyForType(ModuleList response, Long pForTypeId);
     boolean getBedroomsList(ModuleList response);
 
     boolean getPropertyForTypeList(ModuleList response);

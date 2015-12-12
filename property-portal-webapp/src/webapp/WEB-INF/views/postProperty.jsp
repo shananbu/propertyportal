@@ -161,7 +161,7 @@
             <input type="text" placeholder="Address" name="advertisement.address" class="projectname" required>
         </li>
         <li>
-            <label>Company/Builder Name<small>*</small></label>
+            <label>Company / <br> Builder Name<small>*</small></label>
             <input type="text" placeholder="Builder Name" name="advertisement.builderName" class="projectname" required>
         </li>
     </ul>

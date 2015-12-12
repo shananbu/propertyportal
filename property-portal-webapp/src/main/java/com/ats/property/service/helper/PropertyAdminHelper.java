@@ -271,6 +271,11 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean getBudgetsByPropertyForType(ModuleList response, Long propertyForTypeId) {
+        return adminService.getBudgetsByPropertyForType(response, propertyForTypeId);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminService.getBedroomsList(response);
     }

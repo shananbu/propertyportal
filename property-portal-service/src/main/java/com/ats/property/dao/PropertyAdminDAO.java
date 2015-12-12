@@ -367,6 +367,15 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
+    public List<Budget> getBudgetsByPropertyForType(Long pForTypeId) {
+        Session session = getSession();
+        Query query = session.createQuery("from Budget b where b.propertyForTypeId = :pForTypeId");
+        query.setParameter("pForTypeId", pForTypeId);
+        List<Budget> response = query.list();
+        return response;
+    }
+
+    @Override
     public List<Bedroom> getBedrooms() {
         Session session = getSession();
         Query query = session.createQuery("from Bedroom");

@@ -57,7 +57,7 @@
                                 </label>
                                     <c:forEach var="data" items="${response.module[0].moduleResponse.propertyForTypes}">
                                         <span>
-                                            <input type="radio" id="0${data.id}" value="0${data.id}" name="alertRegistration.propertyForTypeId" checked>
+                                            <input type="radio" id="0${data.id}" class="propertyForType" value="0${data.id}" name="alertRegistration.propertyForTypeId" checked>
                                             <label for="0${data.id}"></label>
                                             ${data.nameForFinder}
                                         </span>
@@ -115,7 +115,7 @@
                                 <label>Budget
                                     <small>*</small>
                                 </label>
-                                <select class="dropdown" name="alertRegistration.budgetId">
+                                <select class="dropdown" name="alertRegistration.budgetId" name="budget" id="budget">
                                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                                         <option value="${data.id}">${data.name}</option>
                                     </c:forEach>

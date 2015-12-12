@@ -170,7 +170,12 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
 
     @Override
     public boolean getBudgetList(ModuleList response) {
-        return adminHelper.getBudgetList(response);
+        return adminHelper.getPropertyTypeList(response);
+    }
+
+    @Override
+    public boolean getBudgetsByPropertyForType(ModuleList response, Long propertyForTypeId) {
+        return adminHelper.getBudgetsByPropertyForType(response, propertyForTypeId);
     }
 
     @Override

@@ -481,6 +481,19 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     @Transactional
     public boolean getBudgetList(ModuleList response) {
         List<Budget> budgets = adminDAO.getBudgets();
+        populateBudget(budgets, response);
+        return true;
+    }
+
+    @Override
+    @Transactional
+    public boolean getBudgetsByPropertyForType(ModuleList response, Long pForTypeId) {
+        List<Budget> budgets = adminDAO.getBudgetsByPropertyForType(pForTypeId);
+        populateBudget(budgets, response);
+        return false;
+    }
+
+    private void populateBudget(List<Budget> budgets, ModuleList response) {
         ModuleType moduleType = CommonHelper.getFirstModule(response);
         ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
         if(fromNullable(budgets).isPresent()) {
@@ -490,7 +503,6 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 moduleResponseType.getBudgets().add(budgetType);
             }
         }
-        return true;
     }
 
     @Override

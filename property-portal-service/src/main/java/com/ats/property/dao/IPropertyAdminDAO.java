@@ -83,4 +83,6 @@ public interface IPropertyAdminDAO {
 
     PropertyUser getUserByMail(String mailId);
 
+    List<Budget> getBudgetsByPropertyForType(Long id);
+
 }
