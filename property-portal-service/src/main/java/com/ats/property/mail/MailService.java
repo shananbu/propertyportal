@@ -1,18 +1,19 @@
 package com.ats.property.mail;
 
 
-import org.apache.velocity.app.VelocityEngine;
-import org.springframework.ui.velocity.VelocityEngineFactoryBean;
-import org.springframework.ui.velocity.VelocityEngineUtils;
 import org.springframework.util.MimeTypeUtils;
 
-import javax.activation.MimeType;
-import javax.mail.*;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.event.TransportAdapter;
 import javax.mail.event.TransportEvent;
-import javax.mail.internet.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.util.Date;
-import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -22,7 +23,6 @@ import java.util.Properties;
  */
 public class MailService implements IMailService {
 
-    VelocityEngine velocityEngine;
 
     @Override
     public boolean sendMail(final MailBean data) {
@@ -91,11 +91,5 @@ public class MailService implements IMailService {
         Multipart mimeMultipart = new MimeMultipart();
         mimeMultipart.addBodyPart(mimeBodyPart);
         return mimeMultipart;
-    }
-
-    private String buildMailBodyFromTemplate(Map model) {
-        String text = VelocityEngineUtils.mergeTemplateIntoString(
-                velocityEngine, "mailtemplate/registration-confirmation.vm", model);
-        return text;
     }
 }

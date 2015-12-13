@@ -15,22 +15,20 @@ import com.ats.property.service.exception.PropertyExceptionMapper;
 import com.ats.property.service.helper.IPropertyAdminHelper;
 import com.ats.property.service.helper.PropertyAdminHelper;
 import org.apache.cxf.bus.spring.SpringBus;
-import org.apache.cxf.interceptor.Interceptor;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
-import org.apache.cxf.message.Message;
+import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.*;
 import org.springframework.scheduling.quartz.CronTriggerBean;
-import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.JobDetailBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
-import org.springframework.web.context.ServletContextAware;
+import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 
-import javax.servlet.ServletContext;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.*;
 
@@ -189,4 +187,25 @@ public class WebAppBeanConfiguration {
         bean.setTriggers(cronTriggerBean);
         return bean;
     }
+
+    @Bean(name = "vEngine")
+    @Scope(value = "singleton")
+    public VelocityEngine schedulerFactoryBean() {
+        final VelocityEngineFactoryBean velocityEngineFactoryBean = new VelocityEngineFactoryBean();
+        velocityEngineFactoryBean.setPreferFileSystemAccess(false);
+        Properties velocityEngineProperties = new Properties();
+        velocityEngineProperties.setProperty("resource.loader", "classpath");
+        velocityEngineProperties.setProperty("classpath.resource.loader.class",
+                "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+        velocityEngineFactoryBean.setVelocityProperties(velocityEngineProperties);
+        VelocityEngine velocityEngine = null;
+        try {
+            velocityEngine = velocityEngineFactoryBean.createVelocityEngine();
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to create velocity engine instance");
+        }
+        System.out.println(">>>>>>>>>>>>>created " + velocityEngine);
+        return velocityEngine;
+    }
+
 }

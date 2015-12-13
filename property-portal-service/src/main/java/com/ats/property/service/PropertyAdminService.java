@@ -11,15 +11,18 @@ import com.ats.property.model.*;
 import com.ats.property.model.Advertisement;
 import com.ats.property.model.TotalFloors;
 import com.ats.property.spring.UserInformation;
+import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.ui.velocity.VelocityEngineUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.security.Principal;
@@ -43,6 +46,10 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     public MailService mailService;
 
     private  ObjectFactory objectFactory;
+
+    @Autowired
+    private VelocityEngine velocityEngine;
+
 
     public static UserInformation getCurrentUser(){
         SecurityContext securityContext = SecurityContextHolder.getContext();
@@ -438,7 +445,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     private MailBean getMailData(PropertyUser user) {
         MailBean data = new MailBean();
         data.setToMailId(user.getEmailId());
-        data.setMailBody(getMailBody(user));
+        data.setMailBody(buildMailBodyFromTemplate(user));
         data.setSubject("Welcome to 1acreindia.com");
         return data;
     }
@@ -455,6 +462,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         System.out.println(message);
         return message;
     }
+
 
     @Override
     @Transactional
@@ -983,5 +991,17 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         nameDataType.setName("Others");
         nameDataType.setId(-99L);
         return nameDataType;
+    }
+
+    private String buildMailBodyFromTemplate(PropertyUser user) {
+        Map model = new HashMap<String, String>();
+        model.put("user.registeredDate", new java.util.Date().toString());
+        model.put("user.emailAddress", user.getEmailId());
+        model.put("user.id", user.getId());
+        model.put("user.name", user.getFirstName());
+
+        String text = VelocityEngineUtils.mergeTemplateIntoString(
+                velocityEngine, "mailtemplate/registration-confirmation.vm", model);
+        return text;
     }
 }
