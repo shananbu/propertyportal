@@ -732,6 +732,15 @@ input, select {
 	padding: 5px 5px 5px 8px;
 	border-left: 4px solid #5daf33;
 }
+.h_2_asitis {
+    display: block;
+    color: #333132;
+    font-size: 14px;
+    border-bottom: 1px solid #bcbec0;
+    margin-bottom: 10px;
+    padding: 5px 5px 5px 8px;
+    border-left: 4px solid #5daf33;
+}
 .re_m {
 	margin-right: 0px !important;
 }

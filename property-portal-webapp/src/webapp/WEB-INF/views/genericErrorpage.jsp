@@ -18,7 +18,7 @@
     </header>
     <section class="clr_fix">
         <div class="row_main terms_cond box_shadow">
-            <h1 class="h_2">Oops! Something went wrong!
+            <h1 class="h_2_asitis">Oops! Something went wrong!
                 Help us improve your experience by sending an error report.</h1>
         </div>
     <!-- footer start -->
