@@ -27,6 +27,7 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.security.Principal;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static com.ats.property.common.constants.PropertyUtils.isNotNull;
@@ -994,14 +995,15 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
 
     private String buildMailBodyFromTemplate(PropertyUser user) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy hh:mm a");
         Map model = new HashMap<String, String>();
-        model.put("user.registeredDate", new java.util.Date().toString());
-        model.put("user.emailAddress", user.getEmailId());
-        model.put("user.id", user.getId());
-        model.put("user.name", user.getFirstName());
+        model.put("registeredDate", formatter.format(new java.util.Date()));
+        model.put("emailAddress", user.getEmailId());
+        model.put("id", user.getId());
+        model.put("name", user.getFirstName());
 
         String text = VelocityEngineUtils.mergeTemplateIntoString(
-                velocityEngine, "mailtemplate/registration-confirmation.vm", model);
+                velocityEngine, "mailtemplate/registration-confirmation.vm", "UTF-8", model);
         return text;
     }
 }

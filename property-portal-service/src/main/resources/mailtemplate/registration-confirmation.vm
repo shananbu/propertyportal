@@ -9,9 +9,9 @@
     <tr>
         <td align="center"><table border="0" cellspacing="0" cellpadding="0" width="100%">
             <tr>
-                <td align="left"><img src="images/logo.png" width="300" height="65" alt=""/></td>
+                <td align="left"><img src="http://www.1acreindia.com/property-portal/images/logo.png" width="300" height="65" alt=""/></td>
                 <td style="font-size:18px; font-weight:bold; text-align:right; color:#d1443c; font-family:Arial,Helvetica,sans-serif;">
-                    Date: ${user.registeredDate}
+                    ${registeredDate}
                 </td>
             </tr>
         </table></td>
@@ -29,10 +29,10 @@
         <td style="border:1px solid #5DAF33"><table border="0" cellspacing="0" cellpadding="0" width="100%">
             <tr>
                 <td style="padding:10px 25px; text-align:left; font-family:Arial,Helvetica,sans-serif; font-size:14px;" >
-                    Hi  ${user.name}, <br><br>
+                    Hi  ${name}, <br><br>
 
                     We thank you to register with us which is a great opportunity to get more business through our site.<br>
-                    We request you to confirm your registration by clicking on the URL :  <a href='www.1acreindia.com/propbrerty-portal/activateAccount?userName=" + ${user.emailAddress} + "&userIdentification=" + ${user.id}   + "' target='_blank'> Approve Me.</a>. <br>
+                    We request you to confirm your registration by clicking on the URL :  <a href='www.1acreindia.com/property-portal/activateAccount?userName=${emailAddress}&userIdentification=${id} target=_blank'> Approve Me.</a>. <br>
                     This confirmation is to allow you to post your advertisement in the site.<br><br>
 
                     Thanking you.<br><br>
@@ -40,7 +40,7 @@
 
                     Regards,<br>
                     Administrator<br>
-                    wwww.1acreindia.com<br>
+                    www.1acreindia.com<br>
                 </td>
             </tr>
         </table></td>

@@ -190,8 +190,8 @@ public class WebAppBeanConfiguration {
 
     @Bean(name = "vEngine")
     @Scope(value = "singleton")
-    public VelocityEngine schedulerFactoryBean() {
-        final VelocityEngineFactoryBean velocityEngineFactoryBean = new VelocityEngineFactoryBean();
+    public VelocityEngine velocityEngineBean() {
+        VelocityEngineFactoryBean velocityEngineFactoryBean = new VelocityEngineFactoryBean();
         velocityEngineFactoryBean.setPreferFileSystemAccess(false);
         Properties velocityEngineProperties = new Properties();
         velocityEngineProperties.setProperty("resource.loader", "classpath");
@@ -204,7 +204,6 @@ public class WebAppBeanConfiguration {
         } catch (IOException e) {
             throw new RuntimeException("Unable to create velocity engine instance");
         }
-        System.out.println(">>>>>>>>>>>>>created " + velocityEngine);
         return velocityEngine;
     }
 
