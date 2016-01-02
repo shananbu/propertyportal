@@ -30,10 +30,9 @@
             <tr>
                 <td style="padding:10px 25px; text-align:left; font-family:Arial,Helvetica,sans-serif; font-size:14px;" >
                     Hi  ${name}, <br><br>
-
-                    We thank you to register with us which is a great opportunity to get more business through our site.<br>
-                    We request you to confirm your registration by clicking on the URL :  <a href='www.1acreindia.com/property-portal/activateAccount?userName=${emailAddress}&userIdentification=${id} target=_blank'> Approve Me.</a>. <br>
-                    This confirmation is to allow you to post your advertisement in the site.<br><br>
+                    We thank you for your registration with us which is a great opportunity to get more business through our website.<br>
+                    We request you to confirm your registration by clicking on the URL :  <a href='www.1acreindia.com/property-portal/activateAccount?userName=${emailAddress}&userIdentification=${id} target=_blank'>New login request</a>. <br>
+                    This confirmation is to allow you to post your advertisement in our website.<br><br>
 
                     Thanking you.<br><br>
 
