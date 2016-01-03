@@ -73,4 +73,6 @@ public interface IPropertyAdminService {
 
     PlanType getPlanById(Long planId);
 
+    Long getCurrentUserId();
+
 }

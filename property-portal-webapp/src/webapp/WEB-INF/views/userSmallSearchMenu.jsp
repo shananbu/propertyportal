@@ -44,7 +44,9 @@
                             <label> Price</label>
                             <select  placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
                                 <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
+                                    <c:if test="${data.propertyForTypeId eq 1}">
                                     <option value="${data.id}">${data.name}</option>
+                                    </c:if>
                                 </c:forEach>
                             </select>
                         </li>
@@ -106,7 +108,9 @@
                             <label> Price</label>
                             <select placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
                                 <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
+                                    <c:if test="${data.propertyForTypeId eq 2}">
                                     <option value="${data.id}">${data.name}</option>
+                                    </c:if>
                                 </c:forEach>
                             </select>
                         </li>
@@ -169,7 +173,9 @@
                             <label> Price</label>
                             <select placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
                                 <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
+                                    <c:if test="${data.propertyForTypeId eq 1}">
                                     <option value="${data.id}">${data.name}</option>
+                                    </c:if>
                                 </c:forEach>
                             </select>
                         </li>

@@ -2,6 +2,7 @@ package com.ats.property.service.delegate;
 
 import com.ats.property.common.constants.CommonHelper;
 import com.ats.property.common.constants.PropertyConstants;
+import com.ats.property.common.constants.ResponseMessage;
 import com.ats.property.dto.*;
 import com.ats.property.service.IPropertyAdminService;
 import com.ats.property.service.helper.IPropertyAdminHelper;
@@ -170,7 +171,7 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
 
     @Override
     public boolean getBudgetList(ModuleList response) {
-        return adminHelper.getPropertyTypeList(response);
+        return adminHelper.getBudgetList(response);
     }
 
     @Override
@@ -254,7 +255,14 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
         if(fromNullable(moduleRequest).isPresent()) {
             alertRegistrationType = moduleRequest.getAlertRegistration();
         }
-        return adminHelper.saveAlert(alertRegistrationType, response);
+        if(adminHelper.saveAlert(alertRegistrationType, response) == true) {
+            response.getMessages().get(0).setCode(ResponseMessage.SUCCESSFUL_RESPONSE.code());
+            response.getMessages().get(0).setMessage("Alert Registration completed Successfully.");
+        } else {
+            response.getMessages().get(0).setCode(ResponseMessage.UNEXPECTED_ERROR.code());
+            response.getMessages().get(0).setMessage("Alert Registration failed. Please try again.");
+        }
+        return true;
     }
 
     @Override

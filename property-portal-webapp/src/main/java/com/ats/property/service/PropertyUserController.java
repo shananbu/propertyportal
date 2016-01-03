@@ -157,6 +157,7 @@ public class PropertyUserController implements InitializingBean {
         adminDelegate.getBedroomsList(response);
         adminDelegate.getBudgetList(response);
         adminDelegate.getPropertyTypeList(response);
+        adminDelegate.getUserType(response);
         adminDelegate.getAdvertisePlanListByUserType(userType, response, true);
         modelAndView.addObject("response", response);
         modelAndView.addObject("userType", userType);
@@ -354,9 +355,10 @@ public class PropertyUserController implements InitializingBean {
 
     @RequestMapping(value = {"/registerPropertyAlert" }, method = RequestMethod.POST)
     public ModelAndView registerPropertyAlert(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
-        ModelAndView modelAndView = new ModelAndView("registerPropertyAlert");
+        ModelAndView modelAndView = new ModelAndView("userResponse");
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.saveAlert(moduleRequest, response);
+        modelAndView.addObject("response", response);
         return modelAndView;
     }
 

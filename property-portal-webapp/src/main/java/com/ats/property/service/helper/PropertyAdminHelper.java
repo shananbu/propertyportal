@@ -358,7 +358,10 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     public boolean saveAlert(AlertRegistrationType alertType, ModuleList response) {
         PropertyRequirement alert = new PropertyRequirement();
         PropertyUtils.copyFields(alertType, alert);
-        adminService.saveAlert(alert, alertType);
+        if(adminService.getCurrentUserId() != null) {
+            adminService.saveAlert(alert, alertType);
+            return true;
+        }
         return true;
     }
 

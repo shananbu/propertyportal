@@ -735,6 +735,8 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         requirement.setBudgetByBudgetId(adminDAO.findObjectById(requirement.getBudgetId(), Budget.class));
         requirement.setPropertyForTypeByPropertyForTypeId(adminDAO.findObjectById(requirement.getPropertyForTypeId(), PropertyForType.class));
         requirement.setUnitMasterByBuildupAreaUnitId(adminDAO.findObjectById(requirement.getBuildupAreaUnitId(), UnitMaster.class));
+        requirement.setPropertyUserByPropertyUserId(adminDAO.findObjectById(getCurrentUserId(), PropertyUser.class));
+
         PropertyRequirement requirementFromDB = adminDAO.saveAlert(requirement);
         if(isNotNull(requirementFromDB)) {
             if(isNotNull(alertType)) {
