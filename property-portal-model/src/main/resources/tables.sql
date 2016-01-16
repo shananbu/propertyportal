@@ -199,6 +199,16 @@ insert into PropertyType (name, propertyMainTypeId) values('Industrial Shed', 2)
 insert into PropertyType (name, propertyMainTypeId) values('Agricultural Land', 3);
 insert into PropertyType (name, propertyMainTypeId) values('Farm House', 3);
 
+create table PropertyForType (
+  id bigint auto_increment,
+  nameForPoster varchar(25),
+  nameForFinder varchar(25),
+  constraint pk13 primary key(id)
+);
+
+insert into PropertyForType (nameForPoster, nameForFinder) values('Sell', 'Buy');
+insert into PropertyForType (nameForPoster, nameForFinder) values('Rent', 'Rent');
+
 
 create table Budget (
   id bigint auto_increment,
@@ -280,18 +290,6 @@ create table FurnishedStatus (
 insert into FurnishedStatus (name) values ('Furnished' );
 insert into FurnishedStatus (name) values ('Unfurnished' );
 insert into FurnishedStatus (name) values ('Semi-Furnished' );
-
-
-
-create table PropertyForType (
-  id bigint auto_increment,
-  nameForPoster varchar(25),
-  nameForFinder varchar(25),
-  constraint pk13 primary key(id)
-);
-
-insert into PropertyForType (nameForPoster, nameForFinder) values('Sell', 'Buy');
-insert into PropertyForType (nameForPoster, nameForFinder) values('Rent', 'Rent');
 
 
 create table Bathroom (
