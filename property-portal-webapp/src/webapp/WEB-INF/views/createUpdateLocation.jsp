@@ -67,6 +67,15 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <label class="label_right">
+                                                Pincode</label>
+                                        </td>
+                                        <td>
+                                            <input id="pincode" type="text" name="location.pincode" required placeholder="Enter pincode">
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td class="td_right_align">
                                             <input type="submit" value="Create">
                                         </td>
@@ -88,6 +97,15 @@
                                         <td>
                                             <input id="locationNameForUpdate" type="text" placeholder="Enter location name">
                                             <input type="hidden" id="updateId">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="label_right">
+                                                Pincode</label>
+                                        </td>
+                                        <td>
+                                            <input id="pincodeForUpdate" type="text" placeholder="Enter pincode">
                                         </td>
                                     </tr>
                                     <tr>

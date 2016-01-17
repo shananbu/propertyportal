@@ -78,6 +78,7 @@ create table City (
   id bigint auto_increment,
   name varchar(25),
   stateId bigint,
+  pincode bigint,
   isPopular boolean,
   constraint pk3 primary key(id),
   constraint fk2 foreign key (stateId) references State(id)

@@ -172,6 +172,7 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
         Locations location = new Locations();
         location.setName(locationData.getName());
         location.setId(locationData.getId());
+        location.setPincode(locationData.getPincode());
         if(locationData.getParentId() != -1) {
             location.setCityId(locationData.getParentId());
         }

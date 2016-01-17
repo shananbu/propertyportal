@@ -13,6 +13,7 @@ public class Locations {
     private String name;
     private Long cityId;
     private City cityByCityId;
+    private Long pincode;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,5 +76,13 @@ public class Locations {
 
     public void setCityByCityId(City cityByCityId) {
         this.cityByCityId = cityByCityId;
+    }
+
+    public Long getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(Long pincode) {
+        this.pincode = pincode;
     }
 }

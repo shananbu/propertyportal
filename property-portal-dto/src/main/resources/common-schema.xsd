@@ -66,6 +66,7 @@
             <xs:element name="nameForPoster" type="xs:string"/>
             <xs:element name="nameForFinder" type="xs:string"/>
             <xs:element name="label" type="xs:string"/>
+            <xs:element name="pincode" type="xs:long" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 

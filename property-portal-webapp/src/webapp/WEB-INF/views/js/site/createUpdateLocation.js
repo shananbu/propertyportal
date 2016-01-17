@@ -15,6 +15,7 @@ $(document).ready(function(){
         select: function( event, ui ) {
             $( "#locationNameForUpdate" ).val( ui.item.name);
             $( "#updateId" ).val(ui.item.id);
+            $( "#pincodeForUpdate" ).val(ui.item.pincode);
             return false;
         }
     }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
@@ -29,6 +30,7 @@ $(document).ready(function(){
             name: 'location.id',
             id: 'locationId'}).appendTo('form');
         $("#locationId").val($( "#updateId" ).val());
+        $("#pincode").val($( "#pincodeForUpdate" ).val());
         $("#frmLocation").submit();
     });
 

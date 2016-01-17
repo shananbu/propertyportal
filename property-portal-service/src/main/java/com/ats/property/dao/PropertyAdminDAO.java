@@ -208,6 +208,7 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         Session session = getSession();
         Locations locationForUpdate =  (Locations)session.get(Locations.class, location.getId());
         locationForUpdate.setName(location.getName());
+        locationForUpdate.setPincode(location.getPincode());
         session.update(locationForUpdate);
         session.flush();
         return locationForUpdate;
