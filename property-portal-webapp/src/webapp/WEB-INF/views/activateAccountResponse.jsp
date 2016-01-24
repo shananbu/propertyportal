@@ -15,13 +15,16 @@
 <main class="main_wrapper clr_fix">
     <header class="clr_fix top_head">
         <%@ include file="userHeader.jsp" %>
-        To post advertisement login <a href="userLogin">here</a>
+
     </header>
     <section class="clr_fix">
         <div class="row_main terms_cond box_shadow">
             <h1 class="h_2">
                 Your account is successfully activated.
             </h1>
+            <h4>
+                To post advertisement login <a href="userLogin">here</a>
+            </h4>
         </div>
         <!-- footer start -->
         <footer class="clr_fix foot_main">
