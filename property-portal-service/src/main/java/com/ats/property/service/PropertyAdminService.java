@@ -387,6 +387,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
         AdvertisementType advertisementType = new AdvertisementType();
         advertisementType.setId(advertisement.getId());
+        advertisementType.setPlanId(advertisement.getPlanMastByPlanId().getId());
         return advertisementType;
     }
 

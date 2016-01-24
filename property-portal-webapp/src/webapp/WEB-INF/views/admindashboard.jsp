@@ -143,7 +143,7 @@
             </table>
         </div>
         <div class="row_main tab_size_50_right clr_fix mar_bot">
-            <div class="title1"> Alrts</div>
+            <div class="title1"> Alerts</div>
             <table border="0" cellspacing="0" cellpadding="4">
                 <tr>
                     <td>
