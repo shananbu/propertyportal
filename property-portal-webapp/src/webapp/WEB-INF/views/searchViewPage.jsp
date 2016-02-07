@@ -34,9 +34,11 @@
                 return false;
             });
         });
-
-
     </script>
+    <script src="js/pagination/jquery.bootpag.min.js"></script>
+    <script src="js/site/searchPagination.js"></script>
+    <link href="css/pagination/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+
 </head>
 <body>
 <main class="main_wrapper clr_fix">
@@ -50,16 +52,18 @@
 <div class="row_main">
     <section class="col_4 clr_fix">
         <section class="inner_wrapper">
+
             <div class="search_title box_shadow"> <span> Refine Your Results </span>
                 <div>
                     <select class="dropdown">
                         <option> Most Recent Ads </option>
-                        <option> Low to Hight </option>
-                        <option> Hight to Low </option>
+                        <option> Low to high </option>
+                        <option> High to Low </option>
                     </select>
                 </div>
             </div>
             <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" varStatus="entry">
+            <div id="content">
             <div class="sear_list">
                 <ul>
                     <li>
@@ -100,40 +104,10 @@
                     </li>
                 </ul>
             </div>
+            </div>
             </c:forEach>
+            <div id="page-selection"></div>
         </section>
- <%--       <aside class="ad_1_left re_m clr_fix">
-            <h1 class="h_1">New projects</h1>
-            <ul class="box_shadow clr_fix">
-                <li> <a href="#"> <img src="images/image_1.jpg">
-                    <figcaption class="pro_info_1">
-                        <h1>Silver Ripples </h1>
-                        <p> Sumadhura Infracon Pvt. Ltd. </p>
-                        <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                        <ul>
-                            <li> Beds : <span> 2, 3  BHK </span> </li>
-                            <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
-                            <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
-                            <li> <span> <small>Read More</small> </span> </li>
-                        </ul>
-                    </figcaption>
-                </a> </li>
-                <li> <a href="#"> <img src="images/image_1.jpg">
-                    <figcaption class="pro_info_1">
-                        <h1>Silver Ripples </h1>
-                        <p> Sumadhura Infracon Pvt. Ltd. </p>
-                        <span> <i class="fa fa-map-marker"></i> Bangalore East </span>
-                        <ul>
-                            <li> Beds : <span> 2, 3  BHK </span> </li>
-                            <li> Buildup Area : <span> 900 sq.ft onwards </span> </li>
-                            <li> Cost : <span> <i class="fa fa-inr"></i> 2.5 Lac onwards</span> </li>
-                            <li> <span> <small>Read More</small> </span> </li>
-                        </ul>
-                    </figcaption>
-                </a> </li>
-            </ul>
-        </aside>--%>
-
     </section>
 </div>
 </section>
