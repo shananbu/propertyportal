@@ -14,6 +14,7 @@ public class UserType {
     private String name;
     private Collection<PlanMast> planMastsById;
     private String shortName;
+    private String postPropertyUrl;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -72,5 +73,15 @@ public class UserType {
 
     public void setShortName(String shortName) {
         this.shortName = shortName;
+    }
+
+    @Basic
+    @Column(name = "postPropertyUrl", nullable = true, insertable = true, updatable = true, length = 60)
+    public String getPostPropertyUrl() {
+        return postPropertyUrl;
+    }
+
+    public void setPostPropertyUrl(String postPropertyUrl) {
+        this.postPropertyUrl = postPropertyUrl;
     }
 }

@@ -250,6 +250,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                             .replaceAll(PropertyConstants.PLAN_DAYS_PLACEHOLDER.value(), planType.getValidDays().toString());
                     CommonHelper.parseLineByLine(dataFilledString, planType.getLineByeLineDescription());
                 }
+                planType.setPostPropertyUrl(plan.getUserTypeByUserTypeId().getPostPropertyUrl());
                 planType.setUserTypeName(plan.getUserTypeByUserTypeId().getName());
                 moduleResponseType.getPlans().add(planType);
             }

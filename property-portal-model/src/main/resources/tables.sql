@@ -19,12 +19,13 @@ create table UserType (
   id bigint,
   name varchar(50),
   shortName varchar(50),
+  postPropertyUrl varchar(50),
   constraint pk8 primary key(id)
 );
 
-insert into UserType values('1','Individuals Property Owners', 'Owner ');
-insert into UserType values('2','Brokers, Agents and Consultants', 'Agent ');
-insert into UserType values('3','Builders', 'Builder');
+insert into UserType values('1','Individuals Property Owners', 'Owner', 'postProperty');
+insert into UserType values('2','Brokers, Agents and Consultants', 'Agent', 'postPropertyInMicrosite');
+insert into UserType values('3','Builders', 'Builder', 'postPropertyInMicrosite');
 
 -- drop table Country;
 create table Country (

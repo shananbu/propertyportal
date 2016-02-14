@@ -40,7 +40,7 @@
                 </ul>
                 <ul id="prop_list">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.plans}">
-                        <li><a href="postProperty">${data.name}</a>
+                        <li><a href="${data.postPropertyUrl}?planId=${data.id}">${data.name}</a>
                             <ul>
                                 <c:forEach var="desc" items="${data.lineByeLineDescription}">
                                     <li> ${desc} </li>

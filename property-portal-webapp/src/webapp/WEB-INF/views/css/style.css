@@ -2581,7 +2581,7 @@ footer li a:hover {
 	margin: 35px auto 15px 15px;
 }
 #prop_list li ul {
-	display: none;
+	display: inline;
 }
 #prop_list > li a {
 	border-top: 1px dashed #ddd;
@@ -2637,6 +2637,7 @@ footer li a:hover {
 #prop_list > li > ul li {
 	font-size: 13px;
 	padding: 5px 0px;
+    margin-left: 50px;
 	position: relative;
 }
 #prop_list > li > ul li:before {

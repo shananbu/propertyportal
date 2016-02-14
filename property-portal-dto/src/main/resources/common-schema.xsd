@@ -35,6 +35,7 @@
             <xs:element name="description" type="xs:string"/>
             <xs:element name="lineByeLineDescription" type="xs:string" maxOccurs="unbounded"/>
             <xs:element name="validDays" type="xs:int" minOccurs = "0"/>
+            <xs:element name="postPropertyUrl" type="xs:string" minOccurs = "0"/>
         </xs:sequence>
     </xs:complexType>
 
