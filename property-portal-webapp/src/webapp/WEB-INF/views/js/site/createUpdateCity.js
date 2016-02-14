@@ -42,7 +42,22 @@ $(document).ready(function(){
                           name: 'city.id',
                           id: 'cityId'}).appendTo('form');
         $("#cityId").val($( "#updateId" ).val());
-        $("#frmCity").submit();
+        if($( "#updateId" ).val() == "") {
+            alert("Please select city from auto complete and edit the city");
+        } else {
+            $("#frmCity").submit();
+        }
     });
 
-});
+    $("#createButton").click(function () {
+        if ($("#parentId").val() == -1) {
+            alert("Please select State");
+        } else if ($.trim($("#cityName").val()) == "") {
+            alert("Please Enter City Name");
+        } else {
+            $("#frmCity").submit();
+        }
+    });
+
+
+    });

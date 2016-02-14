@@ -77,7 +77,7 @@
                                     </tr>--%>
                                     <tr>
                                         <td class="td_right_align">
-                                            <input type="submit" value="Create">
+                                            <input type="button" value="Create" id="createButton">
                                         </td>
                                         <td class="td_right_align">
                                             <input type="reset" value="reset">
