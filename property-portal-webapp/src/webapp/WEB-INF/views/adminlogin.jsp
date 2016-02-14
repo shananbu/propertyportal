@@ -49,7 +49,7 @@
         <label class="label_cus"> Password <span class="mand">*</span></label>
         <input type="password" class="text_box" placeholder="Password" name="password" <%--name="standardAuth.password"--%>>
         <i class="fa fa-lock icon_1"></i> </div>
-      <div class="mar_bot_20"> <a href="#" class="link_1 forger_pass align_left">Forget Password</a>
+      <div class="mar_bot_20"> <a href="#" class="link_1 forger_pass align_left">Forgot Password</a>
         <input type="button" value="Sign In" class="submit align_right">
       </div>
     </div>

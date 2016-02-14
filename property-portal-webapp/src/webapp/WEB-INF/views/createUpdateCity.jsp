@@ -63,10 +63,10 @@
                                                 City</label>
                                         </td>
                                         <td>
-                                            <input id="cityName" type="text" name="city.name" required placeholder="Enter city name">
+                                            <input id="cityName" type="text" name="city.name" required placeholder="Enter city name" class = "capitalize_txt">
                                         </td>
                                     </tr>
-                                    <tr>
+                                  <%--  <tr>
                                         <td>
                                             <label class="label_right">
                                                 Popular City</label>
@@ -74,7 +74,7 @@
                                         <td  class="td_left">
                                             <input id="isPopularCity" type="checkbox" name="city.isPopular" value="1">
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td class="td_right_align">
                                             <input type="submit" value="Create">
@@ -99,7 +99,7 @@
                                             <input type="hidden" id="updateId">
                                         </td>
                                     </tr>
-                                    <tr>
+                                   <%-- <tr>
                                         <td>
                                             <label class="label_right">
                                                 Popular City</label>
@@ -107,7 +107,7 @@
                                         <td  class="td_left">
                                             <input id="isPopularCityForUpdate" type="checkbox" >
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td class="td_right_align">
                                             <input type="button" value="Update" id="updateButton">

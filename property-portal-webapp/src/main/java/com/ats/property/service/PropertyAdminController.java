@@ -147,10 +147,10 @@ public class PropertyAdminController implements InitializingBean{
     @RequestMapping(value = { "/saveOrUpdateCity" }, method = RequestMethod.POST)
     public ModelAndView saveOrUpdateCity(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
         ModuleList response = CommonHelper.getSuccessModuleList();
-        adminDelegate.getStateList(null, response);
         adminDelegate.saveOrUpdateCity(moduleRequest, response);
         ModelAndView modelAndView = new ModelAndView("createUpdateCity");
         adminDelegate.getStateList(null, response);
+        modelAndView.addObject("response", response);
         return  modelAndView;
     }
 

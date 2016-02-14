@@ -210,6 +210,12 @@ public class PropertyUserController implements InitializingBean {
         return modelAndView;
     }
 
+    @RequestMapping(value = { "/projectOverviewSample" }, method = RequestMethod.GET)
+    public ModelAndView showProjectOverview() {
+        ModelAndView modelAndView = new ModelAndView("projectOverviewSample");
+        return modelAndView;
+    }
+
     @RequestMapping(value = { "/emiCalculator" }, method = RequestMethod.GET)
     public ModelAndView emiCalculator() {
         ModelAndView modelAndView = new ModelAndView("emiCalculator");

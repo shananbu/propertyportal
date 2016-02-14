@@ -31,8 +31,10 @@
                     <li class="menu_active"><a href="#unit">Unit Details </a></li>
                     <li><a href="#gallery"> gallery </a></li>
                     <li><a href="#map_view"> map view </a></li>
+                    <li><a href="#emicalc"> EMI Calculator </a></li>
+                    <li><a href="#contactus"> Contact us </a></li>
                 </ul>
-                <span class="over_contact"> <i class="fa fa-phone"></i> click here to contact </span></nav>
+               <%-- <span class="over_contact"> <i class="fa fa-phone"></i> click here to contact </span></nav>--%>
         </div>
     </div>
 </header>
@@ -182,7 +184,7 @@
         </div>
     </div>
 </section>
-<section class="sec_view_7 sec_view_block">
+<section class="sec_view_7 sec_view_block" id="emicalc">
     <div class="row_main">
         <h1><span>EMI CALCULATOR</span></h1>
 
@@ -191,7 +193,7 @@
         </div>
     </div>
 </section>
-<section class="sec_view_8 sec_view_block">
+<section class="sec_view_8 sec_view_block" id="contactus">
     <div class="row_main">
         <h1><span>Contact us</span></h1>
 

@@ -22,15 +22,17 @@
 <main class="main_wrapper clr_fix pro_view_top">
   <header class="clr_fix top_head single-page-nav">
     <div class="row_main">
-      <div class="col_1 clr_fix"> <a href="#" class="logo"> <img src="images/logo.png"> </a> </div>
+        <div class="col_1 clr_fix"><a href="index" class="logo"> <img src="images/logo.png"> </a></div>
       <div class="col_2 clr_fix">
         <nav class="clr_fix nav_1 top_nav_2">
           <ul>
             <li class="menu_active"><a href="#unit">Unit Details </a></li>
             <li><a href="#gallery"> gallery </a></li>
             <li><a href="#map_view"> map view </a></li>
+              <li><a href="#emicalc"> EMI Calculator </a></li>
+              <li><a href="#contactus"> Contact us </a></li>
           </ul>
-          <span class="over_contact"> <i class="fa fa-phone"></i> click here to contact </span> </nav>
+         <%-- <span class="over_contact"> <i class="fa fa-phone"></i> click here to contact </span> </nav>--%>
       </div>
     </div>
   </header>
@@ -288,7 +290,7 @@
       <div class="clr_fix bank_info"> <img src="images/hdfc.jpg"> <img src="images/axis.jpg"> <img src="images/indiabulls.jpg"> <img src="images/sbi.jpg"> <img src="images/pnb.jpg"> <img src="images/lic.jpg"> </div>
     </div>
   </section>--%>
-  <section class="sec_view_7 sec_view_block">
+  <section class="sec_view_7 sec_view_block" id="emicalc">
     <div class="row_main">
       <h1><span>EMI CALCULATOR</span></h1>
       <div class="clr_fix box_shadow emi_cal">
@@ -296,7 +298,7 @@
       </div>
     </div>
   </section>
-  <section class="sec_view_8 sec_view_block">
+  <section class="sec_view_8 sec_view_block" id="contactus">
     <div class="row_main">
       <h1><span>Contact us</span></h1>
       <div class="clr_fix box_shadow contact_pro">

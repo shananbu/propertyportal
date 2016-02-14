@@ -288,7 +288,7 @@
             <c:forEach begin="${counter}" end="1" var="val">
                 <li> <img src="images/image_1.jpg">
                     <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a>
-                        <a target="_blank" href="projectOverview?advertisementId=1" class="cli_add">click here for sample add</a> </div>
+                        <a target="_blank" href="projectOverviewSample" class="cli_add">click here for sample add</a> </div>
                     <figcaption class="pro_info_1">
                         <h1>Project Name </h1>
                         <p> Company Name </p>
@@ -331,7 +331,7 @@
             <c:forEach begin="${counter}" end="1" var="val">
                 <li>
                     <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a>
-                        <a target="_blank" href="projectOverview?advertisementId=1" class="cli_add">click here for sample add</a> </div>
+                        <a target="_blank" href="projectOverviewSample" class="cli_add">click here for sample add</a> </div>
                     <a href="#"> <img src="images/image_3.jpg">
                         <figcaption class="pro_info_1"> <img src="images/no_image.jpg">
                             <summary>
@@ -373,7 +373,7 @@
             <c:forEach begin="${counter}" end="2" var="val">
                 <li>
                     <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a>
-                        <a target="_blank" href="projectOverview?advertisementId=1" class="cli_add">click here for sample add</a> </div>
+                        <a target="_blank" href="projectOverviewSample" class="cli_add">click here for sample add</a> </div>
                     <img src="images/image_6.jpg">
                     <figcaption class="pro_info_1">
                         <h1>Project Name </h1>
@@ -415,7 +415,7 @@
             <c:forEach begin="${counter}" end="1" var="val">
                 <li> <img src="images/image_1.jpg">
                     <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a>
-                        <a target="_blank" href="projectOverview?advertisementId=1" class="cli_add">click here for sample add</a> </div>
+                        <a target="_blank" href="projectOverviewSample" class="cli_add">click here for sample add</a> </div>
                     <figcaption class="pro_info_1">
                         <h1>Project Name </h1>
                         <p> Company Name </p>
@@ -459,7 +459,7 @@
     <c:forEach begin="${counter}" end="5" var="val">
         <li> <img src="images/image_1.jpg">
             <div class="adver_here"><a href="postPropertyInMicrosite" class="adver_here_txt"> ADvertise here</a>
-                <a target="_blank" href="projectOverview?advertisementId=1" class="cli_add">click here for sample add</a> </div>
+                <a target="_blank" href="projectOverviewSample" class="cli_add">click here for sample add</a> </div>
             <figcaption class="pro_info_1">
                 <h1>Project Name </h1>
                 <p> Company Name </p>

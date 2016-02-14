@@ -207,7 +207,7 @@ create table PropertyForType (
   constraint pk13 primary key(id)
 );
 
-insert into PropertyForType (nameForPoster, nameForFinder) values('Sell', 'Buy');
+insert into PropertyForType (nameForPoster, nameForFinder) values('Sale', 'Buy');
 insert into PropertyForType (nameForPoster, nameForFinder) values('Rent', 'Rent');
 
 

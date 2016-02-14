@@ -32,11 +32,11 @@ $(document).ready(function(){
 
 
     $("#updateButton").click(function(){
-        if($("#isPopularCityForUpdate").prop('checked') == true) {
+       /* if($("#isPopularCityForUpdate").prop('checked') == true) {
             $("#isPopularCity").prop('checked', true);
         } else {
             $("#isPopularCity").prop('checked', false);
-        }
+        }*/
         $("#cityName").val($("#cityNameForUpdate").val());
         $('<input>').attr({type : 'hidden',
                           name: 'city.id',

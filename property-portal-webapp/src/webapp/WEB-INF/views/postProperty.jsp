@@ -109,7 +109,7 @@
             <label>Property Type<small>*</small></label>
             <div class="search_loc">
                 <div class="pro_type">
-                    Property Type <i class="fa fa-caret-down"></i>
+                    <label id="propertyTypeSelected">Property Type</label> <i class="fa fa-caret-down"></i>
                 </div>
                 <div class="pro_list">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
@@ -118,7 +118,7 @@
                             <c:forEach var="innerData" items="${data.propertyTypesById}">
                                 <li>
                                     <span class="jq_chk">
-                                        <input type="radio" name="advertisement.propertyTypeId" id="${innerData.id}" value="${innerData.id}" required>
+                                        <input type="radio" name="advertisement.propertyTypeId" id="${innerData.id}" value="${innerData.id}" required onchange="setPropertyType('${innerData.name}')">
                                          <label for="${innerData.id}"></label>
                                     </span>  ${innerData.name}
                                 </li>
@@ -160,10 +160,10 @@
             <label>Address<small>*</small></label>
             <input type="text" placeholder="Address" name="advertisement.address" class="projectname" required>
         </li>
-        <li>
+       <%-- <li>
             <label>Company / <br> Builder Name<small>*</small></label>
             <input type="text" placeholder="Builder Name" name="advertisement.builderName" class="projectname" required>
-        </li>
+        </li>--%>
     </ul>
 </div>
 
@@ -203,8 +203,8 @@
                 </c:forEach>
             </select>
 
-            <label>Balconies<small>*</small></label>
-            <select class="dropdown" name="advertisement.balconyId" required>
+            <label>Balconies</label>
+            <select class="dropdown" name="advertisement.balconyId" >
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.balconies}">
                     <option value="${data.id}">${data.name}</option>
@@ -212,8 +212,8 @@
             </select>
         </li>
         <li>
-            <label>Floor No<small>*</small></label>
-            <select class="dropdown" name="advertisement.propertyOnFloorId" required>
+            <label>Floor No.</label>
+            <select class="dropdown" name="advertisement.propertyOnFloorId">
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.totalFloors}">
                     <option value="${data.id}">${data.name}</option>

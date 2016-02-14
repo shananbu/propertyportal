@@ -63,7 +63,7 @@
                                                 Location</label>
                                         </td>
                                         <td>
-                                            <input id="locationName" type="text" name="location.name" required placeholder="Enter location">
+                                            <input id="locationName" type="text" name="location.name" required placeholder="Enter location" class = "capitalize_txt">
                                         </td>
                                     </tr>
                                     <tr>

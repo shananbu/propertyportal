@@ -9,11 +9,13 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.*;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.hibernate.sql.JoinType;
 import org.springframework.beans.factory.InitializingBean;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 import static com.google.common.base.Optional.fromNullable;
@@ -478,7 +480,7 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         Session session = getSession();
         Criteria searchCriteria = session.createCriteria(Advertisement.class);
         searchCriteria.createAlias("advertisementDetailsesById", "advertisementDetails");
-        searchCriteria.createAlias("morePropertyDetailsesById", "morePropertyDetails");
+        searchCriteria.createAlias("morePropertyDetailsesById", "morePropertyDetails", JoinType.LEFT_OUTER_JOIN);
         searchCriteria.createAlias("residentialsById", "residential");
        // searchCriteria.createAlias("planMastByPlanId", "plan");
 
@@ -492,7 +494,6 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         if (searchType.getLocationId() != null) {
             searchCriteria.add(Restrictions.eq("locationId", searchType.getLocationId()));
         }
-
         if (searchType.getExpectedPrice() != null) {
             Budget budget = findObjectById(searchType.getExpectedPrice(), Budget.class);
 

@@ -112,7 +112,7 @@
                 <small>*</small>
             </label>
             <c:forEach var="data" items="${response.module[0].moduleResponse.propertyForTypes}">
-                <c:if test="${data.nameForPoster eq 'Sell'}">
+                <c:if test="${data.nameForPoster eq 'Sale'}">
                     <span>
                         <input type="radio" id="0${data.id}" value="0${data.id}" name="advertisement.propertyForTypeId" checked required>
                         <label for="0${data.id}"></label>
@@ -141,7 +141,7 @@
             <label>Property Type <small>*</small></label>
             <div class="search_loc">
                 <div class="pro_type">
-                    Property Type <i class="fa fa-caret-down"></i>
+                    <label id="propertyTypeSelected">Property Type</label> <i class="fa fa-caret-down"></i>
                 </div>
                 <div class="pro_list">
                     <c:forEach var="data" items="${response.module[0].moduleResponse.mainPropertyTypes}">
@@ -150,7 +150,7 @@
                             <c:forEach var="innerData" items="${data.propertyTypesById}">
                                 <li>
                                     <span class="jq_chk">
-                                        <input type="radio" name="advertisement.propertyTypeId" id="${innerData.id}" value="${innerData.id}" required>
+                                        <input type="radio" name="advertisement.propertyTypeId" id="${innerData.id}" value="${innerData.id}" required onchange="setPropertyType('${innerData.name}')">
                                          <label for="${innerData.id}"></label>
                                     </span>  ${innerData.name}
                                 </li>
@@ -192,10 +192,10 @@
             <label>Address<small>*</small></label>
             <input type="text" placeholder="Address" name="advertisement.address" class="projectname" required>
         </li>
-        <li>
+<%--        <li>
             <label>Company /<br> Builder Name<small>*</small></label>
             <input type="text" placeholder="Builder Name" name="advertisement.builderName" class="projectname" required>
-        </li>
+        </li>--%>
     </ul>
 </div>
 

@@ -164,5 +164,9 @@ $(document).ready(function(){
             });
         }
     }
-
 });
+
+
+function setPropertyType(data) {
+    $('#propertyTypeSelected').text(data);
+}

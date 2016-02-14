@@ -89,10 +89,10 @@
                         </tr>
                         <tr>
                             <td>
-                                <label class="label_right">Mail </label>
+                                <label class="label_right">EMail </label>
                             </td>
                             <td class="td_left">
-                                <input id="email" type="text" name="adminUser.mailId" <%--pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,}"--%> required placeholder="Enter you Email">
+                                <input id="email" type="text" name="adminUser.mailId" <%--pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,}"--%> required placeholder="Enter your Email">
                             </td>
                             <td>
                                 <label class="label_right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm Password </label>

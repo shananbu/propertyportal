@@ -568,3 +568,6 @@ hr.name-of-your-vertical-line {
     align: center;
 }
 
+.capitalize_txt {
+    text-transform: capitalize;
+}

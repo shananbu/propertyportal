@@ -919,7 +919,7 @@ footer li a:hover {
 .search_loc {
 	position: relative;
 	float: left;
-	width: 135px;
+	width: 200px;
 }
 .property_type {
 	display: block;
@@ -4170,3 +4170,4 @@ a.close:hover {
     display:block;
     font-size:150px;
 }
+
