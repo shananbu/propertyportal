@@ -471,6 +471,7 @@ create table Advertisement (
 	descriptionFileName varchar(100),
 	specificationFileName varchar(100),
 	isTermsAgreed varchar(1),
+	isMicroSite bit,
 	isApproved bit,
 	postDate date,
 	approvedDate date,

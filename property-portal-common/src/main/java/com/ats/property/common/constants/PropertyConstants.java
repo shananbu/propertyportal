@@ -15,7 +15,10 @@ public enum PropertyConstants {
     EXTERIOR_VIEW("EXTERIOR_VIEW"),
     RESOURCE_DIR("/propertyResources/"),
     NO_IMAGE_PATH("images/no_image.jpg"),
-    LOGO("LOGO");
+    LOGO("LOGO"),
+    CLASSIFIEDS("Classifieds"),
+    MICROSITE("Microsite")
+    ;
 
     private final String value;
 

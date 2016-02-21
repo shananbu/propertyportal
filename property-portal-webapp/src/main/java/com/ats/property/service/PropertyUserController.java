@@ -198,9 +198,20 @@ public class PropertyUserController implements InitializingBean {
     }
 
     @RequestMapping(value = { "/projectOverview" }, method = RequestMethod.GET)
-    public ModelAndView showProjectOverview(@ModelAttribute("advertisementId") String advertisementId) {
-        ModelAndView modelAndView = new ModelAndView("projectOverview");
+    public ModelAndView showProjectOverview(@ModelAttribute("advertisementId") String advertisementId, @ModelAttribute("isMicroSite")Boolean isMicroSite) {
+        ModelAndView modelAndView = null;
+        if(isMicroSite == null || !isMicroSite) {
+            modelAndView = new ModelAndView("projectOverviewClassifieds");
+        } else {
+            modelAndView = new ModelAndView("projectOverview");
+        }
         ModuleList response = CommonHelper.getSuccessModuleList();
+        getProjectForOverview(advertisementId, response);
+        modelAndView.addObject("response", response);
+        return modelAndView;
+    }
+
+    private void getProjectForOverview(String advertisementId, ModuleList response) {
         adminDelegate.getAdvertisementById(advertisementId, response);
         adminDelegate.getCityList(null, response);
         adminDelegate.getBedroomsList(response);
@@ -208,8 +219,6 @@ public class PropertyUserController implements InitializingBean {
         adminDelegate.getPropertyTypeList(response);
         adminDelegate.getImageTypeList(response);
         adminDelegate.getAmenitiesCategory(response);
-        modelAndView.addObject("response", response);
-        return modelAndView;
     }
 
     @RequestMapping(value = { "/projectOverviewSample" }, method = RequestMethod.GET)

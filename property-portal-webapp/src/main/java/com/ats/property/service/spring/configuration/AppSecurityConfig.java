@@ -53,7 +53,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                     .passwordParameter("password")
             .and()
                 .authorizeRequests()
-                .antMatchers("/admindashboard").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/admindashboard", "projectOverviewClassifieds").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/postProperty", "/postPropertyInMicrosite").hasAuthority("ROLE_USER")
                 .antMatchers("/", "/index", "/userRegistration", "/registerUser", "/userLogin", "/advertiseWithUs",
                         "/searchViewPage", "/propertyAlertRegisteration", "/projectOverview", "/emiCalculator",

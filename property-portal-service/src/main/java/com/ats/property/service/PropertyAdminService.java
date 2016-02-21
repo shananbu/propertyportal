@@ -963,6 +963,18 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 advertisementType.setLocationName(advertisement.getLocationsByLocationId().getName());
                 advertisementType.setPropertyForTypeName(advertisement.getPropertyForTypeByPropertyForTypeId().getNameForPoster());
                 advertisementType.setPropertyTypeName(advertisement.getPropertyTypeByPropertyTypeId().getName());
+                if(advertisement.getIsMicroSite() == null || !advertisement.getIsMicroSite() ) {
+                    advertisementType.setAdvtTypeName(PropertyConstants.CLASSIFIEDS.value());
+                    advertisementType.setIsMicroSite(false);
+                } else {
+                    advertisementType.setAdvtTypeName(PropertyConstants.MICROSITE.value());
+                    advertisementType.setIsMicroSite(true);
+                }
+                if(advertisement.getIsApproved()== null || !advertisement.getIsApproved() ) {
+                    advertisementType.setIsApproved(false);
+                } else {
+                    advertisementType.setIsApproved(true);
+                }
             }
             moduleResponseType.getAdvertisements().add(advertisementType);
         }

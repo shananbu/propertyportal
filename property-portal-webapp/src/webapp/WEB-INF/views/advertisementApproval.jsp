@@ -79,6 +79,7 @@
                                 <th>Property Type</th>
                                 <th>Location</th>
                                 <th>Property For</th>
+                                <th>Advertisement Type</th>
                                 <th>View details</th>
                             </tr>
                             </thead>

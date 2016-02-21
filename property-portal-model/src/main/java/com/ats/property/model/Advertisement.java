@@ -41,6 +41,7 @@ public class Advertisement {
     private Collection<Residential> residentialsById;
     private PropertyUser propertyUserByPropertyUserId;
     private Boolean isApproved;
+    private Boolean isMicroSite;
     private String specificationFileName;
     private String descriptionFileName;
     private String morePropertiesFileName;
@@ -397,6 +398,17 @@ public class Advertisement {
     public void setIsApproved(Boolean isApproved) {
         this.isApproved = isApproved;
     }
+
+    @Basic
+    @Column(name = "isMicroSite", nullable = true, insertable = true, updatable = true)
+    public Boolean getIsMicroSite() {
+        return isMicroSite;
+    }
+
+    public void setIsMicroSite(Boolean isMicroSite) {
+        this.isMicroSite = isMicroSite;
+    }
+
 
     @Basic
     @Column(name = "descriptionFileName", nullable = true, insertable = true, updatable = true, length = 100)

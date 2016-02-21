@@ -75,6 +75,7 @@
 </head>
 <body>
 <form method="post" id="frmPost" commandName="moduleRequest" action="saveOrUpdateAdvertisement">
+<input type="hidden" name="advertisement.isMicroSite" value="true">
 <main class="main_wrapper clr_fix">
 <header class="clr_fix top_head">
     <%@ include file="userHeader.jsp" %>
