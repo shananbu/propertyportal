@@ -18,6 +18,17 @@
         window.test = $('.testsel').SumoSelect({okCancelInMulti: true });
         window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti: true, selectAll: true });
         window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll: true });
+
+        $('#builderNameRow').hide();
+        $("#usertype1").click(function() {
+            $('#builderNameRow').hide();
+        });
+        $("#usertype2").click(function() {
+            $('#builderNameRow').show();
+        });
+        $("#usertype3").click(function() {
+            $('#builderNameRow').show();
+        });
     });
     </script>
 </head>
@@ -47,7 +58,7 @@
                 <label for="usertype3"></label>
                 Builder </span>
               </li>
-                <li>
+                <li id="builderNameRow">
                     <label>Builder/Company Name<small>*</small></label>
                     <input id="builderName" name="propertyUser.builderName" type="text" value="" maxlength="30" placeholder="Company Name">
                 </li>
