@@ -54,7 +54,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .authorizeRequests()
                 .antMatchers("/admindashboard", "projectOverviewClassifieds").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/postProperty", "/postPropertyInMicrosite").hasAuthority("ROLE_USER")
+                .antMatchers("/postProperty", "/postPropertyInMicrosite", "manageAdvertisements", "manageProfile").hasAuthority("ROLE_USER")
                 .antMatchers("/", "/index", "/userRegistration", "/registerUser", "/userLogin", "/advertiseWithUs",
                         "/searchViewPage", "/propertyAlertRegisteration", "/projectOverview", "/emiCalculator",
                         "/admin", "/authenticateAdmin", "/login", "/activateAccount", "/rest/v1/admin/modules/get/stateByCityId",

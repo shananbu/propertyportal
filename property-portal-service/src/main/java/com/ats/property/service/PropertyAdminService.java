@@ -69,6 +69,42 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         }
         return null;
     }
+
+    @Override
+    @Transactional
+    public boolean getAdvertisementsByUser(ModuleList response) {
+        List<Advertisement> advertisements = adminDAO.getAdvertisementsByUser(getCurrentUserId());
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        for(Advertisement advertisement : advertisements) {
+            AdvertisementType advertisementType = new AdvertisementType();
+            if (fromNullable(advertisement).isPresent()) {
+                PropertyUtils.copyFields(advertisement, advertisementType);
+                advertisementType.setCompanyName(advertisement.getBuilderName());
+                if(advertisement.getBuilderName() == null || (advertisement.getBuilderName() != null && advertisement.getBuilderName().equals("") )) {
+                    advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());
+                }
+                advertisementType.setLocationName(advertisement.getLocationsByLocationId().getName());
+                advertisementType.setPropertyForTypeName(advertisement.getPropertyForTypeByPropertyForTypeId().getNameForPoster());
+                advertisementType.setPropertyTypeName(advertisement.getPropertyTypeByPropertyTypeId().getName());
+                if(advertisement.getIsMicroSite() == null || !advertisement.getIsMicroSite()) {
+                    advertisementType.setAdvtTypeName(PropertyConstants.CLASSIFIEDS.value());
+                    advertisementType.setIsMicroSite(false);
+                } else {
+                    advertisementType.setAdvtTypeName(PropertyConstants.MICROSITE.value());
+                    advertisementType.setIsMicroSite(true);
+                }
+                if(advertisement.getIsApproved()== null || !advertisement.getIsApproved() ) {
+                    advertisementType.setDescription(PropertyConstants.APPROVAL_PENDING.value());
+                } else {
+                    advertisementType.setDescription(PropertyConstants.APPROVED.value());
+                }
+            }
+            moduleResponseType.getAdvertisements().add(advertisementType);
+        }
+        return false;
+    }
+
     public static Long getCurrentUserTypeId() {
         UserInformation user = getCurrentUser();
         if (user != null) {

@@ -75,4 +75,6 @@ public interface IPropertyAdminService {
 
     Long getCurrentUserId();
 
+    boolean getAdvertisementsByUser(ModuleList response);
+
 }

@@ -17,7 +17,9 @@ public enum PropertyConstants {
     NO_IMAGE_PATH("images/no_image.jpg"),
     LOGO("LOGO"),
     CLASSIFIEDS("Classifieds"),
-    MICROSITE("Microsite")
+    MICROSITE("Microsite"),
+    APPROVED("Approved"),
+    APPROVAL_PENDING("Pending for Approval")
     ;
 
     private final String value;

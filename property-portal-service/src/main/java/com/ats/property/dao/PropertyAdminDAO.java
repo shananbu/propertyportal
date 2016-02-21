@@ -565,4 +565,14 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     public PreferredLocations savePreferredLocations(PreferredLocations preferredLocations) {
         return (PreferredLocations)persist(preferredLocations);
     }
+
+    @Override
+    public List<Advertisement> getAdvertisementsByUser(Long userId) {
+        Session session = getSession();
+        Criteria criteria = session.createCriteria(Advertisement.class);
+        criteria.createAlias("propertyUserByPropertyUserId", "propertyUser");
+        criteria.add(Restrictions.eq("propertyUser.id", userId));
+        List<Advertisement> results = criteria.list();
+        return results;
+    }
 }

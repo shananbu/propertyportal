@@ -111,7 +111,7 @@ public class PropertyAdminWebService {
         return response;
     }
 
-    @GET
+/*    @GET
     @Path("/modules/get/advertisementForApproval")
     public ModuleList getAdvertisementForApproval(@QueryParam("searchKey") String key) {
         ModuleList response = CommonHelper.getSuccessModuleList();
@@ -125,7 +125,7 @@ public class PropertyAdminWebService {
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.getUserList(key, response);
         return response;
-    }
+    }*/
 
     @GET
     @Path("/modules/get/stateByCityId")

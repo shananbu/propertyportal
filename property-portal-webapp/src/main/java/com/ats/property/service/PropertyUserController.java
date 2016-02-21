@@ -393,6 +393,22 @@ public class PropertyUserController implements InitializingBean {
         return modelAndView;
     }
 
+    @Secured ({"ROLE_USER"})
+    @RequestMapping(value = {"/manageAdvertisements" }, method = RequestMethod.GET)
+    public ModelAndView manageAdvertisements() {
+        ModelAndView modelAndView = new ModelAndView("manageAdvertisements");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getAdvertisementsByUser(response);
+        modelAndView.addObject("response", response);
+        return modelAndView;
+    }
+
+    @Secured ({"ROLE_USER"})
+    @RequestMapping(value = {"/manageProfile" }, method = RequestMethod.GET)
+    public ModelAndView manageProfile() {
+        ModelAndView modelAndView = new ModelAndView("manageProfile");
+        return modelAndView;
+    }
 
     @Override
     public void afterPropertiesSet() throws Exception {

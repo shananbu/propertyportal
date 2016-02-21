@@ -277,6 +277,11 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean getAdvertisementsByUser(ModuleList response) {
+        return adminService.getAdvertisementsByUser(response);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminService.getBedroomsList(response);
     }

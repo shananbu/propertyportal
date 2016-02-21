@@ -69,4 +69,6 @@ public interface IPropertyAdminHelper {
 
     boolean getBudgetsByPropertyForType(ModuleList response, Long propertyForTypeId);
 
+    boolean getAdvertisementsByUser(ModuleList response);
+
 }

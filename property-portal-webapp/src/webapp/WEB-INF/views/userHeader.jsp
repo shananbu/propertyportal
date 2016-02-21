@@ -16,8 +16,8 @@
                             </h1>
                             </h2>${pageContext.request.userPrincipal.name}</h2>
                             <ul>
-                                <li><a href="#">Manage Profile</a></li>
-                                <li><a href="#">Manage Advertisements</a></li>
+                                <li><a href="manageProfile">Manage Profile</a></li>
+                                <li><a href="manageAdvertisements">Manage Advertisements</a></li>
                                 <li><a href="<c:url value='j_spring_security_logout'/>" >Sign out</a></li>
                             </ul>
                         </div>

@@ -85,4 +85,6 @@ public interface IPropertyAdminDAO {
 
     List<Budget> getBudgetsByPropertyForType(Long id);
 
+    List<Advertisement> getAdvertisementsByUser(Long userId);
+
 }

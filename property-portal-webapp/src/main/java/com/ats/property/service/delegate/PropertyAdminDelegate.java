@@ -180,6 +180,11 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean getAdvertisementsByUser(ModuleList response) {
+        return adminHelper.getAdvertisementsByUser(response);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminHelper.getBedroomsList(response);
     }
