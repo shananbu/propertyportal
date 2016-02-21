@@ -385,7 +385,13 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 }
             }
         }
+        if(advertisement.getId() != null) {
+            MailBean data = getAdvtPostingMailData(advertisement);
+            mailService.sendMail(data);
 
+            MailBean dataToAdmin = getAdvtPostingMailDataToAdmin(advertisement);
+            mailService.sendMail(dataToAdmin);
+        }
         AdvertisementType advertisementType = new AdvertisementType();
         advertisementType.setId(advertisement.getId());
         advertisementType.setPlanId(advertisement.getPlanMastByPlanId().getId());
@@ -453,7 +459,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         return data;
     }
 
-    private String getMailBody(PropertyUser user){
+ /*   private String getMailBody(PropertyUser user){
         String message="Hi<br><br> " +
                 "We thank you to register with us which is a great opportunity to get more business through our site. <br> " +
                 "We request you to confirm your registration by clicking on the URL :  " +
@@ -464,7 +470,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 "Administrator <br> wwww.1acreindia.com " ;
         System.out.println(message);
         return message;
-    }
+    }*/
 
 
     @Override
@@ -1008,6 +1014,54 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
         String text = VelocityEngineUtils.mergeTemplateIntoString(
                 velocityEngine, "mailtemplate/registration-confirmation.vm", "UTF-8", model);
+        return text;
+    }
+
+    private MailBean getAdvtPostingMailData(Advertisement advertisement) {
+        MailBean data = new MailBean();
+        data.setToMailId(advertisement.getPropertyUserByPropertyUserId().getEmailId());
+        data.setMailBody(buildAdvtPostingMailBodyFromTemplate(advertisement));
+        data.setSubject("Advertisement posting complete");
+        return data;
+    }
+
+    private String buildAdvtPostingMailBodyFromTemplate(Advertisement advertisement) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+        Map model = new HashMap<String, String>();
+        model.put("postingDate", formatter.format(new java.util.Date()));
+        model.put("developerName", advertisement.getPropertyUserByPropertyUserId().getBuilderName() +
+                " " + advertisement.getPropertyUserByPropertyUserId().getFirstName());
+        model.put("projectName", advertisement.getProjectName());
+        model.put("propertyType", advertisement.getPropertyTypeByPropertyTypeId().getName());
+        model.put("location", advertisement.getAddress());
+        model.put("propertyFor", advertisement.getPropertyForTypeByPropertyForTypeId().getNameForPoster());
+
+        String text = VelocityEngineUtils.mergeTemplateIntoString(
+                velocityEngine, "mailtemplate/advt-posting-confirmation-to-user.vm", "UTF-8", model);
+        return text;
+    }
+
+    private MailBean getAdvtPostingMailDataToAdmin(Advertisement advertisement) {
+        MailBean data = new MailBean();
+        data.setToMailId(advertisement.getPropertyUserByPropertyUserId().getEmailId());
+        data.setMailBody(buildAdvtPostingMailBodyFromTemplateToAdmin(advertisement));
+        data.setSubject("Advertisement posting complete");
+        return data;
+    }
+
+    private String buildAdvtPostingMailBodyFromTemplateToAdmin(Advertisement advertisement) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+        Map model = new HashMap<String, String>();
+        model.put("postingDate", formatter.format(new java.util.Date()));
+        model.put("developerName", advertisement.getPropertyUserByPropertyUserId().getBuilderName() +
+                " " + advertisement.getPropertyUserByPropertyUserId().getFirstName());
+        model.put("projectName", advertisement.getProjectName());
+        model.put("propertyType", advertisement.getPropertyTypeByPropertyTypeId().getName());
+        model.put("location", advertisement.getAddress());
+        model.put("propertyFor", advertisement.getPropertyForTypeByPropertyForTypeId().getNameForPoster());
+
+        String text = VelocityEngineUtils.mergeTemplateIntoString(
+                velocityEngine, "mailtemplate/advt-posting-confirmation-to-user.vm", "UTF-8", model);
         return text;
     }
 }

@@ -98,7 +98,8 @@
             <select class="dropdown" name="advertisement.planId" required>
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.plans}">
-                    <option value="${data.id}">${data.name}</option>
+                    <option value="${data.id}"
+                    <c:if test="${planId eq data.id}"> selected </c:if> >${data.name}</option>
                 </c:forEach>
             </select>
         </li>

@@ -123,7 +123,8 @@ public class PropertyUserController implements InitializingBean {
 
     @RequestMapping(value = { "/postProperty" }, method = RequestMethod.GET)
     @Secured ({"ROLE_USER"})
-    public ModelAndView postProperty(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest, HttpServletRequest request) {
+    public ModelAndView postProperty(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest,
+                                     @ModelAttribute("planId") final String planId, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("postProperty");
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.getStateList(null, response);
@@ -146,6 +147,7 @@ public class PropertyUserController implements InitializingBean {
         adminDelegate.getTermsList(response);
         adminDelegate.getAmenitiesCategory(response);
         modelAndView.addObject("response", response);
+        modelAndView.addObject("planId", planId);
         return modelAndView;
     }
 
@@ -259,7 +261,8 @@ public class PropertyUserController implements InitializingBean {
 
     @RequestMapping(value = { "/postPropertyInMicrosite" }, method = RequestMethod.GET)
     @Secured ({"ROLE_USER"})
-    public ModelAndView postPropertyInMicrosite(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest, HttpServletRequest request) {
+    public ModelAndView postPropertyInMicrosite(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest,
+                                                @ModelAttribute("planId") final String planId, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("postPropertyInMicrosite");
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.getStateList(null, response);
@@ -282,7 +285,7 @@ public class PropertyUserController implements InitializingBean {
         adminDelegate.getAmenitiesCategory(response);
 
         modelAndView.addObject("response", response);
-
+        modelAndView.addObject("planId", planId);
         return modelAndView;
     }
 

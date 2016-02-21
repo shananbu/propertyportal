@@ -67,7 +67,8 @@
                 <option value="-1">--Select--</option>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.plans}">
                     <c:if test="${data.name eq 'Free'}">
-                         <option value="${data.id}">${data.name}</option>
+                         <option value="${data.id}"
+                         <c:if test="${planId eq data.id}"> selected </c:if> >${data.name}</option>
                     </c:if>
                 </c:forEach>
             </select>
