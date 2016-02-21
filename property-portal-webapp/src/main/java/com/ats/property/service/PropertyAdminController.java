@@ -65,7 +65,7 @@ public class PropertyAdminController implements InitializingBean{
     public ModelAndView showAdminUserCreation() {
         ModelAndView modelAndView = new ModelAndView("adminUserCreation");
         ModuleList response = CommonHelper.getSuccessModuleList();
-        adminDelegate.getStatusFieldData(response);
+        adminDelegate.getUserList(null, response);
         modelAndView.addObject("response", response);
         return modelAndView;
     }
@@ -138,8 +138,9 @@ public class PropertyAdminController implements InitializingBean{
     public ModelAndView saveOrUpdateAdminUser(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.saveOrUpdateAdminUser(moduleRequest, response);
-        ModelAndView modelAndView = null;
-        modelAndView = new ModelAndView("adminUserCreation");
+        ModelAndView modelAndView = new ModelAndView("adminUserCreation");
+        adminDelegate.getUserList(null, response);
+        modelAndView.addObject("response", response);
         return  modelAndView;
     }
 

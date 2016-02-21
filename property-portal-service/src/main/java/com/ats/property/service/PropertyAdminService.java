@@ -175,8 +175,9 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 if(fromNullable(dob).isPresent()) {
                     userType.setDor(dob.replaceAll(" 00:00:00.0", ""));
                 }
-
-                userType.setStatus(admin.getStatusId());
+                if(admin.getStatusId() != null) {
+                    userType.setStatus(admin.getStatusId());
+                }
                 PropertyUtils.copyFields(admin, userType);
                 moduleResponseType.getAdminUsers().add(userType);
             }

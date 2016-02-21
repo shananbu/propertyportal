@@ -122,7 +122,9 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     public List<AdminLogin> findUsers(String userName) {
         Session session = getSession();
         Criteria cr = session.createCriteria(AdminLogin.class);
-        cr.add(Restrictions.ilike("firstName", userName + "%"));
+        if(userName != null) {
+            cr.add(Restrictions.ilike("firstName", userName + "%"));
+        }
         List<AdminLogin> results = cr.list();
         return results;
     }

@@ -6,7 +6,6 @@ $(document).ready(function() {
         "bSort": true,
         "bScrollCollapse": false,
         "sScrollY": "180px",
-        "sPaginationType": "full_numbers",
         "ajax": {
             "url": "rest/v1/admin/modules/get/advertisePlanList",
             "dataSrc": "module.0.moduleResponse.plans"

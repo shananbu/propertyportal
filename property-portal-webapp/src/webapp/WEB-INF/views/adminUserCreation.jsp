@@ -30,15 +30,41 @@
     <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function () {
-            oTable = $('#example').dataTable({
+            var table = $('#userListingTable').dataTable({
                 "bJQueryUI": true,
                 "bAutoWidth": true,
                 "bSort": true,
-                //"sScrollX": "100%",
                 "bScrollCollapse": false,
-                "sScrollY": "200px",
-                "sPaginationType": "full_numbers"
+                "sScrollY": "190px",
+                "sPaginationType": "full_numbers",
+                "ajax": {
+                    "url": "rest/v1/admin/modules/get/advertisePlanList",
+                    "dataSrc": "module.0.moduleResponse.plans"
+                },
+                "columns": [
+                    { "data": "name" },
+                    { "data": "userTypeName" },
+                    { "data": "cost", "sClass": "right" },
+                    { "data": "validDays", "sClass": "right" },
+                    { "data": "numberOfImages", "sClass": "right" },
+                    { "data": "description" },
+                    { "data": "id" },
+                    { "data": "id" }
+                ],
+                "columnDefs": [
+                    {
+                        "targets": [ 6 ],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [ 7 ],
+                        "visible": false,
+                        "searchable": false
+                    }
+                ]
             });
+
         });
     </script>
     <!-- jq_table script end-->
@@ -109,6 +135,12 @@
                             <td class="td_left">
                                 <input type="text" id="phoneNumber" name="adminUser.phoneNumber" required placeholder="Enter Phone Number">
                             </td>
+                            <td>
+                                <label class="label_right">Date Of Joining </label>
+                            </td>
+                            <td class="td_left">
+                                <input type="date" id="doj" name="adminUser.doj" required placeholder="Date of Joining">
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -122,16 +154,6 @@
                                     </c:forEach>
                                 </select>
                             </td>
-                        <tr>
-                            <td>
-                                <label class="label_right">Date Of Joining </label>
-                            </td>
-                            <td class="td_left">
-                                <input type="date" id="doj" name="adminUser.doj" required placeholder="Date of Joining">
-                            </td>
-                        </tr>
-
-                        <tr>
                             <td>
                                 <label class="label_right">Date Of Resign </label>
                             </td>
@@ -153,9 +175,44 @@
                     </table>
                 </div>
             </div>
+            <div class="row_main col_1 clr_fix mar_bot">
+                <!-- jq_table start-->
+                <div class="jq_table">
+                    <table cellpadding="0" cellspacing="0" border="0" class="display" id="userListingTable">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Designation</th>
+                            <th>EMail</th>
+                            <th>Phone Number</th>
+                            <th>User Name</th>
+                            <th>Status</th>
+                            <th>Date Of Joining</th>
+                            <th>id</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="data" items="${response.module[0].moduleResponse.adminUsers}" varStatus="seqNo">
+                            <tr>
+                                <td>${data.firstName}</td>
+                                 <td>${data.designation}</td>
+                                <td>${data.mailId}</td>
+                                <td>${data.phoneNumber}</td>
+                                <td>${data.userName}</td>
+                                <td>${data.doj}</td>
+                                <td>${data.statusType}</td>
+                                <td>${data.id}</td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- jq_table end-->
+            </div>
         </article>
     </section>
 </main>
  </form>
 </body>
 </html>
+
