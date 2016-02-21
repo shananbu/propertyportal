@@ -167,12 +167,14 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         if(fromNullable(logins).isPresent()) {
             for(AdminLogin admin : logins) {
                 AdminUserType userType = objectFactory.createAdminUserType();
-                String doj = admin.getDoj().toString();
-                if(fromNullable(doj).isPresent()) {
+
+                if(fromNullable(admin.getDoj()).isPresent()) {
+                    String doj = admin.getDoj().toString();
                     userType.setDoj(doj.replaceAll(" 00:00:00.0", ""));
                 }
-                String dob = admin.getDor().toString();
-                if(fromNullable(dob).isPresent()) {
+
+                if(fromNullable(admin.getDor()).isPresent()) {
+                    String dob = admin.getDor().toString();
                     userType.setDor(dob.replaceAll(" 00:00:00.0", ""));
                 }
                 if(admin.getStatusId() != null) {
@@ -1092,7 +1094,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
     private MailBean getAdvtPostingMailDataToAdmin(Advertisement advertisement) {
         MailBean data = new MailBean();
-        data.setToMailId(advertisement.getPropertyUserByPropertyUserId().getEmailId());
+        data.setToMailId("support@1acreindia.com");
         data.setMailBody(buildAdvtPostingMailBodyFromTemplateToAdmin(advertisement));
         data.setSubject("Advertisement posting complete");
         return data;

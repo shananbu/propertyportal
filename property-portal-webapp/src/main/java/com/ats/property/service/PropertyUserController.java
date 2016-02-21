@@ -329,12 +329,13 @@ public class PropertyUserController implements InitializingBean {
                                                    @RequestParam("advertisementId") Long advertisementId,
                                                    @RequestParam("imageTypeId") Long imageTypeId) {
         if (!file.isEmpty()) {
+            String absoluteFileNameAlone =  advertisementId + "_" + fileName;
+            String absoluteFileName = fileRootDir + absoluteFileNameAlone;
             try {
-                fileName = fileRootDir + advertisementId + "_" + fileName;
-                System.out.print("uploadFileAndUpdate FileName >> " + fileName);
+                System.out.print("uploadFileAndUpdate FileName >> " + absoluteFileName);
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream = new BufferedOutputStream(
-                        new FileOutputStream(new File(fileName)));
+                        new FileOutputStream(new File(absoluteFileName)));
                 stream.write(bytes);
                 stream.close();
                 ModuleList response = CommonHelper.getSuccessModuleList();
@@ -343,13 +344,13 @@ public class PropertyUserController implements InitializingBean {
                 advertisementType.setId(advertisementId);
                 advertisementType.setImageTypeId(imageTypeId);
                 GalleryImageType imageType = new GalleryImageType();
-                imageType.setImageName(fileName);
+                imageType.setImageName(absoluteFileNameAlone);
                 advertisementType.getGalleryImage().add(imageType);
                 moduleRequest.setAdvertisement(advertisementType);
                 adminDelegate.updateAdvertisement(moduleRequest, response);
                 return "uploadSuccess";
             } catch (Exception e) {
-                 System.out.print("Error while saving >> " + fileName);
+                 System.out.print("Error while saving >> " + absoluteFileName);
                  e.printStackTrace();
                  return "uploadSuccess";
             }
