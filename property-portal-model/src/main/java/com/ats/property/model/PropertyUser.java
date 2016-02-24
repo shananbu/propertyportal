@@ -19,6 +19,8 @@ public class PropertyUser {
     private Long cityId;
     private String phone;
     private String mobileNo;
+    private String countryCode;
+    private Boolean isTermsAgreed;
     private String isMailVerified;
     private String passwrd;
     private String status;
@@ -227,4 +229,25 @@ public class PropertyUser {
     public void setAdvertisementsById(Collection<Advertisement> advertisementsById) {
         this.advertisementsById = advertisementsById;
     }
+
+    @Basic
+    @Column(name = "countryCode", nullable = true, insertable = true, updatable = true, length = 1)
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    @Basic
+    @Column(name = "isTermsAgreed", nullable = true, insertable = true, updatable = true, length = 1)
+    public Boolean getIsTermsAgreed() {
+        return isTermsAgreed;
+    }
+
+    public void setIsTermsAgreed(Boolean isTermsAgreed) {
+        this.isTermsAgreed = isTermsAgreed;
+    }
+
 }

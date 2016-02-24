@@ -13,7 +13,7 @@ import java.util.List;
 public interface IPropertyAdminDAO {
     void getCountry();
     AdminLogin getAdminUser(String userName);
-    PropertyUser getPropertyUser(String emailId);
+    PropertyUser getPropertyUserById(Long emailId);
     AdminLogin saveOrUpdateAdminUser(AdminLogin adminLogin);
     List<StatusType> getStatusFieldData(String targetForm);
     StatusMast getStatusById(Long id);
@@ -86,5 +86,7 @@ public interface IPropertyAdminDAO {
     List<Budget> getBudgetsByPropertyForType(Long id);
 
     List<Advertisement> getAdvertisementsByUser(Long userId);
+
+    PropertyUser updatePropertyUser(PropertyUser propertyUser);
 
 }

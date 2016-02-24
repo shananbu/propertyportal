@@ -105,6 +105,13 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         return false;
     }
 
+    @Override
+    @Transactional
+    public PropertyUser getPropertyUserById() {
+        PropertyUser propertyUser = adminDAO.getPropertyUserById(getCurrentUserId());
+        return propertyUser;
+    }
+
     public static Long getCurrentUserTypeId() {
         UserInformation user = getCurrentUser();
         if (user != null) {
@@ -461,24 +468,34 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     @Override
     @Transactional
     public PropertyUserType saveOrUpdateUser(PropertyUser user) {
-        if(getUserByMail(user.getEmailId())) {
-            user.setUserTypeByUserTypeId(adminDAO.findUserTypeById(user.getUserTypeId()));
-            user.setCityByCityId(adminDAO.findCityById(user.getCityId()));
+        if(user.getId() != null ) {
             user.setIsMailVerified("N");
-            PropertyUser propertyUserResponse = adminDAO.saveOrUpdateUser(user);
-            if (fromNullable(propertyUserResponse).isPresent()) {
-                PropertyUserType userType = new PropertyUserType();
-                userType.setId(propertyUserResponse.getId());
-                if (user.getEmailId() != null) {
-                    MailBean data = getMailData(user);
-                    mailService.sendMail(data);
+            adminDAO.updatePropertyUser(user);
+            if (user.getEmailId() != null) {
+                MailBean data = getMailData(user, "Your profile successfully updated");
+                mailService.sendMail(data);
+            }
+            return new PropertyUserType();
+        } else {
+            if (getUserByMail(user.getEmailId())) {
+                user.setUserTypeByUserTypeId(adminDAO.findUserTypeById(user.getUserTypeId()));
+                user.setCityByCityId(adminDAO.findCityById(user.getCityId()));
+                user.setIsMailVerified("N");
+                PropertyUser propertyUserResponse = adminDAO.saveOrUpdateUser(user);
+                if (fromNullable(propertyUserResponse).isPresent()) {
+                    PropertyUserType userType = new PropertyUserType();
+                    userType.setId(propertyUserResponse.getId());
+                    if (user.getEmailId() != null) {
+                        MailBean data = getMailData(user, "Welcome to 1acreindia.com");
+                        mailService.sendMail(data);
+                    }
+                    return userType;
+                } else {
+                    return null;
                 }
-                return userType;
             } else {
                 return null;
             }
-        } else {
-            return null;
         }
     }
 
@@ -490,11 +507,11 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         return propertyUserResponse;
     }
 
-    private MailBean getMailData(PropertyUser user) {
+    private MailBean getMailData(PropertyUser user, String subject) {
         MailBean data = new MailBean();
         data.setToMailId(user.getEmailId());
         data.setMailBody(buildMailBodyFromTemplate(user));
-        data.setSubject("Welcome to 1acreindia.com");
+        data.setSubject(subject);
         return data;
     }
 

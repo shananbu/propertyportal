@@ -42,6 +42,47 @@
         </footer>
         <!-- footer end -->
     </main>
+    <!--script start-->
+    <!-- tab script start-->
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.text_panel input[type="text"]').click(function(){
+                $('.loc_list').slideDown(300);
+            })
+            $('.pro_type').click(function(){
+                $('.pro_list').slideToggle();
+            })
+
+
+            $('.top_loc_list a').click(function(){
+                $('.loc_list_view').slideToggle();
+            });
+
+
+        });
+    </script>
+    <!-- tab script end -->
+
+    <!-- tab menu start -->
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $(".tab_content_2").hide();
+            $(".tab_content_2:first").show();
+
+            $("ul.tabs_2 li").click(function() {
+                $("ul.tabs_2 li").removeClass("inner_tab_active");
+                $(this).addClass("inner_tab_active");
+                $(".tab_content_2").hide();
+                var activeTab = $(this).attr("rel");
+                $("#"+activeTab).fadeIn();
+            });
+        });
+
+    </script>
+    <!-- tab menu end -->
+    <!--script end-->
 </form>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.ats.property.dao;
 
+import com.ats.property.common.constants.PropertyUtils;
 import com.ats.property.dto.SearchType;
 import com.ats.property.dto.StatusType;
 import com.ats.property.model.*;
@@ -72,16 +73,9 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
-    public PropertyUser getPropertyUser(String emailId) {
+    public PropertyUser getPropertyUserById(Long id) {
         Session session = getSession();
-        Query query = session.createQuery("from PropertyUser a where a.emailId = :emailId" );
-        query.setParameter("emailId", emailId);
-
-        PropertyUser propertyUser = null;
-        List<PropertyUser> responseList = query.list();
-        if(responseList.size() > 0) {
-            propertyUser = responseList.get(0);        }
-
+        PropertyUser propertyUser = (PropertyUser)session.get(PropertyUser.class, id);
         return propertyUser;
     }
 
@@ -576,5 +570,15 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         criteria.add(Restrictions.eq("propertyUser.id", userId));
         List<Advertisement> results = criteria.list();
         return results;
+    }
+
+    @Override
+    public PropertyUser updatePropertyUser(PropertyUser propertyUser) {
+        Session session = getSession();
+        PropertyUser userForUpdate =  (PropertyUser)session.get(PropertyUser.class, propertyUser.getId());
+        PropertyUtils.copyFields(propertyUser, userForUpdate);
+        userForUpdate.setUserTypeByUserTypeId(findObjectById(propertyUser.getUserTypeId(), UserType.class));
+        session.flush();
+        return userForUpdate;
     }
 }

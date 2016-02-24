@@ -87,14 +87,14 @@
 
               <li class="mobile_drop">
                 <label>Mobile<small>*</small></label>
-                <select class="dropdown">
+                <select class="dropdown" name="propertyUser.countryCode">
                   <option value="91">IND +91</option>
                 </select>
                   <input id="mobile" name="propertyUser.mobileNo" class="txt" type="text" value="" maxlength="30" placeholder="Mobile Number">
               </li>
               <li>
                 <p>
-                  <input type="checkbox" id="check_1">
+                  <input type="checkbox" id="check_1" value="1" name="propertyUser.isTermsAgreed">
                   <label for="check_1"></label>
                   I agree to 1AcreIndia's Terms of Use. I would like to receive property related communication through Email, Call or SMS. </p>
               </li>

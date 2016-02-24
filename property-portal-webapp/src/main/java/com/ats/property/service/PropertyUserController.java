@@ -408,6 +408,9 @@ public class PropertyUserController implements InitializingBean {
     @RequestMapping(value = {"/manageProfile" }, method = RequestMethod.GET)
     public ModelAndView manageProfile() {
         ModelAndView modelAndView = new ModelAndView("manageProfile");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getPropertyUser(response);
+        modelAndView.addObject("response", response);
         return modelAndView;
     }
 

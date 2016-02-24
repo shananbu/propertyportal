@@ -282,6 +282,17 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean getPropertyUser(ModuleList response) {
+        PropertyUser user = adminService.getPropertyUserById();
+        PropertyUserType userType = new PropertyUserType();
+        PropertyUtils.copyFields(user, userType);
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        moduleResponseType.setPropertyUser(userType);
+        return true;
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminService.getBedroomsList(response);
     }

@@ -37,7 +37,7 @@ public class AdminUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         AdminLogin adminlogin = adminDAO.getAdminUser(userName);
 
-        PropertyUser propertyUser = adminDAO.getPropertyUser(userName);
+        PropertyUser propertyUser = adminDAO.getUserByMail(userName);
         List<GrantedAuthority> authorityList = null;
         UserInformation user = null;
 

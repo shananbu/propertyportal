@@ -71,4 +71,6 @@ public interface IPropertyAdminHelper {
 
     boolean getAdvertisementsByUser(ModuleList response);
 
+    boolean getPropertyUser(ModuleList response);
+
 }

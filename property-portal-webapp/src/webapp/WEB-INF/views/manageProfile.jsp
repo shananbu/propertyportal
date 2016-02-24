@@ -27,6 +27,8 @@
         <header class="clr_fix top_head">
             <%@ include file="userHeader.jsp" %>
         </header>
+        <c:set var="propertyUser" value="${response.module[0].moduleResponse.propertyUser}"/>
+        <input type="hidden" name="propertyUser.id" value="${propertyUser.id}">
         <section class="clr_fix sec_main">
             <div class="row_main box_shadow">
                 <section class="col_4 clr_fix">
@@ -36,54 +38,54 @@
                             <ul>
                                 <li>
                                     <label>User Type<small>*</small></label>
-                <span>
-                <input id="usertype1" name="propertyUser.userTypeId" type="radio" value="1" checked="checked">
-                <label for="usertype1"></label>
-                Owner </span> <span>
-               <input id="usertype2" name="propertyUser.userTypeId" type="radio" value="2">
-                <label for="usertype2"></label>
-                Agent </span> <span>
-                <input id="usertype3" name="propertyUser.userTypeId" type="radio" value="3">
-                <label for="usertype3"></label>
-                Builder </span>
+                                    <span>
+                                    <input id="usertype1" name="propertyUser.userTypeId" type="radio" value="1" <c:if test="${propertyUser.userTypeId eq 1}"> checked="checked" </c:if> >
+                                    <label for="usertype1"></label>
+                                    Owner </span> <span>
+                                   <input id="usertype2" name="propertyUser.userTypeId" type="radio" value="2" <c:if test="${propertyUser.userTypeId eq 2}"> checked="checked" </c:if>>
+                                    <label for="usertype2"></label>
+                                    Agent </span> <span>
+                                    <input id="usertype3" name="propertyUser.userTypeId" type="radio" value="3" <c:if test="${propertyUser.userTypeId eq 3}"> checked="checked" </c:if>>
+                                    <label for="usertype3"></label>
+                                    Builder </span>
                                 </li>
                                 <li>
                                     <label>Builder/Company Name<small>*</small></label>
-                                    <input id="builderName" name="propertyUser.builderName" type="text" value="" maxlength="30" placeholder="Company Name">
+                                    <input id="builderName" name="propertyUser.builderName" type="text" value="${propertyUser.builderName}" maxlength="30" placeholder="Company Name">
                                 </li>
                                 <li>
                                     <label>First Name<small>*</small></label>
-                                    <input id="firstName" name="propertyUser.firstName" type="text" value="" maxlength="30" placeholder="First Name">
+                                    <input id="firstName" name="propertyUser.firstName" type="text" value="${propertyUser.firstName}" maxlength="30" placeholder="First Name">
                                 </li>
                                 <li>
                                     <label>Last Name<small>*</small></label>
-                                    <input id="lastName" name="propertyUser.lastName" type="text" value="" maxlength="30" placeholder="Last Name">
+                                    <input id="lastName" name="propertyUser.lastName" type="text" value="${propertyUser.lastName}" maxlength="30" placeholder="Last Name">
                                 </li>
 
                                 <li>
                                     <label>Email<small>*</small></label>
-                                    <input id="emailId" name="propertyUser.emailId" class="txt" type="text" value="" maxlength="30" placeholder="Email">
+                                    <input readonly id="emailId" name="propertyUser.emailId" class="txt" type="text" value="${propertyUser.emailId}" maxlength="30" placeholder="Email">
                                 </li>
                                 <li>
                                     <label>Password<small>*</small></label>
-                                    <input id="passwrd" name="propertyUser.passwrd" class="txt" type="password" value="" maxlength="30" placeholder="Password">
+                                    <input id="passwrd" name="propertyUser.passwrd" class="txt" type="password" value="${propertyUser.passwrd}" maxlength="30" placeholder="Password">
                                     <small>[ Password only consists of a-z, 0-9, (_) ] [ Min. 6 char and Max. 12 char ]</small>
                                 </li>
                                 <li>
                                     <label>Confirm Password<small>*</small></label>
-                                    <input id="cpasswrd" name="cpasswrd" class="txt" type="password" value="" maxlength="30" placeholder="Confirm Password">
+                                    <input id="cpasswrd" name="cpasswrd" class="txt" type="password" value="${propertyUser.passwrd}" maxlength="30" placeholder="Confirm Password">
                                 </li>
 
                                 <li class="mobile_drop">
                                     <label>Mobile<small>*</small></label>
-                                    <select class="dropdown">
+                                    <select class="dropdown" name="propertyUser.countryCode">
                                         <option value="91">IND +91</option>
                                     </select>
-                                    <input id="mobile" name="propertyUser.mobileNo" class="txt" type="text" value="" maxlength="30" placeholder="Mobile Number">
+                                    <input id="mobile" name="propertyUser.mobileNo" class="txt" type="text" value="${propertyUser.mobileNo}" maxlength="30" placeholder="Mobile Number">
                                 </li>
                                 <li>
                                     <p>
-                                        <input type="checkbox" id="check_1">
+                                        <input type="checkbox" id="check_1" name="propertyUser.isTermsAgreed" <c:if test="${propertyUser.isTermsAgreed eq true}"> checked="checked" </c:if>>
                                         <label for="check_1"></label>
                                         I agree to 1AcreIndia's Terms of Use. I would like to receive property related communication through Email, Call or SMS. </p>
                                 </li>

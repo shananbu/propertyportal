@@ -35,6 +35,7 @@
                 <xs:element name="searchResult" type="searchResultType" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="amenitiesCategory" type="amenitiesCategoryType" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="imageTypes" type="nameDataType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="propertyUser" type="propertyUserType" minOccurs="0"/>
             </xs:choice>
         </xs:sequence>
     </xs:complexType>

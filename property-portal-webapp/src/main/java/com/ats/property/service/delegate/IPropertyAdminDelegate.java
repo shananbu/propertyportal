@@ -64,4 +64,6 @@ public interface IPropertyAdminDelegate {
     boolean getBudgetsByPropertyForType(ModuleList response, Long propertyForTypeId);
 
     boolean getAdvertisementsByUser(ModuleList response);
+
+    boolean getPropertyUser(ModuleList response);
 }
