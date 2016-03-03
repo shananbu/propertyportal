@@ -73,4 +73,10 @@ public interface IPropertyAdminHelper {
 
     boolean getPropertyUser(ModuleList response);
 
+    boolean getPlanById(Long planId, ModuleList response);
+
+    int getRemainingImageCount(Long advertisementId);
+
+    boolean showClientReportView(String fromDate, String toDate, ModuleList response);
+
 }

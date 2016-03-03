@@ -1,10 +1,7 @@
 package com.ats.property.service;
 
 import com.ats.property.common.constants.CommonHelper;
-import com.ats.property.dto.AdvertisementType;
-import com.ats.property.dto.GalleryImageType;
-import com.ats.property.dto.ModuleList;
-import com.ats.property.dto.ModuleRequestType;
+import com.ats.property.dto.*;
 import com.ats.property.service.delegate.IPropertyAdminDelegate;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -313,13 +310,15 @@ public class PropertyUserController implements InitializingBean {
     @Secured ({"ROLE_USER"})
     public ModelAndView uploadFileForAdvertisement(@ModelAttribute("uploadFile") ModuleRequestType moduleRequest,
                                                    @RequestParam("advertisementId") Long advertisementId,
-                                                   @RequestParam("planId") Long planId,
                                                    HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("uploadFile");
         ModuleList response = CommonHelper.getSuccessModuleList();
        // adminDelegate.getPl
         adminDelegate.getImageTypeList(response);
+
         modelAndView.addObject("response", response);
+        modelAndView.addObject("remainingFileCount", adminDelegate.getRemainingImageCount(advertisementId));
+
         return modelAndView;
     }
 
@@ -410,6 +409,51 @@ public class PropertyUserController implements InitializingBean {
         ModelAndView modelAndView = new ModelAndView("manageProfile");
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.getPropertyUser(response);
+        modelAndView.addObject("response", response);
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = {"/clientReportView" }, method = RequestMethod.GET)
+    public ModelAndView showClientReportView(@RequestParam("fromDate") String fromDate, @RequestParam("toDate") String toDate) {
+        ModelAndView modelAndView = new ModelAndView("clientReportView");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.showClientReportView(fromDate, toDate, response);
+        modelAndView.addObject("response", response);
+        return modelAndView;
+    }
+
+    @Secured ({"ROLE_USER"})
+    @RequestMapping(value = {"/modifyAdvertisement" }, method = RequestMethod.GET)
+    public ModelAndView modifyAdvertisement(@RequestParam("advertisementId") String advertisementId,  @ModelAttribute("isMicroSite")Boolean isMicroSite) {
+        ModelAndView modelAndView = null;
+        if(isMicroSite) {
+            modelAndView = new ModelAndView("modifyMicrositeAdvt");
+        } else {
+            modelAndView = new ModelAndView("modifyClassifiedAdvt");
+        }
+
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.getAdvertisementById(advertisementId, response);
+        adminDelegate.getStateList(null, response);
+        adminDelegate.getCityList(null, response);
+
+        adminDelegate.getBedroomsList(response);
+        adminDelegate.getAdvertisePlanListByUserType(PropertyAdminService.getCurrentUserTypeId().toString(), response, false);
+        adminDelegate.getBudgetList(response);
+        adminDelegate.getPropertyTypeList(response);
+
+        adminDelegate.getPropertyForTypeList(response);
+        adminDelegate.getFurnishedStatusList(response);
+        adminDelegate.getBathroomsList(response);
+        adminDelegate.getBalconiesList(response);
+        adminDelegate.getTotalFloorsList(response);
+        adminDelegate.getUnitsList(response);
+        adminDelegate.getTransactionTypesList(response);
+        adminDelegate.getPossessionStatusList(response);
+        adminDelegate.getTermsList(response);
+        adminDelegate.getAmenitiesCategory(response);
+
         modelAndView.addObject("response", response);
         return modelAndView;
     }

@@ -190,6 +190,21 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean getPlanById(Long planId, ModuleList response) {
+        return adminHelper.getPlanById(planId, response);
+    }
+
+    @Override
+    public int getRemainingImageCount(Long advertisementId) {
+        return adminHelper.getRemainingImageCount(advertisementId);
+    }
+
+    @Override
+    public boolean showClientReportView(String fromDate, String toDate, ModuleList response) {
+        return adminHelper.showClientReportView(fromDate, toDate, response);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminHelper.getBedroomsList(response);
     }

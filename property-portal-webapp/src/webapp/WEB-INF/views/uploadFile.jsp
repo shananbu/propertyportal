@@ -31,7 +31,7 @@
 <header class="clr_fix top_head">
     <%@ include file="userHeader.jsp" %>
 </header>
-    <input type="hidden" name="remainingFileCount" id="remainingFileCount" value="2">
+    <input type="hidden" name="remainingFileCount" id="remainingFileCount" value="${remainingFileCount}">
 <section class="clr_fix sec_main">
 <div class="row_main">
 <section class="clr_fix">

@@ -581,4 +581,13 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         session.flush();
         return userForUpdate;
     }
+
+    @Override
+    public List<PropertyUser> getUsersByDateRange(String fromDate, String toDate) {
+        Session session = getSession();
+        Query query = session.createQuery("from PropertyUser");// u where  u.registeredDate BETWEEN :stDate AND :edDate");
+       // query.setParameter("stDate", fromDate).setParameter("edDate", toDate);
+        List<PropertyUser> response = query.list();
+        return response;
+    }
 }

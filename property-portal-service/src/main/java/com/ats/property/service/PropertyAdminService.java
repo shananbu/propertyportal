@@ -112,6 +112,28 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         return propertyUser;
     }
 
+    @Override
+    @Transactional
+    public int getRemainingImageCount(Long advertisementId) {
+        Advertisement advertisement = adminDAO.findObjectById(advertisementId, Advertisement.class);
+        Integer planImageCount = advertisement.getPlanMastByPlanId().getNumberOfImages();
+        return planImageCount -  advertisement.getGalleryImagesesById().size();
+    }
+
+    @Override
+    @Transactional
+    public boolean showClientReportView(String fromDate, String toDate, ModuleList response) {
+        List<PropertyUser> users = adminDAO.getUsersByDateRange(fromDate, toDate);
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        for(PropertyUser user : users) {
+            PropertyUserType userType = objectFactory.createPropertyUserType();
+            PropertyUtils.copyFields(user, userType);
+            moduleResponseType.getPropertyUsers().add(userType);
+        }
+        return true;
+    }
+
     public static Long getCurrentUserTypeId() {
         UserInformation user = getCurrentUser();
         if (user != null) {
@@ -433,10 +455,10 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         }
         if(advertisement.getId() != null) {
             MailBean data = getAdvtPostingMailData(advertisement);
-            mailService.sendMail(data);
+       //     mailService.sendMail(data);
 
             MailBean dataToAdmin = getAdvtPostingMailDataToAdmin(advertisement);
-            mailService.sendMail(dataToAdmin);
+         //   mailService.sendMail(dataToAdmin);
         }
         AdvertisementType advertisementType = new AdvertisementType();
         advertisementType.setId(advertisement.getId());
@@ -1062,7 +1084,9 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     @Override
     public PlanType getPlanById(Long planId) {
         PlanMast planMast = adminDAO.findObjectById(planId, PlanMast.class);
-        return null;
+        PlanType planType = new PlanType();
+        PropertyUtils.copyFields(planMast, planType);
+        return planType;
     }
 
     private NameDataType getOtherLocation() {

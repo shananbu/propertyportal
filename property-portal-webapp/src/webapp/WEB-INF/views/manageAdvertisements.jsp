@@ -58,6 +58,7 @@
                             <th>Status</th>
                             <th>View</th>
                             <th>Edit</th>
+                            <th>Add/Remove Image</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -71,7 +72,8 @@
                                 <td>${data.advtTypeName}</td>
                                 <td>${data.description}</td>
                                 <td><a target="_blank" href="projectOverview?advertisementId=${data.id}&isMicroSite=${data.isMicroSite}">Preview</a></td>
-                                <th><a target="_blank" href="projectOverview?advertisementId=${data.id}&isMicroSite=${data.isMicroSite}">Edit</a></th>
+                                <th><a href="modifyAdvertisement?advertisementId=${data.id}&isMicroSite=${data.isMicroSite}"><i class="fa fa-pencil-square-o"></i></a></th>
+                                <th><a href="uploadFile?advertisementId=${data.id}"><i class="fa fa-plus"></i>/<i class="fa fa-minus"></i> <i class="fa fa-file-image-o"></i></a></th>
                             </tr>
                         </c:forEach>
                         </tbody>

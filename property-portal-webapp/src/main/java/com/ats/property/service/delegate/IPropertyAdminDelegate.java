@@ -2,6 +2,7 @@ package com.ats.property.service.delegate;
 
 import com.ats.property.dto.ModuleList;
 import com.ats.property.dto.ModuleRequestType;
+import com.ats.property.dto.PlanType;
 
 /**
  * The PropertyAdminDelegate.
@@ -66,4 +67,10 @@ public interface IPropertyAdminDelegate {
     boolean getAdvertisementsByUser(ModuleList response);
 
     boolean getPropertyUser(ModuleList response);
+
+    boolean getPlanById(Long planId,  ModuleList response);
+
+    int getRemainingImageCount(Long advertisementId);
+
+    boolean showClientReportView(String fromDate, String toDate, ModuleList response);
 }

@@ -166,6 +166,7 @@ create table PropertyUser (
   isMailVerified varchar(2),
   passwrd varchar(25),
   status varchar(1),
+  registeredDate date,
   constraint pk7 primary key(id),
   constraint fk6 foreign key (userTypeId) references UserType(id),
   constraint fk7 foreign key (cityId) references City(id)

@@ -89,4 +89,6 @@ public interface IPropertyAdminDAO {
 
     PropertyUser updatePropertyUser(PropertyUser propertyUser);
 
+    List<PropertyUser> getUsersByDateRange(String fromDate, String toDate);
+
 }

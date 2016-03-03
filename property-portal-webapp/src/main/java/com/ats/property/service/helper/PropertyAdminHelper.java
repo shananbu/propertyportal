@@ -293,6 +293,25 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean getPlanById(Long planId, ModuleList response) {
+        final PlanType planType = adminService.getPlanById(planId);
+        ModuleType moduleType = CommonHelper.getFirstModule(response);
+        ModuleResponseType moduleResponseType = moduleType.getModuleResponse();
+        moduleResponseType.setPlans(new ArrayList<PlanType>(){{add(planType);}});
+        return true;
+    }
+
+    @Override
+    public int getRemainingImageCount(Long advertisementId) {
+        return adminService.getRemainingImageCount(advertisementId);
+    }
+
+    @Override
+    public boolean showClientReportView(String fromDate, String toDate, ModuleList response) {
+        return adminService.showClientReportView(fromDate, toDate, response);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminService.getBedroomsList(response);
     }

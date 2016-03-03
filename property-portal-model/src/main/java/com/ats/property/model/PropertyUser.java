@@ -1,6 +1,7 @@
 package com.ats.property.model;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.Collection;
 
 /**
@@ -26,6 +27,7 @@ public class PropertyUser {
     private String status;
     private UserType userTypeByUserTypeId;
     private City cityByCityId;
+    private Date registeredDate;
     private Collection<PropertyRequirement> propertyRequirementsById;
     private Collection<Advertisement> advertisementsById;
 
@@ -248,6 +250,16 @@ public class PropertyUser {
 
     public void setIsTermsAgreed(Boolean isTermsAgreed) {
         this.isTermsAgreed = isTermsAgreed;
+    }
+
+    @Basic
+    @Column(name = "registeredDate", nullable = true, insertable = true, updatable = true)
+    public Date getRegisteredDate() {
+        return registeredDate;
+    }
+
+    public void setRegisteredDate(Date registeredDate) {
+        this.registeredDate = registeredDate;
     }
 
 }

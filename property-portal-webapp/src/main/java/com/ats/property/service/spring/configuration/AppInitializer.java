@@ -20,6 +20,8 @@ import javax.servlet.*;
  */
 public class AppInitializer implements WebApplicationInitializer  {
 
+    private static String OS = null;
+
     @Override
     public void onStartup(ServletContext container) throws ServletException {
 
@@ -41,7 +43,22 @@ public class AppInitializer implements WebApplicationInitializer  {
         ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(rootContext));
         servlet.setLoadOnStartup(2);
         servlet.addMapping("/");
-        servlet.setMultipartConfig(new MultipartConfigElement("/home/acreindia/uploadedResources/", 1024 * 1024 * 5, 1024 * 1024 * 5 * 5, 1024 * 1024));
-       // servlet.setMultipartConfig(new MultipartConfigElement("d:\\tmp", 1024 * 1024 * 5, 1024 * 1024 * 5 * 5, 1024 * 1024));
+        if(isWindows()){
+            servlet.setMultipartConfig(new MultipartConfigElement("D:\\tmp", 1024 * 1024 * 5, 1024 * 1024 * 5 * 5, 1024 * 1024));
+        } else {
+            servlet.setMultipartConfig(new MultipartConfigElement("/home/acreindia/uploadedResources/", 1024 * 1024 * 5, 1024 * 1024 * 5 * 5, 1024 * 1024));
+        }
     }
+
+    public static String getOsName() {
+        if (OS == null) {
+            OS = System.getProperty("os.name");
+        }
+        return OS;
+    }
+
+    public static boolean isWindows() {
+        return getOsName().startsWith("Windows");
+    }
+
 }

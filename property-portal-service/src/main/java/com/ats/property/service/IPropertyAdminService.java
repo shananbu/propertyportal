@@ -79,4 +79,8 @@ public interface IPropertyAdminService {
 
     PropertyUser getPropertyUserById();
 
+    int getRemainingImageCount(Long advertisementId);
+
+    boolean showClientReportView(String fromDate, String toDate, ModuleList response);
+
 }

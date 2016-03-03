@@ -33,8 +33,13 @@
                 //"sScrollX": "100%",
                 "bScrollCollapse": false,
                 "sScrollY": "200px",
-                "sPaginationType": "full_numbers",
+                "sPaginationType": "full_numbers"
             });
+
+            $("#btnGetClientReport").click(function() {
+               window.open("clientReportView?fromDate=a&toDate=b");
+            });
+
         });
     </script>
     <!-- jq_table script end-->
@@ -49,7 +54,7 @@
         </aside>
         <article class="right_art clr_fix">
             <div class="row_main col_1 clr_fix mar_bot">
-                <div class="title"> Admin User Registration</div>
+                <div class="title">Client Report</div>
                 <div class="box_block row_main text_center">
                     <table border="0" cellspacing="0" cellpadding="0">
                         <tr>
@@ -69,12 +74,11 @@
 
                         <tr style="display:table-row">
                             <td colspan="4">
-                                <input type="submit" value="Get Report">
+                                <input type="button" value="Get Report" id="btnGetClientReport">
 
                                 <input type="reset" value="reset">
                             </td>
                         </tr>
-
                     </table>
                 </div>
             </div>
