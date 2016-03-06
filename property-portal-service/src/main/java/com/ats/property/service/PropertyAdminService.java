@@ -912,6 +912,10 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                     advertisementType.setSpecificationFileName(PropertyConstants.RESOURCE_DIR.value() + advertisement.getSpecificationFileName());
                 }
 
+                if( null == advertisement.getBuilderName()) {
+                    advertisementType.setOwnerFirstName(advertisement.getPropertyUserByPropertyUserId().getFirstName());
+                }
+
                 advertisementType.setCompanyName(advertisement.getBuilderName());
                 if(advertisement.getBuilderName() == null || (advertisement.getBuilderName() != null && advertisement.getBuilderName().equals("") )) {
                     advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());
@@ -1043,8 +1047,8 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             if (fromNullable(advertisement).isPresent()) {
                 PropertyUtils.copyFields(advertisement, advertisementType);
                 advertisementType.setCompanyName(advertisement.getBuilderName());
-                if(advertisement.getBuilderName() == null || (advertisement.getBuilderName() != null && advertisement.getBuilderName().equals("") )) {
-                    advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getBuilderName());
+                if(advertisement.getPropertyUserByPropertyUserId().getBuilderName() == null || (advertisement.getPropertyUserByPropertyUserId().getBuilderName() != null && advertisement.getPropertyUserByPropertyUserId().getBuilderName().equals("") )) {
+                    advertisementType.setCompanyName(advertisement.getPropertyUserByPropertyUserId().getFirstName());
                 }
                 advertisementType.setLocationName(advertisement.getLocationsByLocationId().getName());
                 advertisementType.setPropertyForTypeName(advertisement.getPropertyForTypeByPropertyForTypeId().getNameForPoster());

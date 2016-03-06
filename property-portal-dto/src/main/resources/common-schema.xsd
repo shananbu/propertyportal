@@ -109,6 +109,7 @@
             <xs:element name="locationId" type="xs:long" minOccurs = "0"/>
             <xs:element name="address" type="xs:string"/>
             <xs:element name="builderName" type="xs:string"/>
+            <xs:element name="ownerFirstName" type="xs:string"/>
             <xs:element name="buildupArea" type="xs:double" minOccurs = "0"/>
             <xs:element name="buildupAreaUnitId" type="xs:long" minOccurs = "0"/>
             <xs:element name="bedRoomId" type="xs:long" minOccurs = "0"/>
