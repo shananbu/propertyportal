@@ -91,4 +91,6 @@ public interface IPropertyAdminDAO {
 
     List<PropertyUser> getUsersByDateRange(String fromDate, String toDate);
 
+    List<Advertisement> getAdvertisementsByType(boolean isMicroSite);
+
 }

@@ -590,4 +590,12 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         List<PropertyUser> response = query.list();
         return response;
     }
+
+    @Override
+    public List<Advertisement> getAdvertisementsByType(boolean isMicroSite) {
+        Session session = getSession();
+        Query query = session.createQuery("from Advertisement a where a.isMicroSite = " + isMicroSite);
+        List<Advertisement> response = query.list();
+        return response;
+    }
 }
