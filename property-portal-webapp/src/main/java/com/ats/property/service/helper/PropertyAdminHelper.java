@@ -312,6 +312,11 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean getAdvertisementsByType(boolean isMicroSite, ModuleList response) {
+        return adminService.getAdvertisementsByType(isMicroSite, response);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminService.getBedroomsList(response);
     }

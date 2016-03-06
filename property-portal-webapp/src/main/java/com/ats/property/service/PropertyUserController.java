@@ -61,7 +61,7 @@ public class PropertyUserController implements InitializingBean {
         adminDelegate.getBedroomsList(response);
         adminDelegate.getBudgetList(response);
         adminDelegate.getPropertyTypeList(response);
-        adminDelegate.getAdvertisements(response);
+        adminDelegate.getAdvertisementsByType(true, response);
         adminDelegate.getUserType(response);
         modelAndView.addObject("response", response);
         return modelAndView;

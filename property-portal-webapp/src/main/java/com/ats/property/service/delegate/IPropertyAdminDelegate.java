@@ -73,4 +73,6 @@ public interface IPropertyAdminDelegate {
     int getRemainingImageCount(Long advertisementId);
 
     boolean showClientReportView(String fromDate, String toDate, ModuleList response);
+
+    boolean getAdvertisementsByType(boolean isMicroSite, ModuleList response);
 }

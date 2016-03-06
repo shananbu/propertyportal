@@ -83,4 +83,6 @@ public interface IPropertyAdminService {
 
     boolean showClientReportView(String fromDate, String toDate, ModuleList response);
 
+    boolean getAdvertisementsByType(boolean isMicroSite,  ModuleList response);
+
 }

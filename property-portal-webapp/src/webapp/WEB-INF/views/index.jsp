@@ -269,7 +269,7 @@
             <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
                 <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" begin="5" end="6" >
                     <c:set var="counter" value="${counter + 1}"/>
-                    <li> <a href="projectOverview?advertisementId=${data.id}" target="_blank"> <img src="${data.propertyLogo}">
+                    <li> <a href="projectOverview?advertisementId=${data.id}&isMicroSite=true" target="_blank"> <img src="${data.propertyLogo}">
                         <figcaption class="pro_info_1">
                             <h1>${data.projectName} </h1>
                             <p>${data.companyName}</p>
@@ -311,7 +311,7 @@
             <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
                 <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" end="1" >
                     <c:set var="counter" value="${counter + 1}"/>
-                    <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="${data.propertyLogo}">
+                    <li> <a href="projectOverview?advertisementId=${data.id}&isMicroSite=true"> <img src="${data.propertyLogo}">
                         <figcaption class="pro_info_1"> <img src="${data.companyLogo}">
                             <summary>
                                 <h1>${data.projectName}</h1>
@@ -354,7 +354,7 @@
             <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
                 <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" begin="2" end="4">
                     <c:set var="counter" value="${counter + 1}"/>
-                    <li> <a href="projectOverview?advertisementId=${data.id}"> <img src="${data.propertyLogo}">
+                    <li> <a href="projectOverview?advertisementId=${data.id}&isMicroSite=true"> <img src="${data.propertyLogo}">
                         <figcaption class="pro_info_1">
                             <h1>${data.projectName}</h1>
                             <p>${data.companyName}</p>
@@ -397,7 +397,7 @@
             <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
                 <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" begin="7" end="8" >
                     <c:set var="counter" value="${counter + 1}"/>
-                    <li> <a href="projectOverview?advertisementId=${data.id}" target="_blank"> <img src="${data.propertyLogo}">
+                    <li> <a href="projectOverview?advertisementId=${data.id}&isMicroSite=true" target="_blank"> <img src="${data.propertyLogo}">
                         <figcaption class="pro_info_1">
                             <h1>${data.projectName} </h1>
                             <p>${data.companyName}</p>
@@ -440,7 +440,7 @@
     <c:if test="${not empty response.module[0].moduleResponse.advertisements}">
         <c:forEach var="data" items="${response.module[0].moduleResponse.advertisements}" begin="9" end="13" >
             <c:set var="counter" value="${counter + 1}"/>
-            <li> <a href="projectOverview?advertisementId=${data.id}" target="_blank"> <img src="${data.propertyLogo}">
+            <li> <a href="projectOverview?advertisementId=${data.id}&isMicroSite=true" target="_blank"> <img src="${data.propertyLogo}">
                 <figcaption class="pro_info_1">
                     <h1>${data.projectName} </h1>
                     <p>${data.companyName}</p>

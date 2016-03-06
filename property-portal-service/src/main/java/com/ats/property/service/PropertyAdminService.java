@@ -134,6 +134,14 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         return true;
     }
 
+    @Override
+    @Transactional
+    public boolean getAdvertisementsByType(boolean isMicroSite, ModuleList response) {
+        List<Advertisement> advertisements = adminDAO.getAdvertisements(isMicroSite);
+        getAdvertisements(advertisements, response);
+        return true;
+    }
+
     public static Long getCurrentUserTypeId() {
         UserInformation user = getCurrentUser();
         if (user != null) {

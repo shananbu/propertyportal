@@ -205,6 +205,11 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean getAdvertisementsByType(boolean isMicroSite, ModuleList response) {
+        return adminHelper.getAdvertisementsByType(isMicroSite, response);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminHelper.getBedroomsList(response);
     }
