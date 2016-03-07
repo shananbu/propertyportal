@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -67,8 +69,8 @@
             <div class="sear_list">
                 <ul>
                     <li>
-                        <figure class="gal_pop_open" id="${data.id}"> <img src="images/image_1.jpg">
-                            <figcaption>5 photos</figcaption>
+                        <figure class="gal_pop_open" id="${data.id}"> <img src="${data.propertyLogo}">
+                            <figcaption>${fn:length(data.galleryImage)} photos</figcaption>
                         </figure>
                         <div>
                             <div class="search_head">
@@ -92,7 +94,7 @@
                                         <span>${data.cost}</span> </li>
                                     <li>
                                         <label>Possession :</label>
-                                        <span>August 2015 </span> </li>
+                                        <span>${data.possession}</span> </li>
                                     <li class="unit_block">
                                         <label>Description : </label>
                                         <p class="content more truncate" will-truncate-max-height="0" data-text-truncate-lines="5">${data.description}</p>
@@ -121,7 +123,7 @@
     <div class="img_gal_pop_wrap">
         <h1 class="h_2">Image Gallery <span class="gal_close"> <i class="fa fa-times-circle"></i> </span> </h1>
         <div class="ad_gallery_user">
-            <div class="img_wrapper"> <span> <img src="images/large_img_1.jpg" /> </span></div>
+            <div class="img_wrapper"> <span> <img src="${data.propertyLogo}" /> </span></div>
             <div class="nav_tab">
                 <div class="slider">
                     <ul id="img_gal_pop_ul">
@@ -181,7 +183,7 @@
             }).done(function(data) {
                 $('#img_gal_pop_ul').empty();
                 $.each(data.module[0].moduleResponse.advertisement.galleryImage, function() {
-                    $('#img_gal_pop_ul').append($('<li><span><img src="/' +  (this.imageName) + '"> </span></li>'));
+                    $('#img_gal_pop_ul').append($('<li><span><img src="./..' +  (this.imageName) + '"> </span></li>'));
                 });
             });
 

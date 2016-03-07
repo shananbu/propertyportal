@@ -894,7 +894,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 PropertyUtils.copyFields(advertisement, advertisementType);
                 advertisementType.setCompanyLogo(PropertyConstants.NO_IMAGE_PATH.value());
                 if( advertisement.getLocationsByLocationId() != null){
-                    advertisementType.setAddress(advertisementType.getBuilderName() + ", " + advertisement.getLocationsByLocationId().getName() );
+                    advertisementType.setAddress(advertisement.getAddress() + ", " + advertisement.getLocationsByLocationId().getName());
                 }
                 if(advertisement.getPossessionOrAgeByPossessionOrAgeId() != null) {
                     advertisementType.setPossession(advertisement.getPossessionOrAgeByPossessionOrAgeId().getName());

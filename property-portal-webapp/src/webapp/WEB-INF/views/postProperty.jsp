@@ -276,7 +276,7 @@
     <ul>
         <li class="ad_col_1">
             <label>Expected Rent <small>*</small></label>
-                <span>
+                <span id="lakhsSpan">
                 <label> Lakhs </label>
                 <i class="fa fa-inr fa-2x"></i> &nbsp;<select class="dropdown" id="denominationLakhs">
                     <option value="-1">Select</option>
