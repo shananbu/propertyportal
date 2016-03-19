@@ -558,6 +558,15 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
+    public PropertyUser getUserByToken(String token) {
+        Session session = getSession();
+        Query query = session.createQuery("from PropertyUser u where u.passwordRecoveryToken = :token");
+        query.setParameter("token", token);
+        PropertyUser response = (PropertyUser)query.uniqueResult();
+        return response;
+    }
+
+    @Override
     public PreferredLocations savePreferredLocations(PreferredLocations preferredLocations) {
         return (PreferredLocations)persist(preferredLocations);
     }

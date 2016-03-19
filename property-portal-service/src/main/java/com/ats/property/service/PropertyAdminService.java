@@ -150,6 +150,20 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         return stats;
     }
 
+    @Override
+    @Transactional
+    public boolean resetPassword(String token, String password) {
+        PropertyUser user = adminDAO.getUserByToken(token);
+        boolean stats = false;
+        if( user != null) {
+            user.setPasswrd(password);
+            user.setPasswordRecoveryToken("");
+            adminDAO.updatePropertyUser(user);
+            stats = true;
+        }
+        return stats;
+    }
+
     public static Long getCurrentUserTypeId() {
         UserInformation user = getCurrentUser();
         if (user != null) {

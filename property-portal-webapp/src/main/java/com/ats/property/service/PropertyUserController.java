@@ -466,21 +466,28 @@ public class PropertyUserController implements InitializingBean {
 
     @RequestMapping(value = {"/sendPasswordRecoveryMail" }, method = RequestMethod.POST)
     public ModelAndView sendPasswordRecoveryMail(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
-        ModelAndView modelAndView = new ModelAndView("forgotPassword");
+        ModelAndView modelAndView = new ModelAndView("userResponse");
         ModuleList response = CommonHelper.getSuccessModuleList();
         adminDelegate.sendPasswordRecoveryMail(moduleRequest, response);
         modelAndView.addObject("response", response);
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/resetPassword" }, method = RequestMethod.POST)
-    public ModelAndView resetPassword(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
-        ModelAndView modelAndView = new ModelAndView("forgotPassword");
+    @RequestMapping(value = {"/updatePassword" }, method = RequestMethod.POST)
+    public ModelAndView resetPassword(@RequestParam("token") String token, @RequestParam("password") String password) {
+        ModelAndView modelAndView = new ModelAndView("userResponse");
         ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.resetPassword(token, password, response);
         modelAndView.addObject("response", response);
         return modelAndView;
     }
 
+    @RequestMapping(value = {"/resetPassword" }, method = RequestMethod.GET)
+    public ModelAndView showResetPassword(@RequestParam("token") String token) {
+        ModelAndView modelAndView = new ModelAndView("resetPassword");
+        modelAndView.addObject("token", token);
+        return modelAndView;
+    }
     @Override
     public void afterPropertiesSet() throws Exception {
         fileRootDir = environment.getRequiredProperty("upload.resources.path");

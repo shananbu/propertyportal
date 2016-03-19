@@ -87,4 +87,6 @@ public interface IPropertyAdminService {
 
     boolean sendPasswordRecoveryMail(String mailId, ModuleList response);
 
+    boolean resetPassword(String token, String password);
+
 }

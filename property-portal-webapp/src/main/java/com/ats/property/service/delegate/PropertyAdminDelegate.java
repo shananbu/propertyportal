@@ -219,6 +219,16 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean resetPassword(String token, String password, ModuleList response) {
+        if(token == null) {
+            response.getMessages().get(0).setCode(ResponseMessage.INVALID_REQUEST.code());
+            response.getMessages().get(0).setMessage(ResponseMessage.INVALID_REQUEST.message());
+            return true;
+        }
+        return adminHelper.resetPassword(token, password, response);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminHelper.getBedroomsList(response);
     }

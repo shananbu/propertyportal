@@ -93,4 +93,6 @@ public interface IPropertyAdminDAO {
 
     List<Advertisement> getAdvertisementsByType(boolean isMicroSite);
 
+    PropertyUser getUserByToken(String token);
+
 }

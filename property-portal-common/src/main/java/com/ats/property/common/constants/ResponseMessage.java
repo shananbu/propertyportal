@@ -12,7 +12,8 @@ public enum ResponseMessage {
     UNEXPECTED_ERROR(103, "Unexpected Error"),
     INVALID_SESSION(104, "Invalid Session"),
     USER_EXISTS(105, "User Already Exists!"),
-    INVALID_USER(106, "Invalid User. Please try with correct user!")
+    INVALID_USER(106, "Invalid User. Please try with correct user!"),
+    INVALID_REQUEST(104, "Invalid Request. The token may be expired!"),
     ;
 
     private final int code;

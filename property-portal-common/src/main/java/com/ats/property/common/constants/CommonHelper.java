@@ -7,6 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * The CommonHelper.
@@ -74,17 +75,11 @@ public class CommonHelper {
     }
 
     public static String getToken(String msgToEncrypt) {
-        byte[] bytesOfMessage = new byte[0];
-        MessageDigest md = null;
-        try {
-            bytesOfMessage = msgToEncrypt.getBytes("UTF-8");
-            md = MessageDigest.getInstance("MD5");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        byte[] theDigest = md.digest(bytesOfMessage);
-        return theDigest.toString();
+        String uuid = UUID.randomUUID().toString();
+        return uuid + "-" + msgToEncrypt.split("@")[0];
+    }
+
+    public static void main(String[] args) {
+        System.out.print(getToken("shananbu@gmail.com"));
     }
 }

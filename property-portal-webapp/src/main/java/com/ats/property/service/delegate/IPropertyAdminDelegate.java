@@ -78,4 +78,7 @@ public interface IPropertyAdminDelegate {
 
     boolean sendPasswordRecoveryMail(ModuleRequestType moduleRequest, ModuleList response);
 
+    boolean resetPassword(String token, String password, ModuleList response);
+
+
 }

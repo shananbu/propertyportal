@@ -83,4 +83,6 @@ public interface IPropertyAdminHelper {
 
     boolean sendPasswordRecoveryMail(PropertyUserType userType, ModuleList response);
 
+    boolean resetPassword(String token, String password, ModuleList response);
+
 }

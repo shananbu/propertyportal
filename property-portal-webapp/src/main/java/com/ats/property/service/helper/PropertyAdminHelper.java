@@ -331,6 +331,20 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean resetPassword(String token, String password, ModuleList response) {
+        boolean status = adminService.resetPassword(token, password);
+
+        if(status) {
+            response.getMessages().get(0).setCode(ResponseMessage.SUCCESSFUL_RESPONSE.code());
+            response.getMessages().get(0).setMessage("Password updated successfully.");
+        } else {
+            response.getMessages().get(0).setMessage(ResponseMessage.INVALID_USER.message());
+            response.getMessages().get(0).setCode(ResponseMessage.INVALID_USER.code());
+        }
+        return true;
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminService.getBedroomsList(response);
     }
