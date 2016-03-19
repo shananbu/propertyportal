@@ -18,8 +18,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import javax.transaction.Transactional;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 
 import static com.ats.property.common.constants.PropertyUtils.isNotNull;
 import static com.google.common.base.Optional.fromNullable;
@@ -533,6 +535,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                 user.setUserTypeByUserTypeId(adminDAO.findUserTypeById(user.getUserTypeId()));
                 user.setCityByCityId(adminDAO.findCityById(user.getCityId()));
                 user.setIsMailVerified("N");
+                user.setRegisteredDate(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
                 PropertyUser propertyUserResponse = adminDAO.saveOrUpdateUser(user);
                 if (fromNullable(propertyUserResponse).isPresent()) {
                     PropertyUserType userType = new PropertyUserType();
