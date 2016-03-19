@@ -8,8 +8,6 @@ import com.ats.property.dto.*;
 import com.ats.property.mail.MailBean;
 import com.ats.property.mail.MailService;
 import com.ats.property.model.*;
-import com.ats.property.model.Advertisement;
-import com.ats.property.model.TotalFloors;
 import com.ats.property.spring.UserInformation;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.InitializingBean;
@@ -17,16 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.velocity.VelocityEngineUtils;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
-import java.security.Principal;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -140,6 +131,23 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         List<Advertisement> advertisements = adminDAO.getAdvertisements(isMicroSite);
         getAdvertisements(advertisements, response);
         return true;
+    }
+
+    @Override
+    @Transactional
+    public boolean sendPasswordRecoveryMail(String mailId, ModuleList response) {
+        PropertyUser user = adminDAO.getUserByMail(mailId);
+        boolean stats = false;
+        if( user != null) {
+            if (user.getEmailId() != null) {
+                MailBean data = getRecoveryMailData(user);
+                user.setPasswordRecoveryToken(data.getPasswordRecoveryToken());
+                mailService.sendMail(data);
+            }
+            adminDAO.updatePropertyUser(user);
+            stats = true;
+        }
+        return stats;
     }
 
     public static Long getCurrentUserTypeId() {
@@ -1166,6 +1174,28 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
 
         String text = VelocityEngineUtils.mergeTemplateIntoString(
                 velocityEngine, "mailtemplate/advt-posting-confirmation-to-user.vm", "UTF-8", model);
+        return text;
+    }
+
+    private MailBean getRecoveryMailData(PropertyUser user) {
+        MailBean data = new MailBean();
+        data.setToMailId(user.getEmailId());
+        String token = CommonHelper.getToken(user.getEmailId() + user.getId() + user.getCityId());
+        data.setPasswordRecoveryToken(token);
+        data.setMailBody(buildPasswordRecoveryMailBodyFromTemplate(user.getFirstName(), token));
+        data.setSubject("Password Recovery");
+        return data;
+    }
+
+    private String buildPasswordRecoveryMailBodyFromTemplate(String name, String token) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+        Map model = new HashMap<String, String>();
+        model.put("token", token);
+        model.put("name", name);
+        model.put("date", formatter.format(new java.util.Date()));
+        System.out.print("token>>>> " + token);
+        String text = VelocityEngineUtils.mergeTemplateIntoString(
+                velocityEngine, "mailtemplate/password-recovery.vm", "UTF-8", model);
         return text;
     }
 }

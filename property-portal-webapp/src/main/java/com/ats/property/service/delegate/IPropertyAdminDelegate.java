@@ -75,4 +75,7 @@ public interface IPropertyAdminDelegate {
     boolean showClientReportView(String fromDate, String toDate, ModuleList response);
 
     boolean getAdvertisementsByType(boolean isMicroSite, ModuleList response);
+
+    boolean sendPasswordRecoveryMail(ModuleRequestType moduleRequest, ModuleList response);
+
 }

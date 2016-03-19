@@ -53,7 +53,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                     .passwordParameter("password")
             .and()
                 .authorizeRequests()
-                .antMatchers("/admindashboard", "projectOverviewClassifieds", "clientReportView").hasAuthority("ROLE_ADMIN")
+                .antMatchers( "/admindashboard", "projectOverviewClassifieds", "clientReportView").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/postProperty", "/postPropertyInMicrosite", "manageAdvertisements", "manageProfile").hasAuthority("ROLE_USER")
                 .antMatchers("/", "/index", "/userRegistration", "/registerUser", "/userLogin", "/advertiseWithUs",
                         "/searchViewPage", "/propertyAlertRegisteration", "/projectOverview", "/emiCalculator",
@@ -63,7 +63,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/uploadFile", "/uploadFileAndUpdate", "/deleteUploadFile","/advtPostingComplete",
                         "/saveOrUpdateAdvertisement", "/genericErrorpage", "/userResponse", "/registerPropertyAlert",
                         "/rest/v1/admin/modules/get/getAdvertisement", "/rest/v1/admin/modules/create/registerUser",
-                        "/rest/v1/admin/modules/get/budgetByPropertyForTypeId").permitAll()
+                        "/rest/v1/admin/modules/get/budgetByPropertyForTypeId", "/forgotPassword", "/resetPassword", "/sendPasswordRecoveryMail").permitAll()
 
                 .anyRequest().authenticated()
             .and()

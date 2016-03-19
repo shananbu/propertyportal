@@ -30,7 +30,7 @@ public class PropertyUser {
     private Date registeredDate;
     private Collection<PropertyRequirement> propertyRequirementsById;
     private Collection<Advertisement> advertisementsById;
-
+    private String passwordRecoveryToken;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -260,6 +260,16 @@ public class PropertyUser {
 
     public void setRegisteredDate(Date registeredDate) {
         this.registeredDate = registeredDate;
+    }
+
+    @Basic
+    @Column(name = "passwordRecoveryToken", nullable = true, insertable = true, updatable = true, length = 200)
+    public String getPasswordRecoveryToken() {
+        return passwordRecoveryToken;
+    }
+
+    public void setPasswordRecoveryToken(String passwordRecoveryToken) {
+        this.passwordRecoveryToken = passwordRecoveryToken;
     }
 
 }

@@ -10,6 +10,7 @@ public class MailBean {
     private String subject;
     private String mailBody;
     private boolean mailStatus;
+    private String passwordRecoveryToken;
 
     public boolean isMailStatus() {
         return mailStatus;
@@ -42,4 +43,13 @@ public class MailBean {
     public void setMailBody(String mailBody) {
         this.mailBody = mailBody;
     }
+
+    public String getPasswordRecoveryToken() {
+        return passwordRecoveryToken;
+    }
+
+    public void setPasswordRecoveryToken(String passwordRecoveryToken) {
+        this.passwordRecoveryToken = passwordRecoveryToken;
+    }
+
 }

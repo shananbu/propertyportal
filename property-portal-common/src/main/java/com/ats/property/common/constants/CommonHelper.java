@@ -2,6 +2,9 @@ package com.ats.property.common.constants;
 
 import com.ats.property.dto.*;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -68,5 +71,20 @@ public class CommonHelper {
     public static void parseLineByLine(String msg, List<String> descriptions) {
         StringBuffer sb = new StringBuffer(msg);
         descriptions.addAll(Arrays.asList(msg.split("\\r\\n")));
+    }
+
+    public static String getToken(String msgToEncrypt) {
+        byte[] bytesOfMessage = new byte[0];
+        MessageDigest md = null;
+        try {
+            bytesOfMessage = msgToEncrypt.getBytes("UTF-8");
+            md = MessageDigest.getInstance("MD5");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        byte[] theDigest = md.digest(bytesOfMessage);
+        return theDigest.toString();
     }
 }

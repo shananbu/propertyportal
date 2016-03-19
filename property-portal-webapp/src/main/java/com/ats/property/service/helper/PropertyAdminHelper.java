@@ -317,6 +317,20 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean sendPasswordRecoveryMail(PropertyUserType userType, ModuleList response) {
+        boolean status = adminService.sendPasswordRecoveryMail(userType.getEmailId(), response);
+
+        if(status) {
+            response.getMessages().get(0).setCode(ResponseMessage.SUCCESSFUL_RESPONSE.code());
+            response.getMessages().get(0).setMessage("Password recovery mail has sent to your mail. <br> Please reset your password through your registered mail.");
+        } else {
+            response.getMessages().get(0).setMessage(ResponseMessage.INVALID_USER.message());
+            response.getMessages().get(0).setCode(ResponseMessage.INVALID_USER.code());
+        }
+        return true;
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminService.getBedroomsList(response);
     }

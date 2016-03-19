@@ -458,6 +458,29 @@ public class PropertyUserController implements InitializingBean {
         return modelAndView;
     }
 
+    @RequestMapping(value = {"/forgotPassword" }, method = RequestMethod.GET)
+    public ModelAndView forgotPassword() {
+        ModelAndView modelAndView = new ModelAndView("forgotPassword");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = {"/sendPasswordRecoveryMail" }, method = RequestMethod.POST)
+    public ModelAndView sendPasswordRecoveryMail(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
+        ModelAndView modelAndView = new ModelAndView("forgotPassword");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.sendPasswordRecoveryMail(moduleRequest, response);
+        modelAndView.addObject("response", response);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = {"/resetPassword" }, method = RequestMethod.POST)
+    public ModelAndView resetPassword(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
+        ModelAndView modelAndView = new ModelAndView("forgotPassword");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        modelAndView.addObject("response", response);
+        return modelAndView;
+    }
+
     @Override
     public void afterPropertiesSet() throws Exception {
         fileRootDir = environment.getRequiredProperty("upload.resources.path");

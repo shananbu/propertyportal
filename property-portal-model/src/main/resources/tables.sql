@@ -165,6 +165,7 @@ create table PropertyUser (
   isTermsAgreed bit,
   isMailVerified varchar(2),
   passwrd varchar(25),
+  passwordRecoveryToken varchar(200),
   status varchar(1),
   registeredDate date,
   constraint pk7 primary key(id),
@@ -675,3 +676,16 @@ create table PreferredLocations (
 -- delete from PropertyAmenities;
 -- delete from  Advertisement;
 -- ---------------------------------------------------------------------------------------------------------------------
+
+/*
+SET FOREIGN_KEY_CHECKS = 0;
+SET @tables = NULL;
+SELECT GROUP_CONCAT(table_schema, '.', table_name) INTO @tables
+FROM information_schema.tables
+WHERE table_schema = 'propertyportal'; -- specify DB name here.
+
+SET @tables = CONCAT('DROP TABLE ', @tables);
+PREPARE stmt FROM @tables;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+SET FOREIGN_KEY_CHECKS = 1; */

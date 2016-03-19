@@ -81,4 +81,6 @@ public interface IPropertyAdminHelper {
 
     boolean getAdvertisementsByType(boolean isMicroSite, ModuleList response);
 
+    boolean sendPasswordRecoveryMail(PropertyUserType userType, ModuleList response);
+
 }

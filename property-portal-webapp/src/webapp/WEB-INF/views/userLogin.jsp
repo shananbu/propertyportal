@@ -48,7 +48,7 @@
                                     <label>Password</label>
                                     <input type="password" placeholder="Password" name="password">
                                 </li>
-                                <li class="log_for"><span> <a href="#">Forgot Password ? </a> </span>
+                                <li class="log_for"><span> <a href="forgotPassword">Forgot Password ? </a> </span>
                                     <input type="submit" value="Login" class="sub_btn_3">
                                 </li>
                                 <%--

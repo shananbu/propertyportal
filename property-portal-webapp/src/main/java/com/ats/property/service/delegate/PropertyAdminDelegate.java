@@ -210,6 +210,15 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean sendPasswordRecoveryMail(ModuleRequestType moduleRequest, ModuleList response) {
+        PropertyUserType user = null;
+        if(fromNullable(moduleRequest).isPresent()) {
+            user = moduleRequest.getPropertyUser();
+        }
+        return adminHelper.sendPasswordRecoveryMail(user, response);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminHelper.getBedroomsList(response);
     }

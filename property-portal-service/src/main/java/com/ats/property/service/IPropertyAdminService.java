@@ -85,4 +85,6 @@ public interface IPropertyAdminService {
 
     boolean getAdvertisementsByType(boolean isMicroSite,  ModuleList response);
 
+    boolean sendPasswordRecoveryMail(String mailId, ModuleList response);
+
 }

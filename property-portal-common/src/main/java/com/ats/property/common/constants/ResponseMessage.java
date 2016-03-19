@@ -11,7 +11,9 @@ public enum ResponseMessage {
     AUTH_REQUIRED(102, "Authentication Required"),
     UNEXPECTED_ERROR(103, "Unexpected Error"),
     INVALID_SESSION(104, "Invalid Session"),
-    USER_EXISTS(105, "User Already Exists!");
+    USER_EXISTS(105, "User Already Exists!"),
+    INVALID_USER(106, "Invalid User. Please try with correct user!")
+    ;
 
     private final int code;
 
