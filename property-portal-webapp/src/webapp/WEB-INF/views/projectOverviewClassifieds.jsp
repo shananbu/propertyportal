@@ -102,7 +102,7 @@
         <div class="img_gal_pop_wrap">
             <h1 class="h_2">Image Gallery <span class="gal_close"> <i class="fa fa-times-circle"></i> </span> </h1>
             <div class="ad_gallery_user">
-                <div class="img_wrapper"> <span> <img src="images/large_img_1.jpg" /> </span></div>
+                <div class="img_wrapper"> <span> <img src="${data.propertyLogo}" /> </span></div>
                 <div class="nav_tab">
                     <div class="slider">
                         <ul id="img_gal_pop_ul">
@@ -161,15 +161,17 @@
             }).done(function(data) {
                 $('#img_gal_pop_ul').empty();
                 $.each(data.module[0].moduleResponse.advertisement.galleryImage, function() {
-                    $('#img_gal_pop_ul').append($('<li><span><img src="/' +  (this.imageName) + '"> </span></li>'));
+                    $('#img_gal_pop_ul').append($('<li><span><img src="./..' + (this.imageName) + '"> </span></li>'));
                 });
+
+                $('.img_gal_pop').fadeIn();
+                if(k == 0){
+                    pop_gal();
+                    k++;
+                }
             });
 
-            $('.img_gal_pop').fadeIn();
-            if(k == 0){
-                pop_gal();
-                k++;
-            }
+
         });
 
         $('.gal_close').click(function(){
