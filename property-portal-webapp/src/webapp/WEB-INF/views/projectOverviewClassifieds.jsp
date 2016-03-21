@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -50,8 +51,8 @@
                             <div class="sear_list">
                                 <ul>
                                     <li>
-                                        <figure class="gal_pop_open" id="${data.id}"> <img src="images/image_1.jpg">
-                                            <figcaption>5 photos</figcaption>
+                                        <figure class="gal_pop_open" id="${data.id}"> <img src="${data.propertyLogo}">
+                                            <figcaption>${fn:length(data.galleryImage)} photos</figcaption>
                                         </figure>
                                         <div>
                                             <div class="search_head">
