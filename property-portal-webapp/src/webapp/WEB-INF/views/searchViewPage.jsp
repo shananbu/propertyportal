@@ -185,13 +185,14 @@
                 $.each(data.module[0].moduleResponse.advertisement.galleryImage, function() {
                     $('#img_gal_pop_ul').append($('<li><span><img src="./..' +  (this.imageName) + '"> </span></li>'));
                 });
+
+                $('.img_gal_pop').fadeIn();
+                if(k == 0){
+                    pop_gal();
+                    k++;
+                }
             });
 
-            $('.img_gal_pop').fadeIn();
-            if(k == 0){
-                pop_gal();
-                k++;
-            }
         });
 
         $('.gal_close').click(function(){

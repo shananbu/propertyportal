@@ -32,7 +32,7 @@ $(document).ready(function() {
                 if($("#advtStatus").val() == "true") {
                     isChecked = "checked";
                 }
-                $('#advertisementApprovalTable tr').last().after('<tr class="odd gradeX"><td><input type="checkbox" ' + isChecked + ' id="' + this.id + '"/></td><td>' + this.companyName + '</td><td>' + this.projectName + '</td><td>' + this.propertyTypeName + '</td><td>' + this.locationName  + '</td><td>' + this.propertyForTypeName + '</td><td>' + this.advtTypeName + '</td><td><a target="_blank" href="projectOverview?advertisementId=' + this.id + '&isMicroSite=' + this.isMicroSite + '">View</a></td></tr>');
+                $('#advertisementApprovalTable tr').last().after('<tr class="odd gradeX"><td><input type="checkbox" ' + isChecked + ' id="' + this.id + '"/></td><td>' + this.companyName + '</td><td>' + this.projectName + '</td><td>' + this.propertyTypeName + '</td><td>' + this.locationName  + '</td><td>' + this.propertyForTypeName + '</td><td>' + this.advtTypeName + '</td><td><a target="_blank" href="projectOverview?advertisementId=' + this.id + '&isMicroSite=' + this.isMicroSite + '">View</a></td><td>Edit</td></tr>');
             });
         });
     }

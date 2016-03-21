@@ -81,6 +81,7 @@
                                 <th>Property For</th>
                                 <th>Advertisement Type</th>
                                 <th>View details</th>
+                                <th>Edit</th>
                             </tr>
                             </thead>
                             <tbody>
