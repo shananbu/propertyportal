@@ -28,7 +28,7 @@
                     <p>### - #######</p>
                 </div>
                 <div class="address_1 clearfix"><i class="fa fa-envelope"></i>
-                    <p>support@1acreindia.com</p>
+                    <p> <a href="mailto:support@1acreindia.com"> support@1acreindia.com </a> </p>
                 </div>
             </div>
             <div class="clr_fix contact_map">
