@@ -18,7 +18,7 @@ $(document).ready(function () {
 
             var sendMail = $.ajax({
                 type: 'POST',
-                url: "/sendContactUsMail",
+                url: "sendContactUsMail",
                 data: formData,
                 dataType: "text",
                 contentType: false,
