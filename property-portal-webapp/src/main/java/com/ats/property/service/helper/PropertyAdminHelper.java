@@ -345,6 +345,20 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean sendContactUsMail(ContactUsType contactUsType, ModuleList response) {
+        boolean status = adminService.sendContactUsMail(contactUsType, response);
+
+        if(status) {
+            response.getMessages().get(0).setCode(ResponseMessage.SUCCESSFUL_RESPONSE.code());
+            response.getMessages().get(0).setMessage("Sent enquiry request to builder/Owner. They will reach you shortly.");
+        } else {
+            response.getMessages().get(0).setMessage("Sending enquiry failed. Please try again after some time.");
+            response.getMessages().get(0).setCode(ResponseMessage.INVALID_USER.code());
+        }
+        return true;
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminService.getBedroomsList(response);
     }

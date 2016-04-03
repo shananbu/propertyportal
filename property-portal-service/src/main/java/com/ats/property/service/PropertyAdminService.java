@@ -166,6 +166,22 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         return stats;
     }
 
+    @Override
+    @Transactional
+    public boolean sendContactUsMail(ContactUsType contactUsType, ModuleList response) {
+
+        boolean stats = false;
+        if (contactUsType.getEMail() != null) {
+            Advertisement advertisement = adminDAO.findObjectById(contactUsType.getAdvertisementId(), Advertisement.class);
+            contactUsType.setBuilderEmail(advertisement.getPropertyUserByPropertyUserId().getEmailId());
+            contactUsType.setBuilderName(advertisement.getPropertyUserByPropertyUserId().getFirstName());
+            MailBean data = getContactUsMailData(contactUsType);
+            mailService.sendMail(data);
+            stats = true;
+        }
+        return stats;
+    }
+
     public static Long getCurrentUserTypeId() {
         UserInformation user = getCurrentUser();
         if (user != null) {
@@ -1210,9 +1226,31 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         model.put("token", token);
         model.put("name", name);
         model.put("date", formatter.format(new java.util.Date()));
-        System.out.print("token>>>> " + token);
         String text = VelocityEngineUtils.mergeTemplateIntoString(
                 velocityEngine, "mailtemplate/password-recovery.vm", "UTF-8", model);
         return text;
     }
+
+    private MailBean getContactUsMailData(ContactUsType user) {
+        MailBean data = new MailBean();
+        data.setToMailId(user.getBuilderEmail());
+        data.setMailBody(buildContactUsMailBodyFromTemplate(user));
+        data.setSubject("Interest on property");
+        return data;
+    }
+
+    private String buildContactUsMailBodyFromTemplate(ContactUsType user) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+        Map model = new HashMap<String, String>();
+        model.put("name", user.getName());
+        model.put("builderName", user.getBuilderName());
+        model.put("mobile", user.getMobileNo());
+        model.put("email", user.getEMail());
+        model.put("city", user.getCity());
+        model.put("date", formatter.format(new java.util.Date()));
+        String text = VelocityEngineUtils.mergeTemplateIntoString(
+                velocityEngine, "mailtemplate/contact-property-owner-builder.vm", "UTF-8", model);
+        return text;
+    }
+
 }

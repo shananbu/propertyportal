@@ -229,6 +229,15 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean sendContactUsMail(ModuleRequestType moduleRequest, ModuleList response) {
+        ContactUsType contactUsType = null;
+        if(fromNullable(moduleRequest).isPresent()) {
+            contactUsType = moduleRequest.getContactUs();
+        }
+        return adminHelper.sendContactUsMail(contactUsType, response);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminHelper.getBedroomsList(response);
     }

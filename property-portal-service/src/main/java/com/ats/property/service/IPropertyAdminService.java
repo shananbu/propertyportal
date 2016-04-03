@@ -89,4 +89,6 @@ public interface IPropertyAdminService {
 
     boolean resetPassword(String token, String password);
 
+    boolean sendContactUsMail(ContactUsType contactUsType, ModuleList response);
+
 }

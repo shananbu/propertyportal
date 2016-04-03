@@ -19,6 +19,9 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/modernizr-2.6.2.min.js" type="text/javascript"></script>
     <!-- common js file end -->
+    <script src="js/site/common.js"></script>
+    <script src="js/site/projectOverview.js"></script>
+
 </head>
 <body>
 <main class="main_wrapper clr_fix pro_view_top">
@@ -39,6 +42,7 @@
     </div>
 </header>
 <section class="clr_fix">
+    <input type="hidden" id="advertisementId" value="${response.module[0].moduleResponse.advertisement.id}">
     <div class="clr_fix prod_img_banner">
         <span>${response.module[0].moduleResponse.advertisement.companyName}</span>
         <ul class="rslides" id="slider1">
@@ -201,25 +205,25 @@
             <form>
                 <p>
                     <label>Name</label>
-                    <input type="text" placeholder="Name">
+                    <input type="text" placeholder="Name"  id="contactUsName">
                 </p>
 
                 <p>
                     <label>Email</label>
-                    <input type="text" placeholder="Email">
+                    <input type="text" placeholder="Email" id="contactUsEMail">
                 </p>
 
                 <p>
                     <label>City</label>
-                    <input type="text" placeholder="City">
+                    <input type="text" placeholder="City" id="contactUsCity">
                 </p>
 
                 <p>
                     <label>Mobile</label>
-                    <input type="text" placeholder="Mobile">
+                    <input type="text" placeholder="Mobile" id="contactUsMobile">
                 </p>
           <span>
-          <input type="button" value="Submit">
+          <input type="button" value="Submit" id="sendContactMail">
           </span>
             </form>
         </div>

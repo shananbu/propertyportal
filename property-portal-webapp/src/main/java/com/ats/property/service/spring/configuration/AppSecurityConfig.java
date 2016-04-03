@@ -64,7 +64,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/saveOrUpdateAdvertisement", "/genericErrorpage", "/userResponse", "/registerPropertyAlert",
                         "/rest/v1/admin/modules/get/getAdvertisement", "/rest/v1/admin/modules/create/registerUser",
                         "/rest/v1/admin/modules/get/budgetByPropertyForTypeId", "/forgotPassword", "/resetPassword",
-                        "/sendPasswordRecoveryMail", "/resetPassword", "/updatePassword").permitAll()
+                        "/sendPasswordRecoveryMail", "/resetPassword", "/updatePassword", "/sendContactUsMail", "/projectOverviewSample").permitAll()
 
                 .anyRequest().authenticated()
             .and()

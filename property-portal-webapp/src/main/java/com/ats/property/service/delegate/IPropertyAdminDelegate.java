@@ -80,5 +80,6 @@ public interface IPropertyAdminDelegate {
 
     boolean resetPassword(String token, String password, ModuleList response);
 
+    boolean sendContactUsMail(ModuleRequestType moduleRequest, ModuleList response);
 
 }

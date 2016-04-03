@@ -23,21 +23,16 @@
     <!-- jq_table script start-->
     <link href="css/demo_table.css" rel="stylesheet" type="text/css">
     <link href="css/jquery-ui-1.8.4.custom.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" language="javascript" src="js/jquery/jquery-ui-1.11.2.min.js"></script>
     <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" src="js/site/common.js"></script>
+
     <script type="text/javascript" charset="utf-8">
-        $(document).ready(function () {
-            oTable = $('#advertisementApprovalTable').dataTable({
-                "bJQueryUI": true,
-                "bAutoWidth": true,
-                "bSort": false,
-                "bFilter": false,
-                //"sScrollX": "100%",
-                "bScrollCollapse": false,
-                "sScrollY": "300px",
-                "sPaginationType": "full_numbers",
-                "oLanguage": {"sZeroRecords": "", "sEmptyTable": ""}
-            });
-        });
+        function showHelpDialog() {
+            var message = "<b>To Approve:<b><br> 1. Select UnApprove from the status drop down  <br> 2. Select the advertisement by clicking checkbox. <br> 3. Then click the Approve button.  <br><br>"
+                        + "<b>To UnApprove:<b><br> 1. Select Approve from the status drop down  <br> 2. Select the advertisement by un-checking the checkbox. <br> 3. Then click the Un Approve button. <br>"  ;
+            $.alert(message);
+        }
     </script>
     <!-- jq_table script end-->
     <script type="text/javascript" language="javascript" src="js/site/advertisementApproval.js"></script>
@@ -45,7 +40,7 @@
 <body>
 <main class="wrapper clr_fix">
     <%@ include file="adminHeader.jsp" %>
-    <section class="row_main clr_fix">
+    <section class="row_main clr_fix">T
         <aside class="aside_left clr_fix">
             <%@ include file="adminMenu.jsp" %>
         </aside>
@@ -63,6 +58,9 @@
                                     <option value="false">UnApproved</option>
                                     <option value="true">Approved</option>
                                 </select>
+                            </td>
+                            <td>
+                                <a href="javascript: showHelpDialog()" >Help</a>
                             </td>
                         </tr>
                     </table>

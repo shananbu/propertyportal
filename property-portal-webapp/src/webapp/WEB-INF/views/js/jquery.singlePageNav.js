@@ -26,7 +26,7 @@ if (typeof Object.create !== 'function') {
             
             this.container = container;            
             this.$container = $(container);
-            this.$links = this.$container.find('a');
+            this.$links = this.$container.find('.top_nav_2 a');
 
             if (this.options.filter !== '') {
                 this.$links = this.$links.filter(this.options.filter);
@@ -134,7 +134,7 @@ if (typeof Object.create !== 'function') {
         },
         
         setActiveLink: function(href) {
-            var $activeLink = this.$container.find("a[href$='" + href + "']");
+            var $activeLink = this.$container.find(".top_nav_2 a[href$='" + href + "']");
                             
             if (!$activeLink.hasClass(this.options.currentClass)) {
                 this.$links.removeClass(this.options.currentClass);

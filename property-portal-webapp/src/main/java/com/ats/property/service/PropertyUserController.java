@@ -488,6 +488,16 @@ public class PropertyUserController implements InitializingBean {
         modelAndView.addObject("token", token);
         return modelAndView;
     }
+
+    @RequestMapping(value = {"/sendContactUsMail" }, method = RequestMethod.POST)
+    public ModelAndView sendContactUsMail(@ModelAttribute("moduleRequest") ModuleRequestType moduleRequest) {
+        ModelAndView modelAndView = new ModelAndView("userResponse");
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.sendContactUsMail(moduleRequest, response);
+        modelAndView.addObject("response", response);
+        return modelAndView;
+    }
+
     @Override
     public void afterPropertiesSet() throws Exception {
         fileRootDir = environment.getRequiredProperty("upload.resources.path");
