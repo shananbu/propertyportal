@@ -87,4 +87,6 @@ public interface IPropertyAdminHelper {
 
     boolean sendContactUsMail(ContactUsType contactUsType, ModuleList response);
 
+    boolean deleteUploadFile(String fileName, Long advertisementId, Long imageId, ModuleList response);
+
 }

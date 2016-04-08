@@ -80,6 +80,7 @@
                                 <th>Advertisement Type</th>
                                 <th>View details</th>
                                 <th>Edit</th>
+                                <th>Gallery</th>
                             </tr>
                             </thead>
                             <tbody>

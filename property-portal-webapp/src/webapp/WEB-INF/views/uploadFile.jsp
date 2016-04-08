@@ -63,6 +63,15 @@
                              flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
                             <div class="drop" flow-drop ng-class="dropClass"> <span class="btn btn-default" flow-btn>Upload Image</span> <b>OR</b> Drag And Drop your images here </div>
                             <br/>
+                            <c:forEach var="imageType" items="${response.module[0].moduleResponse.advertisement.galleryImageByImageTypeMap[data.id]}">
+                                <div id="div${imageType.id}">
+                                    <div class="gallery-box"> <span class="title">${imageType.imageName}</span>
+                                        <div class="thumbnail"> <img src = "${imageType.imageName}"/> </div>
+                                        <div class="btn-group"> <a class="remove_btn" href="javascript:FileUploader.deleteUploadedFile('${imageType.id}')"><i class="fa fa-trash-o"></i> </a> </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </c:forEach>
                             <div>
                                 <div ng-repeat="file in $flow.files" class="gallery-box"> <span class="title">{{file.name}}</span>
                                     <div class="thumbnail" ng-show="$flow.files.length"> <img flow-img="file" /> </div>

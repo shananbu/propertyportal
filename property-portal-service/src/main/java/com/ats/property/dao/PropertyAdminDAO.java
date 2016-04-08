@@ -567,6 +567,15 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
     }
 
     @Override
+    public <T> T deleteObjectById(Long id, Class<T> clazz) {
+        Session session = getSession();
+        T object = (T)session.load(clazz, id);
+        session.delete(object);
+        session.flush() ;
+        return object;
+    }
+
+    @Override
     public PreferredLocations savePreferredLocations(PreferredLocations preferredLocations) {
         return (PreferredLocations)persist(preferredLocations);
     }

@@ -82,4 +82,7 @@ public interface IPropertyAdminDelegate {
 
     boolean sendContactUsMail(ModuleRequestType moduleRequest, ModuleList response);
 
+    boolean deleteUploadFile(String fileName, Long advertisementId, Long imageId, ModuleList response);
+
+
 }

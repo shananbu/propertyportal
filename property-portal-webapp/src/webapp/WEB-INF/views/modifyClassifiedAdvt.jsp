@@ -104,10 +104,19 @@
                             <c:forEach var="innerData" items="${data.propertyTypesById}">
                                 <li>
                                     <span class="jq_chk">
-                                        <input type="radio" name="advertisement.propertyTypeId" id="${innerData.id}" value="${innerData.id}" required onchange="setPropertyType('${innerData.name}')">
+                                        <input type="radio" name="advertisement.propertyTypeId" id="${innerData.id}" value="${innerData.id}" required onchange="setPropertyType('${innerData.name}')"
+                                               <c:if test="${response.module[0].moduleResponse.advertisement.propertyTypeId eq innerData.id}">
+                                               checked
+                                               </c:if>
+                                        >
                                          <label for="${innerData.id}"></label>
                                     </span>  ${innerData.name}
                                 </li>
+                                <c:if test="${response.module[0].moduleResponse.advertisement.propertyTypeId eq innerData.id}">
+                                    <script>
+                                        setPropertyType('${innerData.name}');
+                                    </script>
+                                </c:if>
                             </c:forEach>
                         </ul>
                     </c:forEach>
@@ -144,7 +153,7 @@
         </li>
         <li>
             <label>Address<small>*</small></label>
-            <input type="text" placeholder="Address" name="advertisement.address" class="projectname" value="${response.module[0].moduleResponse.advertisement.description}" required>
+            <input type="text" placeholder="Address" name="advertisement.address" class="projectname" value="${response.module[0].moduleResponse.advertisement.address}" required>
         </li>
         <%-- <li>
              <label>Company / <br> Builder Name<small>*</small></label>
@@ -162,7 +171,7 @@
             <select class="dropdown" name="advertisement.buildupAreaUnitId" required>
                 <c:forEach var="data" items="${response.module[0].moduleResponse.units}">
                     <option value="${data.id}"
-                            <c:if test="${response.module[0].moduleResponse.advertisement.buildupAreaUnitId eq data.id}"> selected </c:if>${data.name}</option>
+                            <c:if test="${response.module[0].moduleResponse.advertisement.buildupAreaUnitId eq data.id}"> selected </c:if>>${data.name}</option>
                 </c:forEach>
             </select>
         </li>

@@ -95,4 +95,6 @@ public interface IPropertyAdminDAO {
 
     PropertyUser getUserByToken(String token);
 
+    <T> T deleteObjectById(Long id, Class<T> clazz);
+
 }

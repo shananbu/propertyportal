@@ -48,7 +48,11 @@ $(document).ready(function() {
                 }
   //              var checkBox = '<input type="checkbox" ' + isChecked + ' id="' + this.id + '"/>';
 //                var viewUrl = '<a target="_blank" href="projectOverview?advertisementId=' + this.id + '&isMicroSite=' + this.isMicroSite + '">View</a>';
-                $('#advertisementApprovalTable tr').last().after('<tr class="odd gradeX"><td><input type="checkbox" ' + isChecked + ' id="' + this.id + '"/></td><td>' + this.companyName + '</td><td>' + this.projectName + '</td><td>' + this.propertyTypeName + '</td><td>' + this.locationName  + '</td><td>' + this.propertyForTypeName + '</td><td>' + this.advtTypeName + '</td><td><a target="_blank" href="projectOverview?advertisementId=' + this.id + '&isMicroSite=' + this.isMicroSite + '">View</a></td><td>Edit</td></tr>');
+
+                var editAdvt = '<a href="modifyAdvertisement?advertisementId=' + this.id + '&isMicroSite=' + this.isMicroSite + '"><i class="fa fa-pencil-square-o"></i></a></th>';
+                var editFile = '<a href="uploadFile?advertisementId=' + this.id + '"><i class="fa fa-plus"></i>/<i class="fa fa-minus"></i> <i class="fa fa-file-image-o"></i></a>';
+
+                $('#advertisementApprovalTable tr').last().after('<tr class="odd gradeX"><td><input type="checkbox" ' + isChecked + ' id="' + this.id + '"/></td><td>' + this.companyName + '</td><td>' + this.projectName + '</td><td>' + this.propertyTypeName + '</td><td>' + this.locationName  + '</td><td>' + this.propertyForTypeName + '</td><td>' + this.advtTypeName + '</td><td><a target="_blank" href="projectOverview?advertisementId=' + this.id + '&isMicroSite=' + this.isMicroSite + '">View</a></td><td>' + editAdvt + '</td><td>' + editFile + '</td></tr>');
 
 //                advtApprovalTable.row.add([checkBox, this.companyName, this.projectName, this.propertyTypeName, this.locationName, this.propertyForTypeName, this.advtTypeName, viewUrl, 'Edit']).draw(false);
             });

@@ -359,6 +359,11 @@ public class PropertyAdminHelper implements IPropertyAdminHelper, InitializingBe
     }
 
     @Override
+    public boolean deleteUploadFile(String fileName, Long advertisementId, Long imageId, ModuleList response) {
+        return adminService.deleteUploadFile(fileName, advertisementId, imageId, response);
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminService.getBedroomsList(response);
     }

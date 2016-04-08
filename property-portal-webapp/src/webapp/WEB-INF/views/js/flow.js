@@ -852,7 +852,7 @@
                 }
             }
         };
-        xhr.open('GET', "deleteUploadFile?flowFilename=bb&advertisementId=12");
+        xhr.open('GET', "deleteUploadFile?flowFilename=" + thisObj.name + "&advertisementId=" + $("#advertisementId").val());
         var data = "delete"
         xhr.send(data);
     },
@@ -1212,6 +1212,7 @@
           $("#remainingFileCount").val(parseInt($("#remainingFileCount").val()) - 1);
       } else {
           alert("Your Max upload image count reached.");
+          this.fileObj.cancel();
           return;
       }
     },

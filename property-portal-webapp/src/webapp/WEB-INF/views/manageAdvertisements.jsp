@@ -58,7 +58,7 @@
                             <th>Status</th>
                             <th>View</th>
                             <th>Edit</th>
-                            <th>Add/Remove Image</th>
+                            <th>Update Gallery</th>
                         </tr>
                         </thead>
                         <tbody>

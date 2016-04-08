@@ -9,15 +9,18 @@ import com.ats.property.mail.MailBean;
 import com.ats.property.mail.MailService;
 import com.ats.property.model.*;
 import com.ats.property.spring.UserInformation;
+import com.google.common.io.Files;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import javax.transaction.Transactional;
+import java.io.File;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -44,6 +47,10 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     @Autowired
     private VelocityEngine velocityEngine;
 
+    @Autowired
+    private Environment environment;
+
+    private String fileRootDir = "";
 
     public static UserInformation getCurrentUser(){
         SecurityContext securityContext = SecurityContextHolder.getContext();
@@ -182,6 +189,39 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         return stats;
     }
 
+    @Override
+    @Transactional
+    public boolean deleteUploadFile(String fileName, Long advertisementId, Long imageId, ModuleList response) {
+        Advertisement advertisement  = adminDAO.findObjectById(advertisementId, Advertisement.class);
+
+        if(imageId != null) {
+            deleteUploadFile(imageId);
+            return true;
+        }
+
+        if(fileName != null && advertisementId != null) {
+            if(advertisement != null) {
+                if (advertisement.getGalleryImagesesById() != null ) {
+                    for(GalleryImages galleryImages : advertisement.getGalleryImagesesById()) {
+                        if(galleryImages.getImageName().contains(advertisementId + "_" + fileName)) {
+                            deleteUploadFile(galleryImages.getId());
+                        }
+                    }
+                }
+            }
+        }
+        advertisement.setIsApproved(false);
+        adminDAO.updateAdvertisement(advertisement);
+        return true;
+    }
+
+    private void deleteUploadFile(Long imageId) {
+        GalleryImages image  = adminDAO.deleteObjectById(imageId, GalleryImages.class);
+        String absoluteFilename = fileRootDir + image.getImageName();
+        File file = new File(absoluteFilename);
+        file.delete();
+    }
+
     public static Long getCurrentUserTypeId() {
         UserInformation user = getCurrentUser();
         if (user != null) {
@@ -191,7 +231,8 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     }
     @Override
     public void afterPropertiesSet() throws Exception {
-         objectFactory = new ObjectFactory();
+        objectFactory = new ObjectFactory();
+        fileRootDir = environment.getRequiredProperty("upload.resources.path");
     }
 
     @Override
@@ -526,11 +567,10 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
             image.setAdvertisementByAdvertisementId(advtForUpdate);
             images = adminDAO.saveImage(image);
 
-          //  advtForUpdate.getGalleryImagesesById().add(image);
         }
-       // Advertisement advertisementFromDb = adminDAO.updateAdvertisement(advtForUpdate);
         AdvertisementType advertisement = new AdvertisementType();
         advertisement.setId(images.getId());
+        advtForUpdate.setIsApproved(false);
         return advertisement;
     }
 

@@ -170,3 +170,15 @@ $(document).ready(function(){
 function setPropertyType(data) {
     $('#propertyTypeSelected').text(data);
 }
+
+
+FileUploader = {
+    deleteUploadedFile: function(imageId) {
+        $.ajax({
+            url: "deleteUploadFile?imageId=" + imageId + "&advertisementId=" +  $( "#advertisementId" ).val()
+        }).done(function(data) {
+            $( "#div" + imageId ).remove();
+            $( "#remainingFileCount" ).val(data);
+        });
+    }
+}

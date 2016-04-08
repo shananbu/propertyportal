@@ -91,4 +91,6 @@ public interface IPropertyAdminService {
 
     boolean sendContactUsMail(ContactUsType contactUsType, ModuleList response);
 
+    boolean deleteUploadFile(String fileName, Long advertisementId, Long imageId, ModuleList response);
+
 }

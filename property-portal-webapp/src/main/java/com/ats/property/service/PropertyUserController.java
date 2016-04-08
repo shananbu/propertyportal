@@ -6,6 +6,7 @@ import com.ats.property.service.delegate.IPropertyAdminDelegate;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -315,6 +316,7 @@ public class PropertyUserController implements InitializingBean {
         ModuleList response = CommonHelper.getSuccessModuleList();
        // adminDelegate.getPl
         adminDelegate.getImageTypeList(response);
+        adminDelegate.getAdvertisementById(advertisementId.toString(), response);
 
         modelAndView.addObject("response", response);
         modelAndView.addObject("remainingFileCount", adminDelegate.getRemainingImageCount(advertisementId));
@@ -359,10 +361,13 @@ public class PropertyUserController implements InitializingBean {
     }
 
     @RequestMapping(value = {"/deleteUploadFile" }, method = RequestMethod.GET)
-    public ModelAndView deleteUploadFile(@RequestParam("flowFilename") String fileName, @RequestParam("advertisementId") String advertisementId) {
-        System.out.print("fileName>>" + fileName);
-        ModelAndView modelAndView = new ModelAndView("uploadFile");
-        return modelAndView;
+    @ResponseBody
+    public Integer deleteUploadFile(@RequestParam(value = "flowFilename", required = false) String fileName,
+                                         @RequestParam(value = "advertisementId", required = false) Long advertisementId,
+                                         @RequestParam(value = "imageId", required = false) Long imageId) {
+        ModuleList response = CommonHelper.getSuccessModuleList();
+        adminDelegate.deleteUploadFile(fileName, advertisementId, imageId, response);
+        return adminDelegate.getRemainingImageCount(advertisementId);
     }
 
     @RequestMapping(value = {"/advtPostingComplete" }, method = RequestMethod.POST)
@@ -384,6 +389,13 @@ public class PropertyUserController implements InitializingBean {
     public ModelAndView handleAllException(Exception ex) {
         ex.printStackTrace();
         ModelAndView modelAndView = new ModelAndView("genericErrorpage");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ModelAndView handleAccessDeniedException(AccessDeniedException ex) {
+        ex.printStackTrace();
+        ModelAndView modelAndView = new ModelAndView("userLogin");
         return modelAndView;
     }
 

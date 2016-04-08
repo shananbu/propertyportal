@@ -238,6 +238,12 @@ public class PropertyAdminDelegate implements IPropertyAdminDelegate, Initializi
     }
 
     @Override
+    public boolean deleteUploadFile(String fileName, Long advertisementId, Long imageId, ModuleList response) {
+        return adminHelper.deleteUploadFile(fileName, advertisementId, imageId, response);
+
+    }
+
+    @Override
     public boolean getBedroomsList(ModuleList response) {
         return adminHelper.getBedroomsList(response);
     }
