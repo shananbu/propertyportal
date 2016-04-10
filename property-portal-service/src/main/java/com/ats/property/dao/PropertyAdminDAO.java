@@ -490,7 +490,7 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
         if (searchType.getLocationId() != null) {
             searchCriteria.add(Restrictions.eq("locationId", searchType.getLocationId()));
         }
-        if (searchType.getExpectedPrice() != null) {
+        if (searchType.getExpectedPrice() != null && searchType.getExpectedPrice() != -1) {
             Budget budget = findObjectById(searchType.getExpectedPrice(), Budget.class);
 
             Criterion price1 = Restrictions.between("advertisementDetails.expectedPrice", budget.getFromlevel(), budget.getTolevel());
@@ -507,7 +507,7 @@ public class PropertyAdminDAO extends AbstractDao implements IPropertyAdminDAO, 
             searchCriteria.add(priceOrExp);
         }
 
-        if (searchType.getUserTypeId() != null) {
+        if (searchType.getUserTypeId() != null && searchType.getUserTypeId() != -1) {
             searchCriteria.add(Restrictions.eq("propertyTypeId", searchType.getUserTypeId()));
         }
 

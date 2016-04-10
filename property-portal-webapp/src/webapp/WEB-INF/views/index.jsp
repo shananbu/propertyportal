@@ -88,6 +88,7 @@
             <li class="list_3">
                 <label> Price</label>
                 <select  placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
+                    <option value="-1">No Budget Limit</option>
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <c:if test="${data.propertyForTypeId eq 1}">
                             <option value="${data.id}">${data.name}</option>
@@ -106,6 +107,7 @@
             <li class="list_3">
                 <label> Posted By </label>
                 <select class="dropdown" placeholder="select" name="search.userTypeId">
+                    <option value="-1">All</option>
                     <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -152,6 +154,7 @@
             <li class="list_3">
                 <label> Price</label>
                 <select placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
+                    <option value="-1">No Budget Limit</option>
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <c:if test="${data.propertyForTypeId eq 2}">
                         <option value="${data.id}">${data.name}</option>
@@ -171,6 +174,7 @@
             <li class="list_3">
                 <label> Posted By </label>
                 <select class="dropdown" placeholder="select" name="search.userTypeId">
+                    <option value="-1">All</option>
                     <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>
@@ -217,6 +221,7 @@
             <li class="list_3">
                 <label> Price</label>
                 <select placeholder="Select Price" class="SlectBox" name="search.expectedPrice">
+                    <option value="-1">No Budget Limit</option>
                     <c:forEach var="data" items="${response.module[0].moduleResponse.budgets}">
                         <c:if test="${data.propertyForTypeId eq 1}">
                              <option value="${data.id}">${data.name}</option>
@@ -236,6 +241,7 @@
             <li class="list_3">
                 <label> Posted By </label>
                 <select class="dropdown" placeholder="select" name="search.userTypeId">
+                    <option value="-1">All</option>
                     <c:forEach var="data" items="${response.module[0].moduleResponse.userType}">
                         <option value="${data.id}">${data.name}</option>
                     </c:forEach>

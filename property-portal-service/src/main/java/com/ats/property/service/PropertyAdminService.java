@@ -137,7 +137,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
     @Override
     @Transactional
     public boolean getAdvertisementsByType(boolean isMicroSite, ModuleList response) {
-        List<Advertisement> advertisements = adminDAO.getAdvertisements(isMicroSite);
+        List<Advertisement> advertisements = adminDAO.getAdvertisementsByType(isMicroSite);
         getAdvertisements(advertisements, response);
         return true;
     }
