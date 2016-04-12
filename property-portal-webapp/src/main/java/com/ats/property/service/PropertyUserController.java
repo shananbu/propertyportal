@@ -1,6 +1,7 @@
 package com.ats.property.service;
 
 import com.ats.property.common.constants.CommonHelper;
+import com.ats.property.common.constants.PropertyConstants;
 import com.ats.property.dto.*;
 import com.ats.property.service.delegate.IPropertyAdminDelegate;
 import org.springframework.beans.factory.InitializingBean;
@@ -272,6 +273,17 @@ public class PropertyUserController implements InitializingBean {
                                                 @ModelAttribute("planId") final String planId, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("postPropertyInMicrosite");
         ModuleList response = CommonHelper.getSuccessModuleList();
+        if(!PropertyAdminService.getCurrentUserShortName().equalsIgnoreCase(PropertyConstants.USER_BUILDER.value())) {
+            modelAndView = new ModelAndView("userResponse");
+            response.getMessages().get(0).setCode(200);
+            response.getMessages().get(0).setMessage("Access Denied! Microsite advertisement posting is not accessible for \n" +
+                    " individuals and brokers.");
+            modelAndView.addObject("response", response);
+            modelAndView.addObject("planId", planId);
+            modelAndView.addObject("imageClassFromResponse", "fa fa-user-times fa-3x");
+            return modelAndView;
+        }
+
         adminDelegate.getStateList(null, response);
         adminDelegate.getCityList(null, response);
         adminDelegate.getBedroomsList(response);

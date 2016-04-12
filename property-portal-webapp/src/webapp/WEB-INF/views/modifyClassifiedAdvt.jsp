@@ -263,9 +263,12 @@
     <c:forEach var="data" items="${response.module[0].moduleResponse.amenitiesCategory}">
         <nav>
             <ul>
+                <c:set var="amenitiesList" value="${response.module[0].moduleResponse.advertisement.propertyAmenitiesMap[data.id]}"/>
                 <c:forEach var="innerData" items="${data.amenitiesesById}">
                     <li>
-                        <input type="checkbox" name="advertisement.propertyAmenities" id="00${innerData.id}" value="${innerData.id}">
+                        <input type="checkbox" name="advertisement.propertyAmenities" id="00${innerData.id}" value="${innerData.id}"
+                          <c:forEach var="obj" items="${amenitiesList}" ><c:if test="${obj.id eq innerData.id}"> checked </c:if></c:forEach>
+                        >
                         <label for="00${innerData.id}"></label>${innerData.name}
                     </li>
                 </c:forEach>
@@ -309,7 +312,7 @@
                 </span> </li>
         <li class="col_2_text">
             <label>Maintanance Charges</label>
-            <i class="fa fa-inr fa-2x"></i> &nbsp;<span><input type="text" placeholder="Maintenance Charges" name="advertisement.maintenanceCharges">
+            <i class="fa fa-inr fa-2x"></i> &nbsp;<span><input type="text" placeholder="Maintenance Charges" name="advertisement.maintenanceCharges" value="${response.module[0].moduleResponse.advertisement.maintenanceCharges}">
                         </span> <span>
                         <select class="dropdown" name="advertisement.maintenancePeriodId">
                             <c:forEach var="data" items="${response.module[0].moduleResponse.terms}">
@@ -321,7 +324,7 @@
         </li>
         <li>
             <label>Security Deposit</label>
-            <i class="fa fa-inr fa-2x"></i> &nbsp;<input type="text" placeholder="Security Deposit" name="advertisement.securityDeposit">
+            <i class="fa fa-inr fa-2x"></i> &nbsp;<input type="text" placeholder="Security Deposit" name="advertisement.securityDeposit" value="${response.module[0].moduleResponse.advertisement.securityDeposit}">
         </li>
         <li class="check_brok">
             <label>Response from brokers</label>

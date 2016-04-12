@@ -229,6 +229,15 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         }
         return null;
     }
+
+    public static String getCurrentUserShortName() {
+        UserInformation user = getCurrentUser();
+        if (user != null) {
+            return user.getUserTypeShortName();
+        }
+        return null;
+    }
+
     @Override
     public void afterPropertiesSet() throws Exception {
         objectFactory = new ObjectFactory();
@@ -544,10 +553,10 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
         }
         if(advertisement.getId() != null) {
             MailBean data = getAdvtPostingMailData(advertisement);
-       //     mailService.sendMail(data);
+            mailService.sendMail(data);
 
             MailBean dataToAdmin = getAdvtPostingMailDataToAdmin(advertisement);
-         //   mailService.sendMail(dataToAdmin);
+            mailService.sendMail(dataToAdmin);
         }
         AdvertisementType advertisementType = new AdvertisementType();
         advertisementType.setId(advertisement.getId());
@@ -1013,12 +1022,30 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                         String buildupAreaName = advertisementDetails.getBuildupArea().longValue() + " " + advertisementDetails.getUnitMasterByBuildupAreaUnitId().getName() + " " + PropertyConstants.ONWARDS.value();
                         advertisementType.setBuildupAreaName(buildupAreaName);
                         advertisementType.setBuildupAreaRange(buildupAreaName);
+                        advertisementType.setBuildupArea(advertisementDetails.getBuildupArea());
+                        advertisementType.setBuildupAreaUnitId(advertisementDetails.getBuildupAreaUnitId());
+                        advertisementType.setBalconyId(advertisementDetails.getBalconyId());
+                        advertisementType.setTotalFloor(advertisementDetails.getTotalFloor());
+                        advertisementType.setPropertyOnFloorId(advertisementDetails.getPropertyOnFloorId());
+                        advertisementType.setExpectedPrice(advertisementDetails.getExpectedPrice());
                         String cost = advertisementDetails.getExpectedPrice() / ONE_LAKH + " " + PropertyConstants.LAKHS.value() + " " + PropertyConstants.ONWARDS.value();
                         advertisementType.setCost(cost);
                         advertisementType.setPriceRange(cost);
                     }
                 }
 
+                if(fromNullable(advertisement.getResidentialsById()).isPresent() && !advertisement.getResidentialsById().isEmpty()) {
+                    for (Residential residential : advertisement.getResidentialsById()) {
+                        advertisementType.setBedRoomId(residential.getBedroomByBedRoomId().getId());
+                        advertisementType.setBathRoomId(residential.getBathroomByBathRoomId().getId());
+                        advertisementType.setBathRoomId(residential.getBathroomByBathRoomId().getId());
+                        advertisementType.setFurnishedStatusId(residential.getFurnishedStatusId());
+                        advertisementType.setMaintenanceCharges(residential.getMaintenanceCharges());
+                        advertisementType.setMaintenancePeriodId(residential.getMaintenancePeriodId());
+                        advertisementType.setSecurityDeposit(residential.getSecurityDeposit());
+
+                    }
+                }
 
                 if(fromNullable(advertisement.getGalleryImagesesById()).isPresent()) {
                     advertisementType.setGalleryImageByImageTypeMap(new HashMap());
@@ -1096,6 +1123,7 @@ public class PropertyAdminService implements IPropertyAdminService, Initializing
                         }
                         NameDataType amenity = new NameDataType();
                         amenity.setName(propertyAmenity.getAmenitiesByAmenitiesId().getName());
+                        amenity.setId(propertyAmenity.getAmenitiesByAmenitiesId().getId());
                         amenitiesList.add(amenity);
 
                         advertisementType.getPropertyAmenitiesMap().put(parent, amenitiesList);

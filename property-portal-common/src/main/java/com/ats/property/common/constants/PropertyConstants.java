@@ -19,8 +19,8 @@ public enum PropertyConstants {
     CLASSIFIEDS("Classifieds"),
     MICROSITE("Microsite"),
     APPROVED("Approved"),
-    APPROVAL_PENDING("Pending for Approval")
-    ;
+    APPROVAL_PENDING("Pending for Approval"),
+    USER_BUILDER("Builder");
 
     private final String value;
 

@@ -14,10 +14,18 @@ import java.util.Collection;
  * @author anbarasan.s
  */
 public class UserInformation extends User {
-    String firstName;
-    Long userId;
-    Long userTypeId;
+    private String firstName;
+    private Long userId;
+    private Long userTypeId;
+    private String userTypeShortName;
 
+    public String getUserTypeShortName() {
+        return userTypeShortName;
+    }
+
+    public void setUserTypeShortName(String userTypeShortName) {
+        this.userTypeShortName = userTypeShortName;
+    }
     public String getFirstName() {
         return firstName;
     }

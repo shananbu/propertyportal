@@ -4172,3 +4172,8 @@ a.close:hover {
     font-size:150px;
 }
 
+.failure-screen > i{
+    color: #af0917;
+    display:block;
+    font-size:150px;
+}

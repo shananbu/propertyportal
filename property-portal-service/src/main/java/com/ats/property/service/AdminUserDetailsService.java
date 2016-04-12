@@ -57,6 +57,7 @@ public class AdminUserDetailsService implements UserDetailsService {
             user.setFirstName(propertyUser.getFirstName());
             user.setUserId(propertyUser.getId());
             user.setUserTypeId(propertyUser.getUserTypeByUserTypeId().getId());
+            user.setUserTypeShortName(propertyUser.getUserTypeByUserTypeId().getShortName());
         } else if(adminlogin != null) {
                 authorityList = new ArrayList<GrantedAuthority>() {{
                 String role = "ROLE_ADMIN";

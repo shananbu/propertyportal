@@ -17,6 +17,12 @@
     <main class="main_wrapper clr_fix">
         <header class="clr_fix top_head">
             <%@ include file="userHeader.jsp" %>
+            <c:set var="imageClass" scope="request" value="fa fa-check-square-o fa-5x"/>
+            <c:set var="screenType" scope="request" value="success-screen"/>
+            <c:if test="${not empty imageClassFromResponse}">
+                <c:set var="imageClass" scope="request" value="${imageClassFromResponse}"/>
+                <c:set var="screenType" scope="request" value="failure-screen"/>
+            </c:if>
         </header>
         <section class="clr_fix sec_main">
             <div class="row_main">
@@ -25,7 +31,7 @@
                         <div class="ad_3">
                             <ul>
                                 <li class="text_center">
-                                    <span class="success-screen"><i class="fa fa-check-square-o fa-5x"></i> </span>
+                                    <span class='<c:out value="${screenType}"/>'><i class='<c:out value="${imageClass}"/>'></i> </span>
                                     <span>
                                          ${response.messages[0].message}
                                     </span>
